@@ -1,0 +1,10764 @@
+// generated using template: cop_main.template---------------------------------------------
+/******************************************************************************************
+**
+**  Module Name: cop_main.c
+**  NOTE: Automatically generated file. DO NOT MODIFY!
+**  Description:
+**            Main file
+**
+******************************************************************************************/
+// generated using template: arm/custom_include.template-----------------------------------
+
+
+#ifdef __cplusplus
+#include <limits>
+
+extern "C" {
+#endif
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdint.h>
+#include <complex.h>
+#include <time.h>
+
+// x86 libraries:
+#include "../include/sp_functions_dev0.h"
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ----------------------------------------------------------------------------------------                // generated using template:generic_macros.template-----------------------------------------
+/*********************** Macros (Inline Functions) Definitions ***************************/
+
+// ----------------------------------------------------------------------------------------
+
+#ifndef MAX
+#define MAX(value, limit) (((value) > (limit)) ? (value) : (limit))
+#endif
+#ifndef MIN
+#define MIN(value, limit) (((value) < (limit)) ? (value) : (limit))
+#endif
+
+// generated using template: VirtualHIL/custom_defines.template----------------------------
+
+typedef unsigned char X_UnInt8;
+typedef char X_Int8;
+typedef signed short X_Int16;
+typedef unsigned short X_UnInt16;
+typedef int X_Int32;
+typedef unsigned int X_UnInt32;
+typedef unsigned int uint;
+typedef double real;
+
+// ----------------------------------------------------------------------------------------
+// generated using template: custom_consts.template----------------------------------------
+
+// arithmetic constants
+#define C_SQRT_2                    1.4142135623730950488016887242097f
+#define C_SQRT_3                    1.7320508075688772935274463415059f
+#define C_PI                        3.1415926535897932384626433832795f
+#define C_E                         2.7182818284590452353602874713527f
+#define C_2PI                       6.283185307179586476925286766559f
+
+//@cmp.def.start
+//component defines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+float  _ms_s2_phase_synch_switching__sw_in , _ms_s2_phase_synch_switching__sw_out , _ms_s2_phase_synch_switching__sw_last;
+float  _ms_s2_phase_synch_switching__ph_in , _ms_s2_phase_synch_switching__ph_targ , _ms_s2_phase_synch_switching__ph_tol;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int  _grid_inputs_input_synch_switching_f__sw_in , _grid_inputs_input_synch_switching_f__sw_out , _grid_inputs_input_synch_switching_f__sw_last;
+float  _grid_inputs_input_synch_switching_f__V_in , _grid_inputs_input_synch_switching_f__V_targ;
+
+int  _grid_inputs_input_synch_switching_v__sw_in , _grid_inputs_input_synch_switching_v__sw_out , _grid_inputs_input_synch_switching_v__sw_last;
+float  _grid_inputs_input_synch_switching_v__V_in , _grid_inputs_input_synch_switching_v__V_targ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#define _vg_tdf_sg_ctrl_sine1__no_of_points 1000
+#define _vg_tdf_sg_ctrl_sine1__max_int40 (1099511627775)
+#define _vg_tdf_sg_ctrl_sine1__max_int32 (4294967295)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef struct {
+    float  V_limit ;
+    float  t_limit ;
+    int  timer ;
+} fFRT_Zone  ;
+fFRT_Zone  _pcc_control_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.2f ,  0  }  };
+fFRT_Zone  _pcc_control_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef struct {
+    float  V_limit ;
+    float  t_limit ;
+    int  timer ;
+} FRT_Zone  ;
+FRT_Zone  _pcc_control_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.05f ,  0  }  };
+FRT_Zone  _pcc_control_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.05f ,  0  }  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+float  _battery_inverter__average_1_control_phase_synch_switching__sw_in , _battery_inverter__average_1_control_phase_synch_switching__sw_out , _battery_inverter__average_1_control_phase_synch_switching__sw_last;
+float  _battery_inverter__average_1_control_phase_synch_switching__ph_in , _battery_inverter__average_1_control_phase_synch_switching__ph_targ , _battery_inverter__average_1_control_phase_synch_switching__ph_tol;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//@cmp.def.end
+
+
+//-----------------------------------------------------------------------------------------
+// generated using template: common_variables.template-------------------------------------
+// true global variables
+
+
+
+
+
+// const variables
+const double _grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[26] = { 1.0, 1.0, 0.94, 0.938, 0.938, 0.94, 0.948, 0.948, 0.95, 0.958, 0.958, 0.96, 0.978, 0.978, 0.98, 1.0, 1.0, 1.03, 1.032, 1.032, 1.03, 1.022, 1.022, 1.02, 1.0, 1.0 };
+const double _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[26] = { 0.0, 1.0, 2.2, 2.24, 2.32, 2.36, 2.52, 7.92, 7.96, 8.12, 11.72, 11.76, 12.12, 61.32, 61.36, 61.76, 62.96, 63.56, 63.6, 67.48, 67.52, 67.68, 123.22, 123.32, 123.72, 124.92 };
+const double _grid_inputs_f_trip1_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.022, 1.022, 1.0, 1.0 };
+const double _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.44, 61.44, 61.88, 62.0 };
+const double _grid_inputs_f_trip2_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.032, 1.032, 1.0, 1.0 };
+const double _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.64, 5.64, 6.28, 6.5 };
+const double _grid_inputs_f_trip3_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.978, 0.978, 1.0, 1.0 };
+const double _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.44, 61.44, 61.88, 62.0 };
+const double _grid_inputs_f_trip4_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.958, 0.958, 1.0, 1.0 };
+const double _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.84, 11.84, 12.68, 13.0 };
+const double _grid_inputs_f_trip5_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.948, 0.948, 1.0, 1.0 };
+const double _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 2.04, 8.04, 9.08, 9.5 };
+const double _grid_inputs_f_trip6_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.938, 0.938, 1.0, 1.0 };
+const double _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 2.24, 2.44, 3.68, 4.0 };
+const double _grid_inputs_f_trip7_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.0402, 1.0402, 1.0, 1.0 };
+const double _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.804, 2.014, 2.818, 3.0 };
+const double _grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[17] = { 1.0, 1.0, 0.6, 0.79, 0.79, 0.8, 0.84, 0.84, 0.85, 1.0, 1.0, 1.2, 1.19, 1.11, 1.1, 1.0, 1.0 };
+const double _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[17] = { 0.0, 1.0, 1.02, 1.04, 1.13, 1.15, 1.17, 1.48, 1.5, 1.52, 3.0, 3.02, 3.04, 4.98, 5.0, 5.02, 6.0 };
+const double _grid_inputs_v_trip1_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.11, 1.11, 1.0, 1.0 };
+const double _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 3.03, 3.04, 4.0 };
+const double _grid_inputs_v_trip2_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.21, 1.21, 1.0, 1.0 };
+const double _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.051, 1.061, 2.0 };
+const double _grid_inputs_v_trip3_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.84, 0.84, 1.0, 1.0 };
+const double _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.53, 1.54, 2.0 };
+const double _grid_inputs_v_trip4_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.79, 0.79, 1.0, 1.0 };
+const double _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.18, 1.19, 2.0 };
+const double _grid_inputs_v_trip5_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.59, 0.59, 1.0, 1.0 };
+const double _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.051, 1.061, 2.0 };
+
+//@cmp.var.start
+// variables
+double _bi_mode_scada__out;
+double _bi_vref_pu__out;
+double _bi_fref_pu__out;
+double _battery_inverter__average_1_control_imode_control_constant1__out = 1.0;
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant6__out = 1.0;
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out = 0.0;
+double _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__out;
+double _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__out;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__out;
+double _battery_inverter__average_1_control_inv_wt_target__out;
+double _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__out;
+double _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__b_coeff[2] = {2.220446049250313e-16, 2.467400050942814e-08};
+double _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_coeff[3] = {1.0, -1.9997778894456002, 0.9997779141196009};
+double _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_sum;
+double _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__b_sum;
+double _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__delay_line_in;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_integrator1__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_integrator2__out;
+double _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__out;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__previous_filtered_value;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__out;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__previous_filtered_value;
+double _battery_inverter__average_1_control_synch_check_grid___1_5_hz__out = 0.2;
+double _battery_inverter__average_1_control_synch_check_grid___10___out = 0.1;
+double _battery_inverter__average_1_control_synch_check_grid_nominal_frequency__out = 1.0;
+double _battery_inverter__average_1_control_synch_check_grid_nominal_voltage__out = 1.0;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions___1_5_hz__out = 0.2;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions___10___out = 0.1;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_nominal_frequency__out = 1.0;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_nominal_voltage__out = 1.0;
+double _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__b_coeff[2] = {2.220446049250313e-16, 2.467400050942814e-08};
+double _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_coeff[3] = {1.0, -1.9997778894456002, 0.9997779141196009};
+double _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_sum;
+double _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__b_sum;
+double _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__delay_line_in;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator1__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator2__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__previous_filtered_value;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__previous_filtered_value;
+double _battery_inverter__average_1_control_synch_vmatch_constant2__out = 1.0;
+double _battery_inverter__average_1_control_synch_vmatch_constant3__out = 0.0;
+double _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__out;
+double _battery_inverter__average_1_control_synch_vmatch_counter1_const_value_0__out = 0.0;
+double _battery_inverter__average_1_control_synch_vmatch_counter1_const_value_1__out = 1.0;
+double _battery_inverter__average_1_control_synch_vmatch_unit_delay3__out;
+double _battery_inverter__average_1_control_synch_vmatch_unit_delay4__out;
+double _battery_inverter__average_1_control_synch_vmatch_unit_delay5__out;
+double _battery_inverter__average_1_control_synch_f_match_constant1__out = 1.0;
+double _battery_inverter__average_1_control_synch_f_match_constant3__out = 0.0;
+double _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__out;
+double _battery_inverter__average_1_control_synch_f_match_counter1_const_value_0__out = 0.0;
+double _battery_inverter__average_1_control_synch_f_match_counter1_const_value_1__out = 1.0;
+double _battery_inverter__average_1_control_synch_f_match_delay1__out;
+double _battery_inverter__average_1_control_synch_f_match_unit_delay1__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay2__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay4__out;
+double _battery_inverter__average_1_control_synch_phase_match_constant2__out = 1.0;
+double _battery_inverter__average_1_control_synch_phase_match_constant4__out = 0.0;
+double _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__out;
+double _battery_inverter__average_1_control_synch_phase_match_counter1_const_value_0__out = 0.0;
+double _battery_inverter__average_1_control_synch_phase_match_counter1_const_value_1__out = 1.0;
+double _battery_inverter__average_1_control_synch_phase_match_unit_delay3__out;
+double _battery_inverter__average_1_control_synch_phase_match_unit_delay4__out;
+double _battery_inverter__average_1_control_synch_phase_match_unit_delay5__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay2__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay4__out;
+double _battery_inverter__average_1_control_vmode_control_constant1__out = 0.0;
+double _battery_inverter__average_1_control_vmode_control_edge_detection1_unit_delay1__out;
+double _battery_inverter__average_1_control_vmode_control_edge_detection2_unit_delay1__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_constant1__out = 0.0;
+double _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__in;
+
+double _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output;
+
+double _battery_inverter__average_1_control_df_switch_constant1__out = 0.0;
+double _battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_constant1__out = 0.5;
+double _battery_inverter__average_1_control_duty_cycle_zsm_constant2__out = 1.0;
+double _battery_inverter__average_1_control_duty_cycle_zsm_constant3__out = 1.0;
+double _battery_inverter__average_1_control_duty_cycle_zsm_constant4__out = 1.0;
+double _battery_inverter__average_1_control_duty_cycle_o_ref__out = 0.0;
+double _battery_inverter__average_1_converter_meas_va_va1__out;
+double _battery_inverter__average_1_converter_meas_vb_va1__out;
+double _battery_inverter__average_1_converter_meas_vc_va1__out;
+double _battery_inverter__average_1_grid_meas_va_va1__out;
+double _battery_inverter__average_1_grid_meas_vb_va1__out;
+double _battery_inverter__average_1_grid_meas_vc_va1__out;
+double _battery_inverter__average_1_ia_ia1__out;
+double _battery_inverter__average_1_ia_out_ia1__out;
+double _battery_inverter__average_1_ib_ia1__out;
+double _battery_inverter__average_1_ib_out_ia1__out;
+double _battery_inverter__average_1_ic_ia1__out;
+double _battery_inverter__average_1_ic_out_ia1__out;
+double _battery_inverter__average_1_vdc_va1__out;
+double _cb_state_scada__out;
+double _ca_in__out;
+double _cb_in__out;
+double _cc_in__out;
+double _eut_interface_enable_i__out;
+double _eut_interface_pref_pu_i__out;
+double _eut_interface_qref_pu_i__out;
+double _grid_inputs_f_frt_pu_clock1__out;
+double _grid_inputs_f_trip1_clock1__out;
+double _grid_inputs_f_trip2_clock1__out;
+double _grid_inputs_f_trip3_clock1__out;
+double _grid_inputs_f_trip4_clock1__out;
+double _grid_inputs_f_trip5_clock1__out;
+double _grid_inputs_f_trip6_clock1__out;
+double _grid_inputs_f_trip7_clock1__out;
+double _grid_inputs_v_frt_pu_clock1__out;
+double _grid_inputs_v_trip1_clock1__out;
+double _grid_inputs_v_trip2_clock1__out;
+double _grid_inputs_v_trip3_clock1__out;
+double _grid_inputs_v_trip4_clock1__out;
+double _grid_inputs_v_trip5_clock1__out;
+double _idc_meas_ia1__out;
+double _ieut_meas_cpu_trans_output__out;
+X_Int32 _in_ftrip_choice__out;
+X_Int32 _in_phg_choice__out;
+X_Int32 _in_vtrip_choice__out;
+X_Int32 _in_vg_choice__out;
+X_Int32 _in_fg_choice__out;
+double _la_in__out;
+double _lb_in__out;
+double _lc_in__out;
+double _ms_s1_s1_enable__out;
+double _ms_s1_tpm_grid_ia_ia1__out;
+double _ms_s1_tpm_grid_ib_ia1__out;
+double _ms_s1_tpm_grid_ic_ia1__out;
+double _ms_s1_tpm_grid_pll_lpf_lpf__out;
+double _ms_s1_tpm_grid_pll_lpf_lpf__b_coeff[2] = {2.220446049250313e-16, 2.467400050942814e-08};
+double _ms_s1_tpm_grid_pll_lpf_lpf__a_coeff[3] = {1.0, -1.9997778894456002, 0.9997779141196009};
+double _ms_s1_tpm_grid_pll_lpf_lpf__a_sum;
+double _ms_s1_tpm_grid_pll_lpf_lpf__b_sum;
+double _ms_s1_tpm_grid_pll_lpf_lpf__delay_line_in;
+double _ms_s1_tpm_grid_pll_pid_integrator1__out;
+double _ms_s1_tpm_grid_pll_pid_integrator2__out;
+double _ms_s1_tpm_grid_pll_unit_delay1__out;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__out;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__previous_filtered_value;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__out;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__previous_filtered_value;
+double _ms_s1_tpm_grid_van_va1__out;
+double _ms_s1_tpm_grid_vbn_va1__out;
+double _ms_s1_tpm_grid_vcn_va1__out;
+double _ms_s1_tpm_grid_zero__out = 0.0;
+double _ms_s2_phase_target__out;
+double _ms_s2_s2_enable__out;
+double _ms_s2_tpm_load_ia_ia1__out;
+double _ms_s2_tpm_load_ib_ia1__out;
+double _ms_s2_tpm_load_ic_ia1__out;
+double _ms_s2_tpm_load_pll_lpf_lpf__out;
+double _ms_s2_tpm_load_pll_lpf_lpf__b_coeff[2] = {2.220446049250313e-16, 2.467400050942814e-08};
+double _ms_s2_tpm_load_pll_lpf_lpf__a_coeff[3] = {1.0, -1.9997778894456002, 0.9997779141196009};
+double _ms_s2_tpm_load_pll_lpf_lpf__a_sum;
+double _ms_s2_tpm_load_pll_lpf_lpf__b_sum;
+double _ms_s2_tpm_load_pll_lpf_lpf__delay_line_in;
+double _ms_s2_tpm_load_pll_pid_integrator1__out;
+double _ms_s2_tpm_load_pll_pid_integrator2__out;
+double _ms_s2_tpm_load_pll_unit_delay1__out;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__out;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__previous_filtered_value;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__out;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__previous_filtered_value;
+double _ms_s2_tpm_load_van_va1__out;
+double _ms_s2_tpm_load_vbn_va1__out;
+double _ms_s2_tpm_load_vcn_va1__out;
+double _ms_s2_tpm_load_zero__out = 0.0;
+double _ms_s2_three_phase_pll1_lpf_lpf__out;
+double _ms_s2_three_phase_pll1_lpf_lpf__b_coeff[2] = {2.220446049250313e-16, 2.467400050942814e-08};
+double _ms_s2_three_phase_pll1_lpf_lpf__a_coeff[3] = {1.0, -1.9997778894456002, 0.9997779141196009};
+double _ms_s2_three_phase_pll1_lpf_lpf__a_sum;
+double _ms_s2_three_phase_pll1_lpf_lpf__b_sum;
+double _ms_s2_three_phase_pll1_lpf_lpf__delay_line_in;
+double _ms_s2_three_phase_pll1_pid_integrator1__out;
+double _ms_s2_three_phase_pll1_pid_integrator2__out;
+double _ms_s2_three_phase_pll1_unit_delay1__out;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__out;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__previous_filtered_value;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__out;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__previous_filtered_value;
+double _ms_s2_va_grid_va1__out;
+double _ms_s2_vb_grid_va1__out;
+double _ms_s2_vc_grid_va1__out;
+double _ms_s3_tpm_grid_ia_ia1__out;
+double _ms_s3_tpm_grid_ib_ia1__out;
+double _ms_s3_tpm_grid_ic_ia1__out;
+double _ms_s3_tpm_grid_pll_lpf_lpf__out;
+double _ms_s3_tpm_grid_pll_lpf_lpf__b_coeff[2] = {2.220446049250313e-16, 2.467400050942814e-08};
+double _ms_s3_tpm_grid_pll_lpf_lpf__a_coeff[3] = {1.0, -1.9997778894456002, 0.9997779141196009};
+double _ms_s3_tpm_grid_pll_lpf_lpf__a_sum;
+double _ms_s3_tpm_grid_pll_lpf_lpf__b_sum;
+double _ms_s3_tpm_grid_pll_lpf_lpf__delay_line_in;
+double _ms_s3_tpm_grid_pll_pid_integrator1__out;
+double _ms_s3_tpm_grid_pll_pid_integrator2__out;
+double _ms_s3_tpm_grid_pll_unit_delay1__out;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__out;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__previous_filtered_value;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__out;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__previous_filtered_value;
+double _ms_s3_tpm_grid_van_va1__out;
+double _ms_s3_tpm_grid_vbn_va1__out;
+double _ms_s3_tpm_grid_vcn_va1__out;
+double _ms_s3_tpm_grid_zero__out = 0.0;
+double _ms_s3_tpm_ug_ia_ia1__out;
+double _ms_s3_tpm_ug_ib_ia1__out;
+double _ms_s3_tpm_ug_ic_ia1__out;
+double _ms_s3_tpm_ug_pll_lpf_lpf__out;
+double _ms_s3_tpm_ug_pll_lpf_lpf__b_coeff[2] = {2.220446049250313e-16, 2.467400050942814e-08};
+double _ms_s3_tpm_ug_pll_lpf_lpf__a_coeff[3] = {1.0, -1.9997778894456002, 0.9997779141196009};
+double _ms_s3_tpm_ug_pll_lpf_lpf__a_sum;
+double _ms_s3_tpm_ug_pll_lpf_lpf__b_sum;
+double _ms_s3_tpm_ug_pll_lpf_lpf__delay_line_in;
+double _ms_s3_tpm_ug_pll_pid_integrator1__out;
+double _ms_s3_tpm_ug_pll_pid_integrator2__out;
+double _ms_s3_tpm_ug_pll_unit_delay1__out;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__out;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__previous_filtered_value;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__out;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__previous_filtered_value;
+double _ms_s3_tpm_ug_van_va1__out;
+double _ms_s3_tpm_ug_vbn_va1__out;
+double _ms_s3_tpm_ug_vcn_va1__out;
+double _ms_s3_tpm_ug_zero__out = 0.0;
+double _reset_cb__out;
+double _rlc_parallel_variable_ica_ia1__out;
+double _rlc_parallel_variable_icb_ia1__out;
+double _rlc_parallel_variable_icc_ia1__out;
+double _rlc_parallel_variable_ila_ia1__out;
+double _rlc_parallel_variable_ilb_ia1__out;
+double _rlc_parallel_variable_ilc_ia1__out;
+double _rlc_parallel_variable_ira_ia1__out;
+double _rlc_parallel_variable_irb_ia1__out;
+double _rlc_parallel_variable_irc_ia1__out;
+double _ra_in__out;
+double _rb_in__out;
+double _rc_in__out;
+double _va1_va1__out;
+double _vdc_meas_va1__out;
+double _vg_rms__out;
+double _vg_f__out;
+double _vg_ph__out;
+double _vg_pu_actual_constant1__out = 120.0;
+double _c_cb0__out = 0.0;
+double _c_cb1__out = 1.0;
+double _c_gfl__out = 1.0;
+double _c_gfm__out = 0.0;
+double _g_vll_rms__out;
+double _g_fgrid_hz__out;
+double _battery_inverter__average_1_control_pll_pu_pll_to_hz__out;
+double _battery_inverter__average_1_control_pll_pu_gain4__out;
+double _battery_inverter__average_1_control_pll_pu_gain5__out;
+double _battery_inverter__average_1_control_pll_pu_pll_normalize__in1;
+double _battery_inverter__average_1_control_pll_pu_pll_normalize__in2;
+
+double _battery_inverter__average_1_control_pll_pu_pll_normalize__in2_pu;
+double _battery_inverter__average_1_control_pll_pu_pll_normalize__pk;
+
+double _battery_inverter__average_1_control_synch_pll_util_pll_to_hz__out;
+double _battery_inverter__average_1_control_synch_phase_match_sum3__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in1;
+double _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2;
+
+double _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2_pu;
+double _battery_inverter__average_1_control_synch_pll_util_pll_normalize__pk;
+
+double _battery_inverter__average_1_control_synch_vmatch_phase_diff__out;
+double _battery_inverter__average_1_control_synch_vmatch_c_function__counter;
+
+double _battery_inverter__average_1_control_synch_vmatch_c_function__out;
+
+double _battery_inverter__average_1_control_synch_vmatch_phase_diff1__out;
+float _battery_inverter__average_1_control_synch_v_lock__tmp;
+double _battery_inverter__average_1_control_synch_f_match_freq_diff__out;
+double _battery_inverter__average_1_control_synch_f_match_c_function__counter;
+
+double _battery_inverter__average_1_control_synch_f_match_c_function__out;
+
+float _battery_inverter__average_1_control_synch_freq_lock__tmp;
+double _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__out;
+double _battery_inverter__average_1_control_synch_f_match_freq_diff1__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_b1__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_b2__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_a1__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_a2__out;
+double _battery_inverter__average_1_control_synch_phase_match_phase_diff__out;
+double _battery_inverter__average_1_control_synch_phase_match_c_function__counter;
+
+double _battery_inverter__average_1_control_synch_phase_match_c_function__out;
+
+double _battery_inverter__average_1_control_synch_phase_match_phase_diff1__out;
+float _battery_inverter__average_1_control_synch_phase_lock__tmp;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_b1__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_b2__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_a1__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_a2__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b1__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b2__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_a1__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_a2__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_limit1__out;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__alpha;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__beta;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__gamma;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__alpha;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__beta;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__gamma;
+double _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__alpha;
+double _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__beta;
+double _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__gamma;
+double _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__alpha;
+double _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__beta;
+double _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__gamma;
+double _battery_inverter__average_1_limit1__out;
+double _g_ca_base__out;
+double _g_cb_base__out;
+double _g_cc_base__out;
+double _g_pess__out;
+double _g_qess__out;
+double _grid_inputs_f_frt_pu_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr;
+double _grid_inputs_f_frt_pu_1d_look_up_table1__fraction;
+
+double _grid_inputs_f_trip1_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_trip1_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_trip1_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_trip1_1d_look_up_table1__curAddr;
+double _grid_inputs_f_trip1_1d_look_up_table1__fraction;
+
+double _grid_inputs_f_trip2_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_trip2_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_trip2_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_trip2_1d_look_up_table1__curAddr;
+double _grid_inputs_f_trip2_1d_look_up_table1__fraction;
+
+double _grid_inputs_f_trip3_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_trip3_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_trip3_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_trip3_1d_look_up_table1__curAddr;
+double _grid_inputs_f_trip3_1d_look_up_table1__fraction;
+
+double _grid_inputs_f_trip4_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_trip4_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_trip4_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_trip4_1d_look_up_table1__curAddr;
+double _grid_inputs_f_trip4_1d_look_up_table1__fraction;
+
+double _grid_inputs_f_trip5_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_trip5_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_trip5_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_trip5_1d_look_up_table1__curAddr;
+double _grid_inputs_f_trip5_1d_look_up_table1__fraction;
+
+double _grid_inputs_f_trip6_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_trip6_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_trip6_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_trip6_1d_look_up_table1__curAddr;
+double _grid_inputs_f_trip6_1d_look_up_table1__fraction;
+
+double _grid_inputs_f_trip7_1d_look_up_table1__value;
+X_Int32 _grid_inputs_f_trip7_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_f_trip7_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_f_trip7_1d_look_up_table1__curAddr;
+double _grid_inputs_f_trip7_1d_look_up_table1__fraction;
+
+double _grid_inputs_v_frt_pu_1d_look_up_table1__value;
+X_Int32 _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr;
+double _grid_inputs_v_frt_pu_1d_look_up_table1__fraction;
+
+double _grid_inputs_v_trip1_1d_look_up_table1__value;
+X_Int32 _grid_inputs_v_trip1_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_v_trip1_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_v_trip1_1d_look_up_table1__curAddr;
+double _grid_inputs_v_trip1_1d_look_up_table1__fraction;
+
+double _grid_inputs_v_trip2_1d_look_up_table1__value;
+X_Int32 _grid_inputs_v_trip2_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_v_trip2_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_v_trip2_1d_look_up_table1__curAddr;
+double _grid_inputs_v_trip2_1d_look_up_table1__fraction;
+
+double _grid_inputs_v_trip3_1d_look_up_table1__value;
+X_Int32 _grid_inputs_v_trip3_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_v_trip3_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_v_trip3_1d_look_up_table1__curAddr;
+double _grid_inputs_v_trip3_1d_look_up_table1__fraction;
+
+double _grid_inputs_v_trip4_1d_look_up_table1__value;
+X_Int32 _grid_inputs_v_trip4_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_v_trip4_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_v_trip4_1d_look_up_table1__curAddr;
+double _grid_inputs_v_trip4_1d_look_up_table1__fraction;
+
+double _grid_inputs_v_trip5_1d_look_up_table1__value;
+X_Int32 _grid_inputs_v_trip5_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs_v_trip5_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs_v_trip5_1d_look_up_table1__curAddr;
+double _grid_inputs_v_trip5_1d_look_up_table1__fraction;
+
+double _g_la_base__out;
+double _g_lb_base__out;
+double _g_lc_base__out;
+double _ms_s1_s1_triple_s1_ideal_ctc_wrapper__feedback_out = 0;
+double _ms_s1_tpm_grid_pll_to_hz__out;
+double _ms_s1_tpm_grid_pll_sin__out;
+double _ms_s1_tpm_grid_pll_normalize__in1;
+double _ms_s1_tpm_grid_pll_normalize__in2;
+
+double _ms_s1_tpm_grid_pll_normalize__in2_pu;
+double _ms_s1_tpm_grid_pll_normalize__pk;
+
+double _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha;
+double _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta;
+double _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__gamma;
+double _ms_s2_tpm_load_pll_to_hz__out;
+double _ms_s2_tpm_load_pll_sin__out;
+double _ms_s2_tpm_load_pll_normalize__in1;
+double _ms_s2_tpm_load_pll_normalize__in2;
+
+double _ms_s2_tpm_load_pll_normalize__in2_pu;
+double _ms_s2_tpm_load_pll_normalize__pk;
+
+double _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__alpha;
+double _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__beta;
+double _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__gamma;
+double _ms_s2_three_phase_pll1_to_hz__out;
+double _ms_s2_phase_synch_switching__in_phase;
+double _ms_s2_phase_synch_switching__in_sw;
+double _ms_s2_phase_synch_switching__in_target;
+
+double _ms_s2_phase_synch_switching__out_sw;
+
+double _ms_s2_three_phase_pll1_sin__out;
+double _ms_s2_three_phase_pll1_normalize__in1;
+double _ms_s2_three_phase_pll1_normalize__in2;
+
+double _ms_s2_three_phase_pll1_normalize__in2_pu;
+double _ms_s2_three_phase_pll1_normalize__pk;
+
+double _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__alpha;
+double _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__beta;
+double _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__gamma;
+double _ms_s3_tpm_grid_pll_to_hz__out;
+double _ms_s3_tpm_grid_pll_sin__out;
+double _ms_s3_tpm_grid_pll_normalize__in1;
+double _ms_s3_tpm_grid_pll_normalize__in2;
+
+double _ms_s3_tpm_grid_pll_normalize__in2_pu;
+double _ms_s3_tpm_grid_pll_normalize__pk;
+
+double _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha;
+double _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta;
+double _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__gamma;
+double _ms_s3_tpm_ug_pll_to_hz__out;
+double _ms_s3_tpm_ug_pll_sin__out;
+double _ms_s3_tpm_ug_pll_normalize__in1;
+double _ms_s3_tpm_ug_pll_normalize__in2;
+
+double _ms_s3_tpm_ug_pll_normalize__in2_pu;
+double _ms_s3_tpm_ug_pll_normalize__pk;
+
+double _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__alpha;
+double _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__beta;
+double _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__gamma;
+double _rlc_parallel_variable_ica_meanvalue__out;
+double _rlc_parallel_variable_ila_meanvalue__out;
+double _rlc_parallel_variable_ira_meanvalue__out;
+double _g_ra_base__out;
+double _g_rb_base__out;
+double _g_rc_base__out;
+double _vi_dc__out;
+double _grid_inputs_mux_ph_g__out;
+double _battery_inverter__average_1_control_pll_pu_gain6__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_product4__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_product5__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_product1__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_product3__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_product6__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_product2__out;
+double _battery_inverter__average_1_control_pll_pu_gain7__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_kd__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_ki__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_kp__out;
+double _battery_inverter__average_1_control_synch_pll_util_gain5__out;
+double _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta;
+
+double _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta_confined;
+
+double _battery_inverter__average_1_control_synch_pll_util_gain4__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_kd__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_ki__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_kp__out;
+double _battery_inverter__average_1_control_synch_vmatch_sum2__out;
+double _battery_inverter__average_1_control_synch_f_match_sum2__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_sum3__out;
+double _battery_inverter__average_1_control_synch_phase_match_sum2__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_sum3__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum3__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_sum2__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_sum8__out;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__d;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__q;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k1;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k2;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__d;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__q;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k1;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k2;
+double _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__d;
+double _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__q;
+double _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k1;
+double _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k2;
+double _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__d;
+double _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__q;
+double _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k1;
+double _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k2;
+double _battery_inverter__average_1_control_gain1__out;
+double _rlc_parallel_variable_ca_reciprocal__out;
+double _rlc_parallel_variable_cb_reciprocal__out;
+double _rlc_parallel_variable_cc_reciprocal__out;
+double _grid_inputs_mux_f_g_trip__out;
+double _grid_inputs_mux_v_g_trip__out;
+double _rlc_parallel_variable_la_reciprocal__out;
+double _rlc_parallel_variable_lb_reciprocal__out;
+double _rlc_parallel_variable_lc_reciprocal__out;
+double _ms_s1_tpm_grid_meassm_mode_and_dfract__Freq;
+
+double _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract;
+X_Int32 _ms_s1_tpm_grid_meassm_mode_and_dfract__mode;
+X_Int32 _ms_s1_tpm_grid_meassm_mode_and_dfract__submode;
+
+double _ms_s1_tpm_grid_pll_pid_kd__out;
+double _ms_s1_tpm_grid_pll_pid_ki__out;
+double _ms_s1_tpm_grid_pll_pid_kp__out;
+double _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__d;
+double _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__q;
+double _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1;
+double _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2;
+double _ms_s2_tpm_load_meassm_mode_and_dfract__Freq;
+
+double _ms_s2_tpm_load_meassm_mode_and_dfract__dFract;
+X_Int32 _ms_s2_tpm_load_meassm_mode_and_dfract__mode;
+X_Int32 _ms_s2_tpm_load_meassm_mode_and_dfract__submode;
+
+double _ms_s2_tpm_load_pll_pid_kd__out;
+double _ms_s2_tpm_load_pll_pid_ki__out;
+double _ms_s2_tpm_load_pll_pid_kp__out;
+double _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__d;
+double _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__q;
+double _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k1;
+double _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k2;
+double _ms_s2_three_phase_pll1_pid_kd__out;
+double _ms_s2_three_phase_pll1_pid_ki__out;
+double _ms_s2_three_phase_pll1_pid_kp__out;
+double _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__d;
+double _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__q;
+double _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k1;
+double _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k2;
+double _ms_s3_tpm_grid_meassm_mode_and_dfract__Freq;
+
+double _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract;
+X_Int32 _ms_s3_tpm_grid_meassm_mode_and_dfract__mode;
+X_Int32 _ms_s3_tpm_grid_meassm_mode_and_dfract__submode;
+
+double _ms_s3_tpm_grid_pll_pid_kd__out;
+double _ms_s3_tpm_grid_pll_pid_ki__out;
+double _ms_s3_tpm_grid_pll_pid_kp__out;
+double _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__d;
+double _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__q;
+double _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1;
+double _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2;
+double _ms_s3_tpm_ug_meassm_mode_and_dfract__Freq;
+
+double _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract;
+X_Int32 _ms_s3_tpm_ug_meassm_mode_and_dfract__mode;
+X_Int32 _ms_s3_tpm_ug_meassm_mode_and_dfract__submode;
+
+double _ms_s3_tpm_ug_pll_pid_kd__out;
+double _ms_s3_tpm_ug_pll_pid_ki__out;
+double _ms_s3_tpm_ug_pll_pid_kp__out;
+double _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__d;
+double _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__q;
+double _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k1;
+double _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k2;
+double _vg_pu_actual_s_ph_b__out;
+double _vg_pu_actual_s_ph_c__out;
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_abs3__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_sum3__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_sum4__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_sum3__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_sum5__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_sum8__out;
+double _battery_inverter__average_1_control_synch_check_grid_abs3__out;
+double _battery_inverter__average_1_control_synch_f_match_sum1__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_b0__out;
+double _battery_inverter__average_1_control_synch_check_grid_sum5__out;
+double _battery_inverter__average_1_control_synch_vmatch_sum10__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum8__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_sum2__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_sum2__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum2__out;
+double _battery_inverter__average_1_control_abctodq_gain1__out;
+double _battery_inverter__average_1_control_abctodq_gain2__out;
+double _battery_inverter__average_1_control_abctodq1_gain1__out;
+double _battery_inverter__average_1_control_abctodq1_gain2__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_limit3__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_limit3__out;
+double _battery_inverter__average_1_control_duty_cycle_gain1__out;
+double _grid_inputs_input_synch_switching_f__in_FRT;
+double _grid_inputs_input_synch_switching_f__in_Trip;
+X_Int32 _grid_inputs_input_synch_switching_f__in_sw;
+
+double _grid_inputs_input_synch_switching_f__out_sw;
+
+double _grid_inputs_input_synch_switching_v__in_FRT;
+double _grid_inputs_input_synch_switching_v__in_Trip;
+X_Int32 _grid_inputs_input_synch_switching_v__in_sw;
+
+double _grid_inputs_input_synch_switching_v__out_sw;
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__IN1;
+double _ms_s1_tpm_grid_i_rms_calc_rms__IN2;
+double _ms_s1_tpm_grid_i_rms_calc_rms__IN3;
+double _ms_s1_tpm_grid_i_rms_calc_rms__dFract;
+X_Int32 _ms_s1_tpm_grid_i_rms_calc_rms__mode;
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__RMS1;
+double _ms_s1_tpm_grid_i_rms_calc_rms__RMS2;
+double _ms_s1_tpm_grid_i_rms_calc_rms__RMS3;
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__IN1;
+double _ms_s1_tpm_grid_vln_rms_calc_rms__IN2;
+double _ms_s1_tpm_grid_vln_rms_calc_rms__IN3;
+double _ms_s1_tpm_grid_vln_rms_calc_rms__dFract;
+X_Int32 _ms_s1_tpm_grid_vln_rms_calc_rms__mode;
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1;
+double _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2;
+double _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3;
+
+double _ms_s1_tpm_grid_pll_pid_sum8__out;
+double _ms_s2_tpm_load_i_rms_calc_rms__IN1;
+double _ms_s2_tpm_load_i_rms_calc_rms__IN2;
+double _ms_s2_tpm_load_i_rms_calc_rms__IN3;
+double _ms_s2_tpm_load_i_rms_calc_rms__dFract;
+X_Int32 _ms_s2_tpm_load_i_rms_calc_rms__mode;
+
+double _ms_s2_tpm_load_i_rms_calc_rms__RMS1;
+double _ms_s2_tpm_load_i_rms_calc_rms__RMS2;
+double _ms_s2_tpm_load_i_rms_calc_rms__RMS3;
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__IN1;
+double _ms_s2_tpm_load_vln_rms_calc_rms__IN2;
+double _ms_s2_tpm_load_vln_rms_calc_rms__IN3;
+double _ms_s2_tpm_load_vln_rms_calc_rms__dFract;
+X_Int32 _ms_s2_tpm_load_vln_rms_calc_rms__mode;
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__RMS1;
+double _ms_s2_tpm_load_vln_rms_calc_rms__RMS2;
+double _ms_s2_tpm_load_vln_rms_calc_rms__RMS3;
+
+double _ms_s2_tpm_load_pll_pid_sum8__out;
+double _ms_s2_three_phase_pll1_pid_sum8__out;
+double _ms_s3_tpm_grid_i_rms_calc_rms__IN1;
+double _ms_s3_tpm_grid_i_rms_calc_rms__IN2;
+double _ms_s3_tpm_grid_i_rms_calc_rms__IN3;
+double _ms_s3_tpm_grid_i_rms_calc_rms__dFract;
+X_Int32 _ms_s3_tpm_grid_i_rms_calc_rms__mode;
+
+double _ms_s3_tpm_grid_i_rms_calc_rms__RMS1;
+double _ms_s3_tpm_grid_i_rms_calc_rms__RMS2;
+double _ms_s3_tpm_grid_i_rms_calc_rms__RMS3;
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__IN1;
+double _ms_s3_tpm_grid_vln_rms_calc_rms__IN2;
+double _ms_s3_tpm_grid_vln_rms_calc_rms__IN3;
+double _ms_s3_tpm_grid_vln_rms_calc_rms__dFract;
+X_Int32 _ms_s3_tpm_grid_vln_rms_calc_rms__mode;
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1;
+double _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2;
+double _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3;
+
+double _ms_s3_tpm_grid_pll_pid_sum8__out;
+double _ms_s3_tpm_ug_i_rms_calc_rms__IN1;
+double _ms_s3_tpm_ug_i_rms_calc_rms__IN2;
+double _ms_s3_tpm_ug_i_rms_calc_rms__IN3;
+double _ms_s3_tpm_ug_i_rms_calc_rms__dFract;
+X_Int32 _ms_s3_tpm_ug_i_rms_calc_rms__mode;
+
+double _ms_s3_tpm_ug_i_rms_calc_rms__RMS1;
+double _ms_s3_tpm_ug_i_rms_calc_rms__RMS2;
+double _ms_s3_tpm_ug_i_rms_calc_rms__RMS3;
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__IN1;
+double _ms_s3_tpm_ug_vln_rms_calc_rms__IN2;
+double _ms_s3_tpm_ug_vln_rms_calc_rms__IN3;
+double _ms_s3_tpm_ug_vln_rms_calc_rms__dFract;
+X_Int32 _ms_s3_tpm_ug_vln_rms_calc_rms__mode;
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1;
+double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2;
+double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3;
+
+double _ms_s3_tpm_ug_pll_pid_sum8__out;
+double _vg_pu_actual_bus_join_vg_ph__out[3];
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_product1__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_sum4__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_limit3__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_abs2__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_gain1__out;
+double _battery_inverter__average_1_control_synch_check_grid_sum4__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_b0__out;
+double _battery_inverter__average_1_control_synch_check_grid_abs2__out;
+double _battery_inverter__average_1_control_synch_vmatch_abs2__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_gain1__out;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_sum1__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_id_damp__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_gain7__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_id_damp__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_product1__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_product4__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_gain4__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_iq_damp__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_product2__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_product3__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_gain5__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain5__out;
+double _grid_inputs_mux_f_g__out;
+double _grid_inputs_mux_v_g__out;
+double _ms_s1_tpm_grid_power_meter_power__Ia;
+double _ms_s1_tpm_grid_power_meter_power__Ib;
+double _ms_s1_tpm_grid_power_meter_power__Ic;
+double _ms_s1_tpm_grid_power_meter_power__IrmsA;
+double _ms_s1_tpm_grid_power_meter_power__IrmsB;
+double _ms_s1_tpm_grid_power_meter_power__IrmsC;
+double _ms_s1_tpm_grid_power_meter_power__Va;
+double _ms_s1_tpm_grid_power_meter_power__Vb;
+double _ms_s1_tpm_grid_power_meter_power__Vc;
+double _ms_s1_tpm_grid_power_meter_power__VrmsA;
+double _ms_s1_tpm_grid_power_meter_power__VrmsB;
+double _ms_s1_tpm_grid_power_meter_power__VrmsC;
+double _ms_s1_tpm_grid_power_meter_power__dFract;
+X_Int32 _ms_s1_tpm_grid_power_meter_power__mode;
+X_Int32 _ms_s1_tpm_grid_power_meter_power__submode;
+
+double _ms_s1_tpm_grid_power_meter_power__P;
+double _ms_s1_tpm_grid_power_meter_power__PF;
+double _ms_s1_tpm_grid_power_meter_power__PFa;
+double _ms_s1_tpm_grid_power_meter_power__PFb;
+double _ms_s1_tpm_grid_power_meter_power__PFc;
+double _ms_s1_tpm_grid_power_meter_power__Pa;
+double _ms_s1_tpm_grid_power_meter_power__Pb;
+double _ms_s1_tpm_grid_power_meter_power__Pc;
+double _ms_s1_tpm_grid_power_meter_power__Q;
+double _ms_s1_tpm_grid_power_meter_power__Qa;
+double _ms_s1_tpm_grid_power_meter_power__Qb;
+double _ms_s1_tpm_grid_power_meter_power__Qc;
+double _ms_s1_tpm_grid_power_meter_power__S;
+double _ms_s1_tpm_grid_power_meter_power__Sa;
+double _ms_s1_tpm_grid_power_meter_power__Sb;
+double _ms_s1_tpm_grid_power_meter_power__Sc;
+
+double _ms_s1_tpm_grid_sumvln_rms__out;
+double _ms_s1_tpm_grid_pll_pid_gain1__out;
+double _ms_s2_tpm_load_power_meter_power__Ia;
+double _ms_s2_tpm_load_power_meter_power__Ib;
+double _ms_s2_tpm_load_power_meter_power__Ic;
+double _ms_s2_tpm_load_power_meter_power__IrmsA;
+double _ms_s2_tpm_load_power_meter_power__IrmsB;
+double _ms_s2_tpm_load_power_meter_power__IrmsC;
+double _ms_s2_tpm_load_power_meter_power__Va;
+double _ms_s2_tpm_load_power_meter_power__Vb;
+double _ms_s2_tpm_load_power_meter_power__Vc;
+double _ms_s2_tpm_load_power_meter_power__VrmsA;
+double _ms_s2_tpm_load_power_meter_power__VrmsB;
+double _ms_s2_tpm_load_power_meter_power__VrmsC;
+double _ms_s2_tpm_load_power_meter_power__dFract;
+X_Int32 _ms_s2_tpm_load_power_meter_power__mode;
+X_Int32 _ms_s2_tpm_load_power_meter_power__submode;
+
+double _ms_s2_tpm_load_power_meter_power__P;
+double _ms_s2_tpm_load_power_meter_power__PF;
+double _ms_s2_tpm_load_power_meter_power__PFa;
+double _ms_s2_tpm_load_power_meter_power__PFb;
+double _ms_s2_tpm_load_power_meter_power__PFc;
+double _ms_s2_tpm_load_power_meter_power__Pa;
+double _ms_s2_tpm_load_power_meter_power__Pb;
+double _ms_s2_tpm_load_power_meter_power__Pc;
+double _ms_s2_tpm_load_power_meter_power__Q;
+double _ms_s2_tpm_load_power_meter_power__Qa;
+double _ms_s2_tpm_load_power_meter_power__Qb;
+double _ms_s2_tpm_load_power_meter_power__Qc;
+double _ms_s2_tpm_load_power_meter_power__S;
+double _ms_s2_tpm_load_power_meter_power__Sa;
+double _ms_s2_tpm_load_power_meter_power__Sb;
+double _ms_s2_tpm_load_power_meter_power__Sc;
+
+double _ms_s2_tpm_load_sumvln_rms__out;
+double _ms_s2_tpm_load_pll_pid_gain1__out;
+double _ms_s2_three_phase_pll1_pid_gain1__out;
+double _ms_s3_tpm_grid_power_meter_power__Ia;
+double _ms_s3_tpm_grid_power_meter_power__Ib;
+double _ms_s3_tpm_grid_power_meter_power__Ic;
+double _ms_s3_tpm_grid_power_meter_power__IrmsA;
+double _ms_s3_tpm_grid_power_meter_power__IrmsB;
+double _ms_s3_tpm_grid_power_meter_power__IrmsC;
+double _ms_s3_tpm_grid_power_meter_power__Va;
+double _ms_s3_tpm_grid_power_meter_power__Vb;
+double _ms_s3_tpm_grid_power_meter_power__Vc;
+double _ms_s3_tpm_grid_power_meter_power__VrmsA;
+double _ms_s3_tpm_grid_power_meter_power__VrmsB;
+double _ms_s3_tpm_grid_power_meter_power__VrmsC;
+double _ms_s3_tpm_grid_power_meter_power__dFract;
+X_Int32 _ms_s3_tpm_grid_power_meter_power__mode;
+X_Int32 _ms_s3_tpm_grid_power_meter_power__submode;
+
+double _ms_s3_tpm_grid_power_meter_power__P;
+double _ms_s3_tpm_grid_power_meter_power__PF;
+double _ms_s3_tpm_grid_power_meter_power__PFa;
+double _ms_s3_tpm_grid_power_meter_power__PFb;
+double _ms_s3_tpm_grid_power_meter_power__PFc;
+double _ms_s3_tpm_grid_power_meter_power__Pa;
+double _ms_s3_tpm_grid_power_meter_power__Pb;
+double _ms_s3_tpm_grid_power_meter_power__Pc;
+double _ms_s3_tpm_grid_power_meter_power__Q;
+double _ms_s3_tpm_grid_power_meter_power__Qa;
+double _ms_s3_tpm_grid_power_meter_power__Qb;
+double _ms_s3_tpm_grid_power_meter_power__Qc;
+double _ms_s3_tpm_grid_power_meter_power__S;
+double _ms_s3_tpm_grid_power_meter_power__Sa;
+double _ms_s3_tpm_grid_power_meter_power__Sb;
+double _ms_s3_tpm_grid_power_meter_power__Sc;
+
+double _ms_s3_tpm_grid_sumvln_rms__out;
+double _ms_s3_tpm_grid_pll_pid_gain1__out;
+double _ms_s3_tpm_ug_sumi_rms__out;
+double _ms_s3_tpm_ug_power_meter_power__Ia;
+double _ms_s3_tpm_ug_power_meter_power__Ib;
+double _ms_s3_tpm_ug_power_meter_power__Ic;
+double _ms_s3_tpm_ug_power_meter_power__IrmsA;
+double _ms_s3_tpm_ug_power_meter_power__IrmsB;
+double _ms_s3_tpm_ug_power_meter_power__IrmsC;
+double _ms_s3_tpm_ug_power_meter_power__Va;
+double _ms_s3_tpm_ug_power_meter_power__Vb;
+double _ms_s3_tpm_ug_power_meter_power__Vc;
+double _ms_s3_tpm_ug_power_meter_power__VrmsA;
+double _ms_s3_tpm_ug_power_meter_power__VrmsB;
+double _ms_s3_tpm_ug_power_meter_power__VrmsC;
+double _ms_s3_tpm_ug_power_meter_power__dFract;
+X_Int32 _ms_s3_tpm_ug_power_meter_power__mode;
+X_Int32 _ms_s3_tpm_ug_power_meter_power__submode;
+
+double _ms_s3_tpm_ug_power_meter_power__P;
+double _ms_s3_tpm_ug_power_meter_power__PF;
+double _ms_s3_tpm_ug_power_meter_power__PFa;
+double _ms_s3_tpm_ug_power_meter_power__PFb;
+double _ms_s3_tpm_ug_power_meter_power__PFc;
+double _ms_s3_tpm_ug_power_meter_power__Pa;
+double _ms_s3_tpm_ug_power_meter_power__Pb;
+double _ms_s3_tpm_ug_power_meter_power__Pc;
+double _ms_s3_tpm_ug_power_meter_power__Q;
+double _ms_s3_tpm_ug_power_meter_power__Qa;
+double _ms_s3_tpm_ug_power_meter_power__Qb;
+double _ms_s3_tpm_ug_power_meter_power__Qc;
+double _ms_s3_tpm_ug_power_meter_power__S;
+double _ms_s3_tpm_ug_power_meter_power__Sa;
+double _ms_s3_tpm_ug_power_meter_power__Sb;
+double _ms_s3_tpm_ug_power_meter_power__Sc;
+
+double _ms_s3_tpm_ug_sumvln_rms__out;
+double _ms_s3_tpm_ug_pll_pid_gain1__out;
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_abs1__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_product1__out;
+double _battery_inverter__average_1_control_imode_control_current_ref_product2__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_sum5__out;
+double _battery_inverter__average_1_control_synch_check_grid_abs1__out;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_sum1__out;
+double _battery_inverter__average_1_control_synch_check_grid_comparator2__out;
+double _battery_inverter__average_1_control_synch_vmatch_comparator2__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum5__out;
+double _battery_inverter__average_1_control_synch_phase_match_abs2__out;
+double _battery_inverter__average_1_control_synch_phase_match_pi_ki__out;
+double _battery_inverter__average_1_control_synch_phase_match_pi_kp__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_product6__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_product1__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_sum1__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_sum2__out;
+double _vg_pu_actual_g_fbase__out;
+double _vg_pu_actual_g_vbase__out;
+double _ms_s1_tpm_grid_extra_output_bus__out[12];
+double _ms_s1_tpm_grid_gainvln_rms__out;
+double _ms_s1_tpm_grid_pll_pid_sum5__out;
+double _ms_s2_tpm_load_extra_output_bus__out[12];
+double _ms_s2_tpm_load_gainvln_rms__out;
+double _ms_s2_tpm_load_pll_pid_sum5__out;
+double _ms_s2_three_phase_pll1_pid_sum5__out;
+double _ms_s3_tpm_grid_extra_output_bus__out[12];
+double _ms_s3_tpm_grid_gainvln_rms__out;
+double _ms_s3_tpm_grid_pll_pid_sum5__out;
+double _ms_s3_tpm_ug_gaini_rms__out;
+double _ms_s3_tpm_ug_extra_output_bus__out[12];
+double _ms_s3_tpm_ug_gainvln_rms__out;
+double _ms_s3_tpm_ug_pll_pid_sum5__out;
+double _battery_inverter__average_1_control_imode_control_sum12__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_sum2__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_sum1__out;
+float _battery_inverter__average_1_control_synch_check_nominal_conditions_v_out_nom__tmp;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out;
+double _battery_inverter__average_1_control_synch_check_grid_comparator1__out;
+double _battery_inverter__average_1_control_synch_f_match_abs3__out;
+float _battery_inverter__average_1_control_synch_check_grid_out_of_limit_volts__tmp;
+double _battery_inverter__average_1_control_synch_vmatch_counter1_en_switch__out;
+double _battery_inverter__average_1_control_synch_vmatch_logical_operator1__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out;
+double _battery_inverter__average_1_control_synch_phase_match_comparator2__out;
+double _battery_inverter__average_1_control_synch_phase_match_pi_sum5__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_sum13__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_sum10__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_coeff[2] = {3.141582784027541e-06, 3.141582784027541e-06};
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__a_coeff[2] = {1.0, -0.999993716834432};
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__a_sum;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_sum;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__delay_line_in;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_coeff[2] = {3.141582784027541e-06, 3.141582784027541e-06};
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__a_coeff[2] = {1.0, -0.999993716834432};
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__a_sum;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_sum;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__delay_line_in;
+double _vg_pu_actual_bus_join_vg_f__out[3];
+double _vg_pu_actual_bus_join_vg_rms__out[3];
+double _ms_s1_tpm_grid_output_bus__out[30];
+double _ms_s1_tpm_grid_pll_pid_limit1__out;
+double _ms_s2_tpm_load_output_bus__out[30];
+double _ms_s2_tpm_load_pll_pid_limit1__out;
+double _ms_s2_three_phase_pll1_pid_limit1__out;
+double _ms_s3_tpm_grid_output_bus__out[30];
+double _ms_s3_tpm_grid_pll_pid_limit1__out;
+double _ms_s3_tpm_ug_output_bus__out[30];
+double _ms_s3_tpm_ug_pll_pid_limit1__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator1__out;
+float _battery_inverter__average_1_control_synch_check_nominal_conditions_f_out_nom__tmp;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_ki__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_kp__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_ki__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_kp__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_sum6__out;
+double _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__out;
+
+double _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__rising_rate_lim[1];
+double _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_pll_pu_pll_integrator__in;
+
+double _battery_inverter__average_1_control_pll_pu_pll_integrator__out;
+
+double _battery_inverter__average_1_control_synch_check_grid_logical_operator1__out;
+float _battery_inverter__average_1_control_synch_check_grid_out_of_limit_freq__tmp;
+double _battery_inverter__average_1_control_synch_f_match_comparator1__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum6__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__out;
+
+double _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__rising_rate_lim[1];
+double _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_synch_pll_util_pll_integrator__in;
+
+double _battery_inverter__average_1_control_synch_pll_util_pll_integrator__out;
+
+double _battery_inverter__average_1_control_synch_phase_match_counter1_en_switch__out;
+double _battery_inverter__average_1_control_synch_phase_match_logical_operator1__out;
+double _battery_inverter__average_1_control_synch_phase_match_pi_limit1__out;
+double _battery_inverter__average_1_control_power_meas_gain1__out;
+double _battery_inverter__average_1_control_power_meas_gain2__out;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__P;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__Q;
+
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__S;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__pf;
+
+double _vg_limit2__out[3];
+double _vg_limit1__out[3];
+double _ms_s1_meter_grid_input_bus__out;
+double _ms_s1_meter_grid_input_bus__out1;
+double _ms_s1_meter_grid_input_bus__out2;
+double _ms_s1_meter_grid_input_bus__out3;
+double _ms_s1_meter_grid_input_bus__out4;
+double _ms_s1_meter_grid_input_bus__out5;
+double _ms_s1_meter_grid_input_bus__out6;
+double _ms_s1_meter_grid_input_bus__out7;
+double _ms_s1_meter_grid_input_bus__out8;
+double _ms_s1_meter_grid_input_bus__out9;
+double _ms_s1_meter_grid_input_bus__out10;
+double _ms_s1_meter_grid_input_bus__out11;
+double _ms_s1_meter_grid_input_bus__out12;
+double _ms_s1_meter_grid_input_bus__out13;
+double _ms_s1_meter_grid_input_bus__out14;
+double _ms_s1_meter_grid_input_bus__out15;
+double _ms_s1_meter_grid_input_bus__out16;
+double _ms_s1_meter_grid_input_bus__out17;
+double _ms_s1_meter_grid_input_bus__out18;
+double _ms_s1_meter_grid_input_bus__out19;
+double _ms_s1_meter_grid_input_bus__out20;
+double _ms_s1_meter_grid_input_bus__out21;
+double _ms_s1_meter_grid_input_bus__out22;
+double _ms_s1_meter_grid_input_bus__out23;
+double _ms_s1_meter_grid_input_bus__out24;
+double _ms_s1_meter_grid_input_bus__out25;
+double _ms_s1_meter_grid_input_bus__out26;
+double _ms_s1_meter_grid_input_bus__out27;
+double _ms_s1_meter_grid_input_bus__out28;
+double _ms_s1_meter_grid_input_bus__out29;
+double _ms_s1_tpm_grid_pll_pid_sum6__out;
+double _ms_s1_tpm_grid_pll_rate_limiter1__out;
+
+double _ms_s1_tpm_grid_pll_rate_limiter1__rising_rate_lim[1];
+double _ms_s1_tpm_grid_pll_rate_limiter1__falling_rate_lim[1];
+
+double _ms_s1_tpm_grid_pll_integrator__in;
+
+double _ms_s1_tpm_grid_pll_integrator__out;
+
+double _ms_s2_meter_load_input_bus__out;
+double _ms_s2_meter_load_input_bus__out1;
+double _ms_s2_meter_load_input_bus__out2;
+double _ms_s2_meter_load_input_bus__out3;
+double _ms_s2_meter_load_input_bus__out4;
+double _ms_s2_meter_load_input_bus__out5;
+double _ms_s2_meter_load_input_bus__out6;
+double _ms_s2_meter_load_input_bus__out7;
+double _ms_s2_meter_load_input_bus__out8;
+double _ms_s2_meter_load_input_bus__out9;
+double _ms_s2_meter_load_input_bus__out10;
+double _ms_s2_meter_load_input_bus__out11;
+double _ms_s2_meter_load_input_bus__out12;
+double _ms_s2_meter_load_input_bus__out13;
+double _ms_s2_meter_load_input_bus__out14;
+double _ms_s2_meter_load_input_bus__out15;
+double _ms_s2_meter_load_input_bus__out16;
+double _ms_s2_meter_load_input_bus__out17;
+double _ms_s2_meter_load_input_bus__out18;
+double _ms_s2_meter_load_input_bus__out19;
+double _ms_s2_meter_load_input_bus__out20;
+double _ms_s2_meter_load_input_bus__out21;
+double _ms_s2_meter_load_input_bus__out22;
+double _ms_s2_meter_load_input_bus__out23;
+double _ms_s2_meter_load_input_bus__out24;
+double _ms_s2_meter_load_input_bus__out25;
+double _ms_s2_meter_load_input_bus__out26;
+double _ms_s2_meter_load_input_bus__out27;
+double _ms_s2_meter_load_input_bus__out28;
+double _ms_s2_meter_load_input_bus__out29;
+double _ms_s2_tpm_load_pll_pid_sum6__out;
+double _ms_s2_tpm_load_pll_rate_limiter1__out;
+
+double _ms_s2_tpm_load_pll_rate_limiter1__rising_rate_lim[1];
+double _ms_s2_tpm_load_pll_rate_limiter1__falling_rate_lim[1];
+
+double _ms_s2_tpm_load_pll_integrator__in;
+
+double _ms_s2_tpm_load_pll_integrator__out;
+
+double _ms_s2_three_phase_pll1_pid_sum6__out;
+double _ms_s2_three_phase_pll1_rate_limiter1__out;
+
+double _ms_s2_three_phase_pll1_rate_limiter1__rising_rate_lim[1];
+double _ms_s2_three_phase_pll1_rate_limiter1__falling_rate_lim[1];
+
+double _ms_s2_three_phase_pll1_integrator__in;
+
+double _ms_s2_three_phase_pll1_integrator__out;
+
+double _ms_s3_meter_grid_input_bus__out;
+double _ms_s3_meter_grid_input_bus__out1;
+double _ms_s3_meter_grid_input_bus__out2;
+double _ms_s3_meter_grid_input_bus__out3;
+double _ms_s3_meter_grid_input_bus__out4;
+double _ms_s3_meter_grid_input_bus__out5;
+double _ms_s3_meter_grid_input_bus__out6;
+double _ms_s3_meter_grid_input_bus__out7;
+double _ms_s3_meter_grid_input_bus__out8;
+double _ms_s3_meter_grid_input_bus__out9;
+double _ms_s3_meter_grid_input_bus__out10;
+double _ms_s3_meter_grid_input_bus__out11;
+double _ms_s3_meter_grid_input_bus__out12;
+double _ms_s3_meter_grid_input_bus__out13;
+double _ms_s3_meter_grid_input_bus__out14;
+double _ms_s3_meter_grid_input_bus__out15;
+double _ms_s3_meter_grid_input_bus__out16;
+double _ms_s3_meter_grid_input_bus__out17;
+double _ms_s3_meter_grid_input_bus__out18;
+double _ms_s3_meter_grid_input_bus__out19;
+double _ms_s3_meter_grid_input_bus__out20;
+double _ms_s3_meter_grid_input_bus__out21;
+double _ms_s3_meter_grid_input_bus__out22;
+double _ms_s3_meter_grid_input_bus__out23;
+double _ms_s3_meter_grid_input_bus__out24;
+double _ms_s3_meter_grid_input_bus__out25;
+double _ms_s3_meter_grid_input_bus__out26;
+double _ms_s3_meter_grid_input_bus__out27;
+double _ms_s3_meter_grid_input_bus__out28;
+double _ms_s3_meter_grid_input_bus__out29;
+double _ms_s3_tpm_grid_pll_pid_sum6__out;
+double _ms_s3_tpm_grid_pll_rate_limiter1__out;
+
+double _ms_s3_tpm_grid_pll_rate_limiter1__rising_rate_lim[1];
+double _ms_s3_tpm_grid_pll_rate_limiter1__falling_rate_lim[1];
+
+double _ms_s3_tpm_grid_pll_integrator__in;
+
+double _ms_s3_tpm_grid_pll_integrator__out;
+
+double _ms_s3_meter_ug_input_bus__out;
+double _ms_s3_meter_ug_input_bus__out1;
+double _ms_s3_meter_ug_input_bus__out2;
+double _ms_s3_meter_ug_input_bus__out3;
+double _ms_s3_meter_ug_input_bus__out4;
+double _ms_s3_meter_ug_input_bus__out5;
+double _ms_s3_meter_ug_input_bus__out6;
+double _ms_s3_meter_ug_input_bus__out7;
+double _ms_s3_meter_ug_input_bus__out8;
+double _ms_s3_meter_ug_input_bus__out9;
+double _ms_s3_meter_ug_input_bus__out10;
+double _ms_s3_meter_ug_input_bus__out11;
+double _ms_s3_meter_ug_input_bus__out12;
+double _ms_s3_meter_ug_input_bus__out13;
+double _ms_s3_meter_ug_input_bus__out14;
+double _ms_s3_meter_ug_input_bus__out15;
+double _ms_s3_meter_ug_input_bus__out16;
+double _ms_s3_meter_ug_input_bus__out17;
+double _ms_s3_meter_ug_input_bus__out18;
+double _ms_s3_meter_ug_input_bus__out19;
+double _ms_s3_meter_ug_input_bus__out20;
+double _ms_s3_meter_ug_input_bus__out21;
+double _ms_s3_meter_ug_input_bus__out22;
+double _ms_s3_meter_ug_input_bus__out23;
+double _ms_s3_meter_ug_input_bus__out24;
+double _ms_s3_meter_ug_input_bus__out25;
+double _ms_s3_meter_ug_input_bus__out26;
+double _ms_s3_meter_ug_input_bus__out27;
+double _ms_s3_meter_ug_input_bus__out28;
+double _ms_s3_meter_ug_input_bus__out29;
+double _ms_s3_tpm_ug_pll_pid_sum6__out;
+double _ms_s3_tpm_ug_pll_rate_limiter1__out;
+
+double _ms_s3_tpm_ug_pll_rate_limiter1__rising_rate_lim[1];
+double _ms_s3_tpm_ug_pll_rate_limiter1__falling_rate_lim[1];
+
+double _ms_s3_tpm_ug_pll_integrator__in;
+
+double _ms_s3_tpm_ug_pll_integrator__out;
+
+double _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta;
+
+double _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined;
+
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_kb__out;
+double _battery_inverter__average_1_control_synch_check_grid_logical_operator15__out;
+double _battery_inverter__average_1_control_synch_f_match_counter1_en_switch__out;
+double _battery_inverter__average_1_control_synch_f_match_logical_operator1__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_kb__out;
+double _battery_inverter__average_1_control_synch_phase_match_pi_sum6__out;
+double _battery_inverter__average_1_control_synch_phase_match_product1__out;
+double _battery_inverter__average_1_product1__out;
+double _battery_inverter__average_1_control_power_meas_gain3__out;
+X_UnInt32 _vg_tdf_sg_ctrl_sine1__channels[3] = {0, 1, 2};
+double _vg_tdf_sg_ctrl_sine1__gain[3] = {0, 1, 2};
+double _vg_tdf_sg_ctrl_sine1__period[3] = {0, 1, 2};
+double _vg_tdf_sg_ctrl_sine1__phase_pu[3] = {0, 1, 2};
+double _vg_tdf_sg_ctrl_sine1__offset[3] = {0, 1, 2};
+X_UnInt32 _vg_tdf_sg_ctrl_sine1__offset_uint[3] = {0, 1, 2};
+X_UnInt32 _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_lo[3] = {0, 1, 2};
+X_UnInt32 _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_hi[3] = {0, 1, 2};
+double _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_real[3] = {0, 1, 2};
+double _vg_tdf_sg_ctrl_sine1__shift;
+X_UnInt32 _vg_tdf_sg_ctrl_sine1__sg_update_value;
+double _vg_tdf_sg_ctrl_sine1__xn;
+double _vg_tdf_sg_ctrl_sine1__xn_1;
+double _vg_tdf_sg_ctrl_sine1__yn;
+double _vg_tdf_sg_ctrl_sine1__yn_1;
+double _vg_tdf_sg_ctrl_sine1__k;
+double _ms_s1_meter_grid_gain__out[12];
+double _ms_s1_tpm_grid_pll_pid_kb__out;
+double _ms_s2_ia_meanvalue__out;
+double _ms_s2_meter_load_gain__out[12];
+double _ms_s2_tpm_load_pll_pid_kb__out;
+double _ms_s2_three_phase_pll1_pid_kb__out;
+double _ms_s3_meter_grid_gain__out[12];
+double _pcc_control_frt_f_besf_sagc__Input;
+
+double _pcc_control_frt_f_besf_sagc__Fault;
+double _pcc_control_frt_f_besf_sagc__Trip;
+double _pcc_control_frt_f_besf_sagc__d0;
+double _pcc_control_frt_f_besf_sagc__d1;
+double _pcc_control_frt_f_besf_sagc__d2;
+double _pcc_control_frt_f_besf_sagc__d3;
+double _pcc_control_frt_f_besf_sagc__d4;
+double _pcc_control_frt_f_besf_sagc__d5;
+double _pcc_control_frt_f_besf_sagc__d6;
+
+double _pcc_control_f_pu__out;
+double _pcc_control_v_pu__out;
+double _ms_s3_tpm_grid_pll_pid_kb__out;
+double _ms_s3_meter_ug_gain__out[12];
+double _ms_s3_tpm_ug_pll_pid_kb__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_relational_operator1__out;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_sum7__out;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum7__out;
+double _battery_inverter__average_1_control_synch_phase_match_pi_kb__out;
+double _battery_inverter__average_1_control_synch_phase_match_gain12__out;
+double _ms_s1_meter_grid_extra_input_bus__out;
+double _ms_s1_meter_grid_extra_input_bus__out1;
+double _ms_s1_meter_grid_extra_input_bus__out2;
+double _ms_s1_meter_grid_extra_input_bus__out3;
+double _ms_s1_meter_grid_extra_input_bus__out4;
+double _ms_s1_meter_grid_extra_input_bus__out5;
+double _ms_s1_meter_grid_extra_input_bus__out6;
+double _ms_s1_meter_grid_extra_input_bus__out7;
+double _ms_s1_meter_grid_extra_input_bus__out8;
+double _ms_s1_meter_grid_extra_input_bus__out9;
+double _ms_s1_meter_grid_extra_input_bus__out10;
+double _ms_s1_meter_grid_extra_input_bus__out11;
+double _ms_s1_tpm_grid_pll_pid_sum7__out;
+double _ms_s2_meter_load_extra_input_bus__out;
+double _ms_s2_meter_load_extra_input_bus__out1;
+double _ms_s2_meter_load_extra_input_bus__out2;
+double _ms_s2_meter_load_extra_input_bus__out3;
+double _ms_s2_meter_load_extra_input_bus__out4;
+double _ms_s2_meter_load_extra_input_bus__out5;
+double _ms_s2_meter_load_extra_input_bus__out6;
+double _ms_s2_meter_load_extra_input_bus__out7;
+double _ms_s2_meter_load_extra_input_bus__out8;
+double _ms_s2_meter_load_extra_input_bus__out9;
+double _ms_s2_meter_load_extra_input_bus__out10;
+double _ms_s2_meter_load_extra_input_bus__out11;
+double _ms_s2_tpm_load_pll_pid_sum7__out;
+double _ms_s2_three_phase_pll1_pid_sum7__out;
+double _ms_s3_meter_grid_extra_input_bus__out;
+double _ms_s3_meter_grid_extra_input_bus__out1;
+double _ms_s3_meter_grid_extra_input_bus__out2;
+double _ms_s3_meter_grid_extra_input_bus__out3;
+double _ms_s3_meter_grid_extra_input_bus__out4;
+double _ms_s3_meter_grid_extra_input_bus__out5;
+double _ms_s3_meter_grid_extra_input_bus__out6;
+double _ms_s3_meter_grid_extra_input_bus__out7;
+double _ms_s3_meter_grid_extra_input_bus__out8;
+double _ms_s3_meter_grid_extra_input_bus__out9;
+double _ms_s3_meter_grid_extra_input_bus__out10;
+double _ms_s3_meter_grid_extra_input_bus__out11;
+double _pcc_control_v_check_besf__Input;
+
+double _pcc_control_v_check_besf__Fault;
+double _pcc_control_v_check_besf__Trip;
+double _pcc_control_v_check_besf__d0;
+double _pcc_control_v_check_besf__d1;
+double _pcc_control_v_check_besf__d2;
+double _pcc_control_v_check_besf__d3;
+double _pcc_control_v_check_besf__d4;
+
+double _ms_s3_tpm_grid_pll_pid_sum7__out;
+double _ms_s3_meter_ug_extra_input_bus__out;
+double _ms_s3_meter_ug_extra_input_bus__out1;
+double _ms_s3_meter_ug_extra_input_bus__out2;
+double _ms_s3_meter_ug_extra_input_bus__out3;
+double _ms_s3_meter_ug_extra_input_bus__out4;
+double _ms_s3_meter_ug_extra_input_bus__out5;
+double _ms_s3_meter_ug_extra_input_bus__out6;
+double _ms_s3_meter_ug_extra_input_bus__out7;
+double _ms_s3_meter_ug_extra_input_bus__out8;
+double _ms_s3_meter_ug_extra_input_bus__out9;
+double _ms_s3_meter_ug_extra_input_bus__out10;
+double _ms_s3_meter_ug_extra_input_bus__out11;
+double _ms_s3_tpm_ug_pll_pid_sum7__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__in;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__reset;
+
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out;
+
+double _battery_inverter__average_1_control_synch_phase_match_pi_sum7__out;
+X_Int32 _pcc_control_output_check__F_Trip;
+X_Int32 _pcc_control_output_check__F_Zone;
+X_Int32 _pcc_control_output_check__Reset;
+X_Int32 _pcc_control_output_check__V_Trip;
+X_Int32 _pcc_control_output_check__V_Zone;
+
+X_Int32 _pcc_control_output_check__CB;
+X_Int32 _pcc_control_output_check__Fault_Zone;
+X_Int32 _pcc_control_output_check__GFL;
+
+double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int;
+float _battery_inverter__average_1_control_synch_on_nominal__tmp;
+double _multiport_signal_switch1__out;
+double _multiport_signal_switch2__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out;
+double _bi_inputs__out[6];
+double _ms_s3_s1_triple_s1_ideal_ctc_wrapper__feedback_out = 0;
+double _battery_inverter__average_1_control_inputs_bus_split2__out;
+double _battery_inverter__average_1_control_inputs_bus_split2__out1;
+double _battery_inverter__average_1_control_inputs_bus_split2__out2;
+double _battery_inverter__average_1_control_inputs_bus_split2__out3;
+double _battery_inverter__average_1_control_inputs_bus_split2__out4;
+double _battery_inverter__average_1_control_inputs_bus_split2__out5;
+double _battery_inverter__average_1_control_imode_control_gain1__out;
+double _battery_inverter__average_1_control_imode_control_gain2__out;
+double _battery_inverter__average_1_control_vmode_control_gain1__out;
+double _battery_inverter__average_1_control_vmode_control_gain2__out;
+double _battery_inverter__average_1_control_inputs_limit1__out;
+double _battery_inverter__average_1_control_inputs_limit2__out;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S;
+
+double _battery_inverter__average_1_control_vmode_control_rate_limiter2__out;
+
+double _battery_inverter__average_1_control_vmode_control_rate_limiter2__rising_rate_lim[1];
+double _battery_inverter__average_1_control_vmode_control_rate_limiter2__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_inputs_round2__out;
+double _battery_inverter__average_1_control_inputs_round1__out;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__out;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__rising_rate_lim[1];
+double _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__out;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__rising_rate_lim[1];
+double _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__out;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__rising_rate_lim[1];
+double _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_imode_control_edge_detection2_relational_operator1__out;
+float _battery_inverter__average_1_control_inv_cab_sm_read_mode_on__tmp;
+double _battery_inverter__average_1_control_vmode_control_edge_detection2_relational_operator1__out;
+double _battery_inverter__average_1_control_vmode_control_signal_switch1__out;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__On;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__grid_locked;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__live_grid;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__mode;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__on_nominal;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__v_match;
+
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Pref;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Qref;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Sref;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__P;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Q;
+
+double _battery_inverter__average_1_control_vmode_control_rate_limiter1__out;
+
+double _battery_inverter__average_1_control_vmode_control_rate_limiter1__rising_rate_lim[1];
+double _battery_inverter__average_1_control_vmode_control_rate_limiter1__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_change_ctrlmode_signal_switch3__out;
+double _battery_inverter__average_1_control_imode_control_edge_detection1_relational_operator1__out;
+float _battery_inverter__average_1_control_inv_cab_sm_cb_status__tmp;
+float _battery_inverter__average_1_control_inv_cab_sm_v_mode__tmp;
+double _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__control_mode;
+
+double _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_following;
+double _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_forming;
+double _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__stand_by;
+
+float _battery_inverter__average_1_control_inv_cab_sm_synch__tmp;
+double _battery_inverter__average_1_control_phase_synch_switching__in_phase;
+double _battery_inverter__average_1_control_phase_synch_switching__in_sw;
+double _battery_inverter__average_1_control_phase_synch_switching__in_target;
+
+double _battery_inverter__average_1_control_phase_synch_switching__out_sw;
+
+double _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__out;
+double _battery_inverter__average_1_control_synch_vmatch_signal_switch2__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_integrator1__out;
+double _battery_inverter__average_1_control_synch_f_match_signal_switch2__out;
+double _battery_inverter__average_1_control_vmode_control_edge_detection1_relational_operator1__out;
+double _battery_inverter__average_1_control_df_switch_logical_operator2__out;
+double _battery_inverter__average_1_control_df_switch_switch_gfm_df__out;
+double _battery_inverter__average_1_control_vmode_control_sum3__out;
+double _battery_inverter__average_1_control_imode_control_logical_operator1__out;
+float _battery_inverter__average_1_control_inv_cab_sm_read_mode_grid_following__tmp;
+float _battery_inverter__average_1_control_inv_cab_sm_read_mode_grid_forming__tmp;
+float _battery_inverter__average_1_control_inv_cab_sm_read_mode_standby__tmp;
+double _battery_inverter__average_1_output_bus_join1__out[14];
+double _battery_inverter__average_1_control_synch_vmatch_pi_ki__out;
+double _battery_inverter__average_1_control_synch_vmatch_pi_kp__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_ki__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_kp__out;
+double _battery_inverter__average_1_control_vmode_control_logical_operator1__out;
+double _battery_inverter__average_1_control_df_switch_logical_operator1__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_sum4__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__out;
+double _bi_outputs__out;
+double _bi_outputs__out1;
+double _bi_outputs__out2;
+double _bi_outputs__out3;
+double _bi_outputs__out4;
+double _bi_outputs__out5;
+double _bi_outputs__out6;
+double _bi_outputs__out7;
+double _bi_outputs__out8;
+double _bi_outputs__out9;
+double _bi_outputs__out10;
+double _bi_outputs__out11;
+double _bi_outputs__out12;
+double _bi_outputs__out13;
+double _battery_inverter__average_1_control_synch_vmatch_pi_sum5__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_sum5__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__out;
+double _battery_inverter__average_1_control_df_switch_switch_gfm_df1__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_ki__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_kp__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum5__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum5__out;
+float _eut_interface_on_o__tmp;
+float _eut_interface_relay_o__tmp;
+double _battery_inverter__average_1_control_synch_vmatch_pi_limit1__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_limit1__out;
+double _battery_inverter__average_1_control_vmode_control_internal_frequency_sum1__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum5__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_limit1__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_limit1__out;
+double _battery_inverter__average_1_control_synch_vmatch_pi_sum6__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_sum6__out;
+double _battery_inverter__average_1_control_synch_phase_match_sum1__out;
+double _battery_inverter__average_1_control_vmode_control_internal_frequency_gain1__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_limit1__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum6__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_sum9__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum6__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_sum12__out;
+double _battery_inverter__average_1_control_synch_vmatch_pi_kb__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_kb__out;
+double _battery_inverter__average_1_control_synch_phase_match_signal_switch2__out;
+double _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_gain1__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum6__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum15__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_kb__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_product5__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_kb__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_product7__out;
+double _battery_inverter__average_1_control_synch_vmatch_pi_sum7__out;
+double _battery_inverter__average_1_control_synch_f_match_pi_sum7__out;
+double _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__out;
+
+double _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__rising_rate_lim[1];
+double _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__falling_rate_lim[1];
+
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_kb__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_ki__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_kp__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum7__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_gain10__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum7__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_gain11__out;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum7__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum5__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_sum8__out;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_sum9__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_limit1__out;
+double _battery_inverter__average_1_control_change_ctrlmode_signal_switch2__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum6__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_product11__out;
+double _battery_inverter__average_1_control_duty_cycle_limit3__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_kb__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain10__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum7__out;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum8__out;
+double _battery_inverter__average_1_control_change_ctrlmode_signal_switch1__out;
+double _battery_inverter__average_1_control_duty_cycle_limit2__out;
+double _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__alpha;
+double _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__beta;
+double _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k1;
+double _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k2;
+double _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A;
+double _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B;
+double _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__C;
+double _battery_inverter__average_1_control_duty_cycle_zsm_min_max1__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_min_max2__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_product2__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_sum1__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_product1__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_sum3__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_sum5__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_sum6__out;
+double _battery_inverter__average_1_control_duty_cycle_zsm_sum7__out;
+double _battery_inverter__average_1_control_duty_cycle_product1__out;
+double _battery_inverter__average_1_control_duty_cycle_product2__out;
+double _battery_inverter__average_1_control_duty_cycle_product3__out;
+//@cmp.var.end
+
+//@cmp.svar.start
+// state variables
+double _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__state;
+double _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__state;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__state;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__state;
+double _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[2];
+double _battery_inverter__average_1_control_pll_pu_pll_pid_integrator1__state;
+double _battery_inverter__average_1_control_pll_pu_pll_pid_integrator2__state;
+double _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__state;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__filtered_value;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__previous_in;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__filtered_value;
+double _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__previous_in;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__state;
+double _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[2];
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator1__state;
+double _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator2__state;
+double _battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__state;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__filtered_value;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__previous_in;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__filtered_value;
+double _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__previous_in;
+double _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__state;
+double _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__reset_state;
+
+double _battery_inverter__average_1_control_synch_vmatch_unit_delay3__state;
+double _battery_inverter__average_1_control_synch_vmatch_unit_delay4__state;
+double _battery_inverter__average_1_control_synch_vmatch_unit_delay5__state;
+double _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__state;
+double _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__reset_state;
+
+double _battery_inverter__average_1_control_synch_f_match_delay1__state[10];
+X_UnInt32 _battery_inverter__average_1_control_synch_f_match_delay1__cbi;
+
+double _battery_inverter__average_1_control_synch_f_match_unit_delay1__state;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__state;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay2__state;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__state;
+double _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay4__state;
+double _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__state;
+double _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__reset_state;
+
+double _battery_inverter__average_1_control_synch_phase_match_unit_delay3__state;
+double _battery_inverter__average_1_control_synch_phase_match_unit_delay4__state;
+double _battery_inverter__average_1_control_synch_phase_match_unit_delay5__state;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__state;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay2__state;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__state;
+double _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay4__state;
+double _battery_inverter__average_1_control_vmode_control_edge_detection1_unit_delay1__state;
+double _battery_inverter__average_1_control_vmode_control_edge_detection2_unit_delay1__state;
+double _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out;
+
+
+
+
+double _battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__state;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__state;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__state;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__state;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__state;
+double _grid_inputs_f_frt_pu_clock1__state;
+double _grid_inputs_f_trip1_clock1__state;
+double _grid_inputs_f_trip2_clock1__state;
+double _grid_inputs_f_trip3_clock1__state;
+double _grid_inputs_f_trip4_clock1__state;
+double _grid_inputs_f_trip5_clock1__state;
+double _grid_inputs_f_trip6_clock1__state;
+double _grid_inputs_f_trip7_clock1__state;
+double _grid_inputs_v_frt_pu_clock1__state;
+double _grid_inputs_v_trip1_clock1__state;
+double _grid_inputs_v_trip2_clock1__state;
+double _grid_inputs_v_trip3_clock1__state;
+double _grid_inputs_v_trip4_clock1__state;
+double _grid_inputs_v_trip5_clock1__state;
+double _ms_s1_tpm_grid_pll_lpf_lpf__states[2];
+double _ms_s1_tpm_grid_pll_pid_integrator1__state;
+double _ms_s1_tpm_grid_pll_pid_integrator2__state;
+double _ms_s1_tpm_grid_pll_unit_delay1__state;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__previous_in;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value;
+double _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__previous_in;
+double _ms_s2_tpm_load_pll_lpf_lpf__states[2];
+double _ms_s2_tpm_load_pll_pid_integrator1__state;
+double _ms_s2_tpm_load_pll_pid_integrator2__state;
+double _ms_s2_tpm_load_pll_unit_delay1__state;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__filtered_value;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__previous_in;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__filtered_value;
+double _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__previous_in;
+double _ms_s2_three_phase_pll1_lpf_lpf__states[2];
+double _ms_s2_three_phase_pll1_pid_integrator1__state;
+double _ms_s2_three_phase_pll1_pid_integrator2__state;
+double _ms_s2_three_phase_pll1_unit_delay1__state;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__filtered_value;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__previous_in;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__filtered_value;
+double _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__previous_in;
+double _ms_s3_tpm_grid_pll_lpf_lpf__states[2];
+double _ms_s3_tpm_grid_pll_pid_integrator1__state;
+double _ms_s3_tpm_grid_pll_pid_integrator2__state;
+double _ms_s3_tpm_grid_pll_unit_delay1__state;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__previous_in;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value;
+double _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__previous_in;
+double _ms_s3_tpm_ug_pll_lpf_lpf__states[2];
+double _ms_s3_tpm_ug_pll_pid_integrator1__state;
+double _ms_s3_tpm_ug_pll_pid_integrator2__state;
+double _ms_s3_tpm_ug_pll_unit_delay1__state;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__filtered_value;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__previous_in;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__filtered_value;
+double _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__previous_in;
+
+
+
+
+
+
+
+
+
+
+
+double _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__state;
+double _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__reset_state;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+double _rlc_parallel_variable_ica_meanvalue__vector[20000];
+double _rlc_parallel_variable_ica_meanvalue__sum;
+X_Int32 _rlc_parallel_variable_ica_meanvalue__cnt_i;
+X_Int32 _rlc_parallel_variable_ica_meanvalue__cnt_j;
+double _rlc_parallel_variable_ila_meanvalue__vector[20000];
+double _rlc_parallel_variable_ila_meanvalue__sum;
+X_Int32 _rlc_parallel_variable_ila_meanvalue__cnt_i;
+X_Int32 _rlc_parallel_variable_ila_meanvalue__cnt_j;
+double _rlc_parallel_variable_ira_meanvalue__vector[20000];
+double _rlc_parallel_variable_ira_meanvalue__sum;
+X_Int32 _rlc_parallel_variable_ira_meanvalue__cnt_i;
+X_Int32 _rlc_parallel_variable_ira_meanvalue__cnt_j;
+
+
+
+double _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract;
+
+double _ms_s1_tpm_grid_meassm_mode_and_dfract__freqAbs;
+
+double _ms_s1_tpm_grid_meassm_mode_and_dfract__fMax;
+
+X_Int32 _ms_s1_tpm_grid_meassm_mode_and_dfract__reset;
+
+X_Int32 _ms_s1_tpm_grid_meassm_mode_and_dfract__cycle_counter;
+
+double _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state;
+
+X_Int32 _ms_s1_tpm_grid_meassm_mode_and_dfract__submode_state;
+
+
+
+
+double _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract;
+
+double _ms_s2_tpm_load_meassm_mode_and_dfract__freqAbs;
+
+double _ms_s2_tpm_load_meassm_mode_and_dfract__fMax;
+
+X_Int32 _ms_s2_tpm_load_meassm_mode_and_dfract__reset;
+
+X_Int32 _ms_s2_tpm_load_meassm_mode_and_dfract__cycle_counter;
+
+double _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state;
+
+X_Int32 _ms_s2_tpm_load_meassm_mode_and_dfract__submode_state;
+
+
+
+
+double _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract;
+
+double _ms_s3_tpm_grid_meassm_mode_and_dfract__freqAbs;
+
+double _ms_s3_tpm_grid_meassm_mode_and_dfract__fMax;
+
+X_Int32 _ms_s3_tpm_grid_meassm_mode_and_dfract__reset;
+
+X_Int32 _ms_s3_tpm_grid_meassm_mode_and_dfract__cycle_counter;
+
+double _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state;
+
+X_Int32 _ms_s3_tpm_grid_meassm_mode_and_dfract__submode_state;
+
+
+
+
+double _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract;
+
+double _ms_s3_tpm_ug_meassm_mode_and_dfract__freqAbs;
+
+double _ms_s3_tpm_ug_meassm_mode_and_dfract__fMax;
+
+X_Int32 _ms_s3_tpm_ug_meassm_mode_and_dfract__reset;
+
+X_Int32 _ms_s3_tpm_ug_meassm_mode_and_dfract__cycle_counter;
+
+double _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state;
+
+X_Int32 _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state;
+
+
+
+
+
+
+
+
+
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum1;
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum2;
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum3;
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__RMS1_state;
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__RMS2_state;
+
+double _ms_s1_tpm_grid_i_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum1;
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum2;
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum3;
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1_state;
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2_state;
+
+double _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s2_tpm_load_i_rms_calc_rms__rmsSum1;
+
+double _ms_s2_tpm_load_i_rms_calc_rms__rmsSum2;
+
+double _ms_s2_tpm_load_i_rms_calc_rms__rmsSum3;
+
+double _ms_s2_tpm_load_i_rms_calc_rms__RMS1_state;
+
+double _ms_s2_tpm_load_i_rms_calc_rms__RMS2_state;
+
+double _ms_s2_tpm_load_i_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum1;
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum2;
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum3;
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__RMS1_state;
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__RMS2_state;
+
+double _ms_s2_tpm_load_vln_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum1;
+
+double _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum2;
+
+double _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum3;
+
+double _ms_s3_tpm_grid_i_rms_calc_rms__RMS1_state;
+
+double _ms_s3_tpm_grid_i_rms_calc_rms__RMS2_state;
+
+double _ms_s3_tpm_grid_i_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum1;
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum2;
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum3;
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1_state;
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2_state;
+
+double _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum1;
+
+double _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum2;
+
+double _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum3;
+
+double _ms_s3_tpm_ug_i_rms_calc_rms__RMS1_state;
+
+double _ms_s3_tpm_ug_i_rms_calc_rms__RMS2_state;
+
+double _ms_s3_tpm_ug_i_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum1;
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum2;
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum3;
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1_state;
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2_state;
+
+double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state;
+
+
+
+
+double _ms_s1_tpm_grid_power_meter_power__PsumA;
+
+double _ms_s1_tpm_grid_power_meter_power__PsumB;
+
+double _ms_s1_tpm_grid_power_meter_power__PsumC;
+
+double _ms_s1_tpm_grid_power_meter_power__VevenSumA;
+
+double _ms_s1_tpm_grid_power_meter_power__VevenSumB;
+
+double _ms_s1_tpm_grid_power_meter_power__VevenSumC;
+
+double _ms_s1_tpm_grid_power_meter_power__VoddSumA;
+
+double _ms_s1_tpm_grid_power_meter_power__VoddSumB;
+
+double _ms_s1_tpm_grid_power_meter_power__VoddSumC;
+
+double _ms_s1_tpm_grid_power_meter_power__IevenSumA;
+
+double _ms_s1_tpm_grid_power_meter_power__IevenSumB;
+
+double _ms_s1_tpm_grid_power_meter_power__IevenSumC;
+
+double _ms_s1_tpm_grid_power_meter_power__IoddSumA;
+
+double _ms_s1_tpm_grid_power_meter_power__IoddSumB;
+
+double _ms_s1_tpm_grid_power_meter_power__IoddSumC;
+
+double _ms_s1_tpm_grid_power_meter_power__Pa_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Pb_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Pc_state;
+
+double _ms_s1_tpm_grid_power_meter_power__P_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Qa_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Qb_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Qc_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Q_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Sa_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Sb_state;
+
+double _ms_s1_tpm_grid_power_meter_power__Sc_state;
+
+double _ms_s1_tpm_grid_power_meter_power__S_state;
+
+double _ms_s1_tpm_grid_power_meter_power__PFa_state;
+
+double _ms_s1_tpm_grid_power_meter_power__PFb_state;
+
+double _ms_s1_tpm_grid_power_meter_power__PFc_state;
+
+double _ms_s1_tpm_grid_power_meter_power__PF_state;
+
+
+
+
+double _ms_s2_tpm_load_power_meter_power__PsumA;
+
+double _ms_s2_tpm_load_power_meter_power__PsumB;
+
+double _ms_s2_tpm_load_power_meter_power__PsumC;
+
+double _ms_s2_tpm_load_power_meter_power__VevenSumA;
+
+double _ms_s2_tpm_load_power_meter_power__VevenSumB;
+
+double _ms_s2_tpm_load_power_meter_power__VevenSumC;
+
+double _ms_s2_tpm_load_power_meter_power__VoddSumA;
+
+double _ms_s2_tpm_load_power_meter_power__VoddSumB;
+
+double _ms_s2_tpm_load_power_meter_power__VoddSumC;
+
+double _ms_s2_tpm_load_power_meter_power__IevenSumA;
+
+double _ms_s2_tpm_load_power_meter_power__IevenSumB;
+
+double _ms_s2_tpm_load_power_meter_power__IevenSumC;
+
+double _ms_s2_tpm_load_power_meter_power__IoddSumA;
+
+double _ms_s2_tpm_load_power_meter_power__IoddSumB;
+
+double _ms_s2_tpm_load_power_meter_power__IoddSumC;
+
+double _ms_s2_tpm_load_power_meter_power__Pa_state;
+
+double _ms_s2_tpm_load_power_meter_power__Pb_state;
+
+double _ms_s2_tpm_load_power_meter_power__Pc_state;
+
+double _ms_s2_tpm_load_power_meter_power__P_state;
+
+double _ms_s2_tpm_load_power_meter_power__Qa_state;
+
+double _ms_s2_tpm_load_power_meter_power__Qb_state;
+
+double _ms_s2_tpm_load_power_meter_power__Qc_state;
+
+double _ms_s2_tpm_load_power_meter_power__Q_state;
+
+double _ms_s2_tpm_load_power_meter_power__Sa_state;
+
+double _ms_s2_tpm_load_power_meter_power__Sb_state;
+
+double _ms_s2_tpm_load_power_meter_power__Sc_state;
+
+double _ms_s2_tpm_load_power_meter_power__S_state;
+
+double _ms_s2_tpm_load_power_meter_power__PFa_state;
+
+double _ms_s2_tpm_load_power_meter_power__PFb_state;
+
+double _ms_s2_tpm_load_power_meter_power__PFc_state;
+
+double _ms_s2_tpm_load_power_meter_power__PF_state;
+
+
+
+
+double _ms_s3_tpm_grid_power_meter_power__PsumA;
+
+double _ms_s3_tpm_grid_power_meter_power__PsumB;
+
+double _ms_s3_tpm_grid_power_meter_power__PsumC;
+
+double _ms_s3_tpm_grid_power_meter_power__VevenSumA;
+
+double _ms_s3_tpm_grid_power_meter_power__VevenSumB;
+
+double _ms_s3_tpm_grid_power_meter_power__VevenSumC;
+
+double _ms_s3_tpm_grid_power_meter_power__VoddSumA;
+
+double _ms_s3_tpm_grid_power_meter_power__VoddSumB;
+
+double _ms_s3_tpm_grid_power_meter_power__VoddSumC;
+
+double _ms_s3_tpm_grid_power_meter_power__IevenSumA;
+
+double _ms_s3_tpm_grid_power_meter_power__IevenSumB;
+
+double _ms_s3_tpm_grid_power_meter_power__IevenSumC;
+
+double _ms_s3_tpm_grid_power_meter_power__IoddSumA;
+
+double _ms_s3_tpm_grid_power_meter_power__IoddSumB;
+
+double _ms_s3_tpm_grid_power_meter_power__IoddSumC;
+
+double _ms_s3_tpm_grid_power_meter_power__Pa_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Pb_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Pc_state;
+
+double _ms_s3_tpm_grid_power_meter_power__P_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Qa_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Qb_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Qc_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Q_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Sa_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Sb_state;
+
+double _ms_s3_tpm_grid_power_meter_power__Sc_state;
+
+double _ms_s3_tpm_grid_power_meter_power__S_state;
+
+double _ms_s3_tpm_grid_power_meter_power__PFa_state;
+
+double _ms_s3_tpm_grid_power_meter_power__PFb_state;
+
+double _ms_s3_tpm_grid_power_meter_power__PFc_state;
+
+double _ms_s3_tpm_grid_power_meter_power__PF_state;
+
+
+
+
+double _ms_s3_tpm_ug_power_meter_power__PsumA;
+
+double _ms_s3_tpm_ug_power_meter_power__PsumB;
+
+double _ms_s3_tpm_ug_power_meter_power__PsumC;
+
+double _ms_s3_tpm_ug_power_meter_power__VevenSumA;
+
+double _ms_s3_tpm_ug_power_meter_power__VevenSumB;
+
+double _ms_s3_tpm_ug_power_meter_power__VevenSumC;
+
+double _ms_s3_tpm_ug_power_meter_power__VoddSumA;
+
+double _ms_s3_tpm_ug_power_meter_power__VoddSumB;
+
+double _ms_s3_tpm_ug_power_meter_power__VoddSumC;
+
+double _ms_s3_tpm_ug_power_meter_power__IevenSumA;
+
+double _ms_s3_tpm_ug_power_meter_power__IevenSumB;
+
+double _ms_s3_tpm_ug_power_meter_power__IevenSumC;
+
+double _ms_s3_tpm_ug_power_meter_power__IoddSumA;
+
+double _ms_s3_tpm_ug_power_meter_power__IoddSumB;
+
+double _ms_s3_tpm_ug_power_meter_power__IoddSumC;
+
+double _ms_s3_tpm_ug_power_meter_power__Pa_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Pb_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Pc_state;
+
+double _ms_s3_tpm_ug_power_meter_power__P_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Qa_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Qb_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Qc_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Q_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Sa_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Sb_state;
+
+double _ms_s3_tpm_ug_power_meter_power__Sc_state;
+
+double _ms_s3_tpm_ug_power_meter_power__S_state;
+
+double _ms_s3_tpm_ug_power_meter_power__PFa_state;
+
+double _ms_s3_tpm_ug_power_meter_power__PFb_state;
+
+double _ms_s3_tpm_ug_power_meter_power__PFc_state;
+
+double _ms_s3_tpm_ug_power_meter_power__PF_state;
+
+
+
+
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__state;
+double _battery_inverter__average_1_control_synch_check_grid_comparator2__state;
+double _battery_inverter__average_1_control_synch_vmatch_comparator2__state;
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__state;
+double _battery_inverter__average_1_control_synch_check_grid_comparator1__state;
+double _battery_inverter__average_1_control_synch_phase_match_comparator2__state;
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__states[1];
+double _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__states[1];
+double _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state;
+X_Int32 _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__first_step;
+double _battery_inverter__average_1_control_pll_pu_pll_integrator__state;
+
+
+
+
+double _battery_inverter__average_1_control_synch_f_match_comparator1__state;
+double _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state;
+X_Int32 _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__first_step;
+double _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state;
+
+
+
+
+
+
+
+double _ms_s1_tpm_grid_pll_rate_limiter1__state;
+X_Int32 _ms_s1_tpm_grid_pll_rate_limiter1__first_step;
+double _ms_s1_tpm_grid_pll_integrator__state;
+
+
+
+
+double _ms_s2_tpm_load_pll_rate_limiter1__state;
+X_Int32 _ms_s2_tpm_load_pll_rate_limiter1__first_step;
+double _ms_s2_tpm_load_pll_integrator__state;
+
+
+
+
+double _ms_s2_three_phase_pll1_rate_limiter1__state;
+X_Int32 _ms_s2_three_phase_pll1_rate_limiter1__first_step;
+double _ms_s2_three_phase_pll1_integrator__state;
+
+
+
+
+double _ms_s3_tpm_grid_pll_rate_limiter1__state;
+X_Int32 _ms_s3_tpm_grid_pll_rate_limiter1__first_step;
+double _ms_s3_tpm_grid_pll_integrator__state;
+
+
+
+
+double _ms_s3_tpm_ug_pll_rate_limiter1__state;
+X_Int32 _ms_s3_tpm_ug_pll_rate_limiter1__first_step;
+double _ms_s3_tpm_ug_pll_integrator__state;
+
+
+
+
+
+
+
+double _ms_s2_ia_meanvalue__vector[20000];
+double _ms_s2_ia_meanvalue__sum;
+X_Int32 _ms_s2_ia_meanvalue__cnt_i;
+X_Int32 _ms_s2_ia_meanvalue__cnt_j;
+X_Int32 _pcc_control_frt_f_besf_sagc__Violation;
+
+X_Int32 _pcc_control_frt_f_besf_sagc__Trip_Zone;
+
+
+
+
+X_Int32 _pcc_control_v_check_besf__Violation;
+
+X_Int32 _pcc_control_v_check_besf__Trip_Zone;
+
+
+
+
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__wait_time;
+
+double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter;
+
+
+
+
+double _pcc_control_output_check__var_Fault_Zone;
+
+double _pcc_control_output_check__var_CB;
+
+double _pcc_control_output_check__var_GFL;
+
+
+
+
+double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state;
+double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__filter_state;
+double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signQ;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signP;
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref;
+
+
+
+
+double _battery_inverter__average_1_control_vmode_control_rate_limiter2__state;
+X_Int32 _battery_inverter__average_1_control_vmode_control_rate_limiter2__first_step;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state;
+X_Int32 _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__first_step;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state;
+X_Int32 _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__first_step;
+double _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state;
+X_Int32 _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__first_step;
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock1;
+
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock2;
+
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__from_grid_follow;
+
+double _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode_state;
+
+X_UnInt32 _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode_state;
+
+X_UnInt32 _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch_state;
+
+X_UnInt32 _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor_state;
+
+
+
+
+double _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__S_PQref;
+
+
+
+
+double _battery_inverter__average_1_control_vmode_control_rate_limiter1__state;
+X_Int32 _battery_inverter__average_1_control_vmode_control_rate_limiter1__first_step;
+
+
+
+
+
+
+double _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__state;
+double _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__reset_state;
+double _battery_inverter__average_1_control_synch_f_match_pi_integrator1__state;
+double _battery_inverter__average_1_control_synch_f_match_pi_integrator1__reset_state;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__state;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__reset_state;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__state;
+double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__reset_state;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__state;
+double _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__reset_state;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__state;
+double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__reset_state;
+double _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state;
+X_Int32 _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__first_step;
+//@cmp.svar.end
+
+//
+// Tunable parameters
+//
+static struct Tunable_params {
+} __attribute__((__packed__)) tunable_params;
+
+void *tunable_params_dev0_cpu0_ptr = &tunable_params;
+
+// Dll function pointers
+#if defined(_WIN64)
+#else
+// Define handles for loading dlls
+#endif
+
+
+
+
+
+
+
+
+// generated using template: virtual_hil/custom_functions.template---------------------------------
+void ReInit_user_sp_cpu0_dev0() {
+#if DEBUG_MODE
+    printf("\n\rReInitTimer");
+#endif
+    //@cmp.init.block.start
+    _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__state = 0.0;
+    X_UnInt32 _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i;
+    for (_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i = 0; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i < 2; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i++) {
+        _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i] = 0;
+    }
+    _battery_inverter__average_1_control_pll_pu_pll_pid_integrator1__state = 314.1592653589793;
+    _battery_inverter__average_1_control_pll_pu_pll_pid_integrator2__state = 0.0;
+    _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__previous_in = 0x0;
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__previous_in = 0x0;
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__state = 0.0;
+    X_UnInt32 _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i;
+    for (_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i = 0; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i < 2; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i++) {
+        _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i] = 0;
+    }
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator1__state = 314.1592653589793;
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator2__state = 0.0;
+    _battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__previous_in = 0x0;
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__previous_in = 0x0;
+    _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__state = 0.0;
+    _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__reset_state = 2;
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay3__state = 0.0;
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay4__state = 0.0;
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay5__state = 0.0;
+    _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__state = 0.0;
+    _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__reset_state = 2;
+    X_UnInt32 _battery_inverter__average_1_control_synch_f_match_delay1__i;
+    for (_battery_inverter__average_1_control_synch_f_match_delay1__i = 0; _battery_inverter__average_1_control_synch_f_match_delay1__i < 10; _battery_inverter__average_1_control_synch_f_match_delay1__i++) {
+        _battery_inverter__average_1_control_synch_f_match_delay1__state[_battery_inverter__average_1_control_synch_f_match_delay1__i] =  0.0;
+    }
+    _battery_inverter__average_1_control_synch_f_match_delay1__cbi = 0;
+    _battery_inverter__average_1_control_synch_f_match_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay2__state = 0.0;
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__state = 0.0;
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay4__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__reset_state = 2;
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay3__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay4__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay5__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay2__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay4__state = 0.0;
+    _battery_inverter__average_1_control_vmode_control_edge_detection1_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_vmode_control_edge_detection2_unit_delay1__state = 0.0;
+    {
+        _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out = 0 ;
+    }
+    _battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__state = 0.0;
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__state = 0.0;
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__state = 0.0;
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__state = 0.0;
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__state = 0.0;
+    _grid_inputs_f_frt_pu_clock1__state = 0.0f;
+    _grid_inputs_f_trip1_clock1__state = 0.0f;
+    _grid_inputs_f_trip2_clock1__state = 0.0f;
+    _grid_inputs_f_trip3_clock1__state = 0.0f;
+    _grid_inputs_f_trip4_clock1__state = 0.0f;
+    _grid_inputs_f_trip5_clock1__state = 0.0f;
+    _grid_inputs_f_trip6_clock1__state = 0.0f;
+    _grid_inputs_f_trip7_clock1__state = 0.0f;
+    _grid_inputs_v_frt_pu_clock1__state = 0.0f;
+    _grid_inputs_v_trip1_clock1__state = 0.0f;
+    _grid_inputs_v_trip2_clock1__state = 0.0f;
+    _grid_inputs_v_trip3_clock1__state = 0.0f;
+    _grid_inputs_v_trip4_clock1__state = 0.0f;
+    _grid_inputs_v_trip5_clock1__state = 0.0f;
+    X_UnInt32 _ms_s1_tpm_grid_pll_lpf_lpf__i;
+    for (_ms_s1_tpm_grid_pll_lpf_lpf__i = 0; _ms_s1_tpm_grid_pll_lpf_lpf__i < 2; _ms_s1_tpm_grid_pll_lpf_lpf__i++) {
+        _ms_s1_tpm_grid_pll_lpf_lpf__states[_ms_s1_tpm_grid_pll_lpf_lpf__i] = 0;
+    }
+    _ms_s1_tpm_grid_pll_pid_integrator1__state = 376.99111843;
+    _ms_s1_tpm_grid_pll_pid_integrator2__state = 0.0;
+    _ms_s1_tpm_grid_pll_unit_delay1__state = 0.0;
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__previous_in = 0x0;
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__previous_in = 0x0;
+    X_UnInt32 _ms_s2_tpm_load_pll_lpf_lpf__i;
+    for (_ms_s2_tpm_load_pll_lpf_lpf__i = 0; _ms_s2_tpm_load_pll_lpf_lpf__i < 2; _ms_s2_tpm_load_pll_lpf_lpf__i++) {
+        _ms_s2_tpm_load_pll_lpf_lpf__states[_ms_s2_tpm_load_pll_lpf_lpf__i] = 0;
+    }
+    _ms_s2_tpm_load_pll_pid_integrator1__state = 376.99111843;
+    _ms_s2_tpm_load_pll_pid_integrator2__state = 0.0;
+    _ms_s2_tpm_load_pll_unit_delay1__state = 0.0;
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__previous_in = 0x0;
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__previous_in = 0x0;
+    X_UnInt32 _ms_s2_three_phase_pll1_lpf_lpf__i;
+    for (_ms_s2_three_phase_pll1_lpf_lpf__i = 0; _ms_s2_three_phase_pll1_lpf_lpf__i < 2; _ms_s2_three_phase_pll1_lpf_lpf__i++) {
+        _ms_s2_three_phase_pll1_lpf_lpf__states[_ms_s2_three_phase_pll1_lpf_lpf__i] = 0;
+    }
+    _ms_s2_three_phase_pll1_pid_integrator1__state = 376.99111843;
+    _ms_s2_three_phase_pll1_pid_integrator2__state = 0.0;
+    _ms_s2_three_phase_pll1_unit_delay1__state = 0.0;
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__previous_in = 0x0;
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__previous_in = 0x0;
+    X_UnInt32 _ms_s3_tpm_grid_pll_lpf_lpf__i;
+    for (_ms_s3_tpm_grid_pll_lpf_lpf__i = 0; _ms_s3_tpm_grid_pll_lpf_lpf__i < 2; _ms_s3_tpm_grid_pll_lpf_lpf__i++) {
+        _ms_s3_tpm_grid_pll_lpf_lpf__states[_ms_s3_tpm_grid_pll_lpf_lpf__i] = 0;
+    }
+    _ms_s3_tpm_grid_pll_pid_integrator1__state = 376.99111843;
+    _ms_s3_tpm_grid_pll_pid_integrator2__state = 0.0;
+    _ms_s3_tpm_grid_pll_unit_delay1__state = 0.0;
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__previous_in = 0x0;
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__previous_in = 0x0;
+    X_UnInt32 _ms_s3_tpm_ug_pll_lpf_lpf__i;
+    for (_ms_s3_tpm_ug_pll_lpf_lpf__i = 0; _ms_s3_tpm_ug_pll_lpf_lpf__i < 2; _ms_s3_tpm_ug_pll_lpf_lpf__i++) {
+        _ms_s3_tpm_ug_pll_lpf_lpf__states[_ms_s3_tpm_ug_pll_lpf_lpf__i] = 0;
+    }
+    _ms_s3_tpm_ug_pll_pid_integrator1__state = 376.99111843;
+    _ms_s3_tpm_ug_pll_pid_integrator2__state = 0.0;
+    _ms_s3_tpm_ug_pll_unit_delay1__state = 0.0;
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__previous_in = 0x0;
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__filtered_value = 0.0 / (1 - 1.0 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__previous_in = 0x0;
+    HIL_OutAO(0x4009, 0.0f);
+    HIL_OutAO(0x400a, 0.0f);
+    HIL_OutAO(0x400c, 0.0f);
+    HIL_OutAO(0x4019, 0.0f);
+    HIL_OutAO(0x4028, 0.0f);
+    HIL_OutAO(0x4011, 0.0f);
+    HIL_OutAO(0x4013, 0.0f);
+    {
+    }
+    HIL_OutAO(0x401e, 0.0f);
+    HIL_OutAO(0x4029, 0.0f);
+    {
+    }
+    {
+    }
+    HIL_OutAO(0x4021, 0.0f);
+    {
+    }
+    _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__state = 0.0;
+    _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__reset_state = 2;
+    {
+    }
+    HIL_OutAO(0x4022, 0.0f);
+    HIL_OutAO(0x403a, 0.0f);
+    HIL_OutAO(0x4032, 0.0f);
+    HIL_OutAO(0x4049, 0.0f);
+    HIL_OutAO(0x4038, 0.0f);
+    HIL_OutAO(0x404c, 0.0f);
+    HIL_OutAO(0x404d, 0.0f);
+    {
+    }
+    {
+    }
+    {
+        _ms_s2_phase_synch_switching__sw_in = 0 ;
+        _ms_s2_phase_synch_switching__sw_out = 0 ;
+        _ms_s2_phase_synch_switching__sw_last = 0 ;
+        _ms_s2_phase_synch_switching__ph_in = 0 ;
+        _ms_s2_phase_synch_switching__ph_targ = 0 ;
+        _ms_s2_phase_synch_switching__ph_tol = 0.063 ;
+    }
+    HIL_OutAO(0x4081, 0.0f);
+    {
+    }
+    {
+    }
+    {
+    }
+    _rlc_parallel_variable_ica_meanvalue__sum = 0;
+    _rlc_parallel_variable_ica_meanvalue__cnt_i = 0;
+    _rlc_parallel_variable_ica_meanvalue__cnt_j = 0;
+    _rlc_parallel_variable_ica_meanvalue__vector[_rlc_parallel_variable_ica_meanvalue__cnt_i] = 0;
+    HIL_OutAO(0x40f1, 0.0f);
+    HIL_OutAO(0x40f2, 0.0f);
+    HIL_OutAO(0x40f3, 0.0f);
+    _rlc_parallel_variable_ila_meanvalue__sum = 0;
+    _rlc_parallel_variable_ila_meanvalue__cnt_i = 0;
+    _rlc_parallel_variable_ila_meanvalue__cnt_j = 0;
+    _rlc_parallel_variable_ila_meanvalue__vector[_rlc_parallel_variable_ila_meanvalue__cnt_i] = 0;
+    HIL_OutAO(0x40f5, 0.0f);
+    HIL_OutAO(0x40f6, 0.0f);
+    HIL_OutAO(0x40f7, 0.0f);
+    _rlc_parallel_variable_ira_meanvalue__sum = 0;
+    _rlc_parallel_variable_ira_meanvalue__cnt_i = 0;
+    _rlc_parallel_variable_ira_meanvalue__cnt_j = 0;
+    _rlc_parallel_variable_ira_meanvalue__vector[_rlc_parallel_variable_ira_meanvalue__cnt_i] = 0;
+    HIL_OutAO(0x40f9, 0.0f);
+    HIL_OutAO(0x40fa, 0.0f);
+    HIL_OutAO(0x40fb, 0.0f);
+    HIL_OutAO(0x40fc, 0.0f);
+    HIL_OutAO(0x4051, 0.0f);
+    HIL_OutAO(0x4017, 0.0f);
+    HIL_OutAO(0x4012, 0.0f);
+    HIL_OutAO(0x402a, 0.0f);
+    HIL_OutAO(0x4014, 0.0f);
+    HIL_OutAO(0x4034, 0.0f);
+    HIL_OutAO(0x4015, 0.0f);
+    {
+    }
+    HIL_OutAO(0x4060, 0.0f);
+    HIL_OutAO(0x4062, 0.0f);
+    {
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__fMax = 1.0 / 1e-06 ;
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__cycle_counter = 0 ;
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state = 0 ;
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__submode_state = 0 ;
+    }
+    HIL_OutAO(0x4085, 0.0f);
+    {
+        _ms_s2_tpm_load_meassm_mode_and_dfract__fMax = 1.0 / 1e-06 ;
+        _ms_s2_tpm_load_meassm_mode_and_dfract__cycle_counter = 0 ;
+        _ms_s2_tpm_load_meassm_mode_and_dfract__reset = 1 ;
+        _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state = 0 ;
+        _ms_s2_tpm_load_meassm_mode_and_dfract__submode_state = 0 ;
+    }
+    HIL_OutAO(0x4083, 0.0f);
+    HIL_OutAO(0x40a6, 0.0f);
+    {
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__fMax = 1.0 / 1e-06 ;
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__cycle_counter = 0 ;
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state = 0 ;
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__submode_state = 0 ;
+    }
+    HIL_OutAO(0x40be, 0.0f);
+    {
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__fMax = 1.0 / 1e-06 ;
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__cycle_counter = 0 ;
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__reset = 1 ;
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state = 0 ;
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state = 0 ;
+    }
+    HIL_OutAO(0x40f0, 0.0f);
+    HIL_OutAO(0x40f4, 0.0f);
+    HIL_OutAO(0x40f8, 0.0f);
+    HIL_OutFloat(137363459, 0.0);
+    HIL_OutFloat(137363460, 0.0);
+    HIL_OutFloat(137363461, 0.0);
+    HIL_OutAO(0x404e, 0.0f);
+    HIL_OutAO(0x40ef, 0.0f);
+    HIL_OutAO(0x4018, 0.0f);
+    HIL_OutAO(0x4023, 0.0f);
+    HIL_OutAO(0x4044, 0.0f);
+    HIL_OutAO(0x4016, 0.0f);
+    HIL_OutAO(0x401f, 0.0f);
+    HIL_OutAO(0x4035, 0.0f);
+    HIL_OutAO(0x401d, 0.0f);
+    HIL_OutAO(0x4025, 0.0f);
+    HIL_OutAO(0x401c, 0.0f);
+    HIL_OutAO(0x4020, 0.0f);
+    HIL_OutFloat(137363456, 0.0);
+    HIL_OutFloat(137363457, 0.0);
+    HIL_OutFloat(137363458, 0.0);
+    {
+        _grid_inputs_input_synch_switching_f__sw_in = 1 ;
+        _grid_inputs_input_synch_switching_f__sw_out = 1 ;
+        _grid_inputs_input_synch_switching_f__sw_last = 1 ;
+        _grid_inputs_input_synch_switching_f__V_in = 1 ;
+        _grid_inputs_input_synch_switching_f__V_targ = 1 ;
+    }
+    {
+        _grid_inputs_input_synch_switching_v__sw_in = 1 ;
+        _grid_inputs_input_synch_switching_v__sw_out = 1 ;
+        _grid_inputs_input_synch_switching_v__sw_last = 1 ;
+        _grid_inputs_input_synch_switching_v__V_in = 1 ;
+        _grid_inputs_input_synch_switching_v__V_targ = 1 ;
+    }
+    HIL_OutFloat(137363462, 0.0);
+    HIL_OutFloat(137363463, 0.0);
+    HIL_OutFloat(137363464, 0.0);
+    {
+        _ms_s1_tpm_grid_i_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s1_tpm_grid_i_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s1_tpm_grid_i_rms_calc_rms__RMS3_state = 0 ;
+    }
+    {
+        _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3_state = 0 ;
+    }
+    {
+        _ms_s2_tpm_load_i_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s2_tpm_load_i_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s2_tpm_load_i_rms_calc_rms__RMS3_state = 0 ;
+    }
+    {
+        _ms_s2_tpm_load_vln_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s2_tpm_load_vln_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s2_tpm_load_vln_rms_calc_rms__RMS3_state = 0 ;
+    }
+    {
+        _ms_s3_tpm_grid_i_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s3_tpm_grid_i_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s3_tpm_grid_i_rms_calc_rms__RMS3_state = 0 ;
+    }
+    {
+        _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3_state = 0 ;
+    }
+    {
+        _ms_s3_tpm_ug_i_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s3_tpm_ug_i_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s3_tpm_ug_i_rms_calc_rms__RMS3_state = 0 ;
+    }
+    {
+        _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1_state = 0 ;
+        _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2_state = 0 ;
+        _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state = 0 ;
+    }
+    HIL_OutAO(0x4004, 0.0f);
+    HIL_OutAO(0x4002, 0.0f);
+    HIL_OutAO(0x400e, 0.0f);
+    HIL_OutAO(0x4003, 0.0f);
+    HIL_OutAO(0x400f, 0.0f);
+    HIL_OutAO(0x4063, 0.0f);
+    HIL_OutAO(0x4064, 0.0f);
+    HIL_OutAO(0x4065, 0.0f);
+    {
+        _ms_s1_tpm_grid_power_meter_power__Pa_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Pb_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Pc_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__P_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Qa_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Qb_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Qc_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Q_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Sa_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Sb_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__Sc_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__S_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__PFa_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__PFb_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__PFc_state = 0.0 ;
+        _ms_s1_tpm_grid_power_meter_power__PF_state = 0.0 ;
+    }
+    HIL_OutAO(0x4076, 0.0f);
+    HIL_OutAO(0x4077, 0.0f);
+    HIL_OutAO(0x4078, 0.0f);
+    HIL_OutAO(0x4086, 0.0f);
+    HIL_OutAO(0x4087, 0.0f);
+    HIL_OutAO(0x4088, 0.0f);
+    {
+        _ms_s2_tpm_load_power_meter_power__Pa_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Pb_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Pc_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__P_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Qa_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Qb_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Qc_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Q_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Sa_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Sb_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__Sc_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__S_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__PFa_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__PFb_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__PFc_state = 0.0 ;
+        _ms_s2_tpm_load_power_meter_power__PF_state = 0.0 ;
+    }
+    HIL_OutAO(0x4099, 0.0f);
+    HIL_OutAO(0x409a, 0.0f);
+    HIL_OutAO(0x409b, 0.0f);
+    HIL_OutAO(0x40a7, 0.0f);
+    HIL_OutAO(0x40a8, 0.0f);
+    HIL_OutAO(0x40a9, 0.0f);
+    {
+        _ms_s3_tpm_grid_power_meter_power__Pa_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Pb_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Pc_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__P_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Qa_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Qb_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Qc_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Q_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Sa_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Sb_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__Sc_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__S_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__PFa_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__PFb_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__PFc_state = 0.0 ;
+        _ms_s3_tpm_grid_power_meter_power__PF_state = 0.0 ;
+    }
+    HIL_OutAO(0x40ba, 0.0f);
+    HIL_OutAO(0x40bb, 0.0f);
+    HIL_OutAO(0x40bc, 0.0f);
+    HIL_OutAO(0x40bf, 0.0f);
+    HIL_OutAO(0x40c0, 0.0f);
+    HIL_OutAO(0x40c1, 0.0f);
+    {
+        _ms_s3_tpm_ug_power_meter_power__Pa_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Pb_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Pc_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__P_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Qa_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Qb_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Qc_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Q_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Sa_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Sb_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__Sc_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__S_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__PFa_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__PFb_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__PFc_state = 0.0 ;
+        _ms_s3_tpm_ug_power_meter_power__PF_state = 0.0 ;
+    }
+    HIL_OutAO(0x40d3, 0.0f);
+    HIL_OutAO(0x40d4, 0.0f);
+    HIL_OutAO(0x40d5, 0.0f);
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__state = 0.0f;
+    _battery_inverter__average_1_control_synch_check_grid_comparator2__state = 0.0f;
+    _battery_inverter__average_1_control_synch_vmatch_comparator2__state = 0.0f;
+    HIL_OutAO(0x4027, 0.0f);
+    HIL_OutAO(0x405a, 0.0f);
+    HIL_OutAO(0x40fd, 0.0f);
+    HIL_OutAO(0x4066, 0.0f);
+    HIL_OutAO(0x4067, 0.0f);
+    HIL_OutAO(0x4068, 0.0f);
+    HIL_OutAO(0x4069, 0.0f);
+    HIL_OutAO(0x406a, 0.0f);
+    HIL_OutAO(0x406b, 0.0f);
+    HIL_OutAO(0x406c, 0.0f);
+    HIL_OutAO(0x406d, 0.0f);
+    HIL_OutAO(0x406e, 0.0f);
+    HIL_OutAO(0x406f, 0.0f);
+    HIL_OutAO(0x4070, 0.0f);
+    HIL_OutAO(0x4071, 0.0f);
+    HIL_OutAO(0x4072, 0.0f);
+    HIL_OutAO(0x4073, 0.0f);
+    HIL_OutAO(0x4074, 0.0f);
+    HIL_OutAO(0x4075, 0.0f);
+    HIL_OutAO(0x4089, 0.0f);
+    HIL_OutAO(0x408a, 0.0f);
+    HIL_OutAO(0x408b, 0.0f);
+    HIL_OutAO(0x408c, 0.0f);
+    HIL_OutAO(0x408d, 0.0f);
+    HIL_OutAO(0x408e, 0.0f);
+    HIL_OutAO(0x408f, 0.0f);
+    HIL_OutAO(0x4090, 0.0f);
+    HIL_OutAO(0x4091, 0.0f);
+    HIL_OutAO(0x4092, 0.0f);
+    HIL_OutAO(0x4093, 0.0f);
+    HIL_OutAO(0x4094, 0.0f);
+    HIL_OutAO(0x4095, 0.0f);
+    HIL_OutAO(0x4096, 0.0f);
+    HIL_OutAO(0x4097, 0.0f);
+    HIL_OutAO(0x4098, 0.0f);
+    HIL_OutAO(0x40aa, 0.0f);
+    HIL_OutAO(0x40ab, 0.0f);
+    HIL_OutAO(0x40ac, 0.0f);
+    HIL_OutAO(0x40ad, 0.0f);
+    HIL_OutAO(0x40ae, 0.0f);
+    HIL_OutAO(0x40af, 0.0f);
+    HIL_OutAO(0x40b0, 0.0f);
+    HIL_OutAO(0x40b1, 0.0f);
+    HIL_OutAO(0x40b2, 0.0f);
+    HIL_OutAO(0x40b3, 0.0f);
+    HIL_OutAO(0x40b4, 0.0f);
+    HIL_OutAO(0x40b5, 0.0f);
+    HIL_OutAO(0x40b6, 0.0f);
+    HIL_OutAO(0x40b7, 0.0f);
+    HIL_OutAO(0x40b8, 0.0f);
+    HIL_OutAO(0x40b9, 0.0f);
+    HIL_OutAO(0x40c3, 0.0f);
+    HIL_OutAO(0x40c4, 0.0f);
+    HIL_OutAO(0x40c5, 0.0f);
+    HIL_OutAO(0x40c6, 0.0f);
+    HIL_OutAO(0x40c7, 0.0f);
+    HIL_OutAO(0x40c8, 0.0f);
+    HIL_OutAO(0x40c9, 0.0f);
+    HIL_OutAO(0x40ca, 0.0f);
+    HIL_OutAO(0x40cb, 0.0f);
+    HIL_OutAO(0x40cc, 0.0f);
+    HIL_OutAO(0x40cd, 0.0f);
+    HIL_OutAO(0x40ce, 0.0f);
+    HIL_OutAO(0x40cf, 0.0f);
+    HIL_OutAO(0x40d0, 0.0f);
+    HIL_OutAO(0x40d1, 0.0f);
+    HIL_OutAO(0x40d2, 0.0f);
+    HIL_OutAO(0x400b, 0.0f);
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__state = 0.0f;
+    HIL_OutAO(0x4008, 0.0f);
+    HIL_OutAO(0x4007, 0.0f);
+    _battery_inverter__average_1_control_synch_check_grid_comparator1__state = 0.0f;
+    HIL_OutAO(0x4024, 0.0f);
+    _battery_inverter__average_1_control_synch_phase_match_comparator2__state = 0.0f;
+    X_UnInt32 _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i;
+    for (_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i = 0; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i < 1; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i++) {
+        _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__states[_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i] = 0;
+    }
+    X_UnInt32 _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i;
+    for (_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i = 0; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i < 1; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i++) {
+        _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__states[_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i] = 0;
+    }
+    HIL_OutAO(0x4079, 0.0f);
+    HIL_OutAO(0x409c, 0.0f);
+    HIL_OutAO(0x40bd, 0.0f);
+    HIL_OutAO(0x40c2, 0.0f);
+    HIL_OutAO(0x40d6, 0.0f);
+    HIL_OutAO(0x400d, 0.0f);
+    HIL_OutAO(0x4048, 0.0f);
+    _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state = 0;
+    _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__first_step = 1;
+    {
+        _battery_inverter__average_1_control_pll_pu_pll_integrator__state = 0 ;
+    }
+    _battery_inverter__average_1_control_synch_f_match_comparator1__state = 0.0f;
+    _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state = 0;
+    _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__first_step = 1;
+    {
+        _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state = 0 ;
+    }
+    {
+    }
+    _ms_s1_tpm_grid_pll_rate_limiter1__state = 0;
+    _ms_s1_tpm_grid_pll_rate_limiter1__first_step = 1;
+    {
+        _ms_s1_tpm_grid_pll_integrator__state = 0 ;
+    }
+    _ms_s2_tpm_load_pll_rate_limiter1__state = 0;
+    _ms_s2_tpm_load_pll_rate_limiter1__first_step = 1;
+    {
+        _ms_s2_tpm_load_pll_integrator__state = 0 ;
+    }
+    _ms_s2_three_phase_pll1_rate_limiter1__state = 0;
+    _ms_s2_three_phase_pll1_rate_limiter1__first_step = 1;
+    {
+        _ms_s2_three_phase_pll1_integrator__state = 0 ;
+    }
+    _ms_s3_tpm_grid_pll_rate_limiter1__state = 0;
+    _ms_s3_tpm_grid_pll_rate_limiter1__first_step = 1;
+    {
+        _ms_s3_tpm_grid_pll_integrator__state = 0 ;
+    }
+    _ms_s3_tpm_ug_pll_rate_limiter1__state = 0;
+    _ms_s3_tpm_ug_pll_rate_limiter1__first_step = 1;
+    {
+        _ms_s3_tpm_ug_pll_integrator__state = 0 ;
+    }
+    {
+    }
+    HIL_OutAO(0x4026, 0.0f);
+    HIL_OutAO(0x4010, 0.0f);
+    HIL_OutAO(0x401a, 0.0f);
+    HIL_OutAO(0x4047, 0.0f);
+    // write initial SG parameters
+    X_UnInt32 _vg_tdf_sg_ctrl_sine1__i;
+    X_UnInt32 _vg_tdf_sg_ctrl_sine1__j;
+    X_UnInt32 _vg_tdf_sg_ctrl_sine1__enable_wg_update_uint;
+    _vg_tdf_sg_ctrl_sine1__enable_wg_update_uint = 0;
+    for (_vg_tdf_sg_ctrl_sine1__i = 0; _vg_tdf_sg_ctrl_sine1__i < 3; _vg_tdf_sg_ctrl_sine1__i++) {
+        HIL_OutFloat(0x400200 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], 0.0f);  // set gain to 0 (initial value)
+        HIL_OutInt32(0x400180 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], 0);      // set offset to 0 (initial value)
+        HIL_OutInt32(0x400000 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], 1);
+        HIL_OutInt32(0x400280 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], 0);
+        HIL_OutFloat(0x400100 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], 2.0f);
+        HIL_OutInt32(0x400300 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], _vg_tdf_sg_ctrl_sine1__enable_wg_update_uint);   // enable wave update
+        _vg_tdf_sg_ctrl_sine1__sg_update_value += 1 << _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i];
+    }
+    // calculate and write waveform data
+    _vg_tdf_sg_ctrl_sine1__k = 2.0f * M_PI / _vg_tdf_sg_ctrl_sine1__no_of_points;
+    // oscillator based sine implementation
+    // oscillator init
+    _vg_tdf_sg_ctrl_sine1__xn_1 = sin(0.0f);
+    _vg_tdf_sg_ctrl_sine1__yn_1 = cos(0.0f);
+    // oscillator
+    for (_vg_tdf_sg_ctrl_sine1__i = 0; _vg_tdf_sg_ctrl_sine1__i < _vg_tdf_sg_ctrl_sine1__no_of_points; _vg_tdf_sg_ctrl_sine1__i++) {
+        _vg_tdf_sg_ctrl_sine1__xn = _vg_tdf_sg_ctrl_sine1__xn_1 + _vg_tdf_sg_ctrl_sine1__k * _vg_tdf_sg_ctrl_sine1__yn_1;
+        _vg_tdf_sg_ctrl_sine1__yn = _vg_tdf_sg_ctrl_sine1__yn_1 - _vg_tdf_sg_ctrl_sine1__k * _vg_tdf_sg_ctrl_sine1__xn;
+        // write the same data to all the channels
+        for (_vg_tdf_sg_ctrl_sine1__j = 0; _vg_tdf_sg_ctrl_sine1__j < 3; _vg_tdf_sg_ctrl_sine1__j++) {
+            HIL_OutFloat(0x600000 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__j] * 0x800 + _vg_tdf_sg_ctrl_sine1__i, (float) _vg_tdf_sg_ctrl_sine1__xn_1);
+        }
+        _vg_tdf_sg_ctrl_sine1__xn_1 = _vg_tdf_sg_ctrl_sine1__xn;
+        _vg_tdf_sg_ctrl_sine1__yn_1 = _vg_tdf_sg_ctrl_sine1__yn;
+    }
+    HIL_OutInt32(0x400080, _vg_tdf_sg_ctrl_sine1__sg_update_value);  // update both parameters and waveforms on all channels
+    HIL_OutAO(0x405b, 0.0f);
+    HIL_OutAO(0x405c, 0.0f);
+    HIL_OutAO(0x405d, 0.0f);
+    HIL_OutAO(0x405e, 0.0f);
+    HIL_OutAO(0x405f, 0.0f);
+    XIo_OutFloat(0x2fc00000, 0.0f);
+    XIo_OutFloat(0x2fc00004, 0.0f);
+    XIo_OutFloat(0x2fc00008, 0.0f);
+    XIo_OutFloat(0x2fc0000c, 0.0f);
+    HIL_OutAO(0x4061, 0.0f);
+    HIL_OutAO(0x407a, 0.0f);
+    HIL_OutAO(0x407b, 0.0f);
+    HIL_OutAO(0x407c, 0.0f);
+    HIL_OutAO(0x407d, 0.0f);
+    HIL_OutAO(0x407e, 0.0f);
+    _ms_s2_ia_meanvalue__sum = 0;
+    _ms_s2_ia_meanvalue__cnt_i = 0;
+    _ms_s2_ia_meanvalue__cnt_j = 0;
+    _ms_s2_ia_meanvalue__vector[_ms_s2_ia_meanvalue__cnt_i] = 0;
+    HIL_OutAO(0x4080, 0.0f);
+    HIL_OutAO(0x4082, 0.0f);
+    HIL_OutAO(0x4084, 0.0f);
+    HIL_OutAO(0x409d, 0.0f);
+    HIL_OutAO(0x409e, 0.0f);
+    HIL_OutAO(0x409f, 0.0f);
+    HIL_OutAO(0x40a0, 0.0f);
+    HIL_OutAO(0x40a1, 0.0f);
+    HIL_OutAO(0x40a2, 0.0f);
+    HIL_OutAO(0x40a3, 0.0f);
+    XIo_OutFloat(0x2fc00010, 0.0f);
+    XIo_OutFloat(0x2fc00014, 0.0f);
+    XIo_OutFloat(0x2fc00018, 0.0f);
+    XIo_OutFloat(0x2fc0001c, 0.0f);
+    HIL_OutAO(0x40a4, 0.0f);
+    HIL_OutAO(0x40d7, 0.0f);
+    HIL_OutAO(0x40d8, 0.0f);
+    {
+        _pcc_control_frt_f_besf_sagc__Violation = 0 ;
+        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+    }
+    HIL_OutAO(0x40d9, 0.0f);
+    HIL_OutAO(0x40da, 0.0f);
+    HIL_OutAO(0x40db, 0.0f);
+    HIL_OutAO(0x40dc, 0.0f);
+    HIL_OutAO(0x40dd, 0.0f);
+    HIL_OutAO(0x4045, 0.0f);
+    HIL_OutAO(0x404b, 0.0f);
+    HIL_OutFloat(137101315, 0.0);
+    HIL_OutAO(0x401b, 0.0f);
+    HIL_OutAO(0x407f, 0.0f);
+    HIL_OutAO(0x40e2, 0.0f);
+    HIL_OutAO(0x40e4, 0.0f);
+    HIL_OutAO(0x40e6, 0.0f);
+    HIL_OutAO(0x40e8, 0.0f);
+    HIL_OutAO(0x40ea, 0.0f);
+    HIL_OutAO(0x40eb, 0.0f);
+    HIL_OutAO(0x40ec, 0.0f);
+    HIL_OutAO(0x40ed, 0.0f);
+    {
+        _pcc_control_v_check_besf__Violation = 0 ;
+        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
+    }
+    HIL_OutAO(0x40ee, 0.0f);
+    {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter = 0 ;
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__wait_time = 0.01 ;
+    }
+    {
+        _pcc_control_output_check__var_CB = 1 ;
+        _pcc_control_output_check__var_GFL = 1 ;
+        _pcc_control_output_check__var_Fault_Zone = - 1 ;
+    }
+    HIL_OutAO(0x40e1, 0.0f);
+    HIL_OutAO(0x40e3, 0.0f);
+    HIL_OutAO(0x40e5, 0.0f);
+    HIL_OutAO(0x40e7, 0.0f);
+    HIL_OutAO(0x40e9, 0.0f);
+    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state =  0.0;
+    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__filter_state =  0.0;
+    HIL_OutAO(0x4036, 0.0f);
+    HIL_OutAO(0x4046, 0.0f);
+    HIL_OutAO(0x40de, 0.0f);
+    HIL_OutAO(0x40df, 0.0f);
+    HIL_OutAO(0x40e0, 0.0f);
+    HIL_OutAO(0x4037, 0.0f);
+    HIL_OutAO(0x40a5, 0.0f);
+    {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref = 0 ;
+    }
+    _battery_inverter__average_1_control_vmode_control_rate_limiter2__state = 0;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter2__first_step = 1;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state = 0;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__first_step = 1;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state = 0;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__first_step = 1;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state = 0;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__first_step = 1;
+    {
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock1 = 0 ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock2 = 0 ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__from_grid_follow = 0 ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode_state = 0 ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode_state = 0 ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch_state = 0 ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor_state = 0 ;
+    }
+    {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__S_PQref = 0 ;
+    }
+    _battery_inverter__average_1_control_vmode_control_rate_limiter1__state = 0;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter1__first_step = 1;
+    {
+    }
+    {
+        _battery_inverter__average_1_control_phase_synch_switching__sw_in = 0 ;
+        _battery_inverter__average_1_control_phase_synch_switching__sw_out = 0 ;
+        _battery_inverter__average_1_control_phase_synch_switching__sw_last = 0 ;
+        _battery_inverter__average_1_control_phase_synch_switching__ph_in = 0 ;
+        _battery_inverter__average_1_control_phase_synch_switching__ph_targ = 0 ;
+        _battery_inverter__average_1_control_phase_synch_switching__ph_tol = 0.063 ;
+    }
+    _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__state = 0.0;
+    _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__reset_state = 2;
+    _battery_inverter__average_1_control_synch_f_match_pi_integrator1__state = 0.0;
+    _battery_inverter__average_1_control_synch_f_match_pi_integrator1__reset_state = 2;
+    HIL_OutAO(0x404a, 0.0f);
+    HIL_OutAO(0x4001, 0.0f);
+    HIL_OutAO(0x4031, 0.0f);
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__state = 0.0;
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__reset_state = 2;
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__state = 0.0;
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__reset_state = 2;
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__state = 0.03829230913020472;
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__reset_state = 2;
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__state = 0.0;
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__reset_state = 2;
+    HIL_OutAO(0x402b, 0.0f);
+    HIL_OutAO(0x404f, 0.0f);
+    HIL_OutAO(0x4050, 0.0f);
+    HIL_OutAO(0x4052, 0.0f);
+    HIL_OutAO(0x4053, 0.0f);
+    HIL_OutAO(0x4054, 0.0f);
+    HIL_OutAO(0x4055, 0.0f);
+    HIL_OutAO(0x4056, 0.0f);
+    HIL_OutAO(0x4057, 0.0f);
+    HIL_OutAO(0x4058, 0.0f);
+    HIL_OutAO(0x4059, 0.0f);
+    HIL_OutAO(0x4039, 0.0f);
+    HIL_OutAO(0x4033, 0.0f);
+    HIL_OutAO(0x402c, 0.0f);
+    _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state = 0;
+    _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__first_step = 1;
+    HIL_OutAO(0x402d, 0.0f);
+    HIL_OutAO(0x4006, 0.0f);
+    HIL_OutAO(0x4005, 0.0f);
+    HIL_OutAO(0x4030, 0.0f);
+    HIL_OutAO(0x402f, 0.0f);
+    HIL_OutAO(0x4043, 0.0f);
+    HIL_OutAO(0x402e, 0.0f);
+    HIL_OutAO(0x4042, 0.0f);
+    HIL_OutAO(0x403b, 0.0f);
+    HIL_OutAO(0x403c, 0.0f);
+    HIL_OutAO(0x403d, 0.0f);
+    HIL_OutAO(0x4041, 0.0f);
+    HIL_OutAO(0x403e, 0.0f);
+    HIL_OutAO(0x403f, 0.0f);
+    HIL_OutAO(0x4040, 0.0f);
+    HIL_OutFloat(137101312, 0.0);
+    HIL_OutFloat(137101313, 0.0);
+    HIL_OutFloat(137101314, 0.0);
+    //@cmp.init.block.end
+}
+
+
+// Dll function pointers and dll reload function
+#if defined(_WIN64)
+// Define method for reloading dll functions
+void ReloadDllFunctions_user_sp_cpu0_dev0(void) {
+    // Load each library and setup function pointers
+}
+
+void FreeDllFunctions_user_sp_cpu0_dev0(void) {
+}
+
+#else
+// Define method for reloading dll functions
+void ReloadDllFunctions_user_sp_cpu0_dev0(void) {
+    // Load each library and setup function pointers
+}
+
+void FreeDllFunctions_user_sp_cpu0_dev0(void) {
+}
+#endif
+
+void load_fmi_libraries_user_sp_cpu0_dev0(void) {
+#if defined(_WIN64)
+#else
+#endif
+}
+
+
+void ReInit_sp_scope_user_sp_cpu0_dev0() {
+    // initialise SP Scope buffer pointer
+}
+
+
+// generated using template: virtual_hil/common_timer_counter_handler.template-------------------------
+
+/*****************************************************************************************/
+/**
+* This function is the handler which performs processing for the timer counter.
+* It is called from an interrupt context such that the amount of processing
+* performed should be minimized.  It is called when the timer counter expires
+* if interrupts are enabled.
+*
+*
+* @param    None
+*
+* @return   None
+*
+* @note     None
+*
+*****************************************************************************************/
+
+void TimerCounterHandler_0_user_sp_cpu0_dev0() {
+#if DEBUG_MODE
+    printf("\n\rTimerCounterHandler_0");
+#endif
+    //////////////////////////////////////////////////////////////////////////
+    // Set tunable parameters
+    //////////////////////////////////////////////////////////////////////////
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Constant1
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Constant6
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Constant7
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.+-1,5 hz
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.+-10%
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.nominal frequency
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.nominal voltage
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.+-1,5 hz
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.+-10%
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.nominal frequency
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.nominal voltage
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Constant2
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Constant3
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Counter1.const_value_0
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Counter1.const_value_1
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Constant1
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Constant3
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Counter1.const_value_0
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Counter1.const_value_1
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Constant2
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Constant4
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Counter1.const_value_0
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Counter1.const_value_1
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Constant1
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Constant1
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Constant1
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Constant1
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Constant2
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Constant3
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Constant4
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.o_ref
+    // Generated from the component: MS_S1.TPM_Grid.zero
+    // Generated from the component: MS_S2.TPM_Load.zero
+    // Generated from the component: MS_S3.TPM_Grid.zero
+    // Generated from the component: MS_S3.TPM_uG.zero
+    // Generated from the component: Vg_pu-actual.Constant1
+    // Generated from the component: c_CB0
+    // Generated from the component: c_CB1
+    // Generated from the component: c_GFL
+    // Generated from the component: c_GFM
+//////////////////////////////////////////////////////////////////////////
+    // Output block
+    //////////////////////////////////////////////////////////////////////////
+    //@cmp.out.block.start
+    // Generated from the component: BI_Mode_scada
+    _bi_mode_scada__out = XIo_InFloat(0x2f800000);
+    // Generated from the component: BI_Vref_pu
+    _bi_vref_pu__out = XIo_InFloat(0x2f800004);
+    // Generated from the component: BI_fref_pu
+    _bi_fref_pu__out = XIo_InFloat(0x2f800008);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Edge Detection1.Unit Delay1
+    _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__out = _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Edge Detection2.Unit Delay1
+    _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__out = _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.Unit Delay1
+    _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out = _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.Unit Delay2
+    _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__out = _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_wt_Target
+    _battery_inverter__average_1_control_inv_wt_target__out = XIo_InFloat(0x2f80000c);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.LPF.LPF
+    X_UnInt32 _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i;
+    _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_sum = 0.0f;
+    _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__b_sum = 0.0f;
+    _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__delay_line_in = 0.0f;
+    for (_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i = 0; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i < 2; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i++) {
+        _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__b_sum += _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__b_coeff[_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i] * _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i + 0];
+    }
+    _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__out = _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__b_sum;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Integrator1
+    _battery_inverter__average_1_control_pll_pu_pll_pid_integrator1__out = _battery_inverter__average_1_control_pll_pu_pll_pid_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Integrator2
+    _battery_inverter__average_1_control_pll_pu_pll_pid_integrator2__out = _battery_inverter__average_1_control_pll_pu_pll_pid_integrator2__state;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.Unit Delay1
+    _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out = _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.abc to dq.LPF_d
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__previous_filtered_value = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__filtered_value;
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__filtered_value = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__previous_in * (1 * 62.83185307 * 1e-06) + _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__out = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__filtered_value;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.abc to dq.LPF_q
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__previous_filtered_value = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__filtered_value;
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__filtered_value = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__previous_in * (1 * 62.83185307 * 1e-06) + _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__out = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__filtered_value;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Edge Detection1.Unit Delay1
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__out = _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.LPF.LPF
+    X_UnInt32 _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i;
+    _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_sum = 0.0f;
+    _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__b_sum = 0.0f;
+    _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__delay_line_in = 0.0f;
+    for (_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i = 0; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i < 2; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i++) {
+        _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__b_sum += _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__b_coeff[_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i] * _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i + 0];
+    }
+    _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__out = _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__b_sum;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Integrator1
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator1__out = _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Integrator2
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator2__out = _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator2__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.Unit Delay1
+    _battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__out = _battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.abc to dq.LPF_d
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__previous_filtered_value = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__filtered_value;
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__filtered_value = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__previous_in * (1 * 62.83185307 * 1e-06) + _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__out = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__filtered_value;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.abc to dq.LPF_q
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__previous_filtered_value = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__filtered_value;
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__filtered_value = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__previous_in * (1 * 62.83185307 * 1e-06) + _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__out = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__filtered_value;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Counter1.Accumulator1
+    _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__out = _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Unit Delay3
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay3__out = _battery_inverter__average_1_control_synch_vmatch_unit_delay3__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Unit Delay4
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay4__out = _battery_inverter__average_1_control_synch_vmatch_unit_delay4__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Unit Delay5
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay5__out = _battery_inverter__average_1_control_synch_vmatch_unit_delay5__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Counter1.Accumulator1
+    _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__out = _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Delay1
+    _battery_inverter__average_1_control_synch_f_match_delay1__out = _battery_inverter__average_1_control_synch_f_match_delay1__state[_battery_inverter__average_1_control_synch_f_match_delay1__cbi];
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Unit Delay1
+    _battery_inverter__average_1_control_synch_f_match_unit_delay1__out = _battery_inverter__average_1_control_synch_f_match_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay1
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__out = _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay2
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay2__out = _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay2__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay3
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__out = _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay4
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay4__out = _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay4__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Counter1.Accumulator1
+    _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__out = _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Unit Delay3
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay3__out = _battery_inverter__average_1_control_synch_phase_match_unit_delay3__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Unit Delay4
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay4__out = _battery_inverter__average_1_control_synch_phase_match_unit_delay4__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Unit Delay5
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay5__out = _battery_inverter__average_1_control_synch_phase_match_unit_delay5__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay1
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__out = _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay2
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay2__out = _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay2__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay3
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__out = _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay4
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay4__out = _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay4__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Edge Detection1.Unit Delay1
+    _battery_inverter__average_1_control_vmode_control_edge_detection1_unit_delay1__out = _battery_inverter__average_1_control_vmode_control_edge_detection1_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Edge Detection2.Unit Delay1
+    _battery_inverter__average_1_control_vmode_control_edge_detection2_unit_delay1__out = _battery_inverter__average_1_control_vmode_control_edge_detection2_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.internal_frequency.Angle generator.int_n_wrap
+    {
+        _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output = _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out + 0.0 ;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Unit Delay5
+    _battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__out = _battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__state;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay1
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay2
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__state;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay3
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__state;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay4
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__state;
+    // Generated from the component: Battery inverter (Average)1.Converter meas.Va.Va1
+    _battery_inverter__average_1_converter_meas_va_va1__out = (HIL_InFloat(0xc80000 + 0x12));
+    // Generated from the component: Battery inverter (Average)1.Converter meas.Vb.Va1
+    _battery_inverter__average_1_converter_meas_vb_va1__out = (HIL_InFloat(0xc80000 + 0x13));
+    // Generated from the component: Battery inverter (Average)1.Converter meas.Vc.Va1
+    _battery_inverter__average_1_converter_meas_vc_va1__out = (HIL_InFloat(0xc80000 + 0x14));
+    // Generated from the component: Battery inverter (Average)1.Grid meas.Va.Va1
+    _battery_inverter__average_1_grid_meas_va_va1__out = (HIL_InFloat(0xc80000 + 0x15));
+    // Generated from the component: Battery inverter (Average)1.Grid meas.Vb.Va1
+    _battery_inverter__average_1_grid_meas_vb_va1__out = (HIL_InFloat(0xc80000 + 0x16));
+    // Generated from the component: Battery inverter (Average)1.Grid meas.Vc.Va1
+    _battery_inverter__average_1_grid_meas_vc_va1__out = (HIL_InFloat(0xc80000 + 0x17));
+    // Generated from the component: Battery inverter (Average)1.Ia.Ia1
+    _battery_inverter__average_1_ia_ia1__out = (HIL_InFloat(0xc80000 + 0x38));
+    // Generated from the component: Battery inverter (Average)1.Ia_out.Ia1
+    _battery_inverter__average_1_ia_out_ia1__out = (HIL_InFloat(0xc80000 + 0x39));
+    // Generated from the component: Battery inverter (Average)1.Ib.Ia1
+    _battery_inverter__average_1_ib_ia1__out = (HIL_InFloat(0xc80000 + 0x3a));
+    // Generated from the component: Battery inverter (Average)1.Ib_out.Ia1
+    _battery_inverter__average_1_ib_out_ia1__out = (HIL_InFloat(0xc80000 + 0x3b));
+    // Generated from the component: Battery inverter (Average)1.Ic.Ia1
+    _battery_inverter__average_1_ic_ia1__out = (HIL_InFloat(0xc80000 + 0x3c));
+    // Generated from the component: Battery inverter (Average)1.Ic_out.Ia1
+    _battery_inverter__average_1_ic_out_ia1__out = (HIL_InFloat(0xc80000 + 0x3d));
+    // Generated from the component: Battery inverter (Average)1.Vdc.Va1
+    _battery_inverter__average_1_vdc_va1__out = (HIL_InFloat(0xc80000 + 0x1e));
+    // Generated from the component: CB_state_scada
+    _cb_state_scada__out = XIo_InFloat(0x2f800010);
+    // Generated from the component: EUT_Interface.Enable-i
+    _eut_interface_enable_i__out = XIo_InFloat(0x2f800020);
+    // Generated from the component: EUT_Interface.Pref-pu_i
+    _eut_interface_pref_pu_i__out = XIo_InFloat(0x2f800024);
+    // Generated from the component: EUT_Interface.Qref-pu_i
+    _eut_interface_qref_pu_i__out = XIo_InFloat(0x2f800028);
+    // Generated from the component: Grid_Inputs.F_FRT_pu.Clock1
+    _grid_inputs_f_frt_pu_clock1__out = _grid_inputs_f_frt_pu_clock1__state;
+    // Generated from the component: Grid_Inputs.F_Trip1.Clock1
+    _grid_inputs_f_trip1_clock1__out = _grid_inputs_f_trip1_clock1__state;
+    // Generated from the component: Grid_Inputs.F_Trip2.Clock1
+    _grid_inputs_f_trip2_clock1__out = _grid_inputs_f_trip2_clock1__state;
+    // Generated from the component: Grid_Inputs.F_Trip3.Clock1
+    _grid_inputs_f_trip3_clock1__out = _grid_inputs_f_trip3_clock1__state;
+    // Generated from the component: Grid_Inputs.F_Trip4.Clock1
+    _grid_inputs_f_trip4_clock1__out = _grid_inputs_f_trip4_clock1__state;
+    // Generated from the component: Grid_Inputs.F_Trip5.Clock1
+    _grid_inputs_f_trip5_clock1__out = _grid_inputs_f_trip5_clock1__state;
+    // Generated from the component: Grid_Inputs.F_Trip6.Clock1
+    _grid_inputs_f_trip6_clock1__out = _grid_inputs_f_trip6_clock1__state;
+    // Generated from the component: Grid_Inputs.F_Trip7.Clock1
+    _grid_inputs_f_trip7_clock1__out = _grid_inputs_f_trip7_clock1__state;
+    // Generated from the component: Grid_Inputs.V_FRT_pu.Clock1
+    _grid_inputs_v_frt_pu_clock1__out = _grid_inputs_v_frt_pu_clock1__state;
+    // Generated from the component: Grid_Inputs.V_Trip1.Clock1
+    _grid_inputs_v_trip1_clock1__out = _grid_inputs_v_trip1_clock1__state;
+    // Generated from the component: Grid_Inputs.V_Trip2.Clock1
+    _grid_inputs_v_trip2_clock1__out = _grid_inputs_v_trip2_clock1__state;
+    // Generated from the component: Grid_Inputs.V_Trip3.Clock1
+    _grid_inputs_v_trip3_clock1__out = _grid_inputs_v_trip3_clock1__state;
+    // Generated from the component: Grid_Inputs.V_Trip4.Clock1
+    _grid_inputs_v_trip4_clock1__out = _grid_inputs_v_trip4_clock1__state;
+    // Generated from the component: Grid_Inputs.V_Trip5.Clock1
+    _grid_inputs_v_trip5_clock1__out = _grid_inputs_v_trip5_clock1__state;
+    // Generated from the component: Idc_meas.Ia1
+    _idc_meas_ia1__out = (HIL_InFloat(0xc80000 + 0x40));
+    // Generated from the component: Ieut_meas.cpu_trans.Output
+    _ieut_meas_cpu_trans_output__out = XIo_InFloat(0x2f400000);
+    // Generated from the component: In_FTrip_Choice
+    _in_ftrip_choice__out = XIo_InInt32(0x2f80002c);
+    // Generated from the component: In_Phg_Choice
+    _in_phg_choice__out = XIo_InInt32(0x2f800030);
+    // Generated from the component: In_VTrip_Choice
+    _in_vtrip_choice__out = XIo_InInt32(0x2f800034);
+    // Generated from the component: In_Vg_Choice
+    _in_vg_choice__out = XIo_InInt32(0x2f800038);
+    // Generated from the component: In_fg_Choice
+    _in_fg_choice__out = XIo_InInt32(0x2f80003c);
+    // Generated from the component: MS_S1.S1_Enable
+    _ms_s1_s1_enable__out = XIo_InFloat(0x2f80004c);
+    // Generated from the component: MS_S1.TPM_Grid.IA.Ia1
+    _ms_s1_tpm_grid_ia_ia1__out = (HIL_InFloat(0xc80000 + 0x42));
+    // Generated from the component: MS_S1.TPM_Grid.IB.Ia1
+    _ms_s1_tpm_grid_ib_ia1__out = (HIL_InFloat(0xc80000 + 0x43));
+    // Generated from the component: MS_S1.TPM_Grid.IC.Ia1
+    _ms_s1_tpm_grid_ic_ia1__out = (HIL_InFloat(0xc80000 + 0x44));
+    // Generated from the component: MS_S1.TPM_Grid.PLL.LPF.LPF
+    X_UnInt32 _ms_s1_tpm_grid_pll_lpf_lpf__i;
+    _ms_s1_tpm_grid_pll_lpf_lpf__a_sum = 0.0f;
+    _ms_s1_tpm_grid_pll_lpf_lpf__b_sum = 0.0f;
+    _ms_s1_tpm_grid_pll_lpf_lpf__delay_line_in = 0.0f;
+    for (_ms_s1_tpm_grid_pll_lpf_lpf__i = 0; _ms_s1_tpm_grid_pll_lpf_lpf__i < 2; _ms_s1_tpm_grid_pll_lpf_lpf__i++) {
+        _ms_s1_tpm_grid_pll_lpf_lpf__b_sum += _ms_s1_tpm_grid_pll_lpf_lpf__b_coeff[_ms_s1_tpm_grid_pll_lpf_lpf__i] * _ms_s1_tpm_grid_pll_lpf_lpf__states[_ms_s1_tpm_grid_pll_lpf_lpf__i + 0];
+    }
+    _ms_s1_tpm_grid_pll_lpf_lpf__out = _ms_s1_tpm_grid_pll_lpf_lpf__b_sum;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Integrator1
+    _ms_s1_tpm_grid_pll_pid_integrator1__out = _ms_s1_tpm_grid_pll_pid_integrator1__state;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Integrator2
+    _ms_s1_tpm_grid_pll_pid_integrator2__out = _ms_s1_tpm_grid_pll_pid_integrator2__state;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.Unit Delay1
+    _ms_s1_tpm_grid_pll_unit_delay1__out = _ms_s1_tpm_grid_pll_unit_delay1__state;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.abc to dq.LPF_d
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__previous_filtered_value = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value;
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__out = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.abc to dq.LPF_q
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__previous_filtered_value = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value;
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__out = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value;
+    // Generated from the component: MS_S1.TPM_Grid.VAn.Va1
+    _ms_s1_tpm_grid_van_va1__out = (HIL_InFloat(0xc80000 + 0x21));
+    // Generated from the component: MS_S1.TPM_Grid.VBn.Va1
+    _ms_s1_tpm_grid_vbn_va1__out = (HIL_InFloat(0xc80000 + 0x22));
+    // Generated from the component: MS_S1.TPM_Grid.VCn.Va1
+    _ms_s1_tpm_grid_vcn_va1__out = (HIL_InFloat(0xc80000 + 0x23));
+    // Generated from the component: MS_S2.Phase_Target
+    _ms_s2_phase_target__out = XIo_InFloat(0x2f800050);
+    // Generated from the component: MS_S2.S2_Enable
+    _ms_s2_s2_enable__out = XIo_InFloat(0x2f800054);
+    // Generated from the component: MS_S2.TPM_Load.IA.Ia1
+    _ms_s2_tpm_load_ia_ia1__out = (HIL_InFloat(0xc80000 + 0x45));
+    // Generated from the component: MS_S2.TPM_Load.IB.Ia1
+    _ms_s2_tpm_load_ib_ia1__out = (HIL_InFloat(0xc80000 + 0x46));
+    // Generated from the component: MS_S2.TPM_Load.IC.Ia1
+    _ms_s2_tpm_load_ic_ia1__out = (HIL_InFloat(0xc80000 + 0x47));
+    // Generated from the component: MS_S2.TPM_Load.PLL.LPF.LPF
+    X_UnInt32 _ms_s2_tpm_load_pll_lpf_lpf__i;
+    _ms_s2_tpm_load_pll_lpf_lpf__a_sum = 0.0f;
+    _ms_s2_tpm_load_pll_lpf_lpf__b_sum = 0.0f;
+    _ms_s2_tpm_load_pll_lpf_lpf__delay_line_in = 0.0f;
+    for (_ms_s2_tpm_load_pll_lpf_lpf__i = 0; _ms_s2_tpm_load_pll_lpf_lpf__i < 2; _ms_s2_tpm_load_pll_lpf_lpf__i++) {
+        _ms_s2_tpm_load_pll_lpf_lpf__b_sum += _ms_s2_tpm_load_pll_lpf_lpf__b_coeff[_ms_s2_tpm_load_pll_lpf_lpf__i] * _ms_s2_tpm_load_pll_lpf_lpf__states[_ms_s2_tpm_load_pll_lpf_lpf__i + 0];
+    }
+    _ms_s2_tpm_load_pll_lpf_lpf__out = _ms_s2_tpm_load_pll_lpf_lpf__b_sum;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Integrator1
+    _ms_s2_tpm_load_pll_pid_integrator1__out = _ms_s2_tpm_load_pll_pid_integrator1__state;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Integrator2
+    _ms_s2_tpm_load_pll_pid_integrator2__out = _ms_s2_tpm_load_pll_pid_integrator2__state;
+    // Generated from the component: MS_S2.TPM_Load.PLL.Unit Delay1
+    _ms_s2_tpm_load_pll_unit_delay1__out = _ms_s2_tpm_load_pll_unit_delay1__state;
+    // Generated from the component: MS_S2.TPM_Load.PLL.abc to dq.LPF_d
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__previous_filtered_value = _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__filtered_value;
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__filtered_value = _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__out = _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__filtered_value;
+    // Generated from the component: MS_S2.TPM_Load.PLL.abc to dq.LPF_q
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__previous_filtered_value = _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__filtered_value;
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__filtered_value = _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__out = _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__filtered_value;
+    // Generated from the component: MS_S2.TPM_Load.VAn.Va1
+    _ms_s2_tpm_load_van_va1__out = (HIL_InFloat(0xc80000 + 0x24));
+    // Generated from the component: MS_S2.TPM_Load.VBn.Va1
+    _ms_s2_tpm_load_vbn_va1__out = (HIL_InFloat(0xc80000 + 0x25));
+    // Generated from the component: MS_S2.TPM_Load.VCn.Va1
+    _ms_s2_tpm_load_vcn_va1__out = (HIL_InFloat(0xc80000 + 0x26));
+    // Generated from the component: MS_S2.Three phase PLL1.LPF.LPF
+    X_UnInt32 _ms_s2_three_phase_pll1_lpf_lpf__i;
+    _ms_s2_three_phase_pll1_lpf_lpf__a_sum = 0.0f;
+    _ms_s2_three_phase_pll1_lpf_lpf__b_sum = 0.0f;
+    _ms_s2_three_phase_pll1_lpf_lpf__delay_line_in = 0.0f;
+    for (_ms_s2_three_phase_pll1_lpf_lpf__i = 0; _ms_s2_three_phase_pll1_lpf_lpf__i < 2; _ms_s2_three_phase_pll1_lpf_lpf__i++) {
+        _ms_s2_three_phase_pll1_lpf_lpf__b_sum += _ms_s2_three_phase_pll1_lpf_lpf__b_coeff[_ms_s2_three_phase_pll1_lpf_lpf__i] * _ms_s2_three_phase_pll1_lpf_lpf__states[_ms_s2_three_phase_pll1_lpf_lpf__i + 0];
+    }
+    _ms_s2_three_phase_pll1_lpf_lpf__out = _ms_s2_three_phase_pll1_lpf_lpf__b_sum;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Integrator1
+    _ms_s2_three_phase_pll1_pid_integrator1__out = _ms_s2_three_phase_pll1_pid_integrator1__state;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Integrator2
+    _ms_s2_three_phase_pll1_pid_integrator2__out = _ms_s2_three_phase_pll1_pid_integrator2__state;
+    // Generated from the component: MS_S2.Three phase PLL1.Unit Delay1
+    _ms_s2_three_phase_pll1_unit_delay1__out = _ms_s2_three_phase_pll1_unit_delay1__state;
+    // Generated from the component: MS_S2.Three phase PLL1.abc to dq.LPF_d
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__previous_filtered_value = _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__filtered_value;
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__filtered_value = _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__out = _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__filtered_value;
+    // Generated from the component: MS_S2.Three phase PLL1.abc to dq.LPF_q
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__previous_filtered_value = _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__filtered_value;
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__filtered_value = _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__out = _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__filtered_value;
+    // Generated from the component: MS_S2.Va_grid.Va1
+    _ms_s2_va_grid_va1__out = (HIL_InFloat(0xc80000 + 0x27));
+    // Generated from the component: MS_S2.Vb_grid.Va1
+    _ms_s2_vb_grid_va1__out = (HIL_InFloat(0xc80000 + 0x28));
+    // Generated from the component: MS_S2.Vc_grid.Va1
+    _ms_s2_vc_grid_va1__out = (HIL_InFloat(0xc80000 + 0x29));
+    // Generated from the component: MS_S3.TPM_Grid.IA.Ia1
+    _ms_s3_tpm_grid_ia_ia1__out = (HIL_InFloat(0xc80000 + 0x48));
+    // Generated from the component: MS_S3.TPM_Grid.IB.Ia1
+    _ms_s3_tpm_grid_ib_ia1__out = (HIL_InFloat(0xc80000 + 0x49));
+    // Generated from the component: MS_S3.TPM_Grid.IC.Ia1
+    _ms_s3_tpm_grid_ic_ia1__out = (HIL_InFloat(0xc80000 + 0x4a));
+    // Generated from the component: MS_S3.TPM_Grid.PLL.LPF.LPF
+    X_UnInt32 _ms_s3_tpm_grid_pll_lpf_lpf__i;
+    _ms_s3_tpm_grid_pll_lpf_lpf__a_sum = 0.0f;
+    _ms_s3_tpm_grid_pll_lpf_lpf__b_sum = 0.0f;
+    _ms_s3_tpm_grid_pll_lpf_lpf__delay_line_in = 0.0f;
+    for (_ms_s3_tpm_grid_pll_lpf_lpf__i = 0; _ms_s3_tpm_grid_pll_lpf_lpf__i < 2; _ms_s3_tpm_grid_pll_lpf_lpf__i++) {
+        _ms_s3_tpm_grid_pll_lpf_lpf__b_sum += _ms_s3_tpm_grid_pll_lpf_lpf__b_coeff[_ms_s3_tpm_grid_pll_lpf_lpf__i] * _ms_s3_tpm_grid_pll_lpf_lpf__states[_ms_s3_tpm_grid_pll_lpf_lpf__i + 0];
+    }
+    _ms_s3_tpm_grid_pll_lpf_lpf__out = _ms_s3_tpm_grid_pll_lpf_lpf__b_sum;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Integrator1
+    _ms_s3_tpm_grid_pll_pid_integrator1__out = _ms_s3_tpm_grid_pll_pid_integrator1__state;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Integrator2
+    _ms_s3_tpm_grid_pll_pid_integrator2__out = _ms_s3_tpm_grid_pll_pid_integrator2__state;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.Unit Delay1
+    _ms_s3_tpm_grid_pll_unit_delay1__out = _ms_s3_tpm_grid_pll_unit_delay1__state;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.abc to dq.LPF_d
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__previous_filtered_value = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value;
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__out = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__filtered_value;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.abc to dq.LPF_q
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__previous_filtered_value = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value;
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__out = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__filtered_value;
+    // Generated from the component: MS_S3.TPM_Grid.VAn.Va1
+    _ms_s3_tpm_grid_van_va1__out = (HIL_InFloat(0xc80000 + 0x2a));
+    // Generated from the component: MS_S3.TPM_Grid.VBn.Va1
+    _ms_s3_tpm_grid_vbn_va1__out = (HIL_InFloat(0xc80000 + 0x2b));
+    // Generated from the component: MS_S3.TPM_Grid.VCn.Va1
+    _ms_s3_tpm_grid_vcn_va1__out = (HIL_InFloat(0xc80000 + 0x2c));
+    // Generated from the component: MS_S3.TPM_uG.IA.Ia1
+    _ms_s3_tpm_ug_ia_ia1__out = (HIL_InFloat(0xc80000 + 0x4b));
+    // Generated from the component: MS_S3.TPM_uG.IB.Ia1
+    _ms_s3_tpm_ug_ib_ia1__out = (HIL_InFloat(0xc80000 + 0x4c));
+    // Generated from the component: MS_S3.TPM_uG.IC.Ia1
+    _ms_s3_tpm_ug_ic_ia1__out = (HIL_InFloat(0xc80000 + 0x4d));
+    // Generated from the component: MS_S3.TPM_uG.PLL.LPF.LPF
+    X_UnInt32 _ms_s3_tpm_ug_pll_lpf_lpf__i;
+    _ms_s3_tpm_ug_pll_lpf_lpf__a_sum = 0.0f;
+    _ms_s3_tpm_ug_pll_lpf_lpf__b_sum = 0.0f;
+    _ms_s3_tpm_ug_pll_lpf_lpf__delay_line_in = 0.0f;
+    for (_ms_s3_tpm_ug_pll_lpf_lpf__i = 0; _ms_s3_tpm_ug_pll_lpf_lpf__i < 2; _ms_s3_tpm_ug_pll_lpf_lpf__i++) {
+        _ms_s3_tpm_ug_pll_lpf_lpf__b_sum += _ms_s3_tpm_ug_pll_lpf_lpf__b_coeff[_ms_s3_tpm_ug_pll_lpf_lpf__i] * _ms_s3_tpm_ug_pll_lpf_lpf__states[_ms_s3_tpm_ug_pll_lpf_lpf__i + 0];
+    }
+    _ms_s3_tpm_ug_pll_lpf_lpf__out = _ms_s3_tpm_ug_pll_lpf_lpf__b_sum;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Integrator1
+    _ms_s3_tpm_ug_pll_pid_integrator1__out = _ms_s3_tpm_ug_pll_pid_integrator1__state;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Integrator2
+    _ms_s3_tpm_ug_pll_pid_integrator2__out = _ms_s3_tpm_ug_pll_pid_integrator2__state;
+    // Generated from the component: MS_S3.TPM_uG.PLL.Unit Delay1
+    _ms_s3_tpm_ug_pll_unit_delay1__out = _ms_s3_tpm_ug_pll_unit_delay1__state;
+    // Generated from the component: MS_S3.TPM_uG.PLL.abc to dq.LPF_d
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__previous_filtered_value = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__filtered_value;
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__filtered_value = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__out = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__filtered_value;
+    // Generated from the component: MS_S3.TPM_uG.PLL.abc to dq.LPF_q
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__previous_filtered_value = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__filtered_value;
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__filtered_value = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__previous_in * (1 * 62.83185307 * 1e-06) + _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__previous_filtered_value * (1 - 1 * 62.83185307 * 1e-06 );
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__out = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__filtered_value;
+    // Generated from the component: MS_S3.TPM_uG.VAn.Va1
+    _ms_s3_tpm_ug_van_va1__out = (HIL_InFloat(0xc80000 + 0x2d));
+    // Generated from the component: MS_S3.TPM_uG.VBn.Va1
+    _ms_s3_tpm_ug_vbn_va1__out = (HIL_InFloat(0xc80000 + 0x2e));
+    // Generated from the component: MS_S3.TPM_uG.VCn.Va1
+    _ms_s3_tpm_ug_vcn_va1__out = (HIL_InFloat(0xc80000 + 0x2f));
+    // Generated from the component: RESET_CB
+    _reset_cb__out = XIo_InFloat(0x2f800058);
+    // Generated from the component: RLC_parallel_variable.ICa.Ia1
+    _rlc_parallel_variable_ica_ia1__out = (HIL_InFloat(0xc80000 + 0x51));
+    // Generated from the component: RLC_parallel_variable.ILa.Ia1
+    _rlc_parallel_variable_ila_ia1__out = (HIL_InFloat(0xc80000 + 0x54));
+    // Generated from the component: RLC_parallel_variable.IRa.Ia1
+    _rlc_parallel_variable_ira_ia1__out = (HIL_InFloat(0xc80000 + 0x57));
+    // Generated from the component: Va1.Va1
+    _va1_va1__out = (HIL_InFloat(0xc80000 + 0x36));
+    // Generated from the component: Vdc_meas.Va1
+    _vdc_meas_va1__out = (HIL_InFloat(0xc80000 + 0x37));
+    // Generated from the component: Vg_RMS
+    _vg_rms__out = XIo_InFloat(0x2f800068);
+    // Generated from the component: Vg_f
+    _vg_f__out = XIo_InFloat(0x2f80006c);
+    // Generated from the component: Vg_ph
+    _vg_ph__out = XIo_InFloat(0x2f800070);
+    // Generated from the component: G_VLL_RMS
+    _g_vll_rms__out = 400.0 * _bi_vref_pu__out;
+    // Generated from the component: G_fgrid_Hz
+    _g_fgrid_hz__out = 50.0 * _bi_fref_pu__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Pref
+    HIL_OutAO(0x4009, (float)_battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Qref
+    HIL_OutAO(0x400a, (float)_battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.to_Hz
+    _battery_inverter__average_1_control_pll_pu_pll_to_hz__out = 0.15915494309189535 * _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.wt_0
+    HIL_OutAO(0x400c, (float)_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_wt
+    HIL_OutAO(0x4019, (float)_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.wt_i
+    HIL_OutAO(0x4028, (float)_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.Gain4
+    _battery_inverter__average_1_control_pll_pu_gain4__out = 0.0030618621784789728 * _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_Vd
+    HIL_OutAO(0x4011, (float)_battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.Gain5
+    _battery_inverter__average_1_control_pll_pu_gain5__out = 0.0030618621784789728 * _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_Vq
+    HIL_OutAO(0x4013, (float)_battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.normalize
+    _battery_inverter__average_1_control_pll_pu_pll_normalize__in1 = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__out;
+    _battery_inverter__average_1_control_pll_pu_pll_normalize__in2 = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__out;
+    {
+        _battery_inverter__average_1_control_pll_pu_pll_normalize__pk = ( powf ( _battery_inverter__average_1_control_pll_pu_pll_normalize__in1 , 2.0 ) + powf ( _battery_inverter__average_1_control_pll_pu_pll_normalize__in2 , 2.0 ) ) ;
+        _battery_inverter__average_1_control_pll_pu_pll_normalize__pk = sqrt ( _battery_inverter__average_1_control_pll_pu_pll_normalize__pk ) ;
+        if ( _battery_inverter__average_1_control_pll_pu_pll_normalize__pk < 0.1 )     {
+            _battery_inverter__average_1_control_pll_pu_pll_normalize__in2_pu = _battery_inverter__average_1_control_pll_pu_pll_normalize__in2 / 0.1 ;
+        }
+        else     {
+            _battery_inverter__average_1_control_pll_pu_pll_normalize__in2_pu = _battery_inverter__average_1_control_pll_pu_pll_normalize__in2 / _battery_inverter__average_1_control_pll_pu_pll_normalize__pk ;
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.to_Hz
+    _battery_inverter__average_1_control_synch_pll_util_pll_to_hz__out = 0.15915494309189535 * _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.wt_util
+    HIL_OutAO(0x401e, (float)_battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Sum3
+    _battery_inverter__average_1_control_synch_phase_match_sum3__out = _battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__out - _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.wt_u
+    HIL_OutAO(0x4029, (float)_battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.Termination3
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.normalize
+    _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in1 = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__out;
+    _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2 = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__out;
+    {
+        _battery_inverter__average_1_control_synch_pll_util_pll_normalize__pk = ( powf ( _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in1 , 2.0 ) + powf ( _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2 , 2.0 ) ) ;
+        _battery_inverter__average_1_control_synch_pll_util_pll_normalize__pk = sqrt ( _battery_inverter__average_1_control_synch_pll_util_pll_normalize__pk ) ;
+        if ( _battery_inverter__average_1_control_synch_pll_util_pll_normalize__pk < 0.1 )     {
+            _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2_pu = _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2 / 0.1 ;
+        }
+        else     {
+            _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2_pu = _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2 / _battery_inverter__average_1_control_synch_pll_util_pll_normalize__pk ;
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.Termination2
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Phase_diff
+    _battery_inverter__average_1_control_synch_vmatch_phase_diff__out = 0.05 * _battery_inverter__average_1_control_synch_vmatch_constant2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.c_function
+    _battery_inverter__average_1_control_synch_vmatch_c_function__counter = _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__out;
+    {
+        if ( _battery_inverter__average_1_control_synch_vmatch_c_function__counter >= 0.1 / 1e-06 )     {
+            _battery_inverter__average_1_control_synch_vmatch_c_function__out = 1 ;
+        }
+        else     {
+            _battery_inverter__average_1_control_synch_vmatch_c_function__out = 0 ;
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Phase_diff1
+    _battery_inverter__average_1_control_synch_vmatch_phase_diff1__out = 0.0005 * _battery_inverter__average_1_control_synch_vmatch_unit_delay3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.V_lock
+    HIL_OutInt32(0xf0040b, _battery_inverter__average_1_control_synch_vmatch_unit_delay4__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.dV
+    HIL_OutAO(0x4021, (float)_battery_inverter__average_1_control_synch_vmatch_unit_delay5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Freq_diff
+    _battery_inverter__average_1_control_synch_f_match_freq_diff__out = 0.002 * _battery_inverter__average_1_control_synch_f_match_constant1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.c_function
+    _battery_inverter__average_1_control_synch_f_match_c_function__counter = _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__out;
+    {
+        if ( _battery_inverter__average_1_control_synch_f_match_c_function__counter >= 0.1 / 1e-06 )     {
+            _battery_inverter__average_1_control_synch_f_match_c_function__out = 1 ;
+        }
+        else     {
+            _battery_inverter__average_1_control_synch_f_match_c_function__out = 0 ;
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.freq_lock
+    HIL_OutInt32(0xf0040c, _battery_inverter__average_1_control_synch_f_match_delay1__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Integrator1
+    if (((_battery_inverter__average_1_control_synch_f_match_delay1__out > 0.0) && (_battery_inverter__average_1_control_synch_phase_match_pi_integrator1__reset_state <= 0)) || ((_battery_inverter__average_1_control_synch_f_match_delay1__out <= 0.0) && (_battery_inverter__average_1_control_synch_phase_match_pi_integrator1__reset_state == 1))) {
+        _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__state = 0.0;
+    }
+    _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__out = _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Freq_diff1
+    _battery_inverter__average_1_control_synch_f_match_freq_diff1__out = 0.02 * _battery_inverter__average_1_control_synch_f_match_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.b1
+    _battery_inverter__average_1_control_synch_f_match_low_pass_b1__out = 1.96518336e-05 * _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.b2
+    _battery_inverter__average_1_control_synch_f_match_low_pass_b2__out = 9.82591682e-06 * _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.a1
+    _battery_inverter__average_1_control_synch_f_match_low_pass_a1__out = -1.99111429 * _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.a2
+    _battery_inverter__average_1_control_synch_f_match_low_pass_a2__out = 0.9911536 * _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Phase_diff
+    _battery_inverter__average_1_control_synch_phase_match_phase_diff__out = 0.017453292519943295 * _battery_inverter__average_1_control_synch_phase_match_constant2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.c_function
+    _battery_inverter__average_1_control_synch_phase_match_c_function__counter = _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__out;
+    {
+        if ( _battery_inverter__average_1_control_synch_phase_match_c_function__counter >= 0.1 / 1e-06 )     {
+            _battery_inverter__average_1_control_synch_phase_match_c_function__out = 1 ;
+        }
+        else     {
+            _battery_inverter__average_1_control_synch_phase_match_c_function__out = 0 ;
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Phase_diff1
+    _battery_inverter__average_1_control_synch_phase_match_phase_diff1__out = 0.00017453292519943296 * _battery_inverter__average_1_control_synch_phase_match_unit_delay3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_lock
+    HIL_OutInt32(0xf0040e, _battery_inverter__average_1_control_synch_phase_match_unit_delay4__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.df
+    HIL_OutAO(0x4022, (float)_battery_inverter__average_1_control_synch_phase_match_unit_delay5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.df_sync
+    HIL_OutAO(0x403a, (float)_battery_inverter__average_1_control_synch_phase_match_unit_delay5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.b1
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_b1__out = 1.96518336e-05 * _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.b2
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_b2__out = 9.82591682e-06 * _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.a1
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_a1__out = -1.99111429 * _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.a2
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_a2__out = 0.9911536 * _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.internal_frequency.inn_wt
+    HIL_OutAO(0x4032, (float)_battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output);
+    // Generated from the component: Battery inverter (Average)1.Control.wt_Vmode
+    HIL_OutAO(0x4049, (float)_battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.df_diff
+    HIL_OutAO(0x4038, (float)_battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.b1
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b1__out = 1.96518336e-05 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.b2
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b2__out = 9.82591682e-06 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.a1
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_a1__out = -1.99111429 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.a2
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_a2__out = 0.9911536 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Limit1
+    _battery_inverter__average_1_control_duty_cycle_zsm_limit1__out = MIN(MAX(_battery_inverter__average_1_control_duty_cycle_zsm_constant1__out, 0.0), 1.0);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.abc to dq.abc to alpha beta
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__alpha = (2.0 * _battery_inverter__average_1_converter_meas_va_va1__out - _battery_inverter__average_1_converter_meas_vb_va1__out - _battery_inverter__average_1_converter_meas_vc_va1__out) * 0.3333333333333333;
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__beta = (_battery_inverter__average_1_converter_meas_vb_va1__out - _battery_inverter__average_1_converter_meas_vc_va1__out) * 0.5773502691896258;
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__gamma = (_battery_inverter__average_1_converter_meas_va_va1__out + _battery_inverter__average_1_converter_meas_vb_va1__out + _battery_inverter__average_1_converter_meas_vc_va1__out) * 0.3333333333333333;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.abc to dq.abc to alpha beta
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__alpha = (2.0 * _battery_inverter__average_1_grid_meas_va_va1__out - _battery_inverter__average_1_grid_meas_vb_va1__out - _battery_inverter__average_1_grid_meas_vc_va1__out) * 0.3333333333333333;
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__beta = (_battery_inverter__average_1_grid_meas_vb_va1__out - _battery_inverter__average_1_grid_meas_vc_va1__out) * 0.5773502691896258;
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__gamma = (_battery_inverter__average_1_grid_meas_va_va1__out + _battery_inverter__average_1_grid_meas_vb_va1__out + _battery_inverter__average_1_grid_meas_vc_va1__out) * 0.3333333333333333;
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ.abc to dq1.abc to alpha beta
+    _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__alpha = (2.0 * _battery_inverter__average_1_ia_ia1__out - _battery_inverter__average_1_ib_ia1__out - _battery_inverter__average_1_ic_ia1__out) * 0.3333333333333333;
+    _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__beta = (_battery_inverter__average_1_ib_ia1__out - _battery_inverter__average_1_ic_ia1__out) * 0.5773502691896258;
+    _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__gamma = (_battery_inverter__average_1_ia_ia1__out + _battery_inverter__average_1_ib_ia1__out + _battery_inverter__average_1_ic_ia1__out) * 0.3333333333333333;
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ1.abc to dq1.abc to alpha beta
+    _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__alpha = (2.0 * _battery_inverter__average_1_ia_out_ia1__out - _battery_inverter__average_1_ib_out_ia1__out - _battery_inverter__average_1_ic_out_ia1__out) * 0.3333333333333333;
+    _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__beta = (_battery_inverter__average_1_ib_out_ia1__out - _battery_inverter__average_1_ic_out_ia1__out) * 0.5773502691896258;
+    _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__gamma = (_battery_inverter__average_1_ia_out_ia1__out + _battery_inverter__average_1_ib_out_ia1__out + _battery_inverter__average_1_ic_out_ia1__out) * 0.3333333333333333;
+    // Generated from the component: Battery inverter (Average)1.Limit1
+    _battery_inverter__average_1_limit1__out = MAX(_battery_inverter__average_1_vdc_va1__out, 1.0);
+    // Generated from the component: G_Pess
+    _g_pess__out = 100000.0 * _eut_interface_pref_pu_i__out;
+    // Generated from the component: G_Qess
+    _g_qess__out = 100000.0 * _eut_interface_qref_pu_i__out;
+    // Generated from the component: Grid_Inputs.F_FRT_pu.1D look-up table1
+    if(_grid_inputs_f_frt_pu_clock1__out <= _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_frt_pu_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_frt_pu_clock1__out < _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[25]) {
+        _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr = 25 >> 1;
+        _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex = 25;
+        while (1 < _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex - _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_frt_pu_clock1__out < _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex = _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr = (_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex + _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_frt_pu_1d_look_up_table1__fraction = (_grid_inputs_f_frt_pu_clock1__out - _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_frt_pu_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = 24;
+    }
+    _grid_inputs_f_frt_pu_1d_look_up_table1__value = (_grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_frt_pu_1d_look_up_table1__fraction + _grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.F_Trip1.1D look-up table1
+    if(_grid_inputs_f_trip1_clock1__out <= _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_trip1_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_trip1_clock1__out < _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_f_trip1_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_trip1_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_f_trip1_1d_look_up_table1__rightIndex - _grid_inputs_f_trip1_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_trip1_clock1__out < _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_trip1_1d_look_up_table1__rightIndex = _grid_inputs_f_trip1_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = _grid_inputs_f_trip1_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_trip1_1d_look_up_table1__curAddr = (_grid_inputs_f_trip1_1d_look_up_table1__leftIndex + _grid_inputs_f_trip1_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_trip1_1d_look_up_table1__fraction = (_grid_inputs_f_trip1_clock1__out - _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_trip1_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_f_trip1_1d_look_up_table1__value = (_grid_inputs_f_trip1_1d_look_up_table1__lut_table[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip1_1d_look_up_table1__lut_table[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_trip1_1d_look_up_table1__fraction + _grid_inputs_f_trip1_1d_look_up_table1__lut_table[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.F_Trip2.1D look-up table1
+    if(_grid_inputs_f_trip2_clock1__out <= _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_trip2_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_trip2_clock1__out < _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_f_trip2_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_trip2_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_f_trip2_1d_look_up_table1__rightIndex - _grid_inputs_f_trip2_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_trip2_clock1__out < _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_trip2_1d_look_up_table1__rightIndex = _grid_inputs_f_trip2_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = _grid_inputs_f_trip2_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_trip2_1d_look_up_table1__curAddr = (_grid_inputs_f_trip2_1d_look_up_table1__leftIndex + _grid_inputs_f_trip2_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_trip2_1d_look_up_table1__fraction = (_grid_inputs_f_trip2_clock1__out - _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_trip2_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_f_trip2_1d_look_up_table1__value = (_grid_inputs_f_trip2_1d_look_up_table1__lut_table[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip2_1d_look_up_table1__lut_table[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_trip2_1d_look_up_table1__fraction + _grid_inputs_f_trip2_1d_look_up_table1__lut_table[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.F_Trip3.1D look-up table1
+    if(_grid_inputs_f_trip3_clock1__out <= _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_trip3_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_trip3_clock1__out < _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_f_trip3_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_trip3_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_f_trip3_1d_look_up_table1__rightIndex - _grid_inputs_f_trip3_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_trip3_clock1__out < _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_trip3_1d_look_up_table1__rightIndex = _grid_inputs_f_trip3_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = _grid_inputs_f_trip3_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_trip3_1d_look_up_table1__curAddr = (_grid_inputs_f_trip3_1d_look_up_table1__leftIndex + _grid_inputs_f_trip3_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_trip3_1d_look_up_table1__fraction = (_grid_inputs_f_trip3_clock1__out - _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_trip3_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_f_trip3_1d_look_up_table1__value = (_grid_inputs_f_trip3_1d_look_up_table1__lut_table[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip3_1d_look_up_table1__lut_table[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_trip3_1d_look_up_table1__fraction + _grid_inputs_f_trip3_1d_look_up_table1__lut_table[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.F_Trip4.1D look-up table1
+    if(_grid_inputs_f_trip4_clock1__out <= _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_trip4_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_trip4_clock1__out < _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_f_trip4_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_trip4_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_f_trip4_1d_look_up_table1__rightIndex - _grid_inputs_f_trip4_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_trip4_clock1__out < _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_trip4_1d_look_up_table1__rightIndex = _grid_inputs_f_trip4_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = _grid_inputs_f_trip4_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_trip4_1d_look_up_table1__curAddr = (_grid_inputs_f_trip4_1d_look_up_table1__leftIndex + _grid_inputs_f_trip4_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_trip4_1d_look_up_table1__fraction = (_grid_inputs_f_trip4_clock1__out - _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_trip4_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_f_trip4_1d_look_up_table1__value = (_grid_inputs_f_trip4_1d_look_up_table1__lut_table[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip4_1d_look_up_table1__lut_table[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_trip4_1d_look_up_table1__fraction + _grid_inputs_f_trip4_1d_look_up_table1__lut_table[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.F_Trip5.1D look-up table1
+    if(_grid_inputs_f_trip5_clock1__out <= _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_trip5_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_trip5_clock1__out < _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_f_trip5_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_trip5_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_f_trip5_1d_look_up_table1__rightIndex - _grid_inputs_f_trip5_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_trip5_clock1__out < _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_trip5_1d_look_up_table1__rightIndex = _grid_inputs_f_trip5_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = _grid_inputs_f_trip5_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_trip5_1d_look_up_table1__curAddr = (_grid_inputs_f_trip5_1d_look_up_table1__leftIndex + _grid_inputs_f_trip5_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_trip5_1d_look_up_table1__fraction = (_grid_inputs_f_trip5_clock1__out - _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_trip5_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_f_trip5_1d_look_up_table1__value = (_grid_inputs_f_trip5_1d_look_up_table1__lut_table[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip5_1d_look_up_table1__lut_table[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_trip5_1d_look_up_table1__fraction + _grid_inputs_f_trip5_1d_look_up_table1__lut_table[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.F_Trip6.1D look-up table1
+    if(_grid_inputs_f_trip6_clock1__out <= _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_trip6_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_trip6_clock1__out < _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_f_trip6_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_trip6_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_f_trip6_1d_look_up_table1__rightIndex - _grid_inputs_f_trip6_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_trip6_clock1__out < _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_trip6_1d_look_up_table1__rightIndex = _grid_inputs_f_trip6_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = _grid_inputs_f_trip6_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_trip6_1d_look_up_table1__curAddr = (_grid_inputs_f_trip6_1d_look_up_table1__leftIndex + _grid_inputs_f_trip6_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_trip6_1d_look_up_table1__fraction = (_grid_inputs_f_trip6_clock1__out - _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_trip6_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_f_trip6_1d_look_up_table1__value = (_grid_inputs_f_trip6_1d_look_up_table1__lut_table[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip6_1d_look_up_table1__lut_table[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_trip6_1d_look_up_table1__fraction + _grid_inputs_f_trip6_1d_look_up_table1__lut_table[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.F_Trip7.1D look-up table1
+    if(_grid_inputs_f_trip7_clock1__out <= _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_f_trip7_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_f_trip7_clock1__out < _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_f_trip7_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_f_trip7_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_f_trip7_1d_look_up_table1__rightIndex - _grid_inputs_f_trip7_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_f_trip7_clock1__out < _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__curAddr]) {
+                _grid_inputs_f_trip7_1d_look_up_table1__rightIndex = _grid_inputs_f_trip7_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = _grid_inputs_f_trip7_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_f_trip7_1d_look_up_table1__curAddr = (_grid_inputs_f_trip7_1d_look_up_table1__leftIndex + _grid_inputs_f_trip7_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_f_trip7_1d_look_up_table1__fraction = (_grid_inputs_f_trip7_clock1__out - _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_f_trip7_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_f_trip7_1d_look_up_table1__value = (_grid_inputs_f_trip7_1d_look_up_table1__lut_table[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip7_1d_look_up_table1__lut_table[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex])
+            * _grid_inputs_f_trip7_1d_look_up_table1__fraction + _grid_inputs_f_trip7_1d_look_up_table1__lut_table[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.V_FRT_pu.1D look-up table1
+    if(_grid_inputs_v_frt_pu_clock1__out <= _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_v_frt_pu_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_v_frt_pu_clock1__out < _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[16]) {
+        _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr = 16 >> 1;
+        _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex = 16;
+        while (1 < _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex - _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_v_frt_pu_clock1__out < _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__curAddr]) {
+                _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex = _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr = (_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex + _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_v_frt_pu_1d_look_up_table1__fraction = (_grid_inputs_v_frt_pu_clock1__out - _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_v_frt_pu_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = 15;
+    }
+    _grid_inputs_v_frt_pu_1d_look_up_table1__value = (_grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex])
+            * _grid_inputs_v_frt_pu_1d_look_up_table1__fraction + _grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.V_Trip1.1D look-up table1
+    if(_grid_inputs_v_trip1_clock1__out <= _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_v_trip1_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_v_trip1_clock1__out < _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_v_trip1_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_v_trip1_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_v_trip1_1d_look_up_table1__rightIndex - _grid_inputs_v_trip1_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_v_trip1_clock1__out < _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__curAddr]) {
+                _grid_inputs_v_trip1_1d_look_up_table1__rightIndex = _grid_inputs_v_trip1_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = _grid_inputs_v_trip1_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_v_trip1_1d_look_up_table1__curAddr = (_grid_inputs_v_trip1_1d_look_up_table1__leftIndex + _grid_inputs_v_trip1_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_v_trip1_1d_look_up_table1__fraction = (_grid_inputs_v_trip1_clock1__out - _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_v_trip1_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_v_trip1_1d_look_up_table1__value = (_grid_inputs_v_trip1_1d_look_up_table1__lut_table[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip1_1d_look_up_table1__lut_table[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex])
+            * _grid_inputs_v_trip1_1d_look_up_table1__fraction + _grid_inputs_v_trip1_1d_look_up_table1__lut_table[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.V_Trip2.1D look-up table1
+    if(_grid_inputs_v_trip2_clock1__out <= _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_v_trip2_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_v_trip2_clock1__out < _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_v_trip2_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_v_trip2_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_v_trip2_1d_look_up_table1__rightIndex - _grid_inputs_v_trip2_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_v_trip2_clock1__out < _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__curAddr]) {
+                _grid_inputs_v_trip2_1d_look_up_table1__rightIndex = _grid_inputs_v_trip2_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = _grid_inputs_v_trip2_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_v_trip2_1d_look_up_table1__curAddr = (_grid_inputs_v_trip2_1d_look_up_table1__leftIndex + _grid_inputs_v_trip2_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_v_trip2_1d_look_up_table1__fraction = (_grid_inputs_v_trip2_clock1__out - _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_v_trip2_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_v_trip2_1d_look_up_table1__value = (_grid_inputs_v_trip2_1d_look_up_table1__lut_table[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip2_1d_look_up_table1__lut_table[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex])
+            * _grid_inputs_v_trip2_1d_look_up_table1__fraction + _grid_inputs_v_trip2_1d_look_up_table1__lut_table[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.V_Trip3.1D look-up table1
+    if(_grid_inputs_v_trip3_clock1__out <= _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_v_trip3_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_v_trip3_clock1__out < _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_v_trip3_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_v_trip3_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_v_trip3_1d_look_up_table1__rightIndex - _grid_inputs_v_trip3_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_v_trip3_clock1__out < _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__curAddr]) {
+                _grid_inputs_v_trip3_1d_look_up_table1__rightIndex = _grid_inputs_v_trip3_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = _grid_inputs_v_trip3_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_v_trip3_1d_look_up_table1__curAddr = (_grid_inputs_v_trip3_1d_look_up_table1__leftIndex + _grid_inputs_v_trip3_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_v_trip3_1d_look_up_table1__fraction = (_grid_inputs_v_trip3_clock1__out - _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_v_trip3_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_v_trip3_1d_look_up_table1__value = (_grid_inputs_v_trip3_1d_look_up_table1__lut_table[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip3_1d_look_up_table1__lut_table[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex])
+            * _grid_inputs_v_trip3_1d_look_up_table1__fraction + _grid_inputs_v_trip3_1d_look_up_table1__lut_table[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.V_Trip4.1D look-up table1
+    if(_grid_inputs_v_trip4_clock1__out <= _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_v_trip4_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_v_trip4_clock1__out < _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_v_trip4_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_v_trip4_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_v_trip4_1d_look_up_table1__rightIndex - _grid_inputs_v_trip4_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_v_trip4_clock1__out < _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__curAddr]) {
+                _grid_inputs_v_trip4_1d_look_up_table1__rightIndex = _grid_inputs_v_trip4_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = _grid_inputs_v_trip4_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_v_trip4_1d_look_up_table1__curAddr = (_grid_inputs_v_trip4_1d_look_up_table1__leftIndex + _grid_inputs_v_trip4_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_v_trip4_1d_look_up_table1__fraction = (_grid_inputs_v_trip4_clock1__out - _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_v_trip4_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_v_trip4_1d_look_up_table1__value = (_grid_inputs_v_trip4_1d_look_up_table1__lut_table[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip4_1d_look_up_table1__lut_table[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex])
+            * _grid_inputs_v_trip4_1d_look_up_table1__fraction + _grid_inputs_v_trip4_1d_look_up_table1__lut_table[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs.V_Trip5.1D look-up table1
+    if(_grid_inputs_v_trip5_clock1__out <= _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs_v_trip5_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = 0;
+    }
+    else if(_grid_inputs_v_trip5_clock1__out < _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs_v_trip5_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs_v_trip5_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs_v_trip5_1d_look_up_table1__rightIndex - _grid_inputs_v_trip5_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs_v_trip5_clock1__out < _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__curAddr]) {
+                _grid_inputs_v_trip5_1d_look_up_table1__rightIndex = _grid_inputs_v_trip5_1d_look_up_table1__curAddr;
+            }
+            else {
+                _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = _grid_inputs_v_trip5_1d_look_up_table1__curAddr;
+            }
+            _grid_inputs_v_trip5_1d_look_up_table1__curAddr = (_grid_inputs_v_trip5_1d_look_up_table1__leftIndex + _grid_inputs_v_trip5_1d_look_up_table1__rightIndex) >> 1;
+        }
+        _grid_inputs_v_trip5_1d_look_up_table1__fraction = (_grid_inputs_v_trip5_clock1__out - _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex])
+                / (_grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex]);
+    }
+    else {
+        _grid_inputs_v_trip5_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = 4;
+    }
+    _grid_inputs_v_trip5_1d_look_up_table1__value = (_grid_inputs_v_trip5_1d_look_up_table1__lut_table[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip5_1d_look_up_table1__lut_table[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex])
+            * _grid_inputs_v_trip5_1d_look_up_table1__fraction + _grid_inputs_v_trip5_1d_look_up_table1__lut_table[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex];
+    // Generated from the component: EUT_Interface.Idc_o
+    HIL_OutAO(0x404c, (float)_idc_meas_ia1__out);
+    // Generated from the component: EUT_Interface.Ieut_o
+    HIL_OutAO(0x404d, (float)_ieut_meas_cpu_trans_output__out);
+    // Generated from the component: MS_S1.S1.Triple S1 ideal.CTC_Wrapper
+    _ms_s1_s1_triple_s1_ideal_ctc_wrapper__feedback_out = HIL_InInt32(0xf80401);
+    if (_ms_s1_s1_enable__out == 0x0) {
+        HIL_OutInt32(0x8240481, 0x0);
+    }
+    else {
+        HIL_OutInt32(0x8240481, 0x1);
+    }
+    // Generated from the component: MS_S1.TPM_Grid.PLL.to_Hz
+    _ms_s1_tpm_grid_pll_to_hz__out = 0.15915494309189535 * _ms_s1_tpm_grid_pll_lpf_lpf__out;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.sin
+    _ms_s1_tpm_grid_pll_sin__out = sin(_ms_s1_tpm_grid_pll_unit_delay1__out);
+    // Generated from the component: MS_S1.TPM_Grid.TRMwt
+    // Generated from the component: MS_S1.TPM_Grid.TRMd
+    // Generated from the component: MS_S1.TPM_Grid.PLL.normalize
+    _ms_s1_tpm_grid_pll_normalize__in1 = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__out;
+    _ms_s1_tpm_grid_pll_normalize__in2 = _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__out;
+    {
+        _ms_s1_tpm_grid_pll_normalize__pk = ( powf ( _ms_s1_tpm_grid_pll_normalize__in1 , 2.0 ) + powf ( _ms_s1_tpm_grid_pll_normalize__in2 , 2.0 ) ) ;
+        _ms_s1_tpm_grid_pll_normalize__pk = sqrt ( _ms_s1_tpm_grid_pll_normalize__pk ) ;
+        if ( _ms_s1_tpm_grid_pll_normalize__pk < 0.1 )     {
+            _ms_s1_tpm_grid_pll_normalize__in2_pu = _ms_s1_tpm_grid_pll_normalize__in2 / 0.1 ;
+        }
+        else     {
+            _ms_s1_tpm_grid_pll_normalize__in2_pu = _ms_s1_tpm_grid_pll_normalize__in2 / _ms_s1_tpm_grid_pll_normalize__pk ;
+        }
+    }
+    // Generated from the component: MS_S1.TPM_Grid.TRMq
+    // Generated from the component: MS_S1.TPM_Grid.PLL.abc to dq.abc to alpha beta
+    _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha = (2.0 * _ms_s1_tpm_grid_van_va1__out - _ms_s1_tpm_grid_vbn_va1__out - _ms_s1_tpm_grid_vcn_va1__out) * 0.3333333333333333;
+    _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta = (_ms_s1_tpm_grid_vbn_va1__out - _ms_s1_tpm_grid_vcn_va1__out) * 0.5773502691896258;
+    _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__gamma = (_ms_s1_tpm_grid_van_va1__out + _ms_s1_tpm_grid_vbn_va1__out + _ms_s1_tpm_grid_vcn_va1__out) * 0.3333333333333333;
+    // Generated from the component: MS_S1.TPM_Grid.IN
+    // Generated from the component: MS_S1.TPM_Grid.IN_RMS
+    // Generated from the component: MS_S1.TPM_Grid.I_RMS
+    // Generated from the component: MS_S1.TPM_Grid.VAB_RMS
+    // Generated from the component: MS_S1.TPM_Grid.VBC_RMS
+    // Generated from the component: MS_S1.TPM_Grid.VCA_RMS
+    // Generated from the component: MS_S1.TPM_Grid.VLL_RMS
+    // Generated from the component: MS_S1.TPM_Grid.VN
+    // Generated from the component: MS_S1.TPM_Grid.VN_RMS
+    // Generated from the component: MS_S2.TPM_Load.PLL.to_Hz
+    _ms_s2_tpm_load_pll_to_hz__out = 0.15915494309189535 * _ms_s2_tpm_load_pll_lpf_lpf__out;
+    // Generated from the component: MS_S2.TPM_Load.PLL.sin
+    _ms_s2_tpm_load_pll_sin__out = sin(_ms_s2_tpm_load_pll_unit_delay1__out);
+    // Generated from the component: MS_S2.TPM_Load.TRMwt
+    // Generated from the component: MS_S2.TPM_Load.TRMd
+    // Generated from the component: MS_S2.TPM_Load.PLL.normalize
+    _ms_s2_tpm_load_pll_normalize__in1 = _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__out;
+    _ms_s2_tpm_load_pll_normalize__in2 = _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__out;
+    {
+        _ms_s2_tpm_load_pll_normalize__pk = ( powf ( _ms_s2_tpm_load_pll_normalize__in1 , 2.0 ) + powf ( _ms_s2_tpm_load_pll_normalize__in2 , 2.0 ) ) ;
+        _ms_s2_tpm_load_pll_normalize__pk = sqrt ( _ms_s2_tpm_load_pll_normalize__pk ) ;
+        if ( _ms_s2_tpm_load_pll_normalize__pk < 0.1 )     {
+            _ms_s2_tpm_load_pll_normalize__in2_pu = _ms_s2_tpm_load_pll_normalize__in2 / 0.1 ;
+        }
+        else     {
+            _ms_s2_tpm_load_pll_normalize__in2_pu = _ms_s2_tpm_load_pll_normalize__in2 / _ms_s2_tpm_load_pll_normalize__pk ;
+        }
+    }
+    // Generated from the component: MS_S2.TPM_Load.TRMq
+    // Generated from the component: MS_S2.TPM_Load.PLL.abc to dq.abc to alpha beta
+    _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__alpha = (2.0 * _ms_s2_tpm_load_van_va1__out - _ms_s2_tpm_load_vbn_va1__out - _ms_s2_tpm_load_vcn_va1__out) * 0.3333333333333333;
+    _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__beta = (_ms_s2_tpm_load_vbn_va1__out - _ms_s2_tpm_load_vcn_va1__out) * 0.5773502691896258;
+    _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__gamma = (_ms_s2_tpm_load_van_va1__out + _ms_s2_tpm_load_vbn_va1__out + _ms_s2_tpm_load_vcn_va1__out) * 0.3333333333333333;
+    // Generated from the component: MS_S2.TPM_Load.IN
+    // Generated from the component: MS_S2.TPM_Load.IN_RMS
+    // Generated from the component: MS_S2.TPM_Load.I_RMS
+    // Generated from the component: MS_S2.TPM_Load.VAB_RMS
+    // Generated from the component: MS_S2.TPM_Load.VBC_RMS
+    // Generated from the component: MS_S2.TPM_Load.VCA_RMS
+    // Generated from the component: MS_S2.TPM_Load.VLL_RMS
+    // Generated from the component: MS_S2.TPM_Load.VN
+    // Generated from the component: MS_S2.TPM_Load.VN_RMS
+    // Generated from the component: MS_S2.Three phase PLL1.to_Hz
+    _ms_s2_three_phase_pll1_to_hz__out = 0.15915494309189535 * _ms_s2_three_phase_pll1_lpf_lpf__out;
+    // Generated from the component: MS_S2.Phase-Synch-Switching
+    _ms_s2_phase_synch_switching__in_phase = _ms_s2_three_phase_pll1_unit_delay1__out;
+    _ms_s2_phase_synch_switching__in_sw = _ms_s2_s2_enable__out;
+    _ms_s2_phase_synch_switching__in_target = _ms_s2_phase_target__out;
+    {
+        _ms_s2_phase_synch_switching__out_sw = _ms_s2_phase_synch_switching__sw_out ;
+    }
+    // Generated from the component: MS_S2.Phase_in
+    HIL_OutAO(0x4081, (float)_ms_s2_three_phase_pll1_unit_delay1__out);
+    // Generated from the component: MS_S2.Three phase PLL1.sin
+    _ms_s2_three_phase_pll1_sin__out = sin(_ms_s2_three_phase_pll1_unit_delay1__out);
+    // Generated from the component: MS_S2.Termination1
+    // Generated from the component: MS_S2.Termination3
+    // Generated from the component: MS_S2.Three phase PLL1.normalize
+    _ms_s2_three_phase_pll1_normalize__in1 = _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__out;
+    _ms_s2_three_phase_pll1_normalize__in2 = _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__out;
+    {
+        _ms_s2_three_phase_pll1_normalize__pk = ( powf ( _ms_s2_three_phase_pll1_normalize__in1 , 2.0 ) + powf ( _ms_s2_three_phase_pll1_normalize__in2 , 2.0 ) ) ;
+        _ms_s2_three_phase_pll1_normalize__pk = sqrt ( _ms_s2_three_phase_pll1_normalize__pk ) ;
+        if ( _ms_s2_three_phase_pll1_normalize__pk < 0.1 )     {
+            _ms_s2_three_phase_pll1_normalize__in2_pu = _ms_s2_three_phase_pll1_normalize__in2 / 0.1 ;
+        }
+        else     {
+            _ms_s2_three_phase_pll1_normalize__in2_pu = _ms_s2_three_phase_pll1_normalize__in2 / _ms_s2_three_phase_pll1_normalize__pk ;
+        }
+    }
+    // Generated from the component: MS_S2.Three phase PLL1.abc to dq.abc to alpha beta
+    _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__alpha = (2.0 * _ms_s2_va_grid_va1__out - _ms_s2_vb_grid_va1__out - _ms_s2_vc_grid_va1__out) * 0.3333333333333333;
+    _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__beta = (_ms_s2_vb_grid_va1__out - _ms_s2_vc_grid_va1__out) * 0.5773502691896258;
+    _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__gamma = (_ms_s2_va_grid_va1__out + _ms_s2_vb_grid_va1__out + _ms_s2_vc_grid_va1__out) * 0.3333333333333333;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.to_Hz
+    _ms_s3_tpm_grid_pll_to_hz__out = 0.15915494309189535 * _ms_s3_tpm_grid_pll_lpf_lpf__out;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.sin
+    _ms_s3_tpm_grid_pll_sin__out = sin(_ms_s3_tpm_grid_pll_unit_delay1__out);
+    // Generated from the component: MS_S3.TPM_Grid.TRMwt
+    // Generated from the component: MS_S3.TPM_Grid.TRMd
+    // Generated from the component: MS_S3.TPM_Grid.PLL.normalize
+    _ms_s3_tpm_grid_pll_normalize__in1 = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__out;
+    _ms_s3_tpm_grid_pll_normalize__in2 = _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__out;
+    {
+        _ms_s3_tpm_grid_pll_normalize__pk = ( powf ( _ms_s3_tpm_grid_pll_normalize__in1 , 2.0 ) + powf ( _ms_s3_tpm_grid_pll_normalize__in2 , 2.0 ) ) ;
+        _ms_s3_tpm_grid_pll_normalize__pk = sqrt ( _ms_s3_tpm_grid_pll_normalize__pk ) ;
+        if ( _ms_s3_tpm_grid_pll_normalize__pk < 0.1 )     {
+            _ms_s3_tpm_grid_pll_normalize__in2_pu = _ms_s3_tpm_grid_pll_normalize__in2 / 0.1 ;
+        }
+        else     {
+            _ms_s3_tpm_grid_pll_normalize__in2_pu = _ms_s3_tpm_grid_pll_normalize__in2 / _ms_s3_tpm_grid_pll_normalize__pk ;
+        }
+    }
+    // Generated from the component: MS_S3.TPM_Grid.TRMq
+    // Generated from the component: MS_S3.TPM_Grid.PLL.abc to dq.abc to alpha beta
+    _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha = (2.0 * _ms_s3_tpm_grid_van_va1__out - _ms_s3_tpm_grid_vbn_va1__out - _ms_s3_tpm_grid_vcn_va1__out) * 0.3333333333333333;
+    _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta = (_ms_s3_tpm_grid_vbn_va1__out - _ms_s3_tpm_grid_vcn_va1__out) * 0.5773502691896258;
+    _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__gamma = (_ms_s3_tpm_grid_van_va1__out + _ms_s3_tpm_grid_vbn_va1__out + _ms_s3_tpm_grid_vcn_va1__out) * 0.3333333333333333;
+    // Generated from the component: MS_S3.TPM_Grid.IN
+    // Generated from the component: MS_S3.TPM_Grid.IN_RMS
+    // Generated from the component: MS_S3.TPM_Grid.I_RMS
+    // Generated from the component: MS_S3.TPM_Grid.VAB_RMS
+    // Generated from the component: MS_S3.TPM_Grid.VBC_RMS
+    // Generated from the component: MS_S3.TPM_Grid.VCA_RMS
+    // Generated from the component: MS_S3.TPM_Grid.VLL_RMS
+    // Generated from the component: MS_S3.TPM_Grid.VN
+    // Generated from the component: MS_S3.TPM_Grid.VN_RMS
+    // Generated from the component: MS_S3.TPM_uG.PLL.to_Hz
+    _ms_s3_tpm_ug_pll_to_hz__out = 0.15915494309189535 * _ms_s3_tpm_ug_pll_lpf_lpf__out;
+    // Generated from the component: MS_S3.TPM_uG.PLL.sin
+    _ms_s3_tpm_ug_pll_sin__out = sin(_ms_s3_tpm_ug_pll_unit_delay1__out);
+    // Generated from the component: MS_S3.TPM_uG.TRMwt
+    // Generated from the component: MS_S3.TPM_uG.TRMd
+    // Generated from the component: MS_S3.TPM_uG.PLL.normalize
+    _ms_s3_tpm_ug_pll_normalize__in1 = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__out;
+    _ms_s3_tpm_ug_pll_normalize__in2 = _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__out;
+    {
+        _ms_s3_tpm_ug_pll_normalize__pk = ( powf ( _ms_s3_tpm_ug_pll_normalize__in1 , 2.0 ) + powf ( _ms_s3_tpm_ug_pll_normalize__in2 , 2.0 ) ) ;
+        _ms_s3_tpm_ug_pll_normalize__pk = sqrt ( _ms_s3_tpm_ug_pll_normalize__pk ) ;
+        if ( _ms_s3_tpm_ug_pll_normalize__pk < 0.1 )     {
+            _ms_s3_tpm_ug_pll_normalize__in2_pu = _ms_s3_tpm_ug_pll_normalize__in2 / 0.1 ;
+        }
+        else     {
+            _ms_s3_tpm_ug_pll_normalize__in2_pu = _ms_s3_tpm_ug_pll_normalize__in2 / _ms_s3_tpm_ug_pll_normalize__pk ;
+        }
+    }
+    // Generated from the component: MS_S3.TPM_uG.TRMq
+    // Generated from the component: MS_S3.TPM_uG.PLL.abc to dq.abc to alpha beta
+    _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__alpha = (2.0 * _ms_s3_tpm_ug_van_va1__out - _ms_s3_tpm_ug_vbn_va1__out - _ms_s3_tpm_ug_vcn_va1__out) * 0.3333333333333333;
+    _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__beta = (_ms_s3_tpm_ug_vbn_va1__out - _ms_s3_tpm_ug_vcn_va1__out) * 0.5773502691896258;
+    _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__gamma = (_ms_s3_tpm_ug_van_va1__out + _ms_s3_tpm_ug_vbn_va1__out + _ms_s3_tpm_ug_vcn_va1__out) * 0.3333333333333333;
+    // Generated from the component: MS_S3.TPM_uG.IN
+    // Generated from the component: MS_S3.TPM_uG.IN_RMS
+    // Generated from the component: MS_S3.TPM_uG.VAB_RMS
+    // Generated from the component: MS_S3.TPM_uG.VBC_RMS
+    // Generated from the component: MS_S3.TPM_uG.VCA_RMS
+    // Generated from the component: MS_S3.TPM_uG.VLL_RMS
+    // Generated from the component: MS_S3.TPM_uG.VN
+    // Generated from the component: MS_S3.TPM_uG.VN_RMS
+    // Generated from the component: RLC_parallel_variable.ICa_MeanValue
+    if (_rlc_parallel_variable_ica_meanvalue__cnt_i < 20000 ) {
+        _rlc_parallel_variable_ica_meanvalue__vector[_rlc_parallel_variable_ica_meanvalue__cnt_i] = _rlc_parallel_variable_ica_ia1__out;
+        _rlc_parallel_variable_ica_meanvalue__sum = _rlc_parallel_variable_ica_meanvalue__sum + _rlc_parallel_variable_ica_ia1__out;
+        _rlc_parallel_variable_ica_meanvalue__cnt_i++;
+    }
+    else {
+        _rlc_parallel_variable_ica_meanvalue__sum = _rlc_parallel_variable_ica_meanvalue__sum - _rlc_parallel_variable_ica_meanvalue__vector[_rlc_parallel_variable_ica_meanvalue__cnt_j];
+        _rlc_parallel_variable_ica_meanvalue__sum = _rlc_parallel_variable_ica_meanvalue__sum + _rlc_parallel_variable_ica_ia1__out;
+        _rlc_parallel_variable_ica_meanvalue__vector[_rlc_parallel_variable_ica_meanvalue__cnt_j] = _rlc_parallel_variable_ica_ia1__out;
+        if (_rlc_parallel_variable_ica_meanvalue__cnt_j < 20000 - 1 ) {
+            _rlc_parallel_variable_ica_meanvalue__cnt_j++;
+        }
+        else {
+            _rlc_parallel_variable_ica_meanvalue__cnt_j = 0;
+        }
+    }
+    _rlc_parallel_variable_ica_meanvalue__out = _rlc_parallel_variable_ica_meanvalue__sum / _rlc_parallel_variable_ica_meanvalue__cnt_i;
+    // Generated from the component: RLC_parallel_variable.ICa_out
+    HIL_OutAO(0x40f1, (float)_rlc_parallel_variable_ica_ia1__out);
+    // Generated from the component: RLC_parallel_variable.ILa_MeanValue
+    if (_rlc_parallel_variable_ila_meanvalue__cnt_i < 20000 ) {
+        _rlc_parallel_variable_ila_meanvalue__vector[_rlc_parallel_variable_ila_meanvalue__cnt_i] = _rlc_parallel_variable_ila_ia1__out;
+        _rlc_parallel_variable_ila_meanvalue__sum = _rlc_parallel_variable_ila_meanvalue__sum + _rlc_parallel_variable_ila_ia1__out;
+        _rlc_parallel_variable_ila_meanvalue__cnt_i++;
+    }
+    else {
+        _rlc_parallel_variable_ila_meanvalue__sum = _rlc_parallel_variable_ila_meanvalue__sum - _rlc_parallel_variable_ila_meanvalue__vector[_rlc_parallel_variable_ila_meanvalue__cnt_j];
+        _rlc_parallel_variable_ila_meanvalue__sum = _rlc_parallel_variable_ila_meanvalue__sum + _rlc_parallel_variable_ila_ia1__out;
+        _rlc_parallel_variable_ila_meanvalue__vector[_rlc_parallel_variable_ila_meanvalue__cnt_j] = _rlc_parallel_variable_ila_ia1__out;
+        if (_rlc_parallel_variable_ila_meanvalue__cnt_j < 20000 - 1 ) {
+            _rlc_parallel_variable_ila_meanvalue__cnt_j++;
+        }
+        else {
+            _rlc_parallel_variable_ila_meanvalue__cnt_j = 0;
+        }
+    }
+    _rlc_parallel_variable_ila_meanvalue__out = _rlc_parallel_variable_ila_meanvalue__sum / _rlc_parallel_variable_ila_meanvalue__cnt_i;
+    // Generated from the component: RLC_parallel_variable.ILa_out
+    HIL_OutAO(0x40f5, (float)_rlc_parallel_variable_ila_ia1__out);
+    // Generated from the component: RLC_parallel_variable.IRa_MeanValue
+    if (_rlc_parallel_variable_ira_meanvalue__cnt_i < 20000 ) {
+        _rlc_parallel_variable_ira_meanvalue__vector[_rlc_parallel_variable_ira_meanvalue__cnt_i] = _rlc_parallel_variable_ira_ia1__out;
+        _rlc_parallel_variable_ira_meanvalue__sum = _rlc_parallel_variable_ira_meanvalue__sum + _rlc_parallel_variable_ira_ia1__out;
+        _rlc_parallel_variable_ira_meanvalue__cnt_i++;
+    }
+    else {
+        _rlc_parallel_variable_ira_meanvalue__sum = _rlc_parallel_variable_ira_meanvalue__sum - _rlc_parallel_variable_ira_meanvalue__vector[_rlc_parallel_variable_ira_meanvalue__cnt_j];
+        _rlc_parallel_variable_ira_meanvalue__sum = _rlc_parallel_variable_ira_meanvalue__sum + _rlc_parallel_variable_ira_ia1__out;
+        _rlc_parallel_variable_ira_meanvalue__vector[_rlc_parallel_variable_ira_meanvalue__cnt_j] = _rlc_parallel_variable_ira_ia1__out;
+        if (_rlc_parallel_variable_ira_meanvalue__cnt_j < 20000 - 1 ) {
+            _rlc_parallel_variable_ira_meanvalue__cnt_j++;
+        }
+        else {
+            _rlc_parallel_variable_ira_meanvalue__cnt_j = 0;
+        }
+    }
+    _rlc_parallel_variable_ira_meanvalue__out = _rlc_parallel_variable_ira_meanvalue__sum / _rlc_parallel_variable_ira_meanvalue__cnt_i;
+    // Generated from the component: RLC_parallel_variable.IRa_out
+    HIL_OutAO(0x40f9, (float)_rlc_parallel_variable_ira_ia1__out);
+    // Generated from the component: V_Zg-a
+    HIL_OutAO(0x40fc, (float)_va1_va1__out);
+    // Generated from the component: EUT_Interface.Vdc_o
+    HIL_OutAO(0x4051, (float)_vdc_meas_va1__out);
+    // Generated from the component: VI_dc
+    _vi_dc__out = (_idc_meas_ia1__out * _vdc_meas_va1__out);
+    // Generated from the component: Grid_Inputs.Mux_Ph_g
+    switch((X_UnInt32) _in_phg_choice__out) {
+    case 1:
+        _grid_inputs_mux_ph_g__out = _vg_ph__out;
+        break;
+    default:
+        _grid_inputs_mux_ph_g__out = 0x0;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.Gain6
+    _battery_inverter__average_1_control_pll_pu_gain6__out = 0.02 * _battery_inverter__average_1_control_pll_pu_pll_to_hz__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_f
+    HIL_OutAO(0x4017, (float)_battery_inverter__average_1_control_pll_pu_pll_to_hz__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Product4
+    _battery_inverter__average_1_control_imode_control_current_ref_product4__out = (_battery_inverter__average_1_control_pll_pu_gain4__out * _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Product5
+    _battery_inverter__average_1_control_imode_control_current_ref_product5__out = (_battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out * _battery_inverter__average_1_control_pll_pu_gain4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.squared_Vt.Product1
+    _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_product1__out = (_battery_inverter__average_1_control_pll_pu_gain4__out * _battery_inverter__average_1_control_pll_pu_gain4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_Vd-pu
+    HIL_OutAO(0x4012, (float)_battery_inverter__average_1_control_pll_pu_gain4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vd
+    HIL_OutAO(0x402a, (float)_battery_inverter__average_1_control_pll_pu_gain4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Product3
+    _battery_inverter__average_1_control_imode_control_current_ref_product3__out = (_battery_inverter__average_1_control_pll_pu_gain5__out * _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Product6
+    _battery_inverter__average_1_control_imode_control_current_ref_product6__out = (_battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__out * _battery_inverter__average_1_control_pll_pu_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.squared_Vt.Product2
+    _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_product2__out = (_battery_inverter__average_1_control_pll_pu_gain5__out * _battery_inverter__average_1_control_pll_pu_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_Vq-pu
+    HIL_OutAO(0x4014, (float)_battery_inverter__average_1_control_pll_pu_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vq
+    HIL_OutAO(0x4034, (float)_battery_inverter__average_1_control_pll_pu_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.Gain7
+    _battery_inverter__average_1_control_pll_pu_gain7__out = 0.0030618621784789728 * _battery_inverter__average_1_control_pll_pu_pll_normalize__pk;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_Vt
+    HIL_OutAO(0x4015, (float)_battery_inverter__average_1_control_pll_pu_pll_normalize__pk);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Kd
+    _battery_inverter__average_1_control_pll_pu_pll_pid_kd__out = 1.0 * _battery_inverter__average_1_control_pll_pu_pll_normalize__in2_pu;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Ki
+    _battery_inverter__average_1_control_pll_pu_pll_pid_ki__out = 3200.0 * _battery_inverter__average_1_control_pll_pu_pll_normalize__in2_pu;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Kp
+    _battery_inverter__average_1_control_pll_pu_pll_pid_kp__out = 100.0 * _battery_inverter__average_1_control_pll_pu_pll_normalize__in2_pu;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.Gain5
+    _battery_inverter__average_1_control_synch_pll_util_gain5__out = 0.02 * _battery_inverter__average_1_control_synch_pll_util_pll_to_hz__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.confine_phase
+    _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta = _battery_inverter__average_1_control_synch_phase_match_sum3__out;
+    {
+        if ( _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta > 3.14159265359 )     {
+            _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta_confined = _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta - 6.28318530718 ;
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta < - 3.14159265359 )         {
+                _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta_confined = _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta + 6.28318530718 ;
+            }
+            else         {
+                _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta_confined = _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.Gain4
+    _battery_inverter__average_1_control_synch_pll_util_gain4__out = 0.0030618621784789728 * _battery_inverter__average_1_control_synch_pll_util_pll_normalize__pk;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Kd
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_kd__out = 1.0 * _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2_pu;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Ki
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_ki__out = 3200.0 * _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2_pu;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Kp
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_kp__out = 100.0 * _battery_inverter__average_1_control_synch_pll_util_pll_normalize__in2_pu;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Sum2
+    _battery_inverter__average_1_control_synch_vmatch_sum2__out = _battery_inverter__average_1_control_synch_vmatch_phase_diff__out + _battery_inverter__average_1_control_synch_vmatch_phase_diff1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Sum2
+    _battery_inverter__average_1_control_synch_f_match_sum2__out = _battery_inverter__average_1_control_synch_f_match_freq_diff__out + _battery_inverter__average_1_control_synch_f_match_freq_diff1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Sum3
+    _battery_inverter__average_1_control_synch_f_match_low_pass_sum3__out = _battery_inverter__average_1_control_synch_f_match_low_pass_b2__out - _battery_inverter__average_1_control_synch_f_match_low_pass_a2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Sum2
+    _battery_inverter__average_1_control_synch_phase_match_sum2__out = _battery_inverter__average_1_control_synch_phase_match_phase_diff__out + _battery_inverter__average_1_control_synch_phase_match_phase_diff1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Sum3
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_sum3__out = _battery_inverter__average_1_control_synch_phase_match_low_pass_b2__out - _battery_inverter__average_1_control_synch_phase_match_low_pass_a2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Sum3
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum3__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b2__out - _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_a2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Sum2
+    _battery_inverter__average_1_control_duty_cycle_zsm_sum2__out =  - _battery_inverter__average_1_control_duty_cycle_zsm_limit1__out + _battery_inverter__average_1_control_duty_cycle_zsm_constant3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Sum8
+    _battery_inverter__average_1_control_duty_cycle_zsm_sum8__out =  - _battery_inverter__average_1_control_duty_cycle_zsm_limit1__out + _battery_inverter__average_1_control_duty_cycle_zsm_constant4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.abc to dq.alpha beta to dq
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k1 = cos(_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k2 = sin(_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__d = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__alpha - _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__q = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__alpha + _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.term_zero
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.abc to dq.alpha beta to dq
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k1 = cos(_battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k2 = sin(_battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__d = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__alpha - _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__q = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__alpha + _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.term_zero
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ.Termination1
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ.abc to dq1.alpha beta to dq
+    _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k1 = cos(_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k2 = sin(_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__d = _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__alpha - _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__beta;
+    _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__q = _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__alpha + _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_abctodq_abc_to_dq1_abc_to_alpha_beta__beta;
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ1.Termination1
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ1.abc to dq1.alpha beta to dq
+    _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k1 = cos(_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k2 = sin(_battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out);
+    _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__d = _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__alpha - _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__beta;
+    _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__q = _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__alpha + _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__beta;
+    // Generated from the component: Battery inverter (Average)1.Control.Gain1
+    _battery_inverter__average_1_control_gain1__out = 0.001176470588235294 * _battery_inverter__average_1_limit1__out;
+    // Generated from the component: Grid_Inputs.Mux_F_g_Trip
+    switch((X_UnInt32) _in_ftrip_choice__out) {
+    case 1:
+        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip1_1d_look_up_table1__value;
+        break;
+    case 2:
+        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip2_1d_look_up_table1__value;
+        break;
+    case 3:
+        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip7_1d_look_up_table1__value;
+        break;
+    case 4:
+        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip3_1d_look_up_table1__value;
+        break;
+    case 5:
+        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip4_1d_look_up_table1__value;
+        break;
+    case 6:
+        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip5_1d_look_up_table1__value;
+        break;
+    case 7:
+        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip6_1d_look_up_table1__value;
+        break;
+    default:
+        _grid_inputs_mux_f_g_trip__out = 0x0;
+    }
+    // Generated from the component: Grid_Inputs.Mux_V_g_Trip
+    switch((X_UnInt32) _in_vtrip_choice__out) {
+    case 1:
+        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip1_1d_look_up_table1__value;
+        break;
+    case 2:
+        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip2_1d_look_up_table1__value;
+        break;
+    case 3:
+        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip3_1d_look_up_table1__value;
+        break;
+    case 4:
+        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip4_1d_look_up_table1__value;
+        break;
+    case 5:
+        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip5_1d_look_up_table1__value;
+        break;
+    default:
+        _grid_inputs_mux_v_g_trip__out = 0x0;
+    }
+    // Generated from the component: MS_S1.S1_fb
+    HIL_OutAO(0x4060, (float)_ms_s1_s1_triple_s1_ideal_ctc_wrapper__feedback_out);
+    // Generated from the component: MS_S1.TPM_Grid.Freq
+    HIL_OutAO(0x4062, (float)_ms_s1_tpm_grid_pll_to_hz__out);
+    // Generated from the component: MS_S1.TPM_Grid.measSM.mode_and_dFract
+    _ms_s1_tpm_grid_meassm_mode_and_dfract__Freq = _ms_s1_tpm_grid_pll_to_hz__out;
+    {
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__freqAbs = fabs ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Freq ) ;
+        if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__reset == 1 )     {
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__mode = 1 ;
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract = 0.0 ;
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__cycle_counter = 0 ;
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__reset = 0 ;
+        }
+        else if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__freqAbs < 1.0 )     {
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__mode = 2 ;
+            if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract > 0.0 )         {
+                _ms_s1_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+            }
+        }
+        else if ( ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract < 1.0 ) && ( _ms_s1_tpm_grid_meassm_mode_and_dfract__freqAbs < _ms_s1_tpm_grid_meassm_mode_and_dfract__fMax ) )     {
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state = 1e-06 * _ms_s1_tpm_grid_meassm_mode_and_dfract__freqAbs ;
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract += _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state ;
+            if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract >= 1.0 )         {
+                _ms_s1_tpm_grid_meassm_mode_and_dfract__cycle_counter += 1 ;
+                if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__cycle_counter >= 1 )             {
+                    _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state = 1.0 - ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract - _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state ) ;
+                }
+                else             {
+                    _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract -= 1.0 ;
+                }
+            }
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state /= 1 ;
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__mode = 3 ;
+            if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract < 0.25 )         {
+                _ms_s1_tpm_grid_meassm_mode_and_dfract__submode_state = 1 ;
+            }
+            else if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract < 0.5 )         {
+                _ms_s1_tpm_grid_meassm_mode_and_dfract__submode_state = 2 ;
+            }
+            else if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract < 0.75 )         {
+                _ms_s1_tpm_grid_meassm_mode_and_dfract__submode_state = 3 ;
+            }
+            else         {
+                _ms_s1_tpm_grid_meassm_mode_and_dfract__submode_state = 4 ;
+            }
+        }
+        else if ( _ms_s1_tpm_grid_meassm_mode_and_dfract__Tfract >= 1.0 )     {
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__mode = 4 ;
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+        }
+        else     {
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__mode = 5 ;
+            _ms_s1_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+        }
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract = _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract_state ;
+        _ms_s1_tpm_grid_meassm_mode_and_dfract__submode = _ms_s1_tpm_grid_meassm_mode_and_dfract__submode_state ;
+    }
+    // Generated from the component: MS_S1.TPM_Grid.TRMsin
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Kd
+    _ms_s1_tpm_grid_pll_pid_kd__out = 1.0 * _ms_s1_tpm_grid_pll_normalize__in2_pu;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Ki
+    _ms_s1_tpm_grid_pll_pid_ki__out = 3200.0 * _ms_s1_tpm_grid_pll_normalize__in2_pu;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Kp
+    _ms_s1_tpm_grid_pll_pid_kp__out = 100.0 * _ms_s1_tpm_grid_pll_normalize__in2_pu;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.term_pk
+    // Generated from the component: MS_S1.TPM_Grid.PLL.abc to dq.alpha beta to dq
+    _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1 = cos(_ms_s1_tpm_grid_pll_unit_delay1__out);
+    _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2 = sin(_ms_s1_tpm_grid_pll_unit_delay1__out);
+    _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__d = _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha - _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__q = _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha + _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s1_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    // Generated from the component: MS_S1.TPM_Grid.TRMz
+    // Generated from the component: MS_S2.TPM_Load.Freq
+    HIL_OutAO(0x4085, (float)_ms_s2_tpm_load_pll_to_hz__out);
+    // Generated from the component: MS_S2.TPM_Load.measSM.mode_and_dFract
+    _ms_s2_tpm_load_meassm_mode_and_dfract__Freq = _ms_s2_tpm_load_pll_to_hz__out;
+    {
+        _ms_s2_tpm_load_meassm_mode_and_dfract__freqAbs = fabs ( _ms_s2_tpm_load_meassm_mode_and_dfract__Freq ) ;
+        if ( _ms_s2_tpm_load_meassm_mode_and_dfract__reset == 1 )     {
+            _ms_s2_tpm_load_meassm_mode_and_dfract__mode = 1 ;
+            _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract = 0.0 ;
+            _ms_s2_tpm_load_meassm_mode_and_dfract__cycle_counter = 0 ;
+            _ms_s2_tpm_load_meassm_mode_and_dfract__reset = 0 ;
+        }
+        else if ( _ms_s2_tpm_load_meassm_mode_and_dfract__freqAbs < 1.0 )     {
+            _ms_s2_tpm_load_meassm_mode_and_dfract__mode = 2 ;
+            if ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract > 0.0 )         {
+                _ms_s2_tpm_load_meassm_mode_and_dfract__reset = 1 ;
+            }
+        }
+        else if ( ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract < 1.0 ) && ( _ms_s2_tpm_load_meassm_mode_and_dfract__freqAbs < _ms_s2_tpm_load_meassm_mode_and_dfract__fMax ) )     {
+            _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state = 1e-06 * _ms_s2_tpm_load_meassm_mode_and_dfract__freqAbs ;
+            _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract += _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state ;
+            if ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract >= 1.0 )         {
+                _ms_s2_tpm_load_meassm_mode_and_dfract__cycle_counter += 1 ;
+                if ( _ms_s2_tpm_load_meassm_mode_and_dfract__cycle_counter >= 1 )             {
+                    _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state = 1.0 - ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract - _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state ) ;
+                }
+                else             {
+                    _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract -= 1.0 ;
+                }
+            }
+            _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state /= 1 ;
+            _ms_s2_tpm_load_meassm_mode_and_dfract__mode = 3 ;
+            if ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract < 0.25 )         {
+                _ms_s2_tpm_load_meassm_mode_and_dfract__submode_state = 1 ;
+            }
+            else if ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract < 0.5 )         {
+                _ms_s2_tpm_load_meassm_mode_and_dfract__submode_state = 2 ;
+            }
+            else if ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract < 0.75 )         {
+                _ms_s2_tpm_load_meassm_mode_and_dfract__submode_state = 3 ;
+            }
+            else         {
+                _ms_s2_tpm_load_meassm_mode_and_dfract__submode_state = 4 ;
+            }
+        }
+        else if ( _ms_s2_tpm_load_meassm_mode_and_dfract__Tfract >= 1.0 )     {
+            _ms_s2_tpm_load_meassm_mode_and_dfract__mode = 4 ;
+            _ms_s2_tpm_load_meassm_mode_and_dfract__reset = 1 ;
+        }
+        else     {
+            _ms_s2_tpm_load_meassm_mode_and_dfract__mode = 5 ;
+            _ms_s2_tpm_load_meassm_mode_and_dfract__reset = 1 ;
+        }
+        _ms_s2_tpm_load_meassm_mode_and_dfract__dFract = _ms_s2_tpm_load_meassm_mode_and_dfract__dFract_state ;
+        _ms_s2_tpm_load_meassm_mode_and_dfract__submode = _ms_s2_tpm_load_meassm_mode_and_dfract__submode_state ;
+    }
+    // Generated from the component: MS_S2.TPM_Load.TRMsin
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Kd
+    _ms_s2_tpm_load_pll_pid_kd__out = 1.0 * _ms_s2_tpm_load_pll_normalize__in2_pu;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Ki
+    _ms_s2_tpm_load_pll_pid_ki__out = 3200.0 * _ms_s2_tpm_load_pll_normalize__in2_pu;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Kp
+    _ms_s2_tpm_load_pll_pid_kp__out = 100.0 * _ms_s2_tpm_load_pll_normalize__in2_pu;
+    // Generated from the component: MS_S2.TPM_Load.PLL.term_pk
+    // Generated from the component: MS_S2.TPM_Load.PLL.abc to dq.alpha beta to dq
+    _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k1 = cos(_ms_s2_tpm_load_pll_unit_delay1__out);
+    _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k2 = sin(_ms_s2_tpm_load_pll_unit_delay1__out);
+    _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__d = _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__alpha - _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__q = _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__alpha + _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s2_tpm_load_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    // Generated from the component: MS_S2.TPM_Load.TRMz
+    // Generated from the component: MS_S2.Termination2
+    // Generated from the component: MS_S2.S2.Triple S1 ideal.CTC_Wrapper
+    if (_ms_s2_phase_synch_switching__out_sw == 0x0) {
+        HIL_OutInt32(0x8240482, 0x0);
+    }
+    else {
+        HIL_OutInt32(0x8240482, 0x1);
+    }
+    // Generated from the component: MS_S2.S2_fb
+    HIL_OutAO(0x4083, (float)_ms_s2_phase_synch_switching__out_sw);
+    // Generated from the component: MS_S2.Termination5
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Kd
+    _ms_s2_three_phase_pll1_pid_kd__out = 1.0 * _ms_s2_three_phase_pll1_normalize__in2_pu;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Ki
+    _ms_s2_three_phase_pll1_pid_ki__out = 3200.0 * _ms_s2_three_phase_pll1_normalize__in2_pu;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Kp
+    _ms_s2_three_phase_pll1_pid_kp__out = 100.0 * _ms_s2_three_phase_pll1_normalize__in2_pu;
+    // Generated from the component: MS_S2.Three phase PLL1.term_pk
+    // Generated from the component: MS_S2.Termination4
+    // Generated from the component: MS_S2.Three phase PLL1.abc to dq.alpha beta to dq
+    _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k1 = cos(_ms_s2_three_phase_pll1_unit_delay1__out);
+    _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k2 = sin(_ms_s2_three_phase_pll1_unit_delay1__out);
+    _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__d = _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__alpha - _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__beta;
+    _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__q = _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__alpha + _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s2_three_phase_pll1_abc_to_dq_abc_to_alpha_beta__beta;
+    // Generated from the component: MS_S3.TPM_Grid.Freq
+    HIL_OutAO(0x40a6, (float)_ms_s3_tpm_grid_pll_to_hz__out);
+    // Generated from the component: MS_S3.TPM_Grid.measSM.mode_and_dFract
+    _ms_s3_tpm_grid_meassm_mode_and_dfract__Freq = _ms_s3_tpm_grid_pll_to_hz__out;
+    {
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__freqAbs = fabs ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Freq ) ;
+        if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__reset == 1 )     {
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__mode = 1 ;
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract = 0.0 ;
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__cycle_counter = 0 ;
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__reset = 0 ;
+        }
+        else if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__freqAbs < 1.0 )     {
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__mode = 2 ;
+            if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract > 0.0 )         {
+                _ms_s3_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+            }
+        }
+        else if ( ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract < 1.0 ) && ( _ms_s3_tpm_grid_meassm_mode_and_dfract__freqAbs < _ms_s3_tpm_grid_meassm_mode_and_dfract__fMax ) )     {
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state = 1e-06 * _ms_s3_tpm_grid_meassm_mode_and_dfract__freqAbs ;
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract += _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state ;
+            if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract >= 1.0 )         {
+                _ms_s3_tpm_grid_meassm_mode_and_dfract__cycle_counter += 1 ;
+                if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__cycle_counter >= 1 )             {
+                    _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state = 1.0 - ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract - _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state ) ;
+                }
+                else             {
+                    _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract -= 1.0 ;
+                }
+            }
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state /= 1 ;
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__mode = 3 ;
+            if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract < 0.25 )         {
+                _ms_s3_tpm_grid_meassm_mode_and_dfract__submode_state = 1 ;
+            }
+            else if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract < 0.5 )         {
+                _ms_s3_tpm_grid_meassm_mode_and_dfract__submode_state = 2 ;
+            }
+            else if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract < 0.75 )         {
+                _ms_s3_tpm_grid_meassm_mode_and_dfract__submode_state = 3 ;
+            }
+            else         {
+                _ms_s3_tpm_grid_meassm_mode_and_dfract__submode_state = 4 ;
+            }
+        }
+        else if ( _ms_s3_tpm_grid_meassm_mode_and_dfract__Tfract >= 1.0 )     {
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__mode = 4 ;
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+        }
+        else     {
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__mode = 5 ;
+            _ms_s3_tpm_grid_meassm_mode_and_dfract__reset = 1 ;
+        }
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract = _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract_state ;
+        _ms_s3_tpm_grid_meassm_mode_and_dfract__submode = _ms_s3_tpm_grid_meassm_mode_and_dfract__submode_state ;
+    }
+    // Generated from the component: MS_S3.TPM_Grid.TRMsin
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Kd
+    _ms_s3_tpm_grid_pll_pid_kd__out = 1.0 * _ms_s3_tpm_grid_pll_normalize__in2_pu;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Ki
+    _ms_s3_tpm_grid_pll_pid_ki__out = 3200.0 * _ms_s3_tpm_grid_pll_normalize__in2_pu;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Kp
+    _ms_s3_tpm_grid_pll_pid_kp__out = 100.0 * _ms_s3_tpm_grid_pll_normalize__in2_pu;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.term_pk
+    // Generated from the component: MS_S3.TPM_Grid.PLL.abc to dq.alpha beta to dq
+    _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1 = cos(_ms_s3_tpm_grid_pll_unit_delay1__out);
+    _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2 = sin(_ms_s3_tpm_grid_pll_unit_delay1__out);
+    _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__d = _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha - _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__q = _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__alpha + _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s3_tpm_grid_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    // Generated from the component: MS_S3.TPM_Grid.TRMz
+    // Generated from the component: MS_S3.TPM_uG.Freq
+    HIL_OutAO(0x40be, (float)_ms_s3_tpm_ug_pll_to_hz__out);
+    // Generated from the component: MS_S3.TPM_uG.measSM.mode_and_dFract
+    _ms_s3_tpm_ug_meassm_mode_and_dfract__Freq = _ms_s3_tpm_ug_pll_to_hz__out;
+    {
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__freqAbs = fabs ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Freq ) ;
+        if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__reset == 1 )     {
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__mode = 1 ;
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract = 0.0 ;
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__cycle_counter = 0 ;
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__reset = 0 ;
+        }
+        else if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__freqAbs < 1.0 )     {
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__mode = 2 ;
+            if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract > 0.0 )         {
+                _ms_s3_tpm_ug_meassm_mode_and_dfract__reset = 1 ;
+            }
+        }
+        else if ( ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract < 1.0 ) && ( _ms_s3_tpm_ug_meassm_mode_and_dfract__freqAbs < _ms_s3_tpm_ug_meassm_mode_and_dfract__fMax ) )     {
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state = 1e-06 * _ms_s3_tpm_ug_meassm_mode_and_dfract__freqAbs ;
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract += _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state ;
+            if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract >= 1.0 )         {
+                _ms_s3_tpm_ug_meassm_mode_and_dfract__cycle_counter += 1 ;
+                if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__cycle_counter >= 1 )             {
+                    _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state = 1.0 - ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract - _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state ) ;
+                }
+                else             {
+                    _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract -= 1.0 ;
+                }
+            }
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state /= 1 ;
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__mode = 3 ;
+            if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract < 0.25 )         {
+                _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state = 1 ;
+            }
+            else if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract < 0.5 )         {
+                _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state = 2 ;
+            }
+            else if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract < 0.75 )         {
+                _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state = 3 ;
+            }
+            else         {
+                _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state = 4 ;
+            }
+        }
+        else if ( _ms_s3_tpm_ug_meassm_mode_and_dfract__Tfract >= 1.0 )     {
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__mode = 4 ;
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__reset = 1 ;
+        }
+        else     {
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__mode = 5 ;
+            _ms_s3_tpm_ug_meassm_mode_and_dfract__reset = 1 ;
+        }
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract = _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state ;
+        _ms_s3_tpm_ug_meassm_mode_and_dfract__submode = _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state ;
+    }
+    // Generated from the component: MS_S3.TPM_uG.TRMsin
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Kd
+    _ms_s3_tpm_ug_pll_pid_kd__out = 1.0 * _ms_s3_tpm_ug_pll_normalize__in2_pu;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Ki
+    _ms_s3_tpm_ug_pll_pid_ki__out = 3200.0 * _ms_s3_tpm_ug_pll_normalize__in2_pu;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Kp
+    _ms_s3_tpm_ug_pll_pid_kp__out = 100.0 * _ms_s3_tpm_ug_pll_normalize__in2_pu;
+    // Generated from the component: MS_S3.TPM_uG.PLL.term_pk
+    // Generated from the component: MS_S3.TPM_uG.PLL.abc to dq.alpha beta to dq
+    _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k1 = cos(_ms_s3_tpm_ug_pll_unit_delay1__out);
+    _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k2 = sin(_ms_s3_tpm_ug_pll_unit_delay1__out);
+    _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__d = _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__alpha - _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__q = _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__alpha + _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__beta;
+    // Generated from the component: MS_S3.TPM_uG.TRMz
+    // Generated from the component: RLC_parallel_variable.ICa_mean
+    HIL_OutAO(0x40f0, (float)_rlc_parallel_variable_ica_meanvalue__out);
+    // Generated from the component: RLC_parallel_variable.ILa_mean
+    HIL_OutAO(0x40f4, (float)_rlc_parallel_variable_ila_meanvalue__out);
+    // Generated from the component: RLC_parallel_variable.IRa_mean
+    HIL_OutAO(0x40f8, (float)_rlc_parallel_variable_ira_meanvalue__out);
+    // Generated from the component: EUT_Interface.Pdc_o
+    HIL_OutAO(0x404e, (float)_vi_dc__out);
+    // Generated from the component: Phg_Input
+    HIL_OutAO(0x40ef, (float)_grid_inputs_mux_ph_g__out);
+    // Generated from the component: Vg_pu-actual.S-Ph_b
+    _vg_pu_actual_s_ph_b__out = _grid_inputs_mux_ph_g__out - _vg_pu_actual_constant1__out;
+    // Generated from the component: Vg_pu-actual.S-Ph_c
+    _vg_pu_actual_s_ph_c__out = _grid_inputs_mux_ph_g__out + _vg_pu_actual_constant1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Sum11
+    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out = _battery_inverter__average_1_control_pll_pu_gain6__out - _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_f-pu
+    HIL_OutAO(0x4018, (float)_battery_inverter__average_1_control_pll_pu_gain6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Abs3
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_abs3__out = fabs(_battery_inverter__average_1_control_pll_pu_gain6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_i
+    HIL_OutAO(0x4023, (float)_battery_inverter__average_1_control_pll_pu_gain6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.f
+    HIL_OutAO(0x4044, (float)_battery_inverter__average_1_control_pll_pu_gain6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Sum3
+    _battery_inverter__average_1_control_imode_control_current_ref_sum3__out = _battery_inverter__average_1_control_imode_control_current_ref_product3__out - _battery_inverter__average_1_control_imode_control_current_ref_product4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Sum4
+    _battery_inverter__average_1_control_imode_control_current_ref_sum4__out = _battery_inverter__average_1_control_imode_control_current_ref_product5__out + _battery_inverter__average_1_control_imode_control_current_ref_product6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.squared_Vt.Sum3
+    _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_sum3__out = _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_product1__out + _battery_inverter__average_1_control_imode_control_current_ref_squared_vt_product2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_Vt-pu
+    HIL_OutAO(0x4016, (float)_battery_inverter__average_1_control_pll_pu_gain7__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Sum5
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_sum5__out = _battery_inverter__average_1_control_pll_pu_gain7__out - _battery_inverter__average_1_control_synch_check_nominal_conditions_nominal_voltage__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vt_i
+    HIL_OutAO(0x401f, (float)_battery_inverter__average_1_control_pll_pu_gain7__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vt
+    HIL_OutAO(0x4035, (float)_battery_inverter__average_1_control_pll_pu_gain7__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Sum8
+    _battery_inverter__average_1_control_pll_pu_pll_pid_sum8__out = _battery_inverter__average_1_control_pll_pu_pll_pid_kd__out - _battery_inverter__average_1_control_pll_pu_pll_pid_integrator2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Abs3
+    _battery_inverter__average_1_control_synch_check_grid_abs3__out = fabs(_battery_inverter__average_1_control_synch_pll_util_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.f_util
+    HIL_OutAO(0x401d, (float)_battery_inverter__average_1_control_synch_pll_util_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Sum1
+    _battery_inverter__average_1_control_synch_f_match_sum1__out = _battery_inverter__average_1_control_synch_pll_util_gain5__out - _battery_inverter__average_1_control_pll_pu_gain6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_u
+    HIL_OutAO(0x4025, (float)_battery_inverter__average_1_control_synch_pll_util_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.b0
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_b0__out = 9.82591682e-06 * _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta_confined;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Sum5
+    _battery_inverter__average_1_control_synch_check_grid_sum5__out = _battery_inverter__average_1_control_synch_pll_util_gain4__out - _battery_inverter__average_1_control_synch_check_grid_nominal_voltage__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.Vt_util
+    HIL_OutAO(0x401c, (float)_battery_inverter__average_1_control_synch_pll_util_gain4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Sum10
+    _battery_inverter__average_1_control_synch_vmatch_sum10__out = _battery_inverter__average_1_control_synch_pll_util_gain4__out - _battery_inverter__average_1_control_pll_pu_gain7__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vt_u
+    HIL_OutAO(0x4020, (float)_battery_inverter__average_1_control_synch_pll_util_gain4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Sum8
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum8__out = _battery_inverter__average_1_control_synch_pll_util_pll_pid_kd__out - _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Sum2
+    _battery_inverter__average_1_control_synch_f_match_low_pass_sum2__out = _battery_inverter__average_1_control_synch_f_match_low_pass_b1__out + _battery_inverter__average_1_control_synch_f_match_low_pass_sum3__out - _battery_inverter__average_1_control_synch_f_match_low_pass_a1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Sum2
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_sum2__out = _battery_inverter__average_1_control_synch_phase_match_low_pass_b1__out + _battery_inverter__average_1_control_synch_phase_match_low_pass_sum3__out - _battery_inverter__average_1_control_synch_phase_match_low_pass_a1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Sum2
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum2__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b1__out + _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum3__out - _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_a1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ.Gain1
+    _battery_inverter__average_1_control_abctodq_gain1__out = 0.004898979485566356 * _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__d;
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ.Gain2
+    _battery_inverter__average_1_control_abctodq_gain2__out = 0.004898979485566356 * _battery_inverter__average_1_control_abctodq_abc_to_dq1_alpha_beta_to_dq__q;
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ1.Gain1
+    _battery_inverter__average_1_control_abctodq1_gain1__out = 0.004898979485566356 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__d;
+    // Generated from the component: Battery inverter (Average)1.Control.ABCtoDQ1.Gain2
+    _battery_inverter__average_1_control_abctodq1_gain2__out = 0.004898979485566356 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__q;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Limit3
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_limit3__out = MAX(_battery_inverter__average_1_control_gain1__out, 0.01);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Limit3
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_limit3__out = MAX(_battery_inverter__average_1_control_gain1__out, 0.01);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Gain1
+    _battery_inverter__average_1_control_duty_cycle_gain1__out = 425.0 * _battery_inverter__average_1_control_gain1__out;
+    // Generated from the component: Grid_Inputs.Input-Synch-Switching_F
+    _grid_inputs_input_synch_switching_f__in_FRT = _grid_inputs_f_frt_pu_1d_look_up_table1__value;
+    _grid_inputs_input_synch_switching_f__in_Trip = _grid_inputs_mux_f_g_trip__out;
+    _grid_inputs_input_synch_switching_f__in_sw = _in_fg_choice__out;
+    {
+        _grid_inputs_input_synch_switching_f__out_sw = _grid_inputs_input_synch_switching_f__sw_out ;
+    }
+    // Generated from the component: Grid_Inputs.Input-Synch-Switching_V
+    _grid_inputs_input_synch_switching_v__in_FRT = _grid_inputs_v_frt_pu_1d_look_up_table1__value;
+    _grid_inputs_input_synch_switching_v__in_Trip = _grid_inputs_mux_v_g_trip__out;
+    _grid_inputs_input_synch_switching_v__in_sw = _in_vg_choice__out;
+    {
+        _grid_inputs_input_synch_switching_v__out_sw = _grid_inputs_input_synch_switching_v__sw_out ;
+    }
+    // Generated from the component: MS_S1.TPM_Grid.I_RMS_calc.RMS
+    _ms_s1_tpm_grid_i_rms_calc_rms__IN1 = _ms_s1_tpm_grid_ia_ia1__out;
+    _ms_s1_tpm_grid_i_rms_calc_rms__IN2 = _ms_s1_tpm_grid_ib_ia1__out;
+    _ms_s1_tpm_grid_i_rms_calc_rms__IN3 = _ms_s1_tpm_grid_ic_ia1__out;
+    _ms_s1_tpm_grid_i_rms_calc_rms__dFract = _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract;
+    _ms_s1_tpm_grid_i_rms_calc_rms__mode = _ms_s1_tpm_grid_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s1_tpm_grid_i_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS1_state = _ms_s1_tpm_grid_i_rms_calc_rms__IN1 ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS2_state = _ms_s1_tpm_grid_i_rms_calc_rms__IN2 ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS3_state = _ms_s1_tpm_grid_i_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum1 += _ms_s1_tpm_grid_i_rms_calc_rms__dFract * ( _ms_s1_tpm_grid_i_rms_calc_rms__IN1 * _ms_s1_tpm_grid_i_rms_calc_rms__IN1 ) ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum2 += _ms_s1_tpm_grid_i_rms_calc_rms__dFract * ( _ms_s1_tpm_grid_i_rms_calc_rms__IN2 * _ms_s1_tpm_grid_i_rms_calc_rms__IN2 ) ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum3 += _ms_s1_tpm_grid_i_rms_calc_rms__dFract * ( _ms_s1_tpm_grid_i_rms_calc_rms__IN3 * _ms_s1_tpm_grid_i_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS1_state = sqrt ( _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum1 ) ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS2_state = sqrt ( _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum2 ) ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS3_state = sqrt ( _ms_s1_tpm_grid_i_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS1_state = fabs ( _ms_s1_tpm_grid_i_rms_calc_rms__IN1 ) ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS2_state = fabs ( _ms_s1_tpm_grid_i_rms_calc_rms__IN2 ) ;
+            _ms_s1_tpm_grid_i_rms_calc_rms__RMS3_state = fabs ( _ms_s1_tpm_grid_i_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s1_tpm_grid_i_rms_calc_rms__RMS1 = _ms_s1_tpm_grid_i_rms_calc_rms__RMS1_state ;
+        _ms_s1_tpm_grid_i_rms_calc_rms__RMS2 = _ms_s1_tpm_grid_i_rms_calc_rms__RMS2_state ;
+        _ms_s1_tpm_grid_i_rms_calc_rms__RMS3 = _ms_s1_tpm_grid_i_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S1.TPM_Grid.VLn_RMS_calc.RMS
+    _ms_s1_tpm_grid_vln_rms_calc_rms__IN1 = _ms_s1_tpm_grid_van_va1__out;
+    _ms_s1_tpm_grid_vln_rms_calc_rms__IN2 = _ms_s1_tpm_grid_vbn_va1__out;
+    _ms_s1_tpm_grid_vln_rms_calc_rms__IN3 = _ms_s1_tpm_grid_vcn_va1__out;
+    _ms_s1_tpm_grid_vln_rms_calc_rms__dFract = _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract;
+    _ms_s1_tpm_grid_vln_rms_calc_rms__mode = _ms_s1_tpm_grid_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s1_tpm_grid_vln_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1_state = _ms_s1_tpm_grid_vln_rms_calc_rms__IN1 ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2_state = _ms_s1_tpm_grid_vln_rms_calc_rms__IN2 ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3_state = _ms_s1_tpm_grid_vln_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum1 += _ms_s1_tpm_grid_vln_rms_calc_rms__dFract * ( _ms_s1_tpm_grid_vln_rms_calc_rms__IN1 * _ms_s1_tpm_grid_vln_rms_calc_rms__IN1 ) ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum2 += _ms_s1_tpm_grid_vln_rms_calc_rms__dFract * ( _ms_s1_tpm_grid_vln_rms_calc_rms__IN2 * _ms_s1_tpm_grid_vln_rms_calc_rms__IN2 ) ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum3 += _ms_s1_tpm_grid_vln_rms_calc_rms__dFract * ( _ms_s1_tpm_grid_vln_rms_calc_rms__IN3 * _ms_s1_tpm_grid_vln_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1_state = sqrt ( _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum1 ) ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2_state = sqrt ( _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum2 ) ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3_state = sqrt ( _ms_s1_tpm_grid_vln_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1_state = fabs ( _ms_s1_tpm_grid_vln_rms_calc_rms__IN1 ) ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2_state = fabs ( _ms_s1_tpm_grid_vln_rms_calc_rms__IN2 ) ;
+            _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3_state = fabs ( _ms_s1_tpm_grid_vln_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1 = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1_state ;
+        _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2 = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2_state ;
+        _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3 = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Sum8
+    _ms_s1_tpm_grid_pll_pid_sum8__out = _ms_s1_tpm_grid_pll_pid_kd__out - _ms_s1_tpm_grid_pll_pid_integrator2__out;
+    // Generated from the component: MS_S2.TPM_Load.I_RMS_calc.RMS
+    _ms_s2_tpm_load_i_rms_calc_rms__IN1 = _ms_s2_tpm_load_ia_ia1__out;
+    _ms_s2_tpm_load_i_rms_calc_rms__IN2 = _ms_s2_tpm_load_ib_ia1__out;
+    _ms_s2_tpm_load_i_rms_calc_rms__IN3 = _ms_s2_tpm_load_ic_ia1__out;
+    _ms_s2_tpm_load_i_rms_calc_rms__dFract = _ms_s2_tpm_load_meassm_mode_and_dfract__dFract;
+    _ms_s2_tpm_load_i_rms_calc_rms__mode = _ms_s2_tpm_load_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s2_tpm_load_i_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s2_tpm_load_i_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s2_tpm_load_i_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s2_tpm_load_i_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS1_state = _ms_s2_tpm_load_i_rms_calc_rms__IN1 ;
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS2_state = _ms_s2_tpm_load_i_rms_calc_rms__IN2 ;
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS3_state = _ms_s2_tpm_load_i_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s2_tpm_load_i_rms_calc_rms__rmsSum1 += _ms_s2_tpm_load_i_rms_calc_rms__dFract * ( _ms_s2_tpm_load_i_rms_calc_rms__IN1 * _ms_s2_tpm_load_i_rms_calc_rms__IN1 ) ;
+            _ms_s2_tpm_load_i_rms_calc_rms__rmsSum2 += _ms_s2_tpm_load_i_rms_calc_rms__dFract * ( _ms_s2_tpm_load_i_rms_calc_rms__IN2 * _ms_s2_tpm_load_i_rms_calc_rms__IN2 ) ;
+            _ms_s2_tpm_load_i_rms_calc_rms__rmsSum3 += _ms_s2_tpm_load_i_rms_calc_rms__dFract * ( _ms_s2_tpm_load_i_rms_calc_rms__IN3 * _ms_s2_tpm_load_i_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS1_state = sqrt ( _ms_s2_tpm_load_i_rms_calc_rms__rmsSum1 ) ;
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS2_state = sqrt ( _ms_s2_tpm_load_i_rms_calc_rms__rmsSum2 ) ;
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS3_state = sqrt ( _ms_s2_tpm_load_i_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS1_state = fabs ( _ms_s2_tpm_load_i_rms_calc_rms__IN1 ) ;
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS2_state = fabs ( _ms_s2_tpm_load_i_rms_calc_rms__IN2 ) ;
+            _ms_s2_tpm_load_i_rms_calc_rms__RMS3_state = fabs ( _ms_s2_tpm_load_i_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s2_tpm_load_i_rms_calc_rms__RMS1 = _ms_s2_tpm_load_i_rms_calc_rms__RMS1_state ;
+        _ms_s2_tpm_load_i_rms_calc_rms__RMS2 = _ms_s2_tpm_load_i_rms_calc_rms__RMS2_state ;
+        _ms_s2_tpm_load_i_rms_calc_rms__RMS3 = _ms_s2_tpm_load_i_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S2.TPM_Load.VLn_RMS_calc.RMS
+    _ms_s2_tpm_load_vln_rms_calc_rms__IN1 = _ms_s2_tpm_load_van_va1__out;
+    _ms_s2_tpm_load_vln_rms_calc_rms__IN2 = _ms_s2_tpm_load_vbn_va1__out;
+    _ms_s2_tpm_load_vln_rms_calc_rms__IN3 = _ms_s2_tpm_load_vcn_va1__out;
+    _ms_s2_tpm_load_vln_rms_calc_rms__dFract = _ms_s2_tpm_load_meassm_mode_and_dfract__dFract;
+    _ms_s2_tpm_load_vln_rms_calc_rms__mode = _ms_s2_tpm_load_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s2_tpm_load_vln_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS1_state = _ms_s2_tpm_load_vln_rms_calc_rms__IN1 ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS2_state = _ms_s2_tpm_load_vln_rms_calc_rms__IN2 ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS3_state = _ms_s2_tpm_load_vln_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum1 += _ms_s2_tpm_load_vln_rms_calc_rms__dFract * ( _ms_s2_tpm_load_vln_rms_calc_rms__IN1 * _ms_s2_tpm_load_vln_rms_calc_rms__IN1 ) ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum2 += _ms_s2_tpm_load_vln_rms_calc_rms__dFract * ( _ms_s2_tpm_load_vln_rms_calc_rms__IN2 * _ms_s2_tpm_load_vln_rms_calc_rms__IN2 ) ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum3 += _ms_s2_tpm_load_vln_rms_calc_rms__dFract * ( _ms_s2_tpm_load_vln_rms_calc_rms__IN3 * _ms_s2_tpm_load_vln_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS1_state = sqrt ( _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum1 ) ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS2_state = sqrt ( _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum2 ) ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS3_state = sqrt ( _ms_s2_tpm_load_vln_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS1_state = fabs ( _ms_s2_tpm_load_vln_rms_calc_rms__IN1 ) ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS2_state = fabs ( _ms_s2_tpm_load_vln_rms_calc_rms__IN2 ) ;
+            _ms_s2_tpm_load_vln_rms_calc_rms__RMS3_state = fabs ( _ms_s2_tpm_load_vln_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s2_tpm_load_vln_rms_calc_rms__RMS1 = _ms_s2_tpm_load_vln_rms_calc_rms__RMS1_state ;
+        _ms_s2_tpm_load_vln_rms_calc_rms__RMS2 = _ms_s2_tpm_load_vln_rms_calc_rms__RMS2_state ;
+        _ms_s2_tpm_load_vln_rms_calc_rms__RMS3 = _ms_s2_tpm_load_vln_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Sum8
+    _ms_s2_tpm_load_pll_pid_sum8__out = _ms_s2_tpm_load_pll_pid_kd__out - _ms_s2_tpm_load_pll_pid_integrator2__out;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Sum8
+    _ms_s2_three_phase_pll1_pid_sum8__out = _ms_s2_three_phase_pll1_pid_kd__out - _ms_s2_three_phase_pll1_pid_integrator2__out;
+    // Generated from the component: MS_S3.TPM_Grid.I_RMS_calc.RMS
+    _ms_s3_tpm_grid_i_rms_calc_rms__IN1 = _ms_s3_tpm_grid_ia_ia1__out;
+    _ms_s3_tpm_grid_i_rms_calc_rms__IN2 = _ms_s3_tpm_grid_ib_ia1__out;
+    _ms_s3_tpm_grid_i_rms_calc_rms__IN3 = _ms_s3_tpm_grid_ic_ia1__out;
+    _ms_s3_tpm_grid_i_rms_calc_rms__dFract = _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract;
+    _ms_s3_tpm_grid_i_rms_calc_rms__mode = _ms_s3_tpm_grid_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s3_tpm_grid_i_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS1_state = _ms_s3_tpm_grid_i_rms_calc_rms__IN1 ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS2_state = _ms_s3_tpm_grid_i_rms_calc_rms__IN2 ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS3_state = _ms_s3_tpm_grid_i_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum1 += _ms_s3_tpm_grid_i_rms_calc_rms__dFract * ( _ms_s3_tpm_grid_i_rms_calc_rms__IN1 * _ms_s3_tpm_grid_i_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum2 += _ms_s3_tpm_grid_i_rms_calc_rms__dFract * ( _ms_s3_tpm_grid_i_rms_calc_rms__IN2 * _ms_s3_tpm_grid_i_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum3 += _ms_s3_tpm_grid_i_rms_calc_rms__dFract * ( _ms_s3_tpm_grid_i_rms_calc_rms__IN3 * _ms_s3_tpm_grid_i_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS1_state = sqrt ( _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum1 ) ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS2_state = sqrt ( _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum2 ) ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS3_state = sqrt ( _ms_s3_tpm_grid_i_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS1_state = fabs ( _ms_s3_tpm_grid_i_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS2_state = fabs ( _ms_s3_tpm_grid_i_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_grid_i_rms_calc_rms__RMS3_state = fabs ( _ms_s3_tpm_grid_i_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s3_tpm_grid_i_rms_calc_rms__RMS1 = _ms_s3_tpm_grid_i_rms_calc_rms__RMS1_state ;
+        _ms_s3_tpm_grid_i_rms_calc_rms__RMS2 = _ms_s3_tpm_grid_i_rms_calc_rms__RMS2_state ;
+        _ms_s3_tpm_grid_i_rms_calc_rms__RMS3 = _ms_s3_tpm_grid_i_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S3.TPM_Grid.VLn_RMS_calc.RMS
+    _ms_s3_tpm_grid_vln_rms_calc_rms__IN1 = _ms_s3_tpm_grid_van_va1__out;
+    _ms_s3_tpm_grid_vln_rms_calc_rms__IN2 = _ms_s3_tpm_grid_vbn_va1__out;
+    _ms_s3_tpm_grid_vln_rms_calc_rms__IN3 = _ms_s3_tpm_grid_vcn_va1__out;
+    _ms_s3_tpm_grid_vln_rms_calc_rms__dFract = _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract;
+    _ms_s3_tpm_grid_vln_rms_calc_rms__mode = _ms_s3_tpm_grid_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s3_tpm_grid_vln_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1_state = _ms_s3_tpm_grid_vln_rms_calc_rms__IN1 ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2_state = _ms_s3_tpm_grid_vln_rms_calc_rms__IN2 ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3_state = _ms_s3_tpm_grid_vln_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum1 += _ms_s3_tpm_grid_vln_rms_calc_rms__dFract * ( _ms_s3_tpm_grid_vln_rms_calc_rms__IN1 * _ms_s3_tpm_grid_vln_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum2 += _ms_s3_tpm_grid_vln_rms_calc_rms__dFract * ( _ms_s3_tpm_grid_vln_rms_calc_rms__IN2 * _ms_s3_tpm_grid_vln_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum3 += _ms_s3_tpm_grid_vln_rms_calc_rms__dFract * ( _ms_s3_tpm_grid_vln_rms_calc_rms__IN3 * _ms_s3_tpm_grid_vln_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1_state = sqrt ( _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum1 ) ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2_state = sqrt ( _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum2 ) ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3_state = sqrt ( _ms_s3_tpm_grid_vln_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1_state = fabs ( _ms_s3_tpm_grid_vln_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2_state = fabs ( _ms_s3_tpm_grid_vln_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3_state = fabs ( _ms_s3_tpm_grid_vln_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1 = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1_state ;
+        _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2 = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2_state ;
+        _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3 = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Sum8
+    _ms_s3_tpm_grid_pll_pid_sum8__out = _ms_s3_tpm_grid_pll_pid_kd__out - _ms_s3_tpm_grid_pll_pid_integrator2__out;
+    // Generated from the component: MS_S3.TPM_uG.I_RMS_calc.RMS
+    _ms_s3_tpm_ug_i_rms_calc_rms__IN1 = _ms_s3_tpm_ug_ia_ia1__out;
+    _ms_s3_tpm_ug_i_rms_calc_rms__IN2 = _ms_s3_tpm_ug_ib_ia1__out;
+    _ms_s3_tpm_ug_i_rms_calc_rms__IN3 = _ms_s3_tpm_ug_ic_ia1__out;
+    _ms_s3_tpm_ug_i_rms_calc_rms__dFract = _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract;
+    _ms_s3_tpm_ug_i_rms_calc_rms__mode = _ms_s3_tpm_ug_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s3_tpm_ug_i_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS1_state = _ms_s3_tpm_ug_i_rms_calc_rms__IN1 ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS2_state = _ms_s3_tpm_ug_i_rms_calc_rms__IN2 ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS3_state = _ms_s3_tpm_ug_i_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum1 += _ms_s3_tpm_ug_i_rms_calc_rms__dFract * ( _ms_s3_tpm_ug_i_rms_calc_rms__IN1 * _ms_s3_tpm_ug_i_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum2 += _ms_s3_tpm_ug_i_rms_calc_rms__dFract * ( _ms_s3_tpm_ug_i_rms_calc_rms__IN2 * _ms_s3_tpm_ug_i_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum3 += _ms_s3_tpm_ug_i_rms_calc_rms__dFract * ( _ms_s3_tpm_ug_i_rms_calc_rms__IN3 * _ms_s3_tpm_ug_i_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS1_state = sqrt ( _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum1 ) ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS2_state = sqrt ( _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum2 ) ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS3_state = sqrt ( _ms_s3_tpm_ug_i_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS1_state = fabs ( _ms_s3_tpm_ug_i_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS2_state = fabs ( _ms_s3_tpm_ug_i_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_ug_i_rms_calc_rms__RMS3_state = fabs ( _ms_s3_tpm_ug_i_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s3_tpm_ug_i_rms_calc_rms__RMS1 = _ms_s3_tpm_ug_i_rms_calc_rms__RMS1_state ;
+        _ms_s3_tpm_ug_i_rms_calc_rms__RMS2 = _ms_s3_tpm_ug_i_rms_calc_rms__RMS2_state ;
+        _ms_s3_tpm_ug_i_rms_calc_rms__RMS3 = _ms_s3_tpm_ug_i_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S3.TPM_uG.VLn_RMS_calc.RMS
+    _ms_s3_tpm_ug_vln_rms_calc_rms__IN1 = _ms_s3_tpm_ug_van_va1__out;
+    _ms_s3_tpm_ug_vln_rms_calc_rms__IN2 = _ms_s3_tpm_ug_vbn_va1__out;
+    _ms_s3_tpm_ug_vln_rms_calc_rms__IN3 = _ms_s3_tpm_ug_vcn_va1__out;
+    _ms_s3_tpm_ug_vln_rms_calc_rms__dFract = _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract;
+    _ms_s3_tpm_ug_vln_rms_calc_rms__mode = _ms_s3_tpm_ug_meassm_mode_and_dfract__mode;
+    {
+        switch ( _ms_s3_tpm_ug_vln_rms_calc_rms__mode )     {
+        case 1 :
+            _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum1 = 0.0 ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum2 = 0.0 ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum3 = 0.0 ;
+            break;
+        case 2 :
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1_state = _ms_s3_tpm_ug_vln_rms_calc_rms__IN1 ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2_state = _ms_s3_tpm_ug_vln_rms_calc_rms__IN2 ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state = _ms_s3_tpm_ug_vln_rms_calc_rms__IN3 ;
+            break;
+        case 3 :
+            _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum1 += _ms_s3_tpm_ug_vln_rms_calc_rms__dFract * ( _ms_s3_tpm_ug_vln_rms_calc_rms__IN1 * _ms_s3_tpm_ug_vln_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum2 += _ms_s3_tpm_ug_vln_rms_calc_rms__dFract * ( _ms_s3_tpm_ug_vln_rms_calc_rms__IN2 * _ms_s3_tpm_ug_vln_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum3 += _ms_s3_tpm_ug_vln_rms_calc_rms__dFract * ( _ms_s3_tpm_ug_vln_rms_calc_rms__IN3 * _ms_s3_tpm_ug_vln_rms_calc_rms__IN3 ) ;
+            break;
+        case 4 :
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1_state = sqrt ( _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum1 ) ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2_state = sqrt ( _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum2 ) ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state = sqrt ( _ms_s3_tpm_ug_vln_rms_calc_rms__rmsSum3 ) ;
+            break;
+        case 5 :
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1_state = fabs ( _ms_s3_tpm_ug_vln_rms_calc_rms__IN1 ) ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2_state = fabs ( _ms_s3_tpm_ug_vln_rms_calc_rms__IN2 ) ;
+            _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state = fabs ( _ms_s3_tpm_ug_vln_rms_calc_rms__IN3 ) ;
+            break;
+        }
+        _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1 = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1_state ;
+        _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2 = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2_state ;
+        _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3 = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state ;
+    }
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Sum8
+    _ms_s3_tpm_ug_pll_pid_sum8__out = _ms_s3_tpm_ug_pll_pid_kd__out - _ms_s3_tpm_ug_pll_pid_integrator2__out;
+    // Generated from the component: Vg_pu-actual.Bus Join_Vg-ph
+    _vg_pu_actual_bus_join_vg_ph__out[0] = _grid_inputs_mux_ph_g__out;
+    _vg_pu_actual_bus_join_vg_ph__out[1] = _vg_pu_actual_s_ph_b__out;
+    _vg_pu_actual_bus_join_vg_ph__out[2] = _vg_pu_actual_s_ph_c__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Product1
+    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_product1__out = (_battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out * _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.f_error
+    HIL_OutAO(0x4004, (float)_battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Sum4
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_sum4__out = _battery_inverter__average_1_control_synch_check_nominal_conditions_abs3__out - _battery_inverter__average_1_control_synch_check_nominal_conditions_nominal_frequency__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Limit3
+    _battery_inverter__average_1_control_imode_control_current_ref_limit3__out = MAX(_battery_inverter__average_1_control_imode_control_current_ref_squared_vt_sum3__out, 0.01);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Abs2
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_abs2__out = fabs(_battery_inverter__average_1_control_synch_check_nominal_conditions_sum5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Gain1
+    _battery_inverter__average_1_control_pll_pu_pll_pid_gain1__out = 714.2857 * _battery_inverter__average_1_control_pll_pu_pll_pid_sum8__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Sum4
+    _battery_inverter__average_1_control_synch_check_grid_sum4__out = _battery_inverter__average_1_control_synch_check_grid_abs3__out - _battery_inverter__average_1_control_synch_check_grid_nominal_frequency__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.b0
+    _battery_inverter__average_1_control_synch_f_match_low_pass_b0__out = 9.82591682e-06 * _battery_inverter__average_1_control_synch_f_match_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Abs2
+    _battery_inverter__average_1_control_synch_check_grid_abs2__out = fabs(_battery_inverter__average_1_control_synch_check_grid_sum5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Abs2
+    _battery_inverter__average_1_control_synch_vmatch_abs2__out = fabs(_battery_inverter__average_1_control_synch_vmatch_sum10__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Gain1
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_gain1__out = 714.2857 * _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum8__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Sum1
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_sum1__out = _battery_inverter__average_1_control_synch_phase_match_low_pass_b0__out + _battery_inverter__average_1_control_synch_phase_match_low_pass_sum2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Id
+    HIL_OutAO(0x4002, (float)_battery_inverter__average_1_control_abctodq_gain1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Id_damp
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_id_damp__out = -0.0001 * _battery_inverter__average_1_control_abctodq_gain1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Iq
+    HIL_OutAO(0x400e, (float)_battery_inverter__average_1_control_abctodq_gain2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Id_out
+    HIL_OutAO(0x4003, (float)_battery_inverter__average_1_control_abctodq1_gain1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Gain7
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_gain7__out = 0.2611448893296516 * _battery_inverter__average_1_control_abctodq1_gain1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.damper.Id_damp
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_id_damp__out = -0.272 * _battery_inverter__average_1_control_abctodq1_gain1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.Product1
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_product1__out = (_battery_inverter__average_1_control_pll_pu_gain4__out * _battery_inverter__average_1_control_abctodq1_gain1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.Product4
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_product4__out = (_battery_inverter__average_1_control_pll_pu_gain5__out * _battery_inverter__average_1_control_abctodq1_gain1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Gain4
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_gain4__out = 0.2611448893296516 * _battery_inverter__average_1_control_abctodq1_gain2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.damper.Iq_damp
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_iq_damp__out = -0.272 * _battery_inverter__average_1_control_abctodq1_gain2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Iq_out
+    HIL_OutAO(0x400f, (float)_battery_inverter__average_1_control_abctodq1_gain2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.Product2
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_product2__out = (_battery_inverter__average_1_control_pll_pu_gain5__out * _battery_inverter__average_1_control_abctodq1_gain2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.Product3
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_product3__out = (_battery_inverter__average_1_control_pll_pu_gain4__out * _battery_inverter__average_1_control_abctodq1_gain2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Gain5
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_gain5__out = 0.5 * _battery_inverter__average_1_control_imode_control_dq_current_controller_limit3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Gain5
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain5__out = 1.2 * _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_limit3__out;
+    // Generated from the component: Grid_Inputs.Mux_f_g
+    switch((X_UnInt32) _grid_inputs_input_synch_switching_f__out_sw) {
+    case 1:
+        _grid_inputs_mux_f_g__out = _vg_f__out;
+        break;
+    case 2:
+        _grid_inputs_mux_f_g__out = _grid_inputs_f_frt_pu_1d_look_up_table1__value;
+        break;
+    case 3:
+        _grid_inputs_mux_f_g__out = _grid_inputs_mux_f_g_trip__out;
+        break;
+    default:
+        _grid_inputs_mux_f_g__out = 0x0;
+    }
+    // Generated from the component: Grid_Inputs.Mux_V_g
+    switch((X_UnInt32) _grid_inputs_input_synch_switching_v__out_sw) {
+    case 1:
+        _grid_inputs_mux_v_g__out = _vg_rms__out;
+        break;
+    case 2:
+        _grid_inputs_mux_v_g__out = _grid_inputs_v_frt_pu_1d_look_up_table1__value;
+        break;
+    case 3:
+        _grid_inputs_mux_v_g__out = _grid_inputs_mux_v_g_trip__out;
+        break;
+    default:
+        _grid_inputs_mux_v_g__out = 0x0;
+    }
+    // Generated from the component: MS_S1.TPM_Grid.IA_RMS
+    HIL_OutAO(0x4063, (float)_ms_s1_tpm_grid_i_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S1.TPM_Grid.IB_RMS
+    HIL_OutAO(0x4064, (float)_ms_s1_tpm_grid_i_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S1.TPM_Grid.IC_RMS
+    HIL_OutAO(0x4065, (float)_ms_s1_tpm_grid_i_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S1.TPM_Grid.Power Meter.POWER
+    _ms_s1_tpm_grid_power_meter_power__Ia = _ms_s1_tpm_grid_ia_ia1__out;
+    _ms_s1_tpm_grid_power_meter_power__Ib = _ms_s1_tpm_grid_ib_ia1__out;
+    _ms_s1_tpm_grid_power_meter_power__Ic = _ms_s1_tpm_grid_ic_ia1__out;
+    _ms_s1_tpm_grid_power_meter_power__IrmsA = _ms_s1_tpm_grid_i_rms_calc_rms__RMS1;
+    _ms_s1_tpm_grid_power_meter_power__IrmsB = _ms_s1_tpm_grid_i_rms_calc_rms__RMS2;
+    _ms_s1_tpm_grid_power_meter_power__IrmsC = _ms_s1_tpm_grid_i_rms_calc_rms__RMS3;
+    _ms_s1_tpm_grid_power_meter_power__Va = _ms_s1_tpm_grid_van_va1__out;
+    _ms_s1_tpm_grid_power_meter_power__Vb = _ms_s1_tpm_grid_vbn_va1__out;
+    _ms_s1_tpm_grid_power_meter_power__Vc = _ms_s1_tpm_grid_vcn_va1__out;
+    _ms_s1_tpm_grid_power_meter_power__VrmsA = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1;
+    _ms_s1_tpm_grid_power_meter_power__VrmsB = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2;
+    _ms_s1_tpm_grid_power_meter_power__VrmsC = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3;
+    _ms_s1_tpm_grid_power_meter_power__dFract = _ms_s1_tpm_grid_meassm_mode_and_dfract__dFract;
+    _ms_s1_tpm_grid_power_meter_power__mode = _ms_s1_tpm_grid_meassm_mode_and_dfract__mode;
+    _ms_s1_tpm_grid_power_meter_power__submode = _ms_s1_tpm_grid_meassm_mode_and_dfract__submode;
+    {
+        switch ( _ms_s1_tpm_grid_power_meter_power__mode )     {
+        case 1 :
+            _ms_s1_tpm_grid_power_meter_power__VevenSumA = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__VoddSumA = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__VevenSumB = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__VoddSumB = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__VevenSumC = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__VoddSumC = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__IevenSumA = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__IoddSumA = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__IevenSumB = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__IoddSumB = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__IevenSumC = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__IoddSumC = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PsumA = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PsumB = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PsumC = 0.0 ;
+            break;
+        case 2 :
+            _ms_s1_tpm_grid_power_meter_power__Pa_state = _ms_s1_tpm_grid_power_meter_power__Va * _ms_s1_tpm_grid_power_meter_power__Ia ;
+            _ms_s1_tpm_grid_power_meter_power__Pb_state = _ms_s1_tpm_grid_power_meter_power__Vb * _ms_s1_tpm_grid_power_meter_power__Ib ;
+            _ms_s1_tpm_grid_power_meter_power__Pc_state = _ms_s1_tpm_grid_power_meter_power__Vc * _ms_s1_tpm_grid_power_meter_power__Ic ;
+            _ms_s1_tpm_grid_power_meter_power__P_state = _ms_s1_tpm_grid_power_meter_power__Pa_state + _ms_s1_tpm_grid_power_meter_power__Pb_state + _ms_s1_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s1_tpm_grid_power_meter_power__Qa_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Qb_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Qc_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Q_state = _ms_s1_tpm_grid_power_meter_power__Qa_state + _ms_s1_tpm_grid_power_meter_power__Qb_state + _ms_s1_tpm_grid_power_meter_power__Qc_state ;
+            _ms_s1_tpm_grid_power_meter_power__Sa_state = _ms_s1_tpm_grid_power_meter_power__Pa_state ;
+            _ms_s1_tpm_grid_power_meter_power__Sb_state = _ms_s1_tpm_grid_power_meter_power__Pb_state ;
+            _ms_s1_tpm_grid_power_meter_power__Sc_state = _ms_s1_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s1_tpm_grid_power_meter_power__S_state = _ms_s1_tpm_grid_power_meter_power__Sa_state + _ms_s1_tpm_grid_power_meter_power__Sb_state + _ms_s1_tpm_grid_power_meter_power__Sc_state ;
+            _ms_s1_tpm_grid_power_meter_power__PFa_state = 1.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PFb_state = 1.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PFc_state = 1.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PF_state = 1.0 ;
+            break;
+        case 3 :
+            _ms_s1_tpm_grid_power_meter_power__PsumA += _ms_s1_tpm_grid_power_meter_power__dFract * ( _ms_s1_tpm_grid_power_meter_power__Va * _ms_s1_tpm_grid_power_meter_power__Ia ) ;
+            _ms_s1_tpm_grid_power_meter_power__PsumB += _ms_s1_tpm_grid_power_meter_power__dFract * ( _ms_s1_tpm_grid_power_meter_power__Vb * _ms_s1_tpm_grid_power_meter_power__Ib ) ;
+            _ms_s1_tpm_grid_power_meter_power__PsumC += _ms_s1_tpm_grid_power_meter_power__dFract * ( _ms_s1_tpm_grid_power_meter_power__Vc * _ms_s1_tpm_grid_power_meter_power__Ic ) ;
+            switch ( _ms_s1_tpm_grid_power_meter_power__submode )         {
+            case 1 :
+                _ms_s1_tpm_grid_power_meter_power__VevenSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                break;
+            case 2 :
+                _ms_s1_tpm_grid_power_meter_power__VevenSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                break;
+            case 3 :
+                _ms_s1_tpm_grid_power_meter_power__VevenSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                break;
+            case 4 :
+                _ms_s1_tpm_grid_power_meter_power__VevenSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VevenSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumA += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumB += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IevenSumC += _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Va ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vb ;
+                _ms_s1_tpm_grid_power_meter_power__VoddSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Vc ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumA -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ia ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumB -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ib ;
+                _ms_s1_tpm_grid_power_meter_power__IoddSumC -= _ms_s1_tpm_grid_power_meter_power__dFract * _ms_s1_tpm_grid_power_meter_power__Ic ;
+                break;
+            }
+            break;
+        case 4 :
+            _ms_s1_tpm_grid_power_meter_power__Pa_state = _ms_s1_tpm_grid_power_meter_power__PsumA ;
+            _ms_s1_tpm_grid_power_meter_power__Pb_state = _ms_s1_tpm_grid_power_meter_power__PsumB ;
+            _ms_s1_tpm_grid_power_meter_power__Pc_state = _ms_s1_tpm_grid_power_meter_power__PsumC ;
+            _ms_s1_tpm_grid_power_meter_power__P_state = _ms_s1_tpm_grid_power_meter_power__Pa_state + _ms_s1_tpm_grid_power_meter_power__Pb_state + _ms_s1_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s1_tpm_grid_power_meter_power__Sa_state = _ms_s1_tpm_grid_power_meter_power__VrmsA * _ms_s1_tpm_grid_power_meter_power__IrmsA ;
+            _ms_s1_tpm_grid_power_meter_power__Sb_state = _ms_s1_tpm_grid_power_meter_power__VrmsB * _ms_s1_tpm_grid_power_meter_power__IrmsB ;
+            _ms_s1_tpm_grid_power_meter_power__Sc_state = _ms_s1_tpm_grid_power_meter_power__VrmsC * _ms_s1_tpm_grid_power_meter_power__IrmsC ;
+            _ms_s1_tpm_grid_power_meter_power__S_state = _ms_s1_tpm_grid_power_meter_power__Sa_state + _ms_s1_tpm_grid_power_meter_power__Sb_state + _ms_s1_tpm_grid_power_meter_power__Sc_state ;
+            _ms_s1_tpm_grid_power_meter_power__Qa_state = _ms_s1_tpm_grid_power_meter_power__Sa_state * _ms_s1_tpm_grid_power_meter_power__Sa_state - _ms_s1_tpm_grid_power_meter_power__Pa_state * _ms_s1_tpm_grid_power_meter_power__Pa_state ;
+            if ( _ms_s1_tpm_grid_power_meter_power__Qa_state < 0.0 )         {
+                _ms_s1_tpm_grid_power_meter_power__Qa_state = 0.0 ;
+            }
+            else         {
+                _ms_s1_tpm_grid_power_meter_power__Qa_state = sqrt ( _ms_s1_tpm_grid_power_meter_power__Qa_state ) ;
+                if ( atan2f ( ( _ms_s1_tpm_grid_power_meter_power__VoddSumA * _ms_s1_tpm_grid_power_meter_power__IevenSumA - _ms_s1_tpm_grid_power_meter_power__IoddSumA * _ms_s1_tpm_grid_power_meter_power__VevenSumA ) , ( _ms_s1_tpm_grid_power_meter_power__VevenSumA * _ms_s1_tpm_grid_power_meter_power__IevenSumA + _ms_s1_tpm_grid_power_meter_power__VoddSumA * _ms_s1_tpm_grid_power_meter_power__IoddSumA ) ) > 0.0 )             {
+                    _ms_s1_tpm_grid_power_meter_power__Qa_state *= - 1 ;
+                }
+            }
+            _ms_s1_tpm_grid_power_meter_power__Qb_state = _ms_s1_tpm_grid_power_meter_power__Sb_state * _ms_s1_tpm_grid_power_meter_power__Sb_state - _ms_s1_tpm_grid_power_meter_power__Pb_state * _ms_s1_tpm_grid_power_meter_power__Pb_state ;
+            if ( _ms_s1_tpm_grid_power_meter_power__Qb_state < 0.0 )         {
+                _ms_s1_tpm_grid_power_meter_power__Qb_state = 0.0 ;
+            }
+            else         {
+                _ms_s1_tpm_grid_power_meter_power__Qb_state = sqrt ( _ms_s1_tpm_grid_power_meter_power__Qb_state ) ;
+                if ( atan2f ( ( _ms_s1_tpm_grid_power_meter_power__VoddSumB * _ms_s1_tpm_grid_power_meter_power__IevenSumB - _ms_s1_tpm_grid_power_meter_power__IoddSumB * _ms_s1_tpm_grid_power_meter_power__VevenSumB ) , ( _ms_s1_tpm_grid_power_meter_power__VevenSumB * _ms_s1_tpm_grid_power_meter_power__IevenSumB + _ms_s1_tpm_grid_power_meter_power__VoddSumB * _ms_s1_tpm_grid_power_meter_power__IoddSumB ) ) > 0.0 )             {
+                    _ms_s1_tpm_grid_power_meter_power__Qb_state *= - 1 ;
+                }
+            }
+            _ms_s1_tpm_grid_power_meter_power__Qc_state = _ms_s1_tpm_grid_power_meter_power__Sc_state * _ms_s1_tpm_grid_power_meter_power__Sc_state - _ms_s1_tpm_grid_power_meter_power__Pc_state * _ms_s1_tpm_grid_power_meter_power__Pc_state ;
+            if ( _ms_s1_tpm_grid_power_meter_power__Qc_state < 0.0 )         {
+                _ms_s1_tpm_grid_power_meter_power__Qc_state = 0.0 ;
+            }
+            else         {
+                _ms_s1_tpm_grid_power_meter_power__Qc_state = sqrt ( _ms_s1_tpm_grid_power_meter_power__Qc_state ) ;
+                if ( atan2f ( ( _ms_s1_tpm_grid_power_meter_power__VoddSumC * _ms_s1_tpm_grid_power_meter_power__IevenSumC - _ms_s1_tpm_grid_power_meter_power__IoddSumC * _ms_s1_tpm_grid_power_meter_power__VevenSumC ) , ( _ms_s1_tpm_grid_power_meter_power__VevenSumC * _ms_s1_tpm_grid_power_meter_power__IevenSumC + _ms_s1_tpm_grid_power_meter_power__VoddSumC * _ms_s1_tpm_grid_power_meter_power__IoddSumC ) ) > 0.0 )             {
+                    _ms_s1_tpm_grid_power_meter_power__Qc_state *= - 1 ;
+                }
+            }
+            _ms_s1_tpm_grid_power_meter_power__Q_state = _ms_s1_tpm_grid_power_meter_power__Qa_state + _ms_s1_tpm_grid_power_meter_power__Qb_state + _ms_s1_tpm_grid_power_meter_power__Qc_state ;
+            if ( _ms_s1_tpm_grid_power_meter_power__Sa_state > 0 )         {
+                _ms_s1_tpm_grid_power_meter_power__PFa_state = _ms_s1_tpm_grid_power_meter_power__Pa_state / _ms_s1_tpm_grid_power_meter_power__Sa_state ;
+            }
+            else         {
+                _ms_s1_tpm_grid_power_meter_power__PFa_state = 0.0 ;
+            }
+            if ( _ms_s1_tpm_grid_power_meter_power__Sb_state > 0 )         {
+                _ms_s1_tpm_grid_power_meter_power__PFb_state = _ms_s1_tpm_grid_power_meter_power__Pb_state / _ms_s1_tpm_grid_power_meter_power__Sb_state ;
+            }
+            else         {
+                _ms_s1_tpm_grid_power_meter_power__PFb_state = 0.0 ;
+            }
+            if ( _ms_s1_tpm_grid_power_meter_power__Sc_state > 0 )         {
+                _ms_s1_tpm_grid_power_meter_power__PFc_state = _ms_s1_tpm_grid_power_meter_power__Pc_state / _ms_s1_tpm_grid_power_meter_power__Sc_state ;
+            }
+            else         {
+                _ms_s1_tpm_grid_power_meter_power__PFc_state = 0.0 ;
+            }
+            if ( _ms_s1_tpm_grid_power_meter_power__S_state > 0 )         {
+                _ms_s1_tpm_grid_power_meter_power__PF_state = _ms_s1_tpm_grid_power_meter_power__P_state / _ms_s1_tpm_grid_power_meter_power__S_state ;
+            }
+            else         {
+                _ms_s1_tpm_grid_power_meter_power__PF_state = 0.0 ;
+            }
+            break;
+        case 5 :
+            _ms_s1_tpm_grid_power_meter_power__Pa_state = _ms_s1_tpm_grid_power_meter_power__Va * _ms_s1_tpm_grid_power_meter_power__Ia ;
+            _ms_s1_tpm_grid_power_meter_power__Pb_state = _ms_s1_tpm_grid_power_meter_power__Vb * _ms_s1_tpm_grid_power_meter_power__Ib ;
+            _ms_s1_tpm_grid_power_meter_power__Pc_state = _ms_s1_tpm_grid_power_meter_power__Vc * _ms_s1_tpm_grid_power_meter_power__Ic ;
+            _ms_s1_tpm_grid_power_meter_power__P_state = _ms_s1_tpm_grid_power_meter_power__Pa_state + _ms_s1_tpm_grid_power_meter_power__Pb_state + _ms_s1_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s1_tpm_grid_power_meter_power__Qa_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Qb_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Qc_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Q_state = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__Sa_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Sb_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__Sc_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__S_state = 0 ;
+            _ms_s1_tpm_grid_power_meter_power__PFa_state = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PFb_state = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PFc_state = 0.0 ;
+            _ms_s1_tpm_grid_power_meter_power__PF_state = 0.0 ;
+            break;
+        }
+        _ms_s1_tpm_grid_power_meter_power__Pa = _ms_s1_tpm_grid_power_meter_power__Pa_state ;
+        _ms_s1_tpm_grid_power_meter_power__Pb = _ms_s1_tpm_grid_power_meter_power__Pb_state ;
+        _ms_s1_tpm_grid_power_meter_power__Pc = _ms_s1_tpm_grid_power_meter_power__Pc_state ;
+        _ms_s1_tpm_grid_power_meter_power__P = _ms_s1_tpm_grid_power_meter_power__P_state ;
+        _ms_s1_tpm_grid_power_meter_power__Qa = _ms_s1_tpm_grid_power_meter_power__Qa_state ;
+        _ms_s1_tpm_grid_power_meter_power__Qb = _ms_s1_tpm_grid_power_meter_power__Qb_state ;
+        _ms_s1_tpm_grid_power_meter_power__Qc = _ms_s1_tpm_grid_power_meter_power__Qc_state ;
+        _ms_s1_tpm_grid_power_meter_power__Q = _ms_s1_tpm_grid_power_meter_power__Q_state ;
+        _ms_s1_tpm_grid_power_meter_power__Sa = _ms_s1_tpm_grid_power_meter_power__Sa_state ;
+        _ms_s1_tpm_grid_power_meter_power__Sb = _ms_s1_tpm_grid_power_meter_power__Sb_state ;
+        _ms_s1_tpm_grid_power_meter_power__Sc = _ms_s1_tpm_grid_power_meter_power__Sc_state ;
+        _ms_s1_tpm_grid_power_meter_power__S = _ms_s1_tpm_grid_power_meter_power__S_state ;
+        _ms_s1_tpm_grid_power_meter_power__PFa = _ms_s1_tpm_grid_power_meter_power__PFa_state ;
+        _ms_s1_tpm_grid_power_meter_power__PFb = _ms_s1_tpm_grid_power_meter_power__PFb_state ;
+        _ms_s1_tpm_grid_power_meter_power__PFc = _ms_s1_tpm_grid_power_meter_power__PFc_state ;
+        _ms_s1_tpm_grid_power_meter_power__PF = _ms_s1_tpm_grid_power_meter_power__PF_state ;
+    }
+    // Generated from the component: MS_S1.TPM_Grid.VAn_RMS
+    HIL_OutAO(0x4076, (float)_ms_s1_tpm_grid_vln_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S1.TPM_Grid.VBn_RMS
+    HIL_OutAO(0x4077, (float)_ms_s1_tpm_grid_vln_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S1.TPM_Grid.VCn_RMS
+    HIL_OutAO(0x4078, (float)_ms_s1_tpm_grid_vln_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S1.TPM_Grid.sumVLn_RMS
+    _ms_s1_tpm_grid_sumvln_rms__out = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1 + _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2 + _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Gain1
+    _ms_s1_tpm_grid_pll_pid_gain1__out = 714.2857 * _ms_s1_tpm_grid_pll_pid_sum8__out;
+    // Generated from the component: MS_S2.TPM_Load.IA_RMS
+    HIL_OutAO(0x4086, (float)_ms_s2_tpm_load_i_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S2.TPM_Load.IB_RMS
+    HIL_OutAO(0x4087, (float)_ms_s2_tpm_load_i_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S2.TPM_Load.IC_RMS
+    HIL_OutAO(0x4088, (float)_ms_s2_tpm_load_i_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S2.TPM_Load.Power Meter.POWER
+    _ms_s2_tpm_load_power_meter_power__Ia = _ms_s2_tpm_load_ia_ia1__out;
+    _ms_s2_tpm_load_power_meter_power__Ib = _ms_s2_tpm_load_ib_ia1__out;
+    _ms_s2_tpm_load_power_meter_power__Ic = _ms_s2_tpm_load_ic_ia1__out;
+    _ms_s2_tpm_load_power_meter_power__IrmsA = _ms_s2_tpm_load_i_rms_calc_rms__RMS1;
+    _ms_s2_tpm_load_power_meter_power__IrmsB = _ms_s2_tpm_load_i_rms_calc_rms__RMS2;
+    _ms_s2_tpm_load_power_meter_power__IrmsC = _ms_s2_tpm_load_i_rms_calc_rms__RMS3;
+    _ms_s2_tpm_load_power_meter_power__Va = _ms_s2_tpm_load_van_va1__out;
+    _ms_s2_tpm_load_power_meter_power__Vb = _ms_s2_tpm_load_vbn_va1__out;
+    _ms_s2_tpm_load_power_meter_power__Vc = _ms_s2_tpm_load_vcn_va1__out;
+    _ms_s2_tpm_load_power_meter_power__VrmsA = _ms_s2_tpm_load_vln_rms_calc_rms__RMS1;
+    _ms_s2_tpm_load_power_meter_power__VrmsB = _ms_s2_tpm_load_vln_rms_calc_rms__RMS2;
+    _ms_s2_tpm_load_power_meter_power__VrmsC = _ms_s2_tpm_load_vln_rms_calc_rms__RMS3;
+    _ms_s2_tpm_load_power_meter_power__dFract = _ms_s2_tpm_load_meassm_mode_and_dfract__dFract;
+    _ms_s2_tpm_load_power_meter_power__mode = _ms_s2_tpm_load_meassm_mode_and_dfract__mode;
+    _ms_s2_tpm_load_power_meter_power__submode = _ms_s2_tpm_load_meassm_mode_and_dfract__submode;
+    {
+        switch ( _ms_s2_tpm_load_power_meter_power__mode )     {
+        case 1 :
+            _ms_s2_tpm_load_power_meter_power__VevenSumA = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__VoddSumA = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__VevenSumB = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__VoddSumB = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__VevenSumC = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__VoddSumC = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__IevenSumA = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__IoddSumA = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__IevenSumB = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__IoddSumB = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__IevenSumC = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__IoddSumC = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__PsumA = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__PsumB = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__PsumC = 0.0 ;
+            break;
+        case 2 :
+            _ms_s2_tpm_load_power_meter_power__Pa_state = _ms_s2_tpm_load_power_meter_power__Va * _ms_s2_tpm_load_power_meter_power__Ia ;
+            _ms_s2_tpm_load_power_meter_power__Pb_state = _ms_s2_tpm_load_power_meter_power__Vb * _ms_s2_tpm_load_power_meter_power__Ib ;
+            _ms_s2_tpm_load_power_meter_power__Pc_state = _ms_s2_tpm_load_power_meter_power__Vc * _ms_s2_tpm_load_power_meter_power__Ic ;
+            _ms_s2_tpm_load_power_meter_power__P_state = _ms_s2_tpm_load_power_meter_power__Pa_state + _ms_s2_tpm_load_power_meter_power__Pb_state + _ms_s2_tpm_load_power_meter_power__Pc_state ;
+            _ms_s2_tpm_load_power_meter_power__Qa_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Qb_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Qc_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Q_state = _ms_s2_tpm_load_power_meter_power__Qa_state + _ms_s2_tpm_load_power_meter_power__Qb_state + _ms_s2_tpm_load_power_meter_power__Qc_state ;
+            _ms_s2_tpm_load_power_meter_power__Sa_state = _ms_s2_tpm_load_power_meter_power__Pa_state ;
+            _ms_s2_tpm_load_power_meter_power__Sb_state = _ms_s2_tpm_load_power_meter_power__Pb_state ;
+            _ms_s2_tpm_load_power_meter_power__Sc_state = _ms_s2_tpm_load_power_meter_power__Pc_state ;
+            _ms_s2_tpm_load_power_meter_power__S_state = _ms_s2_tpm_load_power_meter_power__Sa_state + _ms_s2_tpm_load_power_meter_power__Sb_state + _ms_s2_tpm_load_power_meter_power__Sc_state ;
+            _ms_s2_tpm_load_power_meter_power__PFa_state = 1.0 ;
+            _ms_s2_tpm_load_power_meter_power__PFb_state = 1.0 ;
+            _ms_s2_tpm_load_power_meter_power__PFc_state = 1.0 ;
+            _ms_s2_tpm_load_power_meter_power__PF_state = 1.0 ;
+            break;
+        case 3 :
+            _ms_s2_tpm_load_power_meter_power__PsumA += _ms_s2_tpm_load_power_meter_power__dFract * ( _ms_s2_tpm_load_power_meter_power__Va * _ms_s2_tpm_load_power_meter_power__Ia ) ;
+            _ms_s2_tpm_load_power_meter_power__PsumB += _ms_s2_tpm_load_power_meter_power__dFract * ( _ms_s2_tpm_load_power_meter_power__Vb * _ms_s2_tpm_load_power_meter_power__Ib ) ;
+            _ms_s2_tpm_load_power_meter_power__PsumC += _ms_s2_tpm_load_power_meter_power__dFract * ( _ms_s2_tpm_load_power_meter_power__Vc * _ms_s2_tpm_load_power_meter_power__Ic ) ;
+            switch ( _ms_s2_tpm_load_power_meter_power__submode )         {
+            case 1 :
+                _ms_s2_tpm_load_power_meter_power__VevenSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                break;
+            case 2 :
+                _ms_s2_tpm_load_power_meter_power__VevenSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                break;
+            case 3 :
+                _ms_s2_tpm_load_power_meter_power__VevenSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                break;
+            case 4 :
+                _ms_s2_tpm_load_power_meter_power__VevenSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VevenSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumA += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumB += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IevenSumC += _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Va ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vb ;
+                _ms_s2_tpm_load_power_meter_power__VoddSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Vc ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumA -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ia ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumB -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ib ;
+                _ms_s2_tpm_load_power_meter_power__IoddSumC -= _ms_s2_tpm_load_power_meter_power__dFract * _ms_s2_tpm_load_power_meter_power__Ic ;
+                break;
+            }
+            break;
+        case 4 :
+            _ms_s2_tpm_load_power_meter_power__Pa_state = _ms_s2_tpm_load_power_meter_power__PsumA ;
+            _ms_s2_tpm_load_power_meter_power__Pb_state = _ms_s2_tpm_load_power_meter_power__PsumB ;
+            _ms_s2_tpm_load_power_meter_power__Pc_state = _ms_s2_tpm_load_power_meter_power__PsumC ;
+            _ms_s2_tpm_load_power_meter_power__P_state = _ms_s2_tpm_load_power_meter_power__Pa_state + _ms_s2_tpm_load_power_meter_power__Pb_state + _ms_s2_tpm_load_power_meter_power__Pc_state ;
+            _ms_s2_tpm_load_power_meter_power__Sa_state = _ms_s2_tpm_load_power_meter_power__VrmsA * _ms_s2_tpm_load_power_meter_power__IrmsA ;
+            _ms_s2_tpm_load_power_meter_power__Sb_state = _ms_s2_tpm_load_power_meter_power__VrmsB * _ms_s2_tpm_load_power_meter_power__IrmsB ;
+            _ms_s2_tpm_load_power_meter_power__Sc_state = _ms_s2_tpm_load_power_meter_power__VrmsC * _ms_s2_tpm_load_power_meter_power__IrmsC ;
+            _ms_s2_tpm_load_power_meter_power__S_state = _ms_s2_tpm_load_power_meter_power__Sa_state + _ms_s2_tpm_load_power_meter_power__Sb_state + _ms_s2_tpm_load_power_meter_power__Sc_state ;
+            _ms_s2_tpm_load_power_meter_power__Qa_state = _ms_s2_tpm_load_power_meter_power__Sa_state * _ms_s2_tpm_load_power_meter_power__Sa_state - _ms_s2_tpm_load_power_meter_power__Pa_state * _ms_s2_tpm_load_power_meter_power__Pa_state ;
+            if ( _ms_s2_tpm_load_power_meter_power__Qa_state < 0.0 )         {
+                _ms_s2_tpm_load_power_meter_power__Qa_state = 0.0 ;
+            }
+            else         {
+                _ms_s2_tpm_load_power_meter_power__Qa_state = sqrt ( _ms_s2_tpm_load_power_meter_power__Qa_state ) ;
+                if ( atan2f ( ( _ms_s2_tpm_load_power_meter_power__VoddSumA * _ms_s2_tpm_load_power_meter_power__IevenSumA - _ms_s2_tpm_load_power_meter_power__IoddSumA * _ms_s2_tpm_load_power_meter_power__VevenSumA ) , ( _ms_s2_tpm_load_power_meter_power__VevenSumA * _ms_s2_tpm_load_power_meter_power__IevenSumA + _ms_s2_tpm_load_power_meter_power__VoddSumA * _ms_s2_tpm_load_power_meter_power__IoddSumA ) ) > 0.0 )             {
+                    _ms_s2_tpm_load_power_meter_power__Qa_state *= - 1 ;
+                }
+            }
+            _ms_s2_tpm_load_power_meter_power__Qb_state = _ms_s2_tpm_load_power_meter_power__Sb_state * _ms_s2_tpm_load_power_meter_power__Sb_state - _ms_s2_tpm_load_power_meter_power__Pb_state * _ms_s2_tpm_load_power_meter_power__Pb_state ;
+            if ( _ms_s2_tpm_load_power_meter_power__Qb_state < 0.0 )         {
+                _ms_s2_tpm_load_power_meter_power__Qb_state = 0.0 ;
+            }
+            else         {
+                _ms_s2_tpm_load_power_meter_power__Qb_state = sqrt ( _ms_s2_tpm_load_power_meter_power__Qb_state ) ;
+                if ( atan2f ( ( _ms_s2_tpm_load_power_meter_power__VoddSumB * _ms_s2_tpm_load_power_meter_power__IevenSumB - _ms_s2_tpm_load_power_meter_power__IoddSumB * _ms_s2_tpm_load_power_meter_power__VevenSumB ) , ( _ms_s2_tpm_load_power_meter_power__VevenSumB * _ms_s2_tpm_load_power_meter_power__IevenSumB + _ms_s2_tpm_load_power_meter_power__VoddSumB * _ms_s2_tpm_load_power_meter_power__IoddSumB ) ) > 0.0 )             {
+                    _ms_s2_tpm_load_power_meter_power__Qb_state *= - 1 ;
+                }
+            }
+            _ms_s2_tpm_load_power_meter_power__Qc_state = _ms_s2_tpm_load_power_meter_power__Sc_state * _ms_s2_tpm_load_power_meter_power__Sc_state - _ms_s2_tpm_load_power_meter_power__Pc_state * _ms_s2_tpm_load_power_meter_power__Pc_state ;
+            if ( _ms_s2_tpm_load_power_meter_power__Qc_state < 0.0 )         {
+                _ms_s2_tpm_load_power_meter_power__Qc_state = 0.0 ;
+            }
+            else         {
+                _ms_s2_tpm_load_power_meter_power__Qc_state = sqrt ( _ms_s2_tpm_load_power_meter_power__Qc_state ) ;
+                if ( atan2f ( ( _ms_s2_tpm_load_power_meter_power__VoddSumC * _ms_s2_tpm_load_power_meter_power__IevenSumC - _ms_s2_tpm_load_power_meter_power__IoddSumC * _ms_s2_tpm_load_power_meter_power__VevenSumC ) , ( _ms_s2_tpm_load_power_meter_power__VevenSumC * _ms_s2_tpm_load_power_meter_power__IevenSumC + _ms_s2_tpm_load_power_meter_power__VoddSumC * _ms_s2_tpm_load_power_meter_power__IoddSumC ) ) > 0.0 )             {
+                    _ms_s2_tpm_load_power_meter_power__Qc_state *= - 1 ;
+                }
+            }
+            _ms_s2_tpm_load_power_meter_power__Q_state = _ms_s2_tpm_load_power_meter_power__Qa_state + _ms_s2_tpm_load_power_meter_power__Qb_state + _ms_s2_tpm_load_power_meter_power__Qc_state ;
+            if ( _ms_s2_tpm_load_power_meter_power__Sa_state > 0 )         {
+                _ms_s2_tpm_load_power_meter_power__PFa_state = _ms_s2_tpm_load_power_meter_power__Pa_state / _ms_s2_tpm_load_power_meter_power__Sa_state ;
+            }
+            else         {
+                _ms_s2_tpm_load_power_meter_power__PFa_state = 0.0 ;
+            }
+            if ( _ms_s2_tpm_load_power_meter_power__Sb_state > 0 )         {
+                _ms_s2_tpm_load_power_meter_power__PFb_state = _ms_s2_tpm_load_power_meter_power__Pb_state / _ms_s2_tpm_load_power_meter_power__Sb_state ;
+            }
+            else         {
+                _ms_s2_tpm_load_power_meter_power__PFb_state = 0.0 ;
+            }
+            if ( _ms_s2_tpm_load_power_meter_power__Sc_state > 0 )         {
+                _ms_s2_tpm_load_power_meter_power__PFc_state = _ms_s2_tpm_load_power_meter_power__Pc_state / _ms_s2_tpm_load_power_meter_power__Sc_state ;
+            }
+            else         {
+                _ms_s2_tpm_load_power_meter_power__PFc_state = 0.0 ;
+            }
+            if ( _ms_s2_tpm_load_power_meter_power__S_state > 0 )         {
+                _ms_s2_tpm_load_power_meter_power__PF_state = _ms_s2_tpm_load_power_meter_power__P_state / _ms_s2_tpm_load_power_meter_power__S_state ;
+            }
+            else         {
+                _ms_s2_tpm_load_power_meter_power__PF_state = 0.0 ;
+            }
+            break;
+        case 5 :
+            _ms_s2_tpm_load_power_meter_power__Pa_state = _ms_s2_tpm_load_power_meter_power__Va * _ms_s2_tpm_load_power_meter_power__Ia ;
+            _ms_s2_tpm_load_power_meter_power__Pb_state = _ms_s2_tpm_load_power_meter_power__Vb * _ms_s2_tpm_load_power_meter_power__Ib ;
+            _ms_s2_tpm_load_power_meter_power__Pc_state = _ms_s2_tpm_load_power_meter_power__Vc * _ms_s2_tpm_load_power_meter_power__Ic ;
+            _ms_s2_tpm_load_power_meter_power__P_state = _ms_s2_tpm_load_power_meter_power__Pa_state + _ms_s2_tpm_load_power_meter_power__Pb_state + _ms_s2_tpm_load_power_meter_power__Pc_state ;
+            _ms_s2_tpm_load_power_meter_power__Qa_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Qb_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Qc_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Q_state = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__Sa_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Sb_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__Sc_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__S_state = 0 ;
+            _ms_s2_tpm_load_power_meter_power__PFa_state = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__PFb_state = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__PFc_state = 0.0 ;
+            _ms_s2_tpm_load_power_meter_power__PF_state = 0.0 ;
+            break;
+        }
+        _ms_s2_tpm_load_power_meter_power__Pa = _ms_s2_tpm_load_power_meter_power__Pa_state ;
+        _ms_s2_tpm_load_power_meter_power__Pb = _ms_s2_tpm_load_power_meter_power__Pb_state ;
+        _ms_s2_tpm_load_power_meter_power__Pc = _ms_s2_tpm_load_power_meter_power__Pc_state ;
+        _ms_s2_tpm_load_power_meter_power__P = _ms_s2_tpm_load_power_meter_power__P_state ;
+        _ms_s2_tpm_load_power_meter_power__Qa = _ms_s2_tpm_load_power_meter_power__Qa_state ;
+        _ms_s2_tpm_load_power_meter_power__Qb = _ms_s2_tpm_load_power_meter_power__Qb_state ;
+        _ms_s2_tpm_load_power_meter_power__Qc = _ms_s2_tpm_load_power_meter_power__Qc_state ;
+        _ms_s2_tpm_load_power_meter_power__Q = _ms_s2_tpm_load_power_meter_power__Q_state ;
+        _ms_s2_tpm_load_power_meter_power__Sa = _ms_s2_tpm_load_power_meter_power__Sa_state ;
+        _ms_s2_tpm_load_power_meter_power__Sb = _ms_s2_tpm_load_power_meter_power__Sb_state ;
+        _ms_s2_tpm_load_power_meter_power__Sc = _ms_s2_tpm_load_power_meter_power__Sc_state ;
+        _ms_s2_tpm_load_power_meter_power__S = _ms_s2_tpm_load_power_meter_power__S_state ;
+        _ms_s2_tpm_load_power_meter_power__PFa = _ms_s2_tpm_load_power_meter_power__PFa_state ;
+        _ms_s2_tpm_load_power_meter_power__PFb = _ms_s2_tpm_load_power_meter_power__PFb_state ;
+        _ms_s2_tpm_load_power_meter_power__PFc = _ms_s2_tpm_load_power_meter_power__PFc_state ;
+        _ms_s2_tpm_load_power_meter_power__PF = _ms_s2_tpm_load_power_meter_power__PF_state ;
+    }
+    // Generated from the component: MS_S2.TPM_Load.VAn_RMS
+    HIL_OutAO(0x4099, (float)_ms_s2_tpm_load_vln_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S2.TPM_Load.VBn_RMS
+    HIL_OutAO(0x409a, (float)_ms_s2_tpm_load_vln_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S2.TPM_Load.VCn_RMS
+    HIL_OutAO(0x409b, (float)_ms_s2_tpm_load_vln_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S2.TPM_Load.sumVLn_RMS
+    _ms_s2_tpm_load_sumvln_rms__out = _ms_s2_tpm_load_vln_rms_calc_rms__RMS1 + _ms_s2_tpm_load_vln_rms_calc_rms__RMS2 + _ms_s2_tpm_load_vln_rms_calc_rms__RMS3;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Gain1
+    _ms_s2_tpm_load_pll_pid_gain1__out = 714.2857 * _ms_s2_tpm_load_pll_pid_sum8__out;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Gain1
+    _ms_s2_three_phase_pll1_pid_gain1__out = 714.2857 * _ms_s2_three_phase_pll1_pid_sum8__out;
+    // Generated from the component: MS_S3.TPM_Grid.IA_RMS
+    HIL_OutAO(0x40a7, (float)_ms_s3_tpm_grid_i_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S3.TPM_Grid.IB_RMS
+    HIL_OutAO(0x40a8, (float)_ms_s3_tpm_grid_i_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S3.TPM_Grid.IC_RMS
+    HIL_OutAO(0x40a9, (float)_ms_s3_tpm_grid_i_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S3.TPM_Grid.Power Meter.POWER
+    _ms_s3_tpm_grid_power_meter_power__Ia = _ms_s3_tpm_grid_ia_ia1__out;
+    _ms_s3_tpm_grid_power_meter_power__Ib = _ms_s3_tpm_grid_ib_ia1__out;
+    _ms_s3_tpm_grid_power_meter_power__Ic = _ms_s3_tpm_grid_ic_ia1__out;
+    _ms_s3_tpm_grid_power_meter_power__IrmsA = _ms_s3_tpm_grid_i_rms_calc_rms__RMS1;
+    _ms_s3_tpm_grid_power_meter_power__IrmsB = _ms_s3_tpm_grid_i_rms_calc_rms__RMS2;
+    _ms_s3_tpm_grid_power_meter_power__IrmsC = _ms_s3_tpm_grid_i_rms_calc_rms__RMS3;
+    _ms_s3_tpm_grid_power_meter_power__Va = _ms_s3_tpm_grid_van_va1__out;
+    _ms_s3_tpm_grid_power_meter_power__Vb = _ms_s3_tpm_grid_vbn_va1__out;
+    _ms_s3_tpm_grid_power_meter_power__Vc = _ms_s3_tpm_grid_vcn_va1__out;
+    _ms_s3_tpm_grid_power_meter_power__VrmsA = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1;
+    _ms_s3_tpm_grid_power_meter_power__VrmsB = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2;
+    _ms_s3_tpm_grid_power_meter_power__VrmsC = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3;
+    _ms_s3_tpm_grid_power_meter_power__dFract = _ms_s3_tpm_grid_meassm_mode_and_dfract__dFract;
+    _ms_s3_tpm_grid_power_meter_power__mode = _ms_s3_tpm_grid_meassm_mode_and_dfract__mode;
+    _ms_s3_tpm_grid_power_meter_power__submode = _ms_s3_tpm_grid_meassm_mode_and_dfract__submode;
+    {
+        switch ( _ms_s3_tpm_grid_power_meter_power__mode )     {
+        case 1 :
+            _ms_s3_tpm_grid_power_meter_power__VevenSumA = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__VoddSumA = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__VevenSumB = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__VoddSumB = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__VevenSumC = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__VoddSumC = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__IevenSumA = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__IoddSumA = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__IevenSumB = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__IoddSumB = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__IevenSumC = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__IoddSumC = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PsumA = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PsumB = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PsumC = 0.0 ;
+            break;
+        case 2 :
+            _ms_s3_tpm_grid_power_meter_power__Pa_state = _ms_s3_tpm_grid_power_meter_power__Va * _ms_s3_tpm_grid_power_meter_power__Ia ;
+            _ms_s3_tpm_grid_power_meter_power__Pb_state = _ms_s3_tpm_grid_power_meter_power__Vb * _ms_s3_tpm_grid_power_meter_power__Ib ;
+            _ms_s3_tpm_grid_power_meter_power__Pc_state = _ms_s3_tpm_grid_power_meter_power__Vc * _ms_s3_tpm_grid_power_meter_power__Ic ;
+            _ms_s3_tpm_grid_power_meter_power__P_state = _ms_s3_tpm_grid_power_meter_power__Pa_state + _ms_s3_tpm_grid_power_meter_power__Pb_state + _ms_s3_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s3_tpm_grid_power_meter_power__Qa_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Qb_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Qc_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Q_state = _ms_s3_tpm_grid_power_meter_power__Qa_state + _ms_s3_tpm_grid_power_meter_power__Qb_state + _ms_s3_tpm_grid_power_meter_power__Qc_state ;
+            _ms_s3_tpm_grid_power_meter_power__Sa_state = _ms_s3_tpm_grid_power_meter_power__Pa_state ;
+            _ms_s3_tpm_grid_power_meter_power__Sb_state = _ms_s3_tpm_grid_power_meter_power__Pb_state ;
+            _ms_s3_tpm_grid_power_meter_power__Sc_state = _ms_s3_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s3_tpm_grid_power_meter_power__S_state = _ms_s3_tpm_grid_power_meter_power__Sa_state + _ms_s3_tpm_grid_power_meter_power__Sb_state + _ms_s3_tpm_grid_power_meter_power__Sc_state ;
+            _ms_s3_tpm_grid_power_meter_power__PFa_state = 1.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PFb_state = 1.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PFc_state = 1.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PF_state = 1.0 ;
+            break;
+        case 3 :
+            _ms_s3_tpm_grid_power_meter_power__PsumA += _ms_s3_tpm_grid_power_meter_power__dFract * ( _ms_s3_tpm_grid_power_meter_power__Va * _ms_s3_tpm_grid_power_meter_power__Ia ) ;
+            _ms_s3_tpm_grid_power_meter_power__PsumB += _ms_s3_tpm_grid_power_meter_power__dFract * ( _ms_s3_tpm_grid_power_meter_power__Vb * _ms_s3_tpm_grid_power_meter_power__Ib ) ;
+            _ms_s3_tpm_grid_power_meter_power__PsumC += _ms_s3_tpm_grid_power_meter_power__dFract * ( _ms_s3_tpm_grid_power_meter_power__Vc * _ms_s3_tpm_grid_power_meter_power__Ic ) ;
+            switch ( _ms_s3_tpm_grid_power_meter_power__submode )         {
+            case 1 :
+                _ms_s3_tpm_grid_power_meter_power__VevenSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                break;
+            case 2 :
+                _ms_s3_tpm_grid_power_meter_power__VevenSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                break;
+            case 3 :
+                _ms_s3_tpm_grid_power_meter_power__VevenSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                break;
+            case 4 :
+                _ms_s3_tpm_grid_power_meter_power__VevenSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VevenSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumA += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumB += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IevenSumC += _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Va ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vb ;
+                _ms_s3_tpm_grid_power_meter_power__VoddSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Vc ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumA -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ia ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumB -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ib ;
+                _ms_s3_tpm_grid_power_meter_power__IoddSumC -= _ms_s3_tpm_grid_power_meter_power__dFract * _ms_s3_tpm_grid_power_meter_power__Ic ;
+                break;
+            }
+            break;
+        case 4 :
+            _ms_s3_tpm_grid_power_meter_power__Pa_state = _ms_s3_tpm_grid_power_meter_power__PsumA ;
+            _ms_s3_tpm_grid_power_meter_power__Pb_state = _ms_s3_tpm_grid_power_meter_power__PsumB ;
+            _ms_s3_tpm_grid_power_meter_power__Pc_state = _ms_s3_tpm_grid_power_meter_power__PsumC ;
+            _ms_s3_tpm_grid_power_meter_power__P_state = _ms_s3_tpm_grid_power_meter_power__Pa_state + _ms_s3_tpm_grid_power_meter_power__Pb_state + _ms_s3_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s3_tpm_grid_power_meter_power__Sa_state = _ms_s3_tpm_grid_power_meter_power__VrmsA * _ms_s3_tpm_grid_power_meter_power__IrmsA ;
+            _ms_s3_tpm_grid_power_meter_power__Sb_state = _ms_s3_tpm_grid_power_meter_power__VrmsB * _ms_s3_tpm_grid_power_meter_power__IrmsB ;
+            _ms_s3_tpm_grid_power_meter_power__Sc_state = _ms_s3_tpm_grid_power_meter_power__VrmsC * _ms_s3_tpm_grid_power_meter_power__IrmsC ;
+            _ms_s3_tpm_grid_power_meter_power__S_state = _ms_s3_tpm_grid_power_meter_power__Sa_state + _ms_s3_tpm_grid_power_meter_power__Sb_state + _ms_s3_tpm_grid_power_meter_power__Sc_state ;
+            _ms_s3_tpm_grid_power_meter_power__Qa_state = _ms_s3_tpm_grid_power_meter_power__Sa_state * _ms_s3_tpm_grid_power_meter_power__Sa_state - _ms_s3_tpm_grid_power_meter_power__Pa_state * _ms_s3_tpm_grid_power_meter_power__Pa_state ;
+            if ( _ms_s3_tpm_grid_power_meter_power__Qa_state < 0.0 )         {
+                _ms_s3_tpm_grid_power_meter_power__Qa_state = 0.0 ;
+            }
+            else         {
+                _ms_s3_tpm_grid_power_meter_power__Qa_state = sqrt ( _ms_s3_tpm_grid_power_meter_power__Qa_state ) ;
+                if ( atan2f ( ( _ms_s3_tpm_grid_power_meter_power__VoddSumA * _ms_s3_tpm_grid_power_meter_power__IevenSumA - _ms_s3_tpm_grid_power_meter_power__IoddSumA * _ms_s3_tpm_grid_power_meter_power__VevenSumA ) , ( _ms_s3_tpm_grid_power_meter_power__VevenSumA * _ms_s3_tpm_grid_power_meter_power__IevenSumA + _ms_s3_tpm_grid_power_meter_power__VoddSumA * _ms_s3_tpm_grid_power_meter_power__IoddSumA ) ) > 0.0 )             {
+                    _ms_s3_tpm_grid_power_meter_power__Qa_state *= - 1 ;
+                }
+            }
+            _ms_s3_tpm_grid_power_meter_power__Qb_state = _ms_s3_tpm_grid_power_meter_power__Sb_state * _ms_s3_tpm_grid_power_meter_power__Sb_state - _ms_s3_tpm_grid_power_meter_power__Pb_state * _ms_s3_tpm_grid_power_meter_power__Pb_state ;
+            if ( _ms_s3_tpm_grid_power_meter_power__Qb_state < 0.0 )         {
+                _ms_s3_tpm_grid_power_meter_power__Qb_state = 0.0 ;
+            }
+            else         {
+                _ms_s3_tpm_grid_power_meter_power__Qb_state = sqrt ( _ms_s3_tpm_grid_power_meter_power__Qb_state ) ;
+                if ( atan2f ( ( _ms_s3_tpm_grid_power_meter_power__VoddSumB * _ms_s3_tpm_grid_power_meter_power__IevenSumB - _ms_s3_tpm_grid_power_meter_power__IoddSumB * _ms_s3_tpm_grid_power_meter_power__VevenSumB ) , ( _ms_s3_tpm_grid_power_meter_power__VevenSumB * _ms_s3_tpm_grid_power_meter_power__IevenSumB + _ms_s3_tpm_grid_power_meter_power__VoddSumB * _ms_s3_tpm_grid_power_meter_power__IoddSumB ) ) > 0.0 )             {
+                    _ms_s3_tpm_grid_power_meter_power__Qb_state *= - 1 ;
+                }
+            }
+            _ms_s3_tpm_grid_power_meter_power__Qc_state = _ms_s3_tpm_grid_power_meter_power__Sc_state * _ms_s3_tpm_grid_power_meter_power__Sc_state - _ms_s3_tpm_grid_power_meter_power__Pc_state * _ms_s3_tpm_grid_power_meter_power__Pc_state ;
+            if ( _ms_s3_tpm_grid_power_meter_power__Qc_state < 0.0 )         {
+                _ms_s3_tpm_grid_power_meter_power__Qc_state = 0.0 ;
+            }
+            else         {
+                _ms_s3_tpm_grid_power_meter_power__Qc_state = sqrt ( _ms_s3_tpm_grid_power_meter_power__Qc_state ) ;
+                if ( atan2f ( ( _ms_s3_tpm_grid_power_meter_power__VoddSumC * _ms_s3_tpm_grid_power_meter_power__IevenSumC - _ms_s3_tpm_grid_power_meter_power__IoddSumC * _ms_s3_tpm_grid_power_meter_power__VevenSumC ) , ( _ms_s3_tpm_grid_power_meter_power__VevenSumC * _ms_s3_tpm_grid_power_meter_power__IevenSumC + _ms_s3_tpm_grid_power_meter_power__VoddSumC * _ms_s3_tpm_grid_power_meter_power__IoddSumC ) ) > 0.0 )             {
+                    _ms_s3_tpm_grid_power_meter_power__Qc_state *= - 1 ;
+                }
+            }
+            _ms_s3_tpm_grid_power_meter_power__Q_state = _ms_s3_tpm_grid_power_meter_power__Qa_state + _ms_s3_tpm_grid_power_meter_power__Qb_state + _ms_s3_tpm_grid_power_meter_power__Qc_state ;
+            if ( _ms_s3_tpm_grid_power_meter_power__Sa_state > 0 )         {
+                _ms_s3_tpm_grid_power_meter_power__PFa_state = _ms_s3_tpm_grid_power_meter_power__Pa_state / _ms_s3_tpm_grid_power_meter_power__Sa_state ;
+            }
+            else         {
+                _ms_s3_tpm_grid_power_meter_power__PFa_state = 0.0 ;
+            }
+            if ( _ms_s3_tpm_grid_power_meter_power__Sb_state > 0 )         {
+                _ms_s3_tpm_grid_power_meter_power__PFb_state = _ms_s3_tpm_grid_power_meter_power__Pb_state / _ms_s3_tpm_grid_power_meter_power__Sb_state ;
+            }
+            else         {
+                _ms_s3_tpm_grid_power_meter_power__PFb_state = 0.0 ;
+            }
+            if ( _ms_s3_tpm_grid_power_meter_power__Sc_state > 0 )         {
+                _ms_s3_tpm_grid_power_meter_power__PFc_state = _ms_s3_tpm_grid_power_meter_power__Pc_state / _ms_s3_tpm_grid_power_meter_power__Sc_state ;
+            }
+            else         {
+                _ms_s3_tpm_grid_power_meter_power__PFc_state = 0.0 ;
+            }
+            if ( _ms_s3_tpm_grid_power_meter_power__S_state > 0 )         {
+                _ms_s3_tpm_grid_power_meter_power__PF_state = _ms_s3_tpm_grid_power_meter_power__P_state / _ms_s3_tpm_grid_power_meter_power__S_state ;
+            }
+            else         {
+                _ms_s3_tpm_grid_power_meter_power__PF_state = 0.0 ;
+            }
+            break;
+        case 5 :
+            _ms_s3_tpm_grid_power_meter_power__Pa_state = _ms_s3_tpm_grid_power_meter_power__Va * _ms_s3_tpm_grid_power_meter_power__Ia ;
+            _ms_s3_tpm_grid_power_meter_power__Pb_state = _ms_s3_tpm_grid_power_meter_power__Vb * _ms_s3_tpm_grid_power_meter_power__Ib ;
+            _ms_s3_tpm_grid_power_meter_power__Pc_state = _ms_s3_tpm_grid_power_meter_power__Vc * _ms_s3_tpm_grid_power_meter_power__Ic ;
+            _ms_s3_tpm_grid_power_meter_power__P_state = _ms_s3_tpm_grid_power_meter_power__Pa_state + _ms_s3_tpm_grid_power_meter_power__Pb_state + _ms_s3_tpm_grid_power_meter_power__Pc_state ;
+            _ms_s3_tpm_grid_power_meter_power__Qa_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Qb_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Qc_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Q_state = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__Sa_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Sb_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__Sc_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__S_state = 0 ;
+            _ms_s3_tpm_grid_power_meter_power__PFa_state = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PFb_state = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PFc_state = 0.0 ;
+            _ms_s3_tpm_grid_power_meter_power__PF_state = 0.0 ;
+            break;
+        }
+        _ms_s3_tpm_grid_power_meter_power__Pa = _ms_s3_tpm_grid_power_meter_power__Pa_state ;
+        _ms_s3_tpm_grid_power_meter_power__Pb = _ms_s3_tpm_grid_power_meter_power__Pb_state ;
+        _ms_s3_tpm_grid_power_meter_power__Pc = _ms_s3_tpm_grid_power_meter_power__Pc_state ;
+        _ms_s3_tpm_grid_power_meter_power__P = _ms_s3_tpm_grid_power_meter_power__P_state ;
+        _ms_s3_tpm_grid_power_meter_power__Qa = _ms_s3_tpm_grid_power_meter_power__Qa_state ;
+        _ms_s3_tpm_grid_power_meter_power__Qb = _ms_s3_tpm_grid_power_meter_power__Qb_state ;
+        _ms_s3_tpm_grid_power_meter_power__Qc = _ms_s3_tpm_grid_power_meter_power__Qc_state ;
+        _ms_s3_tpm_grid_power_meter_power__Q = _ms_s3_tpm_grid_power_meter_power__Q_state ;
+        _ms_s3_tpm_grid_power_meter_power__Sa = _ms_s3_tpm_grid_power_meter_power__Sa_state ;
+        _ms_s3_tpm_grid_power_meter_power__Sb = _ms_s3_tpm_grid_power_meter_power__Sb_state ;
+        _ms_s3_tpm_grid_power_meter_power__Sc = _ms_s3_tpm_grid_power_meter_power__Sc_state ;
+        _ms_s3_tpm_grid_power_meter_power__S = _ms_s3_tpm_grid_power_meter_power__S_state ;
+        _ms_s3_tpm_grid_power_meter_power__PFa = _ms_s3_tpm_grid_power_meter_power__PFa_state ;
+        _ms_s3_tpm_grid_power_meter_power__PFb = _ms_s3_tpm_grid_power_meter_power__PFb_state ;
+        _ms_s3_tpm_grid_power_meter_power__PFc = _ms_s3_tpm_grid_power_meter_power__PFc_state ;
+        _ms_s3_tpm_grid_power_meter_power__PF = _ms_s3_tpm_grid_power_meter_power__PF_state ;
+    }
+    // Generated from the component: MS_S3.TPM_Grid.VAn_RMS
+    HIL_OutAO(0x40ba, (float)_ms_s3_tpm_grid_vln_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S3.TPM_Grid.VBn_RMS
+    HIL_OutAO(0x40bb, (float)_ms_s3_tpm_grid_vln_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S3.TPM_Grid.VCn_RMS
+    HIL_OutAO(0x40bc, (float)_ms_s3_tpm_grid_vln_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S3.TPM_Grid.sumVLn_RMS
+    _ms_s3_tpm_grid_sumvln_rms__out = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1 + _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2 + _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Gain1
+    _ms_s3_tpm_grid_pll_pid_gain1__out = 714.2857 * _ms_s3_tpm_grid_pll_pid_sum8__out;
+    // Generated from the component: MS_S3.TPM_uG.IA_RMS
+    HIL_OutAO(0x40bf, (float)_ms_s3_tpm_ug_i_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S3.TPM_uG.IB_RMS
+    HIL_OutAO(0x40c0, (float)_ms_s3_tpm_ug_i_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S3.TPM_uG.IC_RMS
+    HIL_OutAO(0x40c1, (float)_ms_s3_tpm_ug_i_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S3.TPM_uG.sumI_RMS
+    _ms_s3_tpm_ug_sumi_rms__out = _ms_s3_tpm_ug_i_rms_calc_rms__RMS1 + _ms_s3_tpm_ug_i_rms_calc_rms__RMS2 + _ms_s3_tpm_ug_i_rms_calc_rms__RMS3;
+    // Generated from the component: MS_S3.TPM_uG.Power Meter.POWER
+    _ms_s3_tpm_ug_power_meter_power__Ia = _ms_s3_tpm_ug_ia_ia1__out;
+    _ms_s3_tpm_ug_power_meter_power__Ib = _ms_s3_tpm_ug_ib_ia1__out;
+    _ms_s3_tpm_ug_power_meter_power__Ic = _ms_s3_tpm_ug_ic_ia1__out;
+    _ms_s3_tpm_ug_power_meter_power__IrmsA = _ms_s3_tpm_ug_i_rms_calc_rms__RMS1;
+    _ms_s3_tpm_ug_power_meter_power__IrmsB = _ms_s3_tpm_ug_i_rms_calc_rms__RMS2;
+    _ms_s3_tpm_ug_power_meter_power__IrmsC = _ms_s3_tpm_ug_i_rms_calc_rms__RMS3;
+    _ms_s3_tpm_ug_power_meter_power__Va = _ms_s3_tpm_ug_van_va1__out;
+    _ms_s3_tpm_ug_power_meter_power__Vb = _ms_s3_tpm_ug_vbn_va1__out;
+    _ms_s3_tpm_ug_power_meter_power__Vc = _ms_s3_tpm_ug_vcn_va1__out;
+    _ms_s3_tpm_ug_power_meter_power__VrmsA = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1;
+    _ms_s3_tpm_ug_power_meter_power__VrmsB = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2;
+    _ms_s3_tpm_ug_power_meter_power__VrmsC = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3;
+    _ms_s3_tpm_ug_power_meter_power__dFract = _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract;
+    _ms_s3_tpm_ug_power_meter_power__mode = _ms_s3_tpm_ug_meassm_mode_and_dfract__mode;
+    _ms_s3_tpm_ug_power_meter_power__submode = _ms_s3_tpm_ug_meassm_mode_and_dfract__submode;
+    {
+        switch ( _ms_s3_tpm_ug_power_meter_power__mode )     {
+        case 1 :
+            _ms_s3_tpm_ug_power_meter_power__VevenSumA = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__VoddSumA = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__VevenSumB = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__VoddSumB = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__VevenSumC = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__VoddSumC = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__IevenSumA = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__IoddSumA = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__IevenSumB = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__IoddSumB = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__IevenSumC = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__IoddSumC = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PsumA = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PsumB = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PsumC = 0.0 ;
+            break;
+        case 2 :
+            _ms_s3_tpm_ug_power_meter_power__Pa_state = _ms_s3_tpm_ug_power_meter_power__Va * _ms_s3_tpm_ug_power_meter_power__Ia ;
+            _ms_s3_tpm_ug_power_meter_power__Pb_state = _ms_s3_tpm_ug_power_meter_power__Vb * _ms_s3_tpm_ug_power_meter_power__Ib ;
+            _ms_s3_tpm_ug_power_meter_power__Pc_state = _ms_s3_tpm_ug_power_meter_power__Vc * _ms_s3_tpm_ug_power_meter_power__Ic ;
+            _ms_s3_tpm_ug_power_meter_power__P_state = _ms_s3_tpm_ug_power_meter_power__Pa_state + _ms_s3_tpm_ug_power_meter_power__Pb_state + _ms_s3_tpm_ug_power_meter_power__Pc_state ;
+            _ms_s3_tpm_ug_power_meter_power__Qa_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Qb_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Qc_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Q_state = _ms_s3_tpm_ug_power_meter_power__Qa_state + _ms_s3_tpm_ug_power_meter_power__Qb_state + _ms_s3_tpm_ug_power_meter_power__Qc_state ;
+            _ms_s3_tpm_ug_power_meter_power__Sa_state = _ms_s3_tpm_ug_power_meter_power__Pa_state ;
+            _ms_s3_tpm_ug_power_meter_power__Sb_state = _ms_s3_tpm_ug_power_meter_power__Pb_state ;
+            _ms_s3_tpm_ug_power_meter_power__Sc_state = _ms_s3_tpm_ug_power_meter_power__Pc_state ;
+            _ms_s3_tpm_ug_power_meter_power__S_state = _ms_s3_tpm_ug_power_meter_power__Sa_state + _ms_s3_tpm_ug_power_meter_power__Sb_state + _ms_s3_tpm_ug_power_meter_power__Sc_state ;
+            _ms_s3_tpm_ug_power_meter_power__PFa_state = 1.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PFb_state = 1.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PFc_state = 1.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PF_state = 1.0 ;
+            break;
+        case 3 :
+            _ms_s3_tpm_ug_power_meter_power__PsumA += _ms_s3_tpm_ug_power_meter_power__dFract * ( _ms_s3_tpm_ug_power_meter_power__Va * _ms_s3_tpm_ug_power_meter_power__Ia ) ;
+            _ms_s3_tpm_ug_power_meter_power__PsumB += _ms_s3_tpm_ug_power_meter_power__dFract * ( _ms_s3_tpm_ug_power_meter_power__Vb * _ms_s3_tpm_ug_power_meter_power__Ib ) ;
+            _ms_s3_tpm_ug_power_meter_power__PsumC += _ms_s3_tpm_ug_power_meter_power__dFract * ( _ms_s3_tpm_ug_power_meter_power__Vc * _ms_s3_tpm_ug_power_meter_power__Ic ) ;
+            switch ( _ms_s3_tpm_ug_power_meter_power__submode )         {
+            case 1 :
+                _ms_s3_tpm_ug_power_meter_power__VevenSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                break;
+            case 2 :
+                _ms_s3_tpm_ug_power_meter_power__VevenSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                break;
+            case 3 :
+                _ms_s3_tpm_ug_power_meter_power__VevenSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                break;
+            case 4 :
+                _ms_s3_tpm_ug_power_meter_power__VevenSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VevenSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumA += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumB += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IevenSumC += _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Va ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vb ;
+                _ms_s3_tpm_ug_power_meter_power__VoddSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Vc ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumA -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ia ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumB -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ib ;
+                _ms_s3_tpm_ug_power_meter_power__IoddSumC -= _ms_s3_tpm_ug_power_meter_power__dFract * _ms_s3_tpm_ug_power_meter_power__Ic ;
+                break;
+            }
+            break;
+        case 4 :
+            _ms_s3_tpm_ug_power_meter_power__Pa_state = _ms_s3_tpm_ug_power_meter_power__PsumA ;
+            _ms_s3_tpm_ug_power_meter_power__Pb_state = _ms_s3_tpm_ug_power_meter_power__PsumB ;
+            _ms_s3_tpm_ug_power_meter_power__Pc_state = _ms_s3_tpm_ug_power_meter_power__PsumC ;
+            _ms_s3_tpm_ug_power_meter_power__P_state = _ms_s3_tpm_ug_power_meter_power__Pa_state + _ms_s3_tpm_ug_power_meter_power__Pb_state + _ms_s3_tpm_ug_power_meter_power__Pc_state ;
+            _ms_s3_tpm_ug_power_meter_power__Sa_state = _ms_s3_tpm_ug_power_meter_power__VrmsA * _ms_s3_tpm_ug_power_meter_power__IrmsA ;
+            _ms_s3_tpm_ug_power_meter_power__Sb_state = _ms_s3_tpm_ug_power_meter_power__VrmsB * _ms_s3_tpm_ug_power_meter_power__IrmsB ;
+            _ms_s3_tpm_ug_power_meter_power__Sc_state = _ms_s3_tpm_ug_power_meter_power__VrmsC * _ms_s3_tpm_ug_power_meter_power__IrmsC ;
+            _ms_s3_tpm_ug_power_meter_power__S_state = _ms_s3_tpm_ug_power_meter_power__Sa_state + _ms_s3_tpm_ug_power_meter_power__Sb_state + _ms_s3_tpm_ug_power_meter_power__Sc_state ;
+            _ms_s3_tpm_ug_power_meter_power__Qa_state = _ms_s3_tpm_ug_power_meter_power__Sa_state * _ms_s3_tpm_ug_power_meter_power__Sa_state - _ms_s3_tpm_ug_power_meter_power__Pa_state * _ms_s3_tpm_ug_power_meter_power__Pa_state ;
+            if ( _ms_s3_tpm_ug_power_meter_power__Qa_state < 0.0 )         {
+                _ms_s3_tpm_ug_power_meter_power__Qa_state = 0.0 ;
+            }
+            else         {
+                _ms_s3_tpm_ug_power_meter_power__Qa_state = sqrt ( _ms_s3_tpm_ug_power_meter_power__Qa_state ) ;
+                if ( atan2f ( ( _ms_s3_tpm_ug_power_meter_power__VoddSumA * _ms_s3_tpm_ug_power_meter_power__IevenSumA - _ms_s3_tpm_ug_power_meter_power__IoddSumA * _ms_s3_tpm_ug_power_meter_power__VevenSumA ) , ( _ms_s3_tpm_ug_power_meter_power__VevenSumA * _ms_s3_tpm_ug_power_meter_power__IevenSumA + _ms_s3_tpm_ug_power_meter_power__VoddSumA * _ms_s3_tpm_ug_power_meter_power__IoddSumA ) ) > 0.0 )             {
+                    _ms_s3_tpm_ug_power_meter_power__Qa_state *= - 1 ;
+                }
+            }
+            _ms_s3_tpm_ug_power_meter_power__Qb_state = _ms_s3_tpm_ug_power_meter_power__Sb_state * _ms_s3_tpm_ug_power_meter_power__Sb_state - _ms_s3_tpm_ug_power_meter_power__Pb_state * _ms_s3_tpm_ug_power_meter_power__Pb_state ;
+            if ( _ms_s3_tpm_ug_power_meter_power__Qb_state < 0.0 )         {
+                _ms_s3_tpm_ug_power_meter_power__Qb_state = 0.0 ;
+            }
+            else         {
+                _ms_s3_tpm_ug_power_meter_power__Qb_state = sqrt ( _ms_s3_tpm_ug_power_meter_power__Qb_state ) ;
+                if ( atan2f ( ( _ms_s3_tpm_ug_power_meter_power__VoddSumB * _ms_s3_tpm_ug_power_meter_power__IevenSumB - _ms_s3_tpm_ug_power_meter_power__IoddSumB * _ms_s3_tpm_ug_power_meter_power__VevenSumB ) , ( _ms_s3_tpm_ug_power_meter_power__VevenSumB * _ms_s3_tpm_ug_power_meter_power__IevenSumB + _ms_s3_tpm_ug_power_meter_power__VoddSumB * _ms_s3_tpm_ug_power_meter_power__IoddSumB ) ) > 0.0 )             {
+                    _ms_s3_tpm_ug_power_meter_power__Qb_state *= - 1 ;
+                }
+            }
+            _ms_s3_tpm_ug_power_meter_power__Qc_state = _ms_s3_tpm_ug_power_meter_power__Sc_state * _ms_s3_tpm_ug_power_meter_power__Sc_state - _ms_s3_tpm_ug_power_meter_power__Pc_state * _ms_s3_tpm_ug_power_meter_power__Pc_state ;
+            if ( _ms_s3_tpm_ug_power_meter_power__Qc_state < 0.0 )         {
+                _ms_s3_tpm_ug_power_meter_power__Qc_state = 0.0 ;
+            }
+            else         {
+                _ms_s3_tpm_ug_power_meter_power__Qc_state = sqrt ( _ms_s3_tpm_ug_power_meter_power__Qc_state ) ;
+                if ( atan2f ( ( _ms_s3_tpm_ug_power_meter_power__VoddSumC * _ms_s3_tpm_ug_power_meter_power__IevenSumC - _ms_s3_tpm_ug_power_meter_power__IoddSumC * _ms_s3_tpm_ug_power_meter_power__VevenSumC ) , ( _ms_s3_tpm_ug_power_meter_power__VevenSumC * _ms_s3_tpm_ug_power_meter_power__IevenSumC + _ms_s3_tpm_ug_power_meter_power__VoddSumC * _ms_s3_tpm_ug_power_meter_power__IoddSumC ) ) > 0.0 )             {
+                    _ms_s3_tpm_ug_power_meter_power__Qc_state *= - 1 ;
+                }
+            }
+            _ms_s3_tpm_ug_power_meter_power__Q_state = _ms_s3_tpm_ug_power_meter_power__Qa_state + _ms_s3_tpm_ug_power_meter_power__Qb_state + _ms_s3_tpm_ug_power_meter_power__Qc_state ;
+            if ( _ms_s3_tpm_ug_power_meter_power__Sa_state > 0 )         {
+                _ms_s3_tpm_ug_power_meter_power__PFa_state = _ms_s3_tpm_ug_power_meter_power__Pa_state / _ms_s3_tpm_ug_power_meter_power__Sa_state ;
+            }
+            else         {
+                _ms_s3_tpm_ug_power_meter_power__PFa_state = 0.0 ;
+            }
+            if ( _ms_s3_tpm_ug_power_meter_power__Sb_state > 0 )         {
+                _ms_s3_tpm_ug_power_meter_power__PFb_state = _ms_s3_tpm_ug_power_meter_power__Pb_state / _ms_s3_tpm_ug_power_meter_power__Sb_state ;
+            }
+            else         {
+                _ms_s3_tpm_ug_power_meter_power__PFb_state = 0.0 ;
+            }
+            if ( _ms_s3_tpm_ug_power_meter_power__Sc_state > 0 )         {
+                _ms_s3_tpm_ug_power_meter_power__PFc_state = _ms_s3_tpm_ug_power_meter_power__Pc_state / _ms_s3_tpm_ug_power_meter_power__Sc_state ;
+            }
+            else         {
+                _ms_s3_tpm_ug_power_meter_power__PFc_state = 0.0 ;
+            }
+            if ( _ms_s3_tpm_ug_power_meter_power__S_state > 0 )         {
+                _ms_s3_tpm_ug_power_meter_power__PF_state = _ms_s3_tpm_ug_power_meter_power__P_state / _ms_s3_tpm_ug_power_meter_power__S_state ;
+            }
+            else         {
+                _ms_s3_tpm_ug_power_meter_power__PF_state = 0.0 ;
+            }
+            break;
+        case 5 :
+            _ms_s3_tpm_ug_power_meter_power__Pa_state = _ms_s3_tpm_ug_power_meter_power__Va * _ms_s3_tpm_ug_power_meter_power__Ia ;
+            _ms_s3_tpm_ug_power_meter_power__Pb_state = _ms_s3_tpm_ug_power_meter_power__Vb * _ms_s3_tpm_ug_power_meter_power__Ib ;
+            _ms_s3_tpm_ug_power_meter_power__Pc_state = _ms_s3_tpm_ug_power_meter_power__Vc * _ms_s3_tpm_ug_power_meter_power__Ic ;
+            _ms_s3_tpm_ug_power_meter_power__P_state = _ms_s3_tpm_ug_power_meter_power__Pa_state + _ms_s3_tpm_ug_power_meter_power__Pb_state + _ms_s3_tpm_ug_power_meter_power__Pc_state ;
+            _ms_s3_tpm_ug_power_meter_power__Qa_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Qb_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Qc_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Q_state = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__Sa_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Sb_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__Sc_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__S_state = 0 ;
+            _ms_s3_tpm_ug_power_meter_power__PFa_state = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PFb_state = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PFc_state = 0.0 ;
+            _ms_s3_tpm_ug_power_meter_power__PF_state = 0.0 ;
+            break;
+        }
+        _ms_s3_tpm_ug_power_meter_power__Pa = _ms_s3_tpm_ug_power_meter_power__Pa_state ;
+        _ms_s3_tpm_ug_power_meter_power__Pb = _ms_s3_tpm_ug_power_meter_power__Pb_state ;
+        _ms_s3_tpm_ug_power_meter_power__Pc = _ms_s3_tpm_ug_power_meter_power__Pc_state ;
+        _ms_s3_tpm_ug_power_meter_power__P = _ms_s3_tpm_ug_power_meter_power__P_state ;
+        _ms_s3_tpm_ug_power_meter_power__Qa = _ms_s3_tpm_ug_power_meter_power__Qa_state ;
+        _ms_s3_tpm_ug_power_meter_power__Qb = _ms_s3_tpm_ug_power_meter_power__Qb_state ;
+        _ms_s3_tpm_ug_power_meter_power__Qc = _ms_s3_tpm_ug_power_meter_power__Qc_state ;
+        _ms_s3_tpm_ug_power_meter_power__Q = _ms_s3_tpm_ug_power_meter_power__Q_state ;
+        _ms_s3_tpm_ug_power_meter_power__Sa = _ms_s3_tpm_ug_power_meter_power__Sa_state ;
+        _ms_s3_tpm_ug_power_meter_power__Sb = _ms_s3_tpm_ug_power_meter_power__Sb_state ;
+        _ms_s3_tpm_ug_power_meter_power__Sc = _ms_s3_tpm_ug_power_meter_power__Sc_state ;
+        _ms_s3_tpm_ug_power_meter_power__S = _ms_s3_tpm_ug_power_meter_power__S_state ;
+        _ms_s3_tpm_ug_power_meter_power__PFa = _ms_s3_tpm_ug_power_meter_power__PFa_state ;
+        _ms_s3_tpm_ug_power_meter_power__PFb = _ms_s3_tpm_ug_power_meter_power__PFb_state ;
+        _ms_s3_tpm_ug_power_meter_power__PFc = _ms_s3_tpm_ug_power_meter_power__PFc_state ;
+        _ms_s3_tpm_ug_power_meter_power__PF = _ms_s3_tpm_ug_power_meter_power__PF_state ;
+    }
+    // Generated from the component: MS_S3.TPM_uG.VAn_RMS
+    HIL_OutAO(0x40d3, (float)_ms_s3_tpm_ug_vln_rms_calc_rms__RMS1);
+    // Generated from the component: MS_S3.TPM_uG.VBn_RMS
+    HIL_OutAO(0x40d4, (float)_ms_s3_tpm_ug_vln_rms_calc_rms__RMS2);
+    // Generated from the component: MS_S3.TPM_uG.VCn_RMS
+    HIL_OutAO(0x40d5, (float)_ms_s3_tpm_ug_vln_rms_calc_rms__RMS3);
+    // Generated from the component: MS_S3.TPM_uG.sumVLn_RMS
+    _ms_s3_tpm_ug_sumvln_rms__out = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1 + _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2 + _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Gain1
+    _ms_s3_tpm_ug_pll_pid_gain1__out = 714.2857 * _ms_s3_tpm_ug_pll_pid_sum8__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Gain6
+    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out = 78.53981633974483 * _battery_inverter__average_1_control_imode_control_default_a_idm_aps_product1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Abs1
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_abs1__out = fabs(_battery_inverter__average_1_control_synch_check_nominal_conditions_sum4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Product1
+    _battery_inverter__average_1_control_imode_control_current_ref_product1__out = (_battery_inverter__average_1_control_imode_control_current_ref_sum3__out) * 1.0 / (_battery_inverter__average_1_control_imode_control_current_ref_limit3__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Product2
+    _battery_inverter__average_1_control_imode_control_current_ref_product2__out = (_battery_inverter__average_1_control_imode_control_current_ref_sum4__out) * 1.0 / (_battery_inverter__average_1_control_imode_control_current_ref_limit3__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Comparator2
+    if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs2__out < _battery_inverter__average_1_control_synch_check_nominal_conditions___10___out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs2__out > _battery_inverter__average_1_control_synch_check_nominal_conditions___10___out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out = 1;
+    } else {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out = _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__state;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Sum5
+    _battery_inverter__average_1_control_pll_pu_pll_pid_sum5__out = _battery_inverter__average_1_control_pll_pu_pll_pid_kp__out + _battery_inverter__average_1_control_pll_pu_pll_pid_gain1__out + _battery_inverter__average_1_control_pll_pu_pll_pid_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Abs1
+    _battery_inverter__average_1_control_synch_check_grid_abs1__out = fabs(_battery_inverter__average_1_control_synch_check_grid_sum4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Sum1
+    _battery_inverter__average_1_control_synch_f_match_low_pass_sum1__out = _battery_inverter__average_1_control_synch_f_match_low_pass_b0__out + _battery_inverter__average_1_control_synch_f_match_low_pass_sum2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Comparator2
+    if (_battery_inverter__average_1_control_synch_check_grid_abs2__out < _battery_inverter__average_1_control_synch_check_grid___10___out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator2__out = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_grid_abs2__out > _battery_inverter__average_1_control_synch_check_grid___10___out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator2__out = 1;
+    } else {
+        _battery_inverter__average_1_control_synch_check_grid_comparator2__out = _battery_inverter__average_1_control_synch_check_grid_comparator2__state;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Comparator2
+    if (_battery_inverter__average_1_control_synch_vmatch_sum2__out < _battery_inverter__average_1_control_synch_vmatch_abs2__out) {
+        _battery_inverter__average_1_control_synch_vmatch_comparator2__out = 0;
+    } else if (_battery_inverter__average_1_control_synch_vmatch_sum2__out > _battery_inverter__average_1_control_synch_vmatch_abs2__out) {
+        _battery_inverter__average_1_control_synch_vmatch_comparator2__out = 1;
+    } else {
+        _battery_inverter__average_1_control_synch_vmatch_comparator2__out = _battery_inverter__average_1_control_synch_vmatch_comparator2__state;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Sum5
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum5__out = _battery_inverter__average_1_control_synch_pll_util_pll_pid_kp__out + _battery_inverter__average_1_control_synch_pll_util_pll_pid_gain1__out + _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Abs2
+    _battery_inverter__average_1_control_synch_phase_match_abs2__out = fabs(_battery_inverter__average_1_control_synch_phase_match_low_pass_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Ki
+    _battery_inverter__average_1_control_synch_phase_match_pi_ki__out = 0.5 * _battery_inverter__average_1_control_synch_phase_match_low_pass_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Kp
+    _battery_inverter__average_1_control_synch_phase_match_pi_kp__out = 0.005 * _battery_inverter__average_1_control_synch_phase_match_low_pass_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.phase_diff
+    HIL_OutAO(0x4027, (float)_battery_inverter__average_1_control_synch_phase_match_low_pass_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Product6
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_product6__out = (_battery_inverter__average_1_control_imode_control_dq_current_controller_gain7__out * _battery_inverter__average_1_control_pll_pu_gain6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Product1
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_product1__out = (_battery_inverter__average_1_control_pll_pu_gain6__out * _battery_inverter__average_1_control_imode_control_dq_current_controller_gain4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.Sum1
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_sum1__out = _battery_inverter__average_1_control_power_meas_power_meas_dq_product1__out + _battery_inverter__average_1_control_power_meas_power_meas_dq_product2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.Sum2
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_sum2__out = _battery_inverter__average_1_control_power_meas_power_meas_dq_product4__out - _battery_inverter__average_1_control_power_meas_power_meas_dq_product3__out;
+    // Generated from the component: Fg_Input
+    HIL_OutAO(0x405a, (float)_grid_inputs_mux_f_g__out);
+    // Generated from the component: Vg_pu-actual.G_fbase
+    _vg_pu_actual_g_fbase__out = 50.0 * _grid_inputs_mux_f_g__out;
+    // Generated from the component: Vg_Input
+    HIL_OutAO(0x40fd, (float)_grid_inputs_mux_v_g__out);
+    // Generated from the component: Vg_pu-actual.G_Vbase
+    _vg_pu_actual_g_vbase__out = 230.94010767585033 * _grid_inputs_mux_v_g__out;
+    // Generated from the component: MS_S1.TPM_Grid.POWER_P
+    HIL_OutAO(0x4066, (float)_ms_s1_tpm_grid_power_meter_power__P);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_PA
+    HIL_OutAO(0x4067, (float)_ms_s1_tpm_grid_power_meter_power__Pa);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_PB
+    HIL_OutAO(0x4068, (float)_ms_s1_tpm_grid_power_meter_power__Pb);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_PC
+    HIL_OutAO(0x4069, (float)_ms_s1_tpm_grid_power_meter_power__Pc);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_PF
+    HIL_OutAO(0x406a, (float)_ms_s1_tpm_grid_power_meter_power__PF);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_PFA
+    HIL_OutAO(0x406b, (float)_ms_s1_tpm_grid_power_meter_power__PFa);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_PFB
+    HIL_OutAO(0x406c, (float)_ms_s1_tpm_grid_power_meter_power__PFb);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_PFC
+    HIL_OutAO(0x406d, (float)_ms_s1_tpm_grid_power_meter_power__PFc);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_Q
+    HIL_OutAO(0x406e, (float)_ms_s1_tpm_grid_power_meter_power__Q);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_QA
+    HIL_OutAO(0x406f, (float)_ms_s1_tpm_grid_power_meter_power__Qa);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_QB
+    HIL_OutAO(0x4070, (float)_ms_s1_tpm_grid_power_meter_power__Qb);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_QC
+    HIL_OutAO(0x4071, (float)_ms_s1_tpm_grid_power_meter_power__Qc);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_S
+    HIL_OutAO(0x4072, (float)_ms_s1_tpm_grid_power_meter_power__S);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_SA
+    HIL_OutAO(0x4073, (float)_ms_s1_tpm_grid_power_meter_power__Sa);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_SB
+    HIL_OutAO(0x4074, (float)_ms_s1_tpm_grid_power_meter_power__Sb);
+    // Generated from the component: MS_S1.TPM_Grid.POWER_SC
+    HIL_OutAO(0x4075, (float)_ms_s1_tpm_grid_power_meter_power__Sc);
+    // Generated from the component: MS_S1.TPM_Grid.extra_output_bus
+    _ms_s1_tpm_grid_extra_output_bus__out[0] = _ms_s1_tpm_grid_power_meter_power__Pa;
+    _ms_s1_tpm_grid_extra_output_bus__out[1] = _ms_s1_tpm_grid_power_meter_power__Pb;
+    _ms_s1_tpm_grid_extra_output_bus__out[2] = _ms_s1_tpm_grid_power_meter_power__Pc;
+    _ms_s1_tpm_grid_extra_output_bus__out[3] = _ms_s1_tpm_grid_power_meter_power__Qa;
+    _ms_s1_tpm_grid_extra_output_bus__out[4] = _ms_s1_tpm_grid_power_meter_power__Qb;
+    _ms_s1_tpm_grid_extra_output_bus__out[5] = _ms_s1_tpm_grid_power_meter_power__Qc;
+    _ms_s1_tpm_grid_extra_output_bus__out[6] = _ms_s1_tpm_grid_power_meter_power__Sa;
+    _ms_s1_tpm_grid_extra_output_bus__out[7] = _ms_s1_tpm_grid_power_meter_power__Sb;
+    _ms_s1_tpm_grid_extra_output_bus__out[8] = _ms_s1_tpm_grid_power_meter_power__Sc;
+    _ms_s1_tpm_grid_extra_output_bus__out[9] = _ms_s1_tpm_grid_power_meter_power__PFa;
+    _ms_s1_tpm_grid_extra_output_bus__out[10] = _ms_s1_tpm_grid_power_meter_power__PFb;
+    _ms_s1_tpm_grid_extra_output_bus__out[11] = _ms_s1_tpm_grid_power_meter_power__PFc;
+    // Generated from the component: MS_S1.TPM_Grid.gainVLn_RMS
+    _ms_s1_tpm_grid_gainvln_rms__out = 0.3333333333333333 * _ms_s1_tpm_grid_sumvln_rms__out;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Sum5
+    _ms_s1_tpm_grid_pll_pid_sum5__out = _ms_s1_tpm_grid_pll_pid_kp__out + _ms_s1_tpm_grid_pll_pid_gain1__out + _ms_s1_tpm_grid_pll_pid_integrator1__out;
+    // Generated from the component: MS_S2.TPM_Load.POWER_P
+    HIL_OutAO(0x4089, (float)_ms_s2_tpm_load_power_meter_power__P);
+    // Generated from the component: MS_S2.TPM_Load.POWER_PA
+    HIL_OutAO(0x408a, (float)_ms_s2_tpm_load_power_meter_power__Pa);
+    // Generated from the component: MS_S2.TPM_Load.POWER_PB
+    HIL_OutAO(0x408b, (float)_ms_s2_tpm_load_power_meter_power__Pb);
+    // Generated from the component: MS_S2.TPM_Load.POWER_PC
+    HIL_OutAO(0x408c, (float)_ms_s2_tpm_load_power_meter_power__Pc);
+    // Generated from the component: MS_S2.TPM_Load.POWER_PF
+    HIL_OutAO(0x408d, (float)_ms_s2_tpm_load_power_meter_power__PF);
+    // Generated from the component: MS_S2.TPM_Load.POWER_PFA
+    HIL_OutAO(0x408e, (float)_ms_s2_tpm_load_power_meter_power__PFa);
+    // Generated from the component: MS_S2.TPM_Load.POWER_PFB
+    HIL_OutAO(0x408f, (float)_ms_s2_tpm_load_power_meter_power__PFb);
+    // Generated from the component: MS_S2.TPM_Load.POWER_PFC
+    HIL_OutAO(0x4090, (float)_ms_s2_tpm_load_power_meter_power__PFc);
+    // Generated from the component: MS_S2.TPM_Load.POWER_Q
+    HIL_OutAO(0x4091, (float)_ms_s2_tpm_load_power_meter_power__Q);
+    // Generated from the component: MS_S2.TPM_Load.POWER_QA
+    HIL_OutAO(0x4092, (float)_ms_s2_tpm_load_power_meter_power__Qa);
+    // Generated from the component: MS_S2.TPM_Load.POWER_QB
+    HIL_OutAO(0x4093, (float)_ms_s2_tpm_load_power_meter_power__Qb);
+    // Generated from the component: MS_S2.TPM_Load.POWER_QC
+    HIL_OutAO(0x4094, (float)_ms_s2_tpm_load_power_meter_power__Qc);
+    // Generated from the component: MS_S2.TPM_Load.POWER_S
+    HIL_OutAO(0x4095, (float)_ms_s2_tpm_load_power_meter_power__S);
+    // Generated from the component: MS_S2.TPM_Load.POWER_SA
+    HIL_OutAO(0x4096, (float)_ms_s2_tpm_load_power_meter_power__Sa);
+    // Generated from the component: MS_S2.TPM_Load.POWER_SB
+    HIL_OutAO(0x4097, (float)_ms_s2_tpm_load_power_meter_power__Sb);
+    // Generated from the component: MS_S2.TPM_Load.POWER_SC
+    HIL_OutAO(0x4098, (float)_ms_s2_tpm_load_power_meter_power__Sc);
+    // Generated from the component: MS_S2.TPM_Load.extra_output_bus
+    _ms_s2_tpm_load_extra_output_bus__out[0] = _ms_s2_tpm_load_power_meter_power__Pa;
+    _ms_s2_tpm_load_extra_output_bus__out[1] = _ms_s2_tpm_load_power_meter_power__Pb;
+    _ms_s2_tpm_load_extra_output_bus__out[2] = _ms_s2_tpm_load_power_meter_power__Pc;
+    _ms_s2_tpm_load_extra_output_bus__out[3] = _ms_s2_tpm_load_power_meter_power__Qa;
+    _ms_s2_tpm_load_extra_output_bus__out[4] = _ms_s2_tpm_load_power_meter_power__Qb;
+    _ms_s2_tpm_load_extra_output_bus__out[5] = _ms_s2_tpm_load_power_meter_power__Qc;
+    _ms_s2_tpm_load_extra_output_bus__out[6] = _ms_s2_tpm_load_power_meter_power__Sa;
+    _ms_s2_tpm_load_extra_output_bus__out[7] = _ms_s2_tpm_load_power_meter_power__Sb;
+    _ms_s2_tpm_load_extra_output_bus__out[8] = _ms_s2_tpm_load_power_meter_power__Sc;
+    _ms_s2_tpm_load_extra_output_bus__out[9] = _ms_s2_tpm_load_power_meter_power__PFa;
+    _ms_s2_tpm_load_extra_output_bus__out[10] = _ms_s2_tpm_load_power_meter_power__PFb;
+    _ms_s2_tpm_load_extra_output_bus__out[11] = _ms_s2_tpm_load_power_meter_power__PFc;
+    // Generated from the component: MS_S2.TPM_Load.gainVLn_RMS
+    _ms_s2_tpm_load_gainvln_rms__out = 0.3333333333333333 * _ms_s2_tpm_load_sumvln_rms__out;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Sum5
+    _ms_s2_tpm_load_pll_pid_sum5__out = _ms_s2_tpm_load_pll_pid_kp__out + _ms_s2_tpm_load_pll_pid_gain1__out + _ms_s2_tpm_load_pll_pid_integrator1__out;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Sum5
+    _ms_s2_three_phase_pll1_pid_sum5__out = _ms_s2_three_phase_pll1_pid_kp__out + _ms_s2_three_phase_pll1_pid_gain1__out + _ms_s2_three_phase_pll1_pid_integrator1__out;
+    // Generated from the component: MS_S3.TPM_Grid.POWER_P
+    HIL_OutAO(0x40aa, (float)_ms_s3_tpm_grid_power_meter_power__P);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_PA
+    HIL_OutAO(0x40ab, (float)_ms_s3_tpm_grid_power_meter_power__Pa);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_PB
+    HIL_OutAO(0x40ac, (float)_ms_s3_tpm_grid_power_meter_power__Pb);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_PC
+    HIL_OutAO(0x40ad, (float)_ms_s3_tpm_grid_power_meter_power__Pc);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_PF
+    HIL_OutAO(0x40ae, (float)_ms_s3_tpm_grid_power_meter_power__PF);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_PFA
+    HIL_OutAO(0x40af, (float)_ms_s3_tpm_grid_power_meter_power__PFa);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_PFB
+    HIL_OutAO(0x40b0, (float)_ms_s3_tpm_grid_power_meter_power__PFb);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_PFC
+    HIL_OutAO(0x40b1, (float)_ms_s3_tpm_grid_power_meter_power__PFc);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_Q
+    HIL_OutAO(0x40b2, (float)_ms_s3_tpm_grid_power_meter_power__Q);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_QA
+    HIL_OutAO(0x40b3, (float)_ms_s3_tpm_grid_power_meter_power__Qa);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_QB
+    HIL_OutAO(0x40b4, (float)_ms_s3_tpm_grid_power_meter_power__Qb);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_QC
+    HIL_OutAO(0x40b5, (float)_ms_s3_tpm_grid_power_meter_power__Qc);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_S
+    HIL_OutAO(0x40b6, (float)_ms_s3_tpm_grid_power_meter_power__S);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_SA
+    HIL_OutAO(0x40b7, (float)_ms_s3_tpm_grid_power_meter_power__Sa);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_SB
+    HIL_OutAO(0x40b8, (float)_ms_s3_tpm_grid_power_meter_power__Sb);
+    // Generated from the component: MS_S3.TPM_Grid.POWER_SC
+    HIL_OutAO(0x40b9, (float)_ms_s3_tpm_grid_power_meter_power__Sc);
+    // Generated from the component: MS_S3.TPM_Grid.extra_output_bus
+    _ms_s3_tpm_grid_extra_output_bus__out[0] = _ms_s3_tpm_grid_power_meter_power__Pa;
+    _ms_s3_tpm_grid_extra_output_bus__out[1] = _ms_s3_tpm_grid_power_meter_power__Pb;
+    _ms_s3_tpm_grid_extra_output_bus__out[2] = _ms_s3_tpm_grid_power_meter_power__Pc;
+    _ms_s3_tpm_grid_extra_output_bus__out[3] = _ms_s3_tpm_grid_power_meter_power__Qa;
+    _ms_s3_tpm_grid_extra_output_bus__out[4] = _ms_s3_tpm_grid_power_meter_power__Qb;
+    _ms_s3_tpm_grid_extra_output_bus__out[5] = _ms_s3_tpm_grid_power_meter_power__Qc;
+    _ms_s3_tpm_grid_extra_output_bus__out[6] = _ms_s3_tpm_grid_power_meter_power__Sa;
+    _ms_s3_tpm_grid_extra_output_bus__out[7] = _ms_s3_tpm_grid_power_meter_power__Sb;
+    _ms_s3_tpm_grid_extra_output_bus__out[8] = _ms_s3_tpm_grid_power_meter_power__Sc;
+    _ms_s3_tpm_grid_extra_output_bus__out[9] = _ms_s3_tpm_grid_power_meter_power__PFa;
+    _ms_s3_tpm_grid_extra_output_bus__out[10] = _ms_s3_tpm_grid_power_meter_power__PFb;
+    _ms_s3_tpm_grid_extra_output_bus__out[11] = _ms_s3_tpm_grid_power_meter_power__PFc;
+    // Generated from the component: MS_S3.TPM_Grid.gainVLn_RMS
+    _ms_s3_tpm_grid_gainvln_rms__out = 0.3333333333333333 * _ms_s3_tpm_grid_sumvln_rms__out;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Sum5
+    _ms_s3_tpm_grid_pll_pid_sum5__out = _ms_s3_tpm_grid_pll_pid_kp__out + _ms_s3_tpm_grid_pll_pid_gain1__out + _ms_s3_tpm_grid_pll_pid_integrator1__out;
+    // Generated from the component: MS_S3.TPM_uG.gainI_RMS
+    _ms_s3_tpm_ug_gaini_rms__out = 0.3333333333333333 * _ms_s3_tpm_ug_sumi_rms__out;
+    // Generated from the component: MS_S3.TPM_uG.POWER_P
+    HIL_OutAO(0x40c3, (float)_ms_s3_tpm_ug_power_meter_power__P);
+    // Generated from the component: MS_S3.TPM_uG.POWER_PA
+    HIL_OutAO(0x40c4, (float)_ms_s3_tpm_ug_power_meter_power__Pa);
+    // Generated from the component: MS_S3.TPM_uG.POWER_PB
+    HIL_OutAO(0x40c5, (float)_ms_s3_tpm_ug_power_meter_power__Pb);
+    // Generated from the component: MS_S3.TPM_uG.POWER_PC
+    HIL_OutAO(0x40c6, (float)_ms_s3_tpm_ug_power_meter_power__Pc);
+    // Generated from the component: MS_S3.TPM_uG.POWER_PF
+    HIL_OutAO(0x40c7, (float)_ms_s3_tpm_ug_power_meter_power__PF);
+    // Generated from the component: MS_S3.TPM_uG.POWER_PFA
+    HIL_OutAO(0x40c8, (float)_ms_s3_tpm_ug_power_meter_power__PFa);
+    // Generated from the component: MS_S3.TPM_uG.POWER_PFB
+    HIL_OutAO(0x40c9, (float)_ms_s3_tpm_ug_power_meter_power__PFb);
+    // Generated from the component: MS_S3.TPM_uG.POWER_PFC
+    HIL_OutAO(0x40ca, (float)_ms_s3_tpm_ug_power_meter_power__PFc);
+    // Generated from the component: MS_S3.TPM_uG.POWER_Q
+    HIL_OutAO(0x40cb, (float)_ms_s3_tpm_ug_power_meter_power__Q);
+    // Generated from the component: MS_S3.TPM_uG.POWER_QA
+    HIL_OutAO(0x40cc, (float)_ms_s3_tpm_ug_power_meter_power__Qa);
+    // Generated from the component: MS_S3.TPM_uG.POWER_QB
+    HIL_OutAO(0x40cd, (float)_ms_s3_tpm_ug_power_meter_power__Qb);
+    // Generated from the component: MS_S3.TPM_uG.POWER_QC
+    HIL_OutAO(0x40ce, (float)_ms_s3_tpm_ug_power_meter_power__Qc);
+    // Generated from the component: MS_S3.TPM_uG.POWER_S
+    HIL_OutAO(0x40cf, (float)_ms_s3_tpm_ug_power_meter_power__S);
+    // Generated from the component: MS_S3.TPM_uG.POWER_SA
+    HIL_OutAO(0x40d0, (float)_ms_s3_tpm_ug_power_meter_power__Sa);
+    // Generated from the component: MS_S3.TPM_uG.POWER_SB
+    HIL_OutAO(0x40d1, (float)_ms_s3_tpm_ug_power_meter_power__Sb);
+    // Generated from the component: MS_S3.TPM_uG.POWER_SC
+    HIL_OutAO(0x40d2, (float)_ms_s3_tpm_ug_power_meter_power__Sc);
+    // Generated from the component: MS_S3.TPM_uG.extra_output_bus
+    _ms_s3_tpm_ug_extra_output_bus__out[0] = _ms_s3_tpm_ug_power_meter_power__Pa;
+    _ms_s3_tpm_ug_extra_output_bus__out[1] = _ms_s3_tpm_ug_power_meter_power__Pb;
+    _ms_s3_tpm_ug_extra_output_bus__out[2] = _ms_s3_tpm_ug_power_meter_power__Pc;
+    _ms_s3_tpm_ug_extra_output_bus__out[3] = _ms_s3_tpm_ug_power_meter_power__Qa;
+    _ms_s3_tpm_ug_extra_output_bus__out[4] = _ms_s3_tpm_ug_power_meter_power__Qb;
+    _ms_s3_tpm_ug_extra_output_bus__out[5] = _ms_s3_tpm_ug_power_meter_power__Qc;
+    _ms_s3_tpm_ug_extra_output_bus__out[6] = _ms_s3_tpm_ug_power_meter_power__Sa;
+    _ms_s3_tpm_ug_extra_output_bus__out[7] = _ms_s3_tpm_ug_power_meter_power__Sb;
+    _ms_s3_tpm_ug_extra_output_bus__out[8] = _ms_s3_tpm_ug_power_meter_power__Sc;
+    _ms_s3_tpm_ug_extra_output_bus__out[9] = _ms_s3_tpm_ug_power_meter_power__PFa;
+    _ms_s3_tpm_ug_extra_output_bus__out[10] = _ms_s3_tpm_ug_power_meter_power__PFb;
+    _ms_s3_tpm_ug_extra_output_bus__out[11] = _ms_s3_tpm_ug_power_meter_power__PFc;
+    // Generated from the component: MS_S3.TPM_uG.gainVLn_RMS
+    _ms_s3_tpm_ug_gainvln_rms__out = 0.3333333333333333 * _ms_s3_tpm_ug_sumvln_rms__out;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Sum5
+    _ms_s3_tpm_ug_pll_pid_sum5__out = _ms_s3_tpm_ug_pll_pid_kp__out + _ms_s3_tpm_ug_pll_pid_gain1__out + _ms_s3_tpm_ug_pll_pid_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Sum12
+    _battery_inverter__average_1_control_imode_control_sum12__out = _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out + _battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.d_wt
+    HIL_OutAO(0x400b, (float)_battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Comparator1
+    if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs1__out < _battery_inverter__average_1_control_synch_check_nominal_conditions___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs1__out > _battery_inverter__average_1_control_synch_check_nominal_conditions___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out = 1;
+    } else {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out = _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__state;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Sum2
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_sum2__out =  - _battery_inverter__average_1_control_abctodq1_gain2__out + _battery_inverter__average_1_control_imode_control_current_ref_product1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Iqref
+    HIL_OutAO(0x4008, (float)_battery_inverter__average_1_control_imode_control_current_ref_product1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Sum1
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_sum1__out =  - _battery_inverter__average_1_control_abctodq1_gain1__out + _battery_inverter__average_1_control_imode_control_current_ref_product2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Idref
+    HIL_OutAO(0x4007, (float)_battery_inverter__average_1_control_imode_control_current_ref_product2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.V_out_nom
+    HIL_OutInt32(0xf00409, _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Limit1
+    _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out = MIN(MAX(_battery_inverter__average_1_control_pll_pu_pll_pid_sum5__out, 0.0), 439.822971502571);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Comparator1
+    if (_battery_inverter__average_1_control_synch_check_grid_abs1__out < _battery_inverter__average_1_control_synch_check_grid___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator1__out = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_grid_abs1__out > _battery_inverter__average_1_control_synch_check_grid___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator1__out = 1;
+    } else {
+        _battery_inverter__average_1_control_synch_check_grid_comparator1__out = _battery_inverter__average_1_control_synch_check_grid_comparator1__state;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Abs3
+    _battery_inverter__average_1_control_synch_f_match_abs3__out = fabs(_battery_inverter__average_1_control_synch_f_match_low_pass_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.f_diff
+    HIL_OutAO(0x4024, (float)_battery_inverter__average_1_control_synch_f_match_low_pass_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.out of limit volts
+    HIL_OutInt32(0xf00408, _battery_inverter__average_1_control_synch_check_grid_comparator2__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Counter1.en_switch
+    _battery_inverter__average_1_control_synch_vmatch_counter1_en_switch__out = (_battery_inverter__average_1_control_synch_vmatch_comparator2__out > 0.5f) ? _battery_inverter__average_1_control_synch_vmatch_counter1_const_value_1__out : _battery_inverter__average_1_control_synch_vmatch_counter1_const_value_0__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Logical operator1
+    _battery_inverter__average_1_control_synch_vmatch_logical_operator1__out = !_battery_inverter__average_1_control_synch_vmatch_comparator2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Limit1
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out = MIN(MAX(_battery_inverter__average_1_control_synch_pll_util_pll_pid_sum5__out, 0.0), 439.822971502571);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Comparator2
+    if (_battery_inverter__average_1_control_synch_phase_match_sum2__out < _battery_inverter__average_1_control_synch_phase_match_abs2__out) {
+        _battery_inverter__average_1_control_synch_phase_match_comparator2__out = 0;
+    } else if (_battery_inverter__average_1_control_synch_phase_match_sum2__out > _battery_inverter__average_1_control_synch_phase_match_abs2__out) {
+        _battery_inverter__average_1_control_synch_phase_match_comparator2__out = 1;
+    } else {
+        _battery_inverter__average_1_control_synch_phase_match_comparator2__out = _battery_inverter__average_1_control_synch_phase_match_comparator2__state;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Sum5
+    _battery_inverter__average_1_control_synch_phase_match_pi_sum5__out = _battery_inverter__average_1_control_synch_phase_match_pi_kp__out + _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Sum13
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_sum13__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_product6__out + _battery_inverter__average_1_control_pll_pu_gain5__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Sum10
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_sum10__out = _battery_inverter__average_1_control_pll_pu_gain4__out - _battery_inverter__average_1_control_imode_control_dq_current_controller_product1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.LPF_P
+    X_UnInt32 _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__a_sum = 0.0f;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_sum = 0.0f;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__delay_line_in = 0.0f;
+    for (_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i = 0; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i < 1; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i++) {
+        _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_sum += _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_coeff[_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i + 1] * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__states[_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__i];
+    }
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__a_sum += _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__states[0] * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__a_coeff[1];
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__delay_line_in = _battery_inverter__average_1_control_power_meas_power_meas_dq_sum1__out - _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__a_sum;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_sum += _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_coeff[0] * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__delay_line_in;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__out = _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__b_sum;
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.LPF_Q
+    X_UnInt32 _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__a_sum = 0.0f;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_sum = 0.0f;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__delay_line_in = 0.0f;
+    for (_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i = 0; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i < 1; _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i++) {
+        _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_sum += _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_coeff[_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i + 1] * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__states[_battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__i];
+    }
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__a_sum += _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__states[0] * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__a_coeff[1];
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__delay_line_in = _battery_inverter__average_1_control_power_meas_power_meas_dq_sum2__out - _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__a_sum;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_sum += _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_coeff[0] * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__delay_line_in;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__out = _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__b_sum;
+    // Generated from the component: Vg_pu-actual.Bus Join_Vg-f
+    _vg_pu_actual_bus_join_vg_f__out[0] = _vg_pu_actual_g_fbase__out;
+    _vg_pu_actual_bus_join_vg_f__out[1] = _vg_pu_actual_g_fbase__out;
+    _vg_pu_actual_bus_join_vg_f__out[2] = _vg_pu_actual_g_fbase__out;
+    // Generated from the component: Vg_pu-actual.Bus Join_Vg-RMS
+    _vg_pu_actual_bus_join_vg_rms__out[0] = _vg_pu_actual_g_vbase__out;
+    _vg_pu_actual_bus_join_vg_rms__out[1] = _vg_pu_actual_g_vbase__out;
+    _vg_pu_actual_bus_join_vg_rms__out[2] = _vg_pu_actual_g_vbase__out;
+    // Generated from the component: MS_S1.TPM_Grid.extra_out
+    // Generated from the component: MS_S1.TPM_Grid.VLn_RMS
+    HIL_OutAO(0x4079, (float)_ms_s1_tpm_grid_gainvln_rms__out);
+    // Generated from the component: MS_S1.TPM_Grid.output_bus
+    _ms_s1_tpm_grid_output_bus__out[0] = _ms_s1_tpm_grid_van_va1__out;
+    _ms_s1_tpm_grid_output_bus__out[1] = _ms_s1_tpm_grid_vbn_va1__out;
+    _ms_s1_tpm_grid_output_bus__out[2] = _ms_s1_tpm_grid_vcn_va1__out;
+    _ms_s1_tpm_grid_output_bus__out[3] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[4] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[5] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[6] = _ms_s1_tpm_grid_ia_ia1__out;
+    _ms_s1_tpm_grid_output_bus__out[7] = _ms_s1_tpm_grid_ib_ia1__out;
+    _ms_s1_tpm_grid_output_bus__out[8] = _ms_s1_tpm_grid_ic_ia1__out;
+    _ms_s1_tpm_grid_output_bus__out[9] = _ms_s1_tpm_grid_pll_to_hz__out;
+    _ms_s1_tpm_grid_output_bus__out[10] = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS1;
+    _ms_s1_tpm_grid_output_bus__out[11] = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS2;
+    _ms_s1_tpm_grid_output_bus__out[12] = _ms_s1_tpm_grid_vln_rms_calc_rms__RMS3;
+    _ms_s1_tpm_grid_output_bus__out[13] = _ms_s1_tpm_grid_gainvln_rms__out;
+    _ms_s1_tpm_grid_output_bus__out[14] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[15] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[16] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[17] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[18] = _ms_s1_tpm_grid_i_rms_calc_rms__RMS1;
+    _ms_s1_tpm_grid_output_bus__out[19] = _ms_s1_tpm_grid_i_rms_calc_rms__RMS2;
+    _ms_s1_tpm_grid_output_bus__out[20] = _ms_s1_tpm_grid_i_rms_calc_rms__RMS3;
+    _ms_s1_tpm_grid_output_bus__out[21] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[22] = _ms_s1_tpm_grid_power_meter_power__P;
+    _ms_s1_tpm_grid_output_bus__out[23] = _ms_s1_tpm_grid_power_meter_power__Q;
+    _ms_s1_tpm_grid_output_bus__out[24] = _ms_s1_tpm_grid_power_meter_power__S;
+    _ms_s1_tpm_grid_output_bus__out[25] = _ms_s1_tpm_grid_power_meter_power__PF;
+    _ms_s1_tpm_grid_output_bus__out[26] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[27] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[28] = _ms_s1_tpm_grid_zero__out;
+    _ms_s1_tpm_grid_output_bus__out[29] = _ms_s1_tpm_grid_zero__out;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Limit1
+    _ms_s1_tpm_grid_pll_pid_limit1__out = MIN(MAX(_ms_s1_tpm_grid_pll_pid_sum5__out, -10000.0), 10000.0);
+    // Generated from the component: MS_S2.TPM_Load.extra_out
+    // Generated from the component: MS_S2.TPM_Load.VLn_RMS
+    HIL_OutAO(0x409c, (float)_ms_s2_tpm_load_gainvln_rms__out);
+    // Generated from the component: MS_S2.TPM_Load.output_bus
+    _ms_s2_tpm_load_output_bus__out[0] = _ms_s2_tpm_load_van_va1__out;
+    _ms_s2_tpm_load_output_bus__out[1] = _ms_s2_tpm_load_vbn_va1__out;
+    _ms_s2_tpm_load_output_bus__out[2] = _ms_s2_tpm_load_vcn_va1__out;
+    _ms_s2_tpm_load_output_bus__out[3] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[4] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[5] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[6] = _ms_s2_tpm_load_ia_ia1__out;
+    _ms_s2_tpm_load_output_bus__out[7] = _ms_s2_tpm_load_ib_ia1__out;
+    _ms_s2_tpm_load_output_bus__out[8] = _ms_s2_tpm_load_ic_ia1__out;
+    _ms_s2_tpm_load_output_bus__out[9] = _ms_s2_tpm_load_pll_to_hz__out;
+    _ms_s2_tpm_load_output_bus__out[10] = _ms_s2_tpm_load_vln_rms_calc_rms__RMS1;
+    _ms_s2_tpm_load_output_bus__out[11] = _ms_s2_tpm_load_vln_rms_calc_rms__RMS2;
+    _ms_s2_tpm_load_output_bus__out[12] = _ms_s2_tpm_load_vln_rms_calc_rms__RMS3;
+    _ms_s2_tpm_load_output_bus__out[13] = _ms_s2_tpm_load_gainvln_rms__out;
+    _ms_s2_tpm_load_output_bus__out[14] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[15] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[16] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[17] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[18] = _ms_s2_tpm_load_i_rms_calc_rms__RMS1;
+    _ms_s2_tpm_load_output_bus__out[19] = _ms_s2_tpm_load_i_rms_calc_rms__RMS2;
+    _ms_s2_tpm_load_output_bus__out[20] = _ms_s2_tpm_load_i_rms_calc_rms__RMS3;
+    _ms_s2_tpm_load_output_bus__out[21] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[22] = _ms_s2_tpm_load_power_meter_power__P;
+    _ms_s2_tpm_load_output_bus__out[23] = _ms_s2_tpm_load_power_meter_power__Q;
+    _ms_s2_tpm_load_output_bus__out[24] = _ms_s2_tpm_load_power_meter_power__S;
+    _ms_s2_tpm_load_output_bus__out[25] = _ms_s2_tpm_load_power_meter_power__PF;
+    _ms_s2_tpm_load_output_bus__out[26] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[27] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[28] = _ms_s2_tpm_load_zero__out;
+    _ms_s2_tpm_load_output_bus__out[29] = _ms_s2_tpm_load_zero__out;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Limit1
+    _ms_s2_tpm_load_pll_pid_limit1__out = MIN(MAX(_ms_s2_tpm_load_pll_pid_sum5__out, -10000.0), 10000.0);
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Limit1
+    _ms_s2_three_phase_pll1_pid_limit1__out = MIN(MAX(_ms_s2_three_phase_pll1_pid_sum5__out, -10000.0), 10000.0);
+    // Generated from the component: MS_S3.TPM_Grid.extra_out
+    // Generated from the component: MS_S3.TPM_Grid.VLn_RMS
+    HIL_OutAO(0x40bd, (float)_ms_s3_tpm_grid_gainvln_rms__out);
+    // Generated from the component: MS_S3.TPM_Grid.output_bus
+    _ms_s3_tpm_grid_output_bus__out[0] = _ms_s3_tpm_grid_van_va1__out;
+    _ms_s3_tpm_grid_output_bus__out[1] = _ms_s3_tpm_grid_vbn_va1__out;
+    _ms_s3_tpm_grid_output_bus__out[2] = _ms_s3_tpm_grid_vcn_va1__out;
+    _ms_s3_tpm_grid_output_bus__out[3] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[4] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[5] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[6] = _ms_s3_tpm_grid_ia_ia1__out;
+    _ms_s3_tpm_grid_output_bus__out[7] = _ms_s3_tpm_grid_ib_ia1__out;
+    _ms_s3_tpm_grid_output_bus__out[8] = _ms_s3_tpm_grid_ic_ia1__out;
+    _ms_s3_tpm_grid_output_bus__out[9] = _ms_s3_tpm_grid_pll_to_hz__out;
+    _ms_s3_tpm_grid_output_bus__out[10] = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS1;
+    _ms_s3_tpm_grid_output_bus__out[11] = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS2;
+    _ms_s3_tpm_grid_output_bus__out[12] = _ms_s3_tpm_grid_vln_rms_calc_rms__RMS3;
+    _ms_s3_tpm_grid_output_bus__out[13] = _ms_s3_tpm_grid_gainvln_rms__out;
+    _ms_s3_tpm_grid_output_bus__out[14] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[15] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[16] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[17] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[18] = _ms_s3_tpm_grid_i_rms_calc_rms__RMS1;
+    _ms_s3_tpm_grid_output_bus__out[19] = _ms_s3_tpm_grid_i_rms_calc_rms__RMS2;
+    _ms_s3_tpm_grid_output_bus__out[20] = _ms_s3_tpm_grid_i_rms_calc_rms__RMS3;
+    _ms_s3_tpm_grid_output_bus__out[21] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[22] = _ms_s3_tpm_grid_power_meter_power__P;
+    _ms_s3_tpm_grid_output_bus__out[23] = _ms_s3_tpm_grid_power_meter_power__Q;
+    _ms_s3_tpm_grid_output_bus__out[24] = _ms_s3_tpm_grid_power_meter_power__S;
+    _ms_s3_tpm_grid_output_bus__out[25] = _ms_s3_tpm_grid_power_meter_power__PF;
+    _ms_s3_tpm_grid_output_bus__out[26] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[27] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[28] = _ms_s3_tpm_grid_zero__out;
+    _ms_s3_tpm_grid_output_bus__out[29] = _ms_s3_tpm_grid_zero__out;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Limit1
+    _ms_s3_tpm_grid_pll_pid_limit1__out = MIN(MAX(_ms_s3_tpm_grid_pll_pid_sum5__out, -10000.0), 10000.0);
+    // Generated from the component: MS_S3.TPM_uG.I_RMS
+    HIL_OutAO(0x40c2, (float)_ms_s3_tpm_ug_gaini_rms__out);
+    // Generated from the component: MS_S3.TPM_uG.extra_out
+    // Generated from the component: MS_S3.TPM_uG.VLn_RMS
+    HIL_OutAO(0x40d6, (float)_ms_s3_tpm_ug_gainvln_rms__out);
+    // Generated from the component: MS_S3.TPM_uG.output_bus
+    _ms_s3_tpm_ug_output_bus__out[0] = _ms_s3_tpm_ug_van_va1__out;
+    _ms_s3_tpm_ug_output_bus__out[1] = _ms_s3_tpm_ug_vbn_va1__out;
+    _ms_s3_tpm_ug_output_bus__out[2] = _ms_s3_tpm_ug_vcn_va1__out;
+    _ms_s3_tpm_ug_output_bus__out[3] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[4] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[5] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[6] = _ms_s3_tpm_ug_ia_ia1__out;
+    _ms_s3_tpm_ug_output_bus__out[7] = _ms_s3_tpm_ug_ib_ia1__out;
+    _ms_s3_tpm_ug_output_bus__out[8] = _ms_s3_tpm_ug_ic_ia1__out;
+    _ms_s3_tpm_ug_output_bus__out[9] = _ms_s3_tpm_ug_pll_to_hz__out;
+    _ms_s3_tpm_ug_output_bus__out[10] = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS1;
+    _ms_s3_tpm_ug_output_bus__out[11] = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2;
+    _ms_s3_tpm_ug_output_bus__out[12] = _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3;
+    _ms_s3_tpm_ug_output_bus__out[13] = _ms_s3_tpm_ug_gainvln_rms__out;
+    _ms_s3_tpm_ug_output_bus__out[14] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[15] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[16] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[17] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[18] = _ms_s3_tpm_ug_i_rms_calc_rms__RMS1;
+    _ms_s3_tpm_ug_output_bus__out[19] = _ms_s3_tpm_ug_i_rms_calc_rms__RMS2;
+    _ms_s3_tpm_ug_output_bus__out[20] = _ms_s3_tpm_ug_i_rms_calc_rms__RMS3;
+    _ms_s3_tpm_ug_output_bus__out[21] = _ms_s3_tpm_ug_gaini_rms__out;
+    _ms_s3_tpm_ug_output_bus__out[22] = _ms_s3_tpm_ug_power_meter_power__P;
+    _ms_s3_tpm_ug_output_bus__out[23] = _ms_s3_tpm_ug_power_meter_power__Q;
+    _ms_s3_tpm_ug_output_bus__out[24] = _ms_s3_tpm_ug_power_meter_power__S;
+    _ms_s3_tpm_ug_output_bus__out[25] = _ms_s3_tpm_ug_power_meter_power__PF;
+    _ms_s3_tpm_ug_output_bus__out[26] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[27] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[28] = _ms_s3_tpm_ug_zero__out;
+    _ms_s3_tpm_ug_output_bus__out[29] = _ms_s3_tpm_ug_zero__out;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Limit1
+    _ms_s3_tpm_ug_pll_pid_limit1__out = MIN(MAX(_ms_s3_tpm_ug_pll_pid_sum5__out, -10000.0), 10000.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.wt_out
+    HIL_OutAO(0x400d, (float)_battery_inverter__average_1_control_imode_control_sum12__out);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Sum3
+    _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out = _battery_inverter__average_1_control_imode_control_sum12__out - _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output;
+    // Generated from the component: Battery inverter (Average)1.Control.wt_Imode
+    HIL_OutAO(0x4048, (float)_battery_inverter__average_1_control_imode_control_sum12__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Logical operator1
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator1__out = _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out || _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out ;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.f_out_nom
+    HIL_OutInt32(0xf0040a, _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Ki
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_ki__out = 347.22 * _battery_inverter__average_1_control_imode_control_dq_current_controller_sum2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Kp
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_kp__out = 0.347 * _battery_inverter__average_1_control_imode_control_dq_current_controller_sum2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Ki
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_ki__out = 347.22 * _battery_inverter__average_1_control_imode_control_dq_current_controller_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Kp
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_kp__out = 0.347 * _battery_inverter__average_1_control_imode_control_dq_current_controller_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Sum6
+    _battery_inverter__average_1_control_pll_pu_pll_pid_sum6__out =  - _battery_inverter__average_1_control_pll_pu_pll_pid_sum5__out + _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.Rate Limiter1
+    _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__rising_rate_lim[0] = 1570.7963267948965 * 1e-06;
+    _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__falling_rate_lim[0] = -1570.7963267948965 * 1e-06;
+    if (_battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__first_step) {
+        _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__out = _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out;
+        _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state = _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out;
+    } else {
+        _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__out = _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out;
+        if (_battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out - _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state > _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__rising_rate_lim[0])
+            _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__out = _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state + (_battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out - _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state < _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__falling_rate_lim[0])
+            _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__out = _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state + (_battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.integrator
+    _battery_inverter__average_1_control_pll_pu_pll_integrator__in = _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out;
+    {
+        _battery_inverter__average_1_control_pll_pu_pll_integrator__state += 1e-06 * _battery_inverter__average_1_control_pll_pu_pll_integrator__in ;
+        if ( _battery_inverter__average_1_control_pll_pu_pll_integrator__in >= 0.0 )     {
+            if ( _battery_inverter__average_1_control_pll_pu_pll_integrator__state >= 6.283185307179586 )         {
+                _battery_inverter__average_1_control_pll_pu_pll_integrator__state -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_pll_pu_pll_integrator__state <= - 6.283185307179586 )         {
+                _battery_inverter__average_1_control_pll_pu_pll_integrator__state += 6.283185307179586 ;
+            }
+        }
+        _battery_inverter__average_1_control_pll_pu_pll_integrator__out = _battery_inverter__average_1_control_pll_pu_pll_integrator__state ;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Logical operator1
+    _battery_inverter__average_1_control_synch_check_grid_logical_operator1__out = _battery_inverter__average_1_control_synch_check_grid_comparator1__out || _battery_inverter__average_1_control_synch_check_grid_comparator2__out ;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.out of limit freq
+    HIL_OutInt32(0xf00407, _battery_inverter__average_1_control_synch_check_grid_comparator1__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Comparator1
+    if (_battery_inverter__average_1_control_synch_f_match_sum2__out < _battery_inverter__average_1_control_synch_f_match_abs3__out) {
+        _battery_inverter__average_1_control_synch_f_match_comparator1__out = 0;
+    } else if (_battery_inverter__average_1_control_synch_f_match_sum2__out > _battery_inverter__average_1_control_synch_f_match_abs3__out) {
+        _battery_inverter__average_1_control_synch_f_match_comparator1__out = 1;
+    } else {
+        _battery_inverter__average_1_control_synch_f_match_comparator1__out = _battery_inverter__average_1_control_synch_f_match_comparator1__state;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Sum6
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum6__out =  - _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum5__out + _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.Rate Limiter1
+    _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__rising_rate_lim[0] = 1570.7963267948965 * 1e-06;
+    _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__falling_rate_lim[0] = -1570.7963267948965 * 1e-06;
+    if (_battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__first_step) {
+        _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__out = _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out;
+        _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state = _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out;
+    } else {
+        _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__out = _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out;
+        if (_battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out - _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state > _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__rising_rate_lim[0])
+            _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__out = _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state + (_battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out - _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state < _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__falling_rate_lim[0])
+            _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__out = _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state + (_battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.integrator
+    _battery_inverter__average_1_control_synch_pll_util_pll_integrator__in = _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out;
+    {
+        _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state += 1e-06 * _battery_inverter__average_1_control_synch_pll_util_pll_integrator__in ;
+        if ( _battery_inverter__average_1_control_synch_pll_util_pll_integrator__in >= 0.0 )     {
+            if ( _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state >= 6.283185307179586 )         {
+                _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state <= - 6.283185307179586 )         {
+                _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state += 6.283185307179586 ;
+            }
+        }
+        _battery_inverter__average_1_control_synch_pll_util_pll_integrator__out = _battery_inverter__average_1_control_synch_pll_util_pll_integrator__state ;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Counter1.en_switch
+    _battery_inverter__average_1_control_synch_phase_match_counter1_en_switch__out = (_battery_inverter__average_1_control_synch_phase_match_comparator2__out > 0.5f) ? _battery_inverter__average_1_control_synch_phase_match_counter1_const_value_1__out : _battery_inverter__average_1_control_synch_phase_match_counter1_const_value_0__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Logical operator1
+    _battery_inverter__average_1_control_synch_phase_match_logical_operator1__out = !_battery_inverter__average_1_control_synch_phase_match_comparator2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Limit1
+    _battery_inverter__average_1_control_synch_phase_match_pi_limit1__out = MIN(MAX(_battery_inverter__average_1_control_synch_phase_match_pi_sum5__out, -100000.0), 100000.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Gain1
+    _battery_inverter__average_1_control_power_meas_gain1__out = 100000.0 * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Gain2
+    _battery_inverter__average_1_control_power_meas_gain2__out = 100000.0 * _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.S_and_pf
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__P = _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__out;
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__Q = _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__out;
+    {
+        _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__S = sqrt ( _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__P * _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__P + _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__Q * _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__Q ) ;
+        if ( _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__S > 0 )     {
+            _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__pf = _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__P / _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__S ;
+        }
+        else     {
+            _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__pf = 0 ;
+        }
+    }
+    // Generated from the component: Vg.Limit2
+    _vg_limit2__out[0] = MIN(MAX(_vg_pu_actual_bus_join_vg_f__out[0], 0.1), 10000.0);
+    _vg_limit2__out[1] = MIN(MAX(_vg_pu_actual_bus_join_vg_f__out[1], 0.1), 10000.0);
+    _vg_limit2__out[2] = MIN(MAX(_vg_pu_actual_bus_join_vg_f__out[2], 0.1), 10000.0);
+    // Generated from the component: Vg.Limit1
+    _vg_limit1__out[0] = MAX(_vg_pu_actual_bus_join_vg_rms__out[0], 0.0);
+    _vg_limit1__out[1] = MAX(_vg_pu_actual_bus_join_vg_rms__out[1], 0.0);
+    _vg_limit1__out[2] = MAX(_vg_pu_actual_bus_join_vg_rms__out[2], 0.0);
+    // Generated from the component: MS_S1.Meter_Grid.input_bus
+    _ms_s1_meter_grid_input_bus__out = _ms_s1_tpm_grid_output_bus__out[0];
+    _ms_s1_meter_grid_input_bus__out1 = _ms_s1_tpm_grid_output_bus__out[1];
+    _ms_s1_meter_grid_input_bus__out2 = _ms_s1_tpm_grid_output_bus__out[2];
+    _ms_s1_meter_grid_input_bus__out3 = _ms_s1_tpm_grid_output_bus__out[3];
+    _ms_s1_meter_grid_input_bus__out4 = _ms_s1_tpm_grid_output_bus__out[4];
+    _ms_s1_meter_grid_input_bus__out5 = _ms_s1_tpm_grid_output_bus__out[5];
+    _ms_s1_meter_grid_input_bus__out6 = _ms_s1_tpm_grid_output_bus__out[6];
+    _ms_s1_meter_grid_input_bus__out7 = _ms_s1_tpm_grid_output_bus__out[7];
+    _ms_s1_meter_grid_input_bus__out8 = _ms_s1_tpm_grid_output_bus__out[8];
+    _ms_s1_meter_grid_input_bus__out9 = _ms_s1_tpm_grid_output_bus__out[9];
+    _ms_s1_meter_grid_input_bus__out10 = _ms_s1_tpm_grid_output_bus__out[10];
+    _ms_s1_meter_grid_input_bus__out11 = _ms_s1_tpm_grid_output_bus__out[11];
+    _ms_s1_meter_grid_input_bus__out12 = _ms_s1_tpm_grid_output_bus__out[12];
+    _ms_s1_meter_grid_input_bus__out13 = _ms_s1_tpm_grid_output_bus__out[13];
+    _ms_s1_meter_grid_input_bus__out14 = _ms_s1_tpm_grid_output_bus__out[14];
+    _ms_s1_meter_grid_input_bus__out15 = _ms_s1_tpm_grid_output_bus__out[15];
+    _ms_s1_meter_grid_input_bus__out16 = _ms_s1_tpm_grid_output_bus__out[16];
+    _ms_s1_meter_grid_input_bus__out17 = _ms_s1_tpm_grid_output_bus__out[17];
+    _ms_s1_meter_grid_input_bus__out18 = _ms_s1_tpm_grid_output_bus__out[18];
+    _ms_s1_meter_grid_input_bus__out19 = _ms_s1_tpm_grid_output_bus__out[19];
+    _ms_s1_meter_grid_input_bus__out20 = _ms_s1_tpm_grid_output_bus__out[20];
+    _ms_s1_meter_grid_input_bus__out21 = _ms_s1_tpm_grid_output_bus__out[21];
+    _ms_s1_meter_grid_input_bus__out22 = _ms_s1_tpm_grid_output_bus__out[22];
+    _ms_s1_meter_grid_input_bus__out23 = _ms_s1_tpm_grid_output_bus__out[23];
+    _ms_s1_meter_grid_input_bus__out24 = _ms_s1_tpm_grid_output_bus__out[24];
+    _ms_s1_meter_grid_input_bus__out25 = _ms_s1_tpm_grid_output_bus__out[25];
+    _ms_s1_meter_grid_input_bus__out26 = _ms_s1_tpm_grid_output_bus__out[26];
+    _ms_s1_meter_grid_input_bus__out27 = _ms_s1_tpm_grid_output_bus__out[27];
+    _ms_s1_meter_grid_input_bus__out28 = _ms_s1_tpm_grid_output_bus__out[28];
+    _ms_s1_meter_grid_input_bus__out29 = _ms_s1_tpm_grid_output_bus__out[29];
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Sum6
+    _ms_s1_tpm_grid_pll_pid_sum6__out =  - _ms_s1_tpm_grid_pll_pid_sum5__out + _ms_s1_tpm_grid_pll_pid_limit1__out;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.Rate Limiter1
+    _ms_s1_tpm_grid_pll_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s1_tpm_grid_pll_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s1_tpm_grid_pll_rate_limiter1__first_step) {
+        _ms_s1_tpm_grid_pll_rate_limiter1__out = _ms_s1_tpm_grid_pll_pid_limit1__out;
+        _ms_s1_tpm_grid_pll_rate_limiter1__state = _ms_s1_tpm_grid_pll_pid_limit1__out;
+    } else {
+        _ms_s1_tpm_grid_pll_rate_limiter1__out = _ms_s1_tpm_grid_pll_pid_limit1__out;
+        if (_ms_s1_tpm_grid_pll_pid_limit1__out - _ms_s1_tpm_grid_pll_rate_limiter1__state > _ms_s1_tpm_grid_pll_rate_limiter1__rising_rate_lim[0])
+            _ms_s1_tpm_grid_pll_rate_limiter1__out = _ms_s1_tpm_grid_pll_rate_limiter1__state + (_ms_s1_tpm_grid_pll_rate_limiter1__rising_rate_lim[0]);
+        if (_ms_s1_tpm_grid_pll_pid_limit1__out - _ms_s1_tpm_grid_pll_rate_limiter1__state < _ms_s1_tpm_grid_pll_rate_limiter1__falling_rate_lim[0])
+            _ms_s1_tpm_grid_pll_rate_limiter1__out = _ms_s1_tpm_grid_pll_rate_limiter1__state + (_ms_s1_tpm_grid_pll_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: MS_S1.TPM_Grid.PLL.integrator
+    _ms_s1_tpm_grid_pll_integrator__in = _ms_s1_tpm_grid_pll_pid_limit1__out;
+    {
+        _ms_s1_tpm_grid_pll_integrator__state += 1e-06 * _ms_s1_tpm_grid_pll_integrator__in ;
+        if ( _ms_s1_tpm_grid_pll_integrator__in >= 0.0 )     {
+            if ( _ms_s1_tpm_grid_pll_integrator__state >= 6.283185307179586 )         {
+                _ms_s1_tpm_grid_pll_integrator__state -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _ms_s1_tpm_grid_pll_integrator__state <= - 6.283185307179586 )         {
+                _ms_s1_tpm_grid_pll_integrator__state += 6.283185307179586 ;
+            }
+        }
+        _ms_s1_tpm_grid_pll_integrator__out = _ms_s1_tpm_grid_pll_integrator__state ;
+    }
+    // Generated from the component: MS_S2.Meter_Load.input_bus
+    _ms_s2_meter_load_input_bus__out = _ms_s2_tpm_load_output_bus__out[0];
+    _ms_s2_meter_load_input_bus__out1 = _ms_s2_tpm_load_output_bus__out[1];
+    _ms_s2_meter_load_input_bus__out2 = _ms_s2_tpm_load_output_bus__out[2];
+    _ms_s2_meter_load_input_bus__out3 = _ms_s2_tpm_load_output_bus__out[3];
+    _ms_s2_meter_load_input_bus__out4 = _ms_s2_tpm_load_output_bus__out[4];
+    _ms_s2_meter_load_input_bus__out5 = _ms_s2_tpm_load_output_bus__out[5];
+    _ms_s2_meter_load_input_bus__out6 = _ms_s2_tpm_load_output_bus__out[6];
+    _ms_s2_meter_load_input_bus__out7 = _ms_s2_tpm_load_output_bus__out[7];
+    _ms_s2_meter_load_input_bus__out8 = _ms_s2_tpm_load_output_bus__out[8];
+    _ms_s2_meter_load_input_bus__out9 = _ms_s2_tpm_load_output_bus__out[9];
+    _ms_s2_meter_load_input_bus__out10 = _ms_s2_tpm_load_output_bus__out[10];
+    _ms_s2_meter_load_input_bus__out11 = _ms_s2_tpm_load_output_bus__out[11];
+    _ms_s2_meter_load_input_bus__out12 = _ms_s2_tpm_load_output_bus__out[12];
+    _ms_s2_meter_load_input_bus__out13 = _ms_s2_tpm_load_output_bus__out[13];
+    _ms_s2_meter_load_input_bus__out14 = _ms_s2_tpm_load_output_bus__out[14];
+    _ms_s2_meter_load_input_bus__out15 = _ms_s2_tpm_load_output_bus__out[15];
+    _ms_s2_meter_load_input_bus__out16 = _ms_s2_tpm_load_output_bus__out[16];
+    _ms_s2_meter_load_input_bus__out17 = _ms_s2_tpm_load_output_bus__out[17];
+    _ms_s2_meter_load_input_bus__out18 = _ms_s2_tpm_load_output_bus__out[18];
+    _ms_s2_meter_load_input_bus__out19 = _ms_s2_tpm_load_output_bus__out[19];
+    _ms_s2_meter_load_input_bus__out20 = _ms_s2_tpm_load_output_bus__out[20];
+    _ms_s2_meter_load_input_bus__out21 = _ms_s2_tpm_load_output_bus__out[21];
+    _ms_s2_meter_load_input_bus__out22 = _ms_s2_tpm_load_output_bus__out[22];
+    _ms_s2_meter_load_input_bus__out23 = _ms_s2_tpm_load_output_bus__out[23];
+    _ms_s2_meter_load_input_bus__out24 = _ms_s2_tpm_load_output_bus__out[24];
+    _ms_s2_meter_load_input_bus__out25 = _ms_s2_tpm_load_output_bus__out[25];
+    _ms_s2_meter_load_input_bus__out26 = _ms_s2_tpm_load_output_bus__out[26];
+    _ms_s2_meter_load_input_bus__out27 = _ms_s2_tpm_load_output_bus__out[27];
+    _ms_s2_meter_load_input_bus__out28 = _ms_s2_tpm_load_output_bus__out[28];
+    _ms_s2_meter_load_input_bus__out29 = _ms_s2_tpm_load_output_bus__out[29];
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Sum6
+    _ms_s2_tpm_load_pll_pid_sum6__out =  - _ms_s2_tpm_load_pll_pid_sum5__out + _ms_s2_tpm_load_pll_pid_limit1__out;
+    // Generated from the component: MS_S2.TPM_Load.PLL.Rate Limiter1
+    _ms_s2_tpm_load_pll_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s2_tpm_load_pll_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s2_tpm_load_pll_rate_limiter1__first_step) {
+        _ms_s2_tpm_load_pll_rate_limiter1__out = _ms_s2_tpm_load_pll_pid_limit1__out;
+        _ms_s2_tpm_load_pll_rate_limiter1__state = _ms_s2_tpm_load_pll_pid_limit1__out;
+    } else {
+        _ms_s2_tpm_load_pll_rate_limiter1__out = _ms_s2_tpm_load_pll_pid_limit1__out;
+        if (_ms_s2_tpm_load_pll_pid_limit1__out - _ms_s2_tpm_load_pll_rate_limiter1__state > _ms_s2_tpm_load_pll_rate_limiter1__rising_rate_lim[0])
+            _ms_s2_tpm_load_pll_rate_limiter1__out = _ms_s2_tpm_load_pll_rate_limiter1__state + (_ms_s2_tpm_load_pll_rate_limiter1__rising_rate_lim[0]);
+        if (_ms_s2_tpm_load_pll_pid_limit1__out - _ms_s2_tpm_load_pll_rate_limiter1__state < _ms_s2_tpm_load_pll_rate_limiter1__falling_rate_lim[0])
+            _ms_s2_tpm_load_pll_rate_limiter1__out = _ms_s2_tpm_load_pll_rate_limiter1__state + (_ms_s2_tpm_load_pll_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: MS_S2.TPM_Load.PLL.integrator
+    _ms_s2_tpm_load_pll_integrator__in = _ms_s2_tpm_load_pll_pid_limit1__out;
+    {
+        _ms_s2_tpm_load_pll_integrator__state += 1e-06 * _ms_s2_tpm_load_pll_integrator__in ;
+        if ( _ms_s2_tpm_load_pll_integrator__in >= 0.0 )     {
+            if ( _ms_s2_tpm_load_pll_integrator__state >= 6.283185307179586 )         {
+                _ms_s2_tpm_load_pll_integrator__state -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _ms_s2_tpm_load_pll_integrator__state <= - 6.283185307179586 )         {
+                _ms_s2_tpm_load_pll_integrator__state += 6.283185307179586 ;
+            }
+        }
+        _ms_s2_tpm_load_pll_integrator__out = _ms_s2_tpm_load_pll_integrator__state ;
+    }
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Sum6
+    _ms_s2_three_phase_pll1_pid_sum6__out =  - _ms_s2_three_phase_pll1_pid_sum5__out + _ms_s2_three_phase_pll1_pid_limit1__out;
+    // Generated from the component: MS_S2.Three phase PLL1.Rate Limiter1
+    _ms_s2_three_phase_pll1_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s2_three_phase_pll1_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s2_three_phase_pll1_rate_limiter1__first_step) {
+        _ms_s2_three_phase_pll1_rate_limiter1__out = _ms_s2_three_phase_pll1_pid_limit1__out;
+        _ms_s2_three_phase_pll1_rate_limiter1__state = _ms_s2_three_phase_pll1_pid_limit1__out;
+    } else {
+        _ms_s2_three_phase_pll1_rate_limiter1__out = _ms_s2_three_phase_pll1_pid_limit1__out;
+        if (_ms_s2_three_phase_pll1_pid_limit1__out - _ms_s2_three_phase_pll1_rate_limiter1__state > _ms_s2_three_phase_pll1_rate_limiter1__rising_rate_lim[0])
+            _ms_s2_three_phase_pll1_rate_limiter1__out = _ms_s2_three_phase_pll1_rate_limiter1__state + (_ms_s2_three_phase_pll1_rate_limiter1__rising_rate_lim[0]);
+        if (_ms_s2_three_phase_pll1_pid_limit1__out - _ms_s2_three_phase_pll1_rate_limiter1__state < _ms_s2_three_phase_pll1_rate_limiter1__falling_rate_lim[0])
+            _ms_s2_three_phase_pll1_rate_limiter1__out = _ms_s2_three_phase_pll1_rate_limiter1__state + (_ms_s2_three_phase_pll1_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: MS_S2.Three phase PLL1.integrator
+    _ms_s2_three_phase_pll1_integrator__in = _ms_s2_three_phase_pll1_pid_limit1__out;
+    {
+        _ms_s2_three_phase_pll1_integrator__state += 1e-06 * _ms_s2_three_phase_pll1_integrator__in ;
+        if ( _ms_s2_three_phase_pll1_integrator__in >= 0.0 )     {
+            if ( _ms_s2_three_phase_pll1_integrator__state >= 6.283185307179586 )         {
+                _ms_s2_three_phase_pll1_integrator__state -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _ms_s2_three_phase_pll1_integrator__state <= - 6.283185307179586 )         {
+                _ms_s2_three_phase_pll1_integrator__state += 6.283185307179586 ;
+            }
+        }
+        _ms_s2_three_phase_pll1_integrator__out = _ms_s2_three_phase_pll1_integrator__state ;
+    }
+    // Generated from the component: MS_S3.Meter_Grid.input_bus
+    _ms_s3_meter_grid_input_bus__out = _ms_s3_tpm_grid_output_bus__out[0];
+    _ms_s3_meter_grid_input_bus__out1 = _ms_s3_tpm_grid_output_bus__out[1];
+    _ms_s3_meter_grid_input_bus__out2 = _ms_s3_tpm_grid_output_bus__out[2];
+    _ms_s3_meter_grid_input_bus__out3 = _ms_s3_tpm_grid_output_bus__out[3];
+    _ms_s3_meter_grid_input_bus__out4 = _ms_s3_tpm_grid_output_bus__out[4];
+    _ms_s3_meter_grid_input_bus__out5 = _ms_s3_tpm_grid_output_bus__out[5];
+    _ms_s3_meter_grid_input_bus__out6 = _ms_s3_tpm_grid_output_bus__out[6];
+    _ms_s3_meter_grid_input_bus__out7 = _ms_s3_tpm_grid_output_bus__out[7];
+    _ms_s3_meter_grid_input_bus__out8 = _ms_s3_tpm_grid_output_bus__out[8];
+    _ms_s3_meter_grid_input_bus__out9 = _ms_s3_tpm_grid_output_bus__out[9];
+    _ms_s3_meter_grid_input_bus__out10 = _ms_s3_tpm_grid_output_bus__out[10];
+    _ms_s3_meter_grid_input_bus__out11 = _ms_s3_tpm_grid_output_bus__out[11];
+    _ms_s3_meter_grid_input_bus__out12 = _ms_s3_tpm_grid_output_bus__out[12];
+    _ms_s3_meter_grid_input_bus__out13 = _ms_s3_tpm_grid_output_bus__out[13];
+    _ms_s3_meter_grid_input_bus__out14 = _ms_s3_tpm_grid_output_bus__out[14];
+    _ms_s3_meter_grid_input_bus__out15 = _ms_s3_tpm_grid_output_bus__out[15];
+    _ms_s3_meter_grid_input_bus__out16 = _ms_s3_tpm_grid_output_bus__out[16];
+    _ms_s3_meter_grid_input_bus__out17 = _ms_s3_tpm_grid_output_bus__out[17];
+    _ms_s3_meter_grid_input_bus__out18 = _ms_s3_tpm_grid_output_bus__out[18];
+    _ms_s3_meter_grid_input_bus__out19 = _ms_s3_tpm_grid_output_bus__out[19];
+    _ms_s3_meter_grid_input_bus__out20 = _ms_s3_tpm_grid_output_bus__out[20];
+    _ms_s3_meter_grid_input_bus__out21 = _ms_s3_tpm_grid_output_bus__out[21];
+    _ms_s3_meter_grid_input_bus__out22 = _ms_s3_tpm_grid_output_bus__out[22];
+    _ms_s3_meter_grid_input_bus__out23 = _ms_s3_tpm_grid_output_bus__out[23];
+    _ms_s3_meter_grid_input_bus__out24 = _ms_s3_tpm_grid_output_bus__out[24];
+    _ms_s3_meter_grid_input_bus__out25 = _ms_s3_tpm_grid_output_bus__out[25];
+    _ms_s3_meter_grid_input_bus__out26 = _ms_s3_tpm_grid_output_bus__out[26];
+    _ms_s3_meter_grid_input_bus__out27 = _ms_s3_tpm_grid_output_bus__out[27];
+    _ms_s3_meter_grid_input_bus__out28 = _ms_s3_tpm_grid_output_bus__out[28];
+    _ms_s3_meter_grid_input_bus__out29 = _ms_s3_tpm_grid_output_bus__out[29];
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Sum6
+    _ms_s3_tpm_grid_pll_pid_sum6__out =  - _ms_s3_tpm_grid_pll_pid_sum5__out + _ms_s3_tpm_grid_pll_pid_limit1__out;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.Rate Limiter1
+    _ms_s3_tpm_grid_pll_rate_limiter1__rising_rate_lim[0] = 314.1592653589793 * 1e-06;
+    _ms_s3_tpm_grid_pll_rate_limiter1__falling_rate_lim[0] = -314.1592653589793 * 1e-06;
+    if (_ms_s3_tpm_grid_pll_rate_limiter1__first_step) {
+        _ms_s3_tpm_grid_pll_rate_limiter1__out = _ms_s3_tpm_grid_pll_pid_limit1__out;
+        _ms_s3_tpm_grid_pll_rate_limiter1__state = _ms_s3_tpm_grid_pll_pid_limit1__out;
+    } else {
+        _ms_s3_tpm_grid_pll_rate_limiter1__out = _ms_s3_tpm_grid_pll_pid_limit1__out;
+        if (_ms_s3_tpm_grid_pll_pid_limit1__out - _ms_s3_tpm_grid_pll_rate_limiter1__state > _ms_s3_tpm_grid_pll_rate_limiter1__rising_rate_lim[0])
+            _ms_s3_tpm_grid_pll_rate_limiter1__out = _ms_s3_tpm_grid_pll_rate_limiter1__state + (_ms_s3_tpm_grid_pll_rate_limiter1__rising_rate_lim[0]);
+        if (_ms_s3_tpm_grid_pll_pid_limit1__out - _ms_s3_tpm_grid_pll_rate_limiter1__state < _ms_s3_tpm_grid_pll_rate_limiter1__falling_rate_lim[0])
+            _ms_s3_tpm_grid_pll_rate_limiter1__out = _ms_s3_tpm_grid_pll_rate_limiter1__state + (_ms_s3_tpm_grid_pll_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: MS_S3.TPM_Grid.PLL.integrator
+    _ms_s3_tpm_grid_pll_integrator__in = _ms_s3_tpm_grid_pll_pid_limit1__out;
+    {
+        _ms_s3_tpm_grid_pll_integrator__state += 1e-06 * _ms_s3_tpm_grid_pll_integrator__in ;
+        if ( _ms_s3_tpm_grid_pll_integrator__in >= 0.0 )     {
+            if ( _ms_s3_tpm_grid_pll_integrator__state >= 6.283185307179586 )         {
+                _ms_s3_tpm_grid_pll_integrator__state -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _ms_s3_tpm_grid_pll_integrator__state <= - 6.283185307179586 )         {
+                _ms_s3_tpm_grid_pll_integrator__state += 6.283185307179586 ;
+            }
+        }
+        _ms_s3_tpm_grid_pll_integrator__out = _ms_s3_tpm_grid_pll_integrator__state ;
+    }
+    // Generated from the component: MS_S3.Meter_uG.input_bus
+    _ms_s3_meter_ug_input_bus__out = _ms_s3_tpm_ug_output_bus__out[0];
+    _ms_s3_meter_ug_input_bus__out1 = _ms_s3_tpm_ug_output_bus__out[1];
+    _ms_s3_meter_ug_input_bus__out2 = _ms_s3_tpm_ug_output_bus__out[2];
+    _ms_s3_meter_ug_input_bus__out3 = _ms_s3_tpm_ug_output_bus__out[3];
+    _ms_s3_meter_ug_input_bus__out4 = _ms_s3_tpm_ug_output_bus__out[4];
+    _ms_s3_meter_ug_input_bus__out5 = _ms_s3_tpm_ug_output_bus__out[5];
+    _ms_s3_meter_ug_input_bus__out6 = _ms_s3_tpm_ug_output_bus__out[6];
+    _ms_s3_meter_ug_input_bus__out7 = _ms_s3_tpm_ug_output_bus__out[7];
+    _ms_s3_meter_ug_input_bus__out8 = _ms_s3_tpm_ug_output_bus__out[8];
+    _ms_s3_meter_ug_input_bus__out9 = _ms_s3_tpm_ug_output_bus__out[9];
+    _ms_s3_meter_ug_input_bus__out10 = _ms_s3_tpm_ug_output_bus__out[10];
+    _ms_s3_meter_ug_input_bus__out11 = _ms_s3_tpm_ug_output_bus__out[11];
+    _ms_s3_meter_ug_input_bus__out12 = _ms_s3_tpm_ug_output_bus__out[12];
+    _ms_s3_meter_ug_input_bus__out13 = _ms_s3_tpm_ug_output_bus__out[13];
+    _ms_s3_meter_ug_input_bus__out14 = _ms_s3_tpm_ug_output_bus__out[14];
+    _ms_s3_meter_ug_input_bus__out15 = _ms_s3_tpm_ug_output_bus__out[15];
+    _ms_s3_meter_ug_input_bus__out16 = _ms_s3_tpm_ug_output_bus__out[16];
+    _ms_s3_meter_ug_input_bus__out17 = _ms_s3_tpm_ug_output_bus__out[17];
+    _ms_s3_meter_ug_input_bus__out18 = _ms_s3_tpm_ug_output_bus__out[18];
+    _ms_s3_meter_ug_input_bus__out19 = _ms_s3_tpm_ug_output_bus__out[19];
+    _ms_s3_meter_ug_input_bus__out20 = _ms_s3_tpm_ug_output_bus__out[20];
+    _ms_s3_meter_ug_input_bus__out21 = _ms_s3_tpm_ug_output_bus__out[21];
+    _ms_s3_meter_ug_input_bus__out22 = _ms_s3_tpm_ug_output_bus__out[22];
+    _ms_s3_meter_ug_input_bus__out23 = _ms_s3_tpm_ug_output_bus__out[23];
+    _ms_s3_meter_ug_input_bus__out24 = _ms_s3_tpm_ug_output_bus__out[24];
+    _ms_s3_meter_ug_input_bus__out25 = _ms_s3_tpm_ug_output_bus__out[25];
+    _ms_s3_meter_ug_input_bus__out26 = _ms_s3_tpm_ug_output_bus__out[26];
+    _ms_s3_meter_ug_input_bus__out27 = _ms_s3_tpm_ug_output_bus__out[27];
+    _ms_s3_meter_ug_input_bus__out28 = _ms_s3_tpm_ug_output_bus__out[28];
+    _ms_s3_meter_ug_input_bus__out29 = _ms_s3_tpm_ug_output_bus__out[29];
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Sum6
+    _ms_s3_tpm_ug_pll_pid_sum6__out =  - _ms_s3_tpm_ug_pll_pid_sum5__out + _ms_s3_tpm_ug_pll_pid_limit1__out;
+    // Generated from the component: MS_S3.TPM_uG.PLL.Rate Limiter1
+    _ms_s3_tpm_ug_pll_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s3_tpm_ug_pll_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s3_tpm_ug_pll_rate_limiter1__first_step) {
+        _ms_s3_tpm_ug_pll_rate_limiter1__out = _ms_s3_tpm_ug_pll_pid_limit1__out;
+        _ms_s3_tpm_ug_pll_rate_limiter1__state = _ms_s3_tpm_ug_pll_pid_limit1__out;
+    } else {
+        _ms_s3_tpm_ug_pll_rate_limiter1__out = _ms_s3_tpm_ug_pll_pid_limit1__out;
+        if (_ms_s3_tpm_ug_pll_pid_limit1__out - _ms_s3_tpm_ug_pll_rate_limiter1__state > _ms_s3_tpm_ug_pll_rate_limiter1__rising_rate_lim[0])
+            _ms_s3_tpm_ug_pll_rate_limiter1__out = _ms_s3_tpm_ug_pll_rate_limiter1__state + (_ms_s3_tpm_ug_pll_rate_limiter1__rising_rate_lim[0]);
+        if (_ms_s3_tpm_ug_pll_pid_limit1__out - _ms_s3_tpm_ug_pll_rate_limiter1__state < _ms_s3_tpm_ug_pll_rate_limiter1__falling_rate_lim[0])
+            _ms_s3_tpm_ug_pll_rate_limiter1__out = _ms_s3_tpm_ug_pll_rate_limiter1__state + (_ms_s3_tpm_ug_pll_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: MS_S3.TPM_uG.PLL.integrator
+    _ms_s3_tpm_ug_pll_integrator__in = _ms_s3_tpm_ug_pll_pid_limit1__out;
+    {
+        _ms_s3_tpm_ug_pll_integrator__state += 1e-06 * _ms_s3_tpm_ug_pll_integrator__in ;
+        if ( _ms_s3_tpm_ug_pll_integrator__in >= 0.0 )     {
+            if ( _ms_s3_tpm_ug_pll_integrator__state >= 6.283185307179586 )         {
+                _ms_s3_tpm_ug_pll_integrator__state -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _ms_s3_tpm_ug_pll_integrator__state <= - 6.283185307179586 )         {
+                _ms_s3_tpm_ug_pll_integrator__state += 6.283185307179586 ;
+            }
+        }
+        _ms_s3_tpm_ug_pll_integrator__out = _ms_s3_tpm_ug_pll_integrator__state ;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.confine_phase
+    _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta = _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out;
+    {
+        if ( _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta > 3.14159265359 )     {
+            _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta - 6.28318530718 ;
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta < - 3.14159265359 )         {
+                _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta + 6.28318530718 ;
+            }
+            else         {
+                _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Logical operator15
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out = !_battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Kb
+    _battery_inverter__average_1_control_pll_pu_pll_pid_kb__out = 1.0 * _battery_inverter__average_1_control_pll_pu_pll_pid_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Logical operator15
+    _battery_inverter__average_1_control_synch_check_grid_logical_operator15__out = !_battery_inverter__average_1_control_synch_check_grid_logical_operator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Counter1.en_switch
+    _battery_inverter__average_1_control_synch_f_match_counter1_en_switch__out = (_battery_inverter__average_1_control_synch_f_match_comparator1__out > 0.5f) ? _battery_inverter__average_1_control_synch_f_match_counter1_const_value_1__out : _battery_inverter__average_1_control_synch_f_match_counter1_const_value_0__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Logical operator1
+    _battery_inverter__average_1_control_synch_f_match_logical_operator1__out = !_battery_inverter__average_1_control_synch_f_match_comparator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Kb
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_kb__out = 1.0 * _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Sum6
+    _battery_inverter__average_1_control_synch_phase_match_pi_sum6__out =  - _battery_inverter__average_1_control_synch_phase_match_pi_sum5__out + _battery_inverter__average_1_control_synch_phase_match_pi_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Product1
+    _battery_inverter__average_1_control_synch_phase_match_product1__out = (_battery_inverter__average_1_control_synch_f_match_delay1__out * _battery_inverter__average_1_control_synch_phase_match_pi_limit1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.dwt
+    HIL_OutAO(0x4026, (float)_battery_inverter__average_1_control_synch_phase_match_pi_limit1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.P
+    HIL_OutAO(0x4010, (float)_battery_inverter__average_1_control_power_meas_gain1__out);
+    // Generated from the component: Battery inverter (Average)1.Product1
+    _battery_inverter__average_1_product1__out = (_battery_inverter__average_1_control_power_meas_gain1__out) * 1.0 / (_battery_inverter__average_1_limit1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Q
+    HIL_OutAO(0x401a, (float)_battery_inverter__average_1_control_power_meas_gain2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Gain3
+    _battery_inverter__average_1_control_power_meas_gain3__out = 100000.0 * _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__S;
+    // Generated from the component: Battery inverter (Average)1.Control.pf
+    HIL_OutAO(0x4047, (float)_battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__pf);
+    // Generated from the component: Vg.tdf_sg_ctrl_sine1
+    // calculate and write SG parameters
+    X_UnInt32 _vg_tdf_sg_ctrl_sine1__i;
+    _vg_tdf_sg_ctrl_sine1__sg_update_value = 0;
+    for (_vg_tdf_sg_ctrl_sine1__i = 0; _vg_tdf_sg_ctrl_sine1__i < 3; _vg_tdf_sg_ctrl_sine1__i++) {
+        // calculate amplitude
+        _vg_tdf_sg_ctrl_sine1__gain[_vg_tdf_sg_ctrl_sine1__i ] = _vg_limit1__out[_vg_tdf_sg_ctrl_sine1__i ] * M_SQRT2;
+        // calculate period
+        _vg_tdf_sg_ctrl_sine1__period[_vg_tdf_sg_ctrl_sine1__i ] = 1.0f / _vg_limit2__out[_vg_tdf_sg_ctrl_sine1__i ];
+        // calculate sample_cnt increment value
+        _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_real[_vg_tdf_sg_ctrl_sine1__i ] = _vg_tdf_sg_ctrl_sine1__max_int40 / (_vg_tdf_sg_ctrl_sine1__period[_vg_tdf_sg_ctrl_sine1__i ] / 1e-06);
+        _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_lo[_vg_tdf_sg_ctrl_sine1__i ] = (X_UnInt32)(fmod(_vg_tdf_sg_ctrl_sine1__sample_cnt_inc_real[_vg_tdf_sg_ctrl_sine1__i ], _vg_tdf_sg_ctrl_sine1__max_int32));
+        _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_hi[_vg_tdf_sg_ctrl_sine1__i ] = (X_UnInt32)(_vg_tdf_sg_ctrl_sine1__sample_cnt_inc_real[_vg_tdf_sg_ctrl_sine1__i ] / _vg_tdf_sg_ctrl_sine1__max_int32);
+        //calculate offset for each channel
+        _vg_tdf_sg_ctrl_sine1__shift = (double)(_vg_tdf_sg_ctrl_sine1__i) * 0.0;
+        _vg_tdf_sg_ctrl_sine1__phase_pu[_vg_tdf_sg_ctrl_sine1__i ] = fmod((_vg_pu_actual_bus_join_vg_ph__out[_vg_tdf_sg_ctrl_sine1__i ] / 360.0f + _vg_tdf_sg_ctrl_sine1__shift / (2.0f * M_PI)), 1.0f);
+        if (_vg_tdf_sg_ctrl_sine1__phase_pu[_vg_tdf_sg_ctrl_sine1__i ] < 0.0f) {
+            _vg_tdf_sg_ctrl_sine1__phase_pu[_vg_tdf_sg_ctrl_sine1__i ] = _vg_tdf_sg_ctrl_sine1__phase_pu[_vg_tdf_sg_ctrl_sine1__i ] + 1.0f;
+        }
+        _vg_tdf_sg_ctrl_sine1__offset[_vg_tdf_sg_ctrl_sine1__i ] = (_vg_tdf_sg_ctrl_sine1__max_int32 * _vg_tdf_sg_ctrl_sine1__phase_pu[_vg_tdf_sg_ctrl_sine1__i ]);  // offset in SP
+        _vg_tdf_sg_ctrl_sine1__offset_uint[_vg_tdf_sg_ctrl_sine1__i ] = (X_UnInt32)_vg_tdf_sg_ctrl_sine1__offset[_vg_tdf_sg_ctrl_sine1__i ];  // offset in fp32
+        // write parameters
+        HIL_OutFloat(0x400200 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], (float) _vg_tdf_sg_ctrl_sine1__gain[_vg_tdf_sg_ctrl_sine1__i ]);
+        HIL_OutInt32(0x400180 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], _vg_tdf_sg_ctrl_sine1__offset_uint[_vg_tdf_sg_ctrl_sine1__i ]); // offset in fp32
+        HIL_OutInt32(0x400000 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_lo[_vg_tdf_sg_ctrl_sine1__i ]);
+        HIL_OutInt32(0x400280 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], _vg_tdf_sg_ctrl_sine1__sample_cnt_inc_hi[_vg_tdf_sg_ctrl_sine1__i ]);
+        HIL_OutFloat(0x400100 + _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i], (float) _vg_tdf_sg_ctrl_sine1__no_of_points);
+        _vg_tdf_sg_ctrl_sine1__sg_update_value += 1 << _vg_tdf_sg_ctrl_sine1__channels[_vg_tdf_sg_ctrl_sine1__i];
+    }
+    HIL_OutInt32(0x400080, _vg_tdf_sg_ctrl_sine1__sg_update_value);  // update SG parameters for all channels
+    // Generated from the component: MS_S1.Freq_Grid
+    HIL_OutAO(0x405b, (float)_ms_s1_meter_grid_input_bus__out9);
+    // Generated from the component: MS_S1.IA_RMS_Grid
+    HIL_OutAO(0x405c, (float)_ms_s1_meter_grid_input_bus__out18);
+    // Generated from the component: MS_S1.Ia_Grid
+    HIL_OutAO(0x405d, (float)_ms_s1_meter_grid_input_bus__out6);
+    // Generated from the component: MS_S1.Meter_Grid.IB
+    // Generated from the component: MS_S1.Meter_Grid.IB_RMS
+    // Generated from the component: MS_S1.Meter_Grid.IC
+    // Generated from the component: MS_S1.Meter_Grid.IC_RMS
+    // Generated from the component: MS_S1.Meter_Grid.IN
+    // Generated from the component: MS_S1.Meter_Grid.IN_RMS
+    // Generated from the component: MS_S1.Meter_Grid.I_RMS
+    // Generated from the component: MS_S1.Meter_Grid.POWER_PF
+    // Generated from the component: MS_S1.Meter_Grid.VAB
+    // Generated from the component: MS_S1.Meter_Grid.VAB_RMS
+    // Generated from the component: MS_S1.Meter_Grid.VBC
+    // Generated from the component: MS_S1.Meter_Grid.VBC_RMS
+    // Generated from the component: MS_S1.Meter_Grid.VBn
+    // Generated from the component: MS_S1.Meter_Grid.VBn_RMS
+    // Generated from the component: MS_S1.Meter_Grid.VCA
+    // Generated from the component: MS_S1.Meter_Grid.VCA_RMS
+    // Generated from the component: MS_S1.Meter_Grid.VCn
+    // Generated from the component: MS_S1.Meter_Grid.VCn_RMS
+    // Generated from the component: MS_S1.Meter_Grid.VLL_RMS
+    // Generated from the component: MS_S1.Meter_Grid.VLn_RMS
+    // Generated from the component: MS_S1.Meter_Grid.VN
+    // Generated from the component: MS_S1.Meter_Grid.VN_RMS
+    // Generated from the component: MS_S1.Meter_Grid.gain
+    _ms_s1_meter_grid_gain__out[0] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[1] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[2] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[3] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[4] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[5] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[6] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[7] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[8] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[9] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[10] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    _ms_s1_meter_grid_gain__out[11] = 0.0 * _ms_s1_meter_grid_input_bus__out29;
+    // Generated from the component: MS_S1.P_Grid
+    HIL_OutAO(0x405e, (float)_ms_s1_meter_grid_input_bus__out22);
+    // Generated from the component: MS_S1.Q_Grid
+    HIL_OutAO(0x405f, (float)_ms_s1_meter_grid_input_bus__out23);
+    // Generated from the component: MS_S1.SO_Grid_P
+    XIo_OutFloat(0x2fc00000, (float)_ms_s1_meter_grid_input_bus__out22);
+    // Generated from the component: MS_S1.SO_Grid_Q
+    XIo_OutFloat(0x2fc00004, (float)_ms_s1_meter_grid_input_bus__out23);
+    // Generated from the component: MS_S1.SO_Grid_Van
+    XIo_OutFloat(0x2fc00008, (float)_ms_s1_meter_grid_input_bus__out10);
+    // Generated from the component: MS_S1.SO_Grid_f
+    XIo_OutFloat(0x2fc0000c, (float)_ms_s1_meter_grid_input_bus__out9);
+    // Generated from the component: MS_S1.S_Grid
+    HIL_OutAO(0x4061, (float)_ms_s1_meter_grid_input_bus__out24);
+    // Generated from the component: MS_S1.VAn_RMS_Grid
+    HIL_OutAO(0x407a, (float)_ms_s1_meter_grid_input_bus__out10);
+    // Generated from the component: MS_S1.Van_Grid
+    HIL_OutAO(0x407b, (float)_ms_s1_meter_grid_input_bus__out);
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Kb
+    _ms_s1_tpm_grid_pll_pid_kb__out = 1.0 * _ms_s1_tpm_grid_pll_pid_sum6__out;
+    // Generated from the component: MS_S2.Freq_Load
+    HIL_OutAO(0x407c, (float)_ms_s2_meter_load_input_bus__out9);
+    // Generated from the component: MS_S2.IA_RMS_Load
+    HIL_OutAO(0x407d, (float)_ms_s2_meter_load_input_bus__out18);
+    // Generated from the component: MS_S2.Ia_Load
+    HIL_OutAO(0x407e, (float)_ms_s2_meter_load_input_bus__out6);
+    // Generated from the component: MS_S2.Ia_MeanValue
+    if (_ms_s2_ia_meanvalue__cnt_i < 20000 ) {
+        _ms_s2_ia_meanvalue__vector[_ms_s2_ia_meanvalue__cnt_i] = _ms_s2_meter_load_input_bus__out6;
+        _ms_s2_ia_meanvalue__sum = _ms_s2_ia_meanvalue__sum + _ms_s2_meter_load_input_bus__out6;
+        _ms_s2_ia_meanvalue__cnt_i++;
+    }
+    else {
+        _ms_s2_ia_meanvalue__sum = _ms_s2_ia_meanvalue__sum - _ms_s2_ia_meanvalue__vector[_ms_s2_ia_meanvalue__cnt_j];
+        _ms_s2_ia_meanvalue__sum = _ms_s2_ia_meanvalue__sum + _ms_s2_meter_load_input_bus__out6;
+        _ms_s2_ia_meanvalue__vector[_ms_s2_ia_meanvalue__cnt_j] = _ms_s2_meter_load_input_bus__out6;
+        if (_ms_s2_ia_meanvalue__cnt_j < 20000 - 1 ) {
+            _ms_s2_ia_meanvalue__cnt_j++;
+        }
+        else {
+            _ms_s2_ia_meanvalue__cnt_j = 0;
+        }
+    }
+    _ms_s2_ia_meanvalue__out = _ms_s2_ia_meanvalue__sum / _ms_s2_ia_meanvalue__cnt_i;
+    // Generated from the component: MS_S2.Meter_Load.IB
+    // Generated from the component: MS_S2.Meter_Load.IB_RMS
+    // Generated from the component: MS_S2.Meter_Load.IC
+    // Generated from the component: MS_S2.Meter_Load.IC_RMS
+    // Generated from the component: MS_S2.Meter_Load.IN
+    // Generated from the component: MS_S2.Meter_Load.IN_RMS
+    // Generated from the component: MS_S2.Meter_Load.I_RMS
+    // Generated from the component: MS_S2.Meter_Load.POWER_PF
+    // Generated from the component: MS_S2.Meter_Load.VAB
+    // Generated from the component: MS_S2.Meter_Load.VAB_RMS
+    // Generated from the component: MS_S2.Meter_Load.VBC
+    // Generated from the component: MS_S2.Meter_Load.VBC_RMS
+    // Generated from the component: MS_S2.Meter_Load.VBn
+    // Generated from the component: MS_S2.Meter_Load.VBn_RMS
+    // Generated from the component: MS_S2.Meter_Load.VCA
+    // Generated from the component: MS_S2.Meter_Load.VCA_RMS
+    // Generated from the component: MS_S2.Meter_Load.VCn
+    // Generated from the component: MS_S2.Meter_Load.VCn_RMS
+    // Generated from the component: MS_S2.Meter_Load.VLL_RMS
+    // Generated from the component: MS_S2.Meter_Load.VLn_RMS
+    // Generated from the component: MS_S2.Meter_Load.VN
+    // Generated from the component: MS_S2.Meter_Load.VN_RMS
+    // Generated from the component: MS_S2.Meter_Load.gain
+    _ms_s2_meter_load_gain__out[0] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[1] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[2] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[3] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[4] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[5] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[6] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[7] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[8] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[9] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[10] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    _ms_s2_meter_load_gain__out[11] = 0.0 * _ms_s2_meter_load_input_bus__out29;
+    // Generated from the component: MS_S2.P_Load
+    HIL_OutAO(0x4080, (float)_ms_s2_meter_load_input_bus__out22);
+    // Generated from the component: MS_S2.Q_Load
+    HIL_OutAO(0x4082, (float)_ms_s2_meter_load_input_bus__out23);
+    // Generated from the component: MS_S2.S_Load
+    HIL_OutAO(0x4084, (float)_ms_s2_meter_load_input_bus__out24);
+    // Generated from the component: MS_S2.VAn_RMS_Load
+    HIL_OutAO(0x409d, (float)_ms_s2_meter_load_input_bus__out10);
+    // Generated from the component: MS_S2.Van_Load
+    HIL_OutAO(0x409e, (float)_ms_s2_meter_load_input_bus__out);
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Kb
+    _ms_s2_tpm_load_pll_pid_kb__out = 1.0 * _ms_s2_tpm_load_pll_pid_sum6__out;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Kb
+    _ms_s2_three_phase_pll1_pid_kb__out = 1.0 * _ms_s2_three_phase_pll1_pid_sum6__out;
+    // Generated from the component: MS_S3.Freq_Grid
+    HIL_OutAO(0x409f, (float)_ms_s3_meter_grid_input_bus__out9);
+    // Generated from the component: MS_S3.IA_RMS_Grid
+    HIL_OutAO(0x40a0, (float)_ms_s3_meter_grid_input_bus__out18);
+    // Generated from the component: MS_S3.Ia_Grid
+    HIL_OutAO(0x40a1, (float)_ms_s3_meter_grid_input_bus__out6);
+    // Generated from the component: MS_S3.Meter_Grid.IB
+    // Generated from the component: MS_S3.Meter_Grid.IB_RMS
+    // Generated from the component: MS_S3.Meter_Grid.IC
+    // Generated from the component: MS_S3.Meter_Grid.IC_RMS
+    // Generated from the component: MS_S3.Meter_Grid.IN
+    // Generated from the component: MS_S3.Meter_Grid.IN_RMS
+    // Generated from the component: MS_S3.Meter_Grid.I_RMS
+    // Generated from the component: MS_S3.Meter_Grid.POWER_PF
+    // Generated from the component: MS_S3.Meter_Grid.VAB
+    // Generated from the component: MS_S3.Meter_Grid.VAB_RMS
+    // Generated from the component: MS_S3.Meter_Grid.VBC
+    // Generated from the component: MS_S3.Meter_Grid.VBC_RMS
+    // Generated from the component: MS_S3.Meter_Grid.VBn
+    // Generated from the component: MS_S3.Meter_Grid.VBn_RMS
+    // Generated from the component: MS_S3.Meter_Grid.VCA
+    // Generated from the component: MS_S3.Meter_Grid.VCA_RMS
+    // Generated from the component: MS_S3.Meter_Grid.VCn
+    // Generated from the component: MS_S3.Meter_Grid.VCn_RMS
+    // Generated from the component: MS_S3.Meter_Grid.VLL_RMS
+    // Generated from the component: MS_S3.Meter_Grid.VLn_RMS
+    // Generated from the component: MS_S3.Meter_Grid.VN
+    // Generated from the component: MS_S3.Meter_Grid.VN_RMS
+    // Generated from the component: MS_S3.Meter_Grid.gain
+    _ms_s3_meter_grid_gain__out[0] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[1] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[2] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[3] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[4] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[5] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[6] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[7] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[8] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[9] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[10] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    _ms_s3_meter_grid_gain__out[11] = 0.0 * _ms_s3_meter_grid_input_bus__out29;
+    // Generated from the component: MS_S3.P_Grid
+    HIL_OutAO(0x40a2, (float)_ms_s3_meter_grid_input_bus__out22);
+    // Generated from the component: MS_S3.Q_Grid
+    HIL_OutAO(0x40a3, (float)_ms_s3_meter_grid_input_bus__out23);
+    // Generated from the component: MS_S3.SO_Grid_P
+    XIo_OutFloat(0x2fc00010, (float)_ms_s3_meter_grid_input_bus__out22);
+    // Generated from the component: MS_S3.SO_Grid_Q
+    XIo_OutFloat(0x2fc00014, (float)_ms_s3_meter_grid_input_bus__out23);
+    // Generated from the component: MS_S3.SO_Grid_Van
+    XIo_OutFloat(0x2fc00018, (float)_ms_s3_meter_grid_input_bus__out10);
+    // Generated from the component: MS_S3.SO_Grid_f
+    XIo_OutFloat(0x2fc0001c, (float)_ms_s3_meter_grid_input_bus__out9);
+    // Generated from the component: MS_S3.S_Grid
+    HIL_OutAO(0x40a4, (float)_ms_s3_meter_grid_input_bus__out24);
+    // Generated from the component: MS_S3.VAn_RMS_Grid
+    HIL_OutAO(0x40d7, (float)_ms_s3_meter_grid_input_bus__out10);
+    // Generated from the component: MS_S3.Van_Grid
+    HIL_OutAO(0x40d8, (float)_ms_s3_meter_grid_input_bus__out);
+    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
+    _pcc_control_frt_f_besf_sagc__Input = _ms_s3_meter_grid_input_bus__out9;
+    {
+        _pcc_control_frt_f_besf_sagc__Fault = _pcc_control_frt_f_besf_sagc__Trip_Zone ;
+        if ( _pcc_control_frt_f_besf_sagc__Trip_Zone > - 1 )     {
+            _pcc_control_frt_f_besf_sagc__Trip = 1 ;
+        }
+        else     {
+            _pcc_control_frt_f_besf_sagc__Trip = 0 ;
+        }
+        _pcc_control_frt_f_besf_sagc__d0 = _pcc_control_frt_f_besf_sagc__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control_frt_f_besf_sagc__d1 = _pcc_control_frt_f_besf_sagc__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control_frt_f_besf_sagc__d2 = _pcc_control_frt_f_besf_sagc__ov_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control_frt_f_besf_sagc__d3 = _pcc_control_frt_f_besf_sagc__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control_frt_f_besf_sagc__d4 = _pcc_control_frt_f_besf_sagc__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control_frt_f_besf_sagc__d5 = _pcc_control_frt_f_besf_sagc__uv_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control_frt_f_besf_sagc__d6 = _pcc_control_frt_f_besf_sagc__uv_zones [ 3 ] . timer * 1e-06 ;
+    }
+    // Generated from the component: PCC_Control.f_pu
+    _pcc_control_f_pu__out = 0.02 * _ms_s3_meter_grid_input_bus__out9;
+    // Generated from the component: PCC_Control.v_pu
+    _pcc_control_v_pu__out = 0.004330127018922193 * _ms_s3_meter_grid_input_bus__out10;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Kb
+    _ms_s3_tpm_grid_pll_pid_kb__out = 1.0 * _ms_s3_tpm_grid_pll_pid_sum6__out;
+    // Generated from the component: MS_S3.Meter_uG.IA
+    // Generated from the component: MS_S3.Meter_uG.IA_RMS
+    // Generated from the component: MS_S3.Meter_uG.IB
+    // Generated from the component: MS_S3.Meter_uG.IB_RMS
+    // Generated from the component: MS_S3.Meter_uG.IC
+    // Generated from the component: MS_S3.Meter_uG.IC_RMS
+    // Generated from the component: MS_S3.Meter_uG.IN
+    // Generated from the component: MS_S3.Meter_uG.IN_RMS
+    // Generated from the component: MS_S3.Meter_uG.POWER_PF
+    // Generated from the component: MS_S3.Meter_uG.POWER_S
+    // Generated from the component: MS_S3.Meter_uG.VAB
+    // Generated from the component: MS_S3.Meter_uG.VAB_RMS
+    // Generated from the component: MS_S3.Meter_uG.VAn
+    // Generated from the component: MS_S3.Meter_uG.VAn_RMS
+    // Generated from the component: MS_S3.Meter_uG.VBC
+    // Generated from the component: MS_S3.Meter_uG.VBC_RMS
+    // Generated from the component: MS_S3.Meter_uG.VBn
+    // Generated from the component: MS_S3.Meter_uG.VBn_RMS
+    // Generated from the component: MS_S3.Meter_uG.VCA
+    // Generated from the component: MS_S3.Meter_uG.VCA_RMS
+    // Generated from the component: MS_S3.Meter_uG.VCn
+    // Generated from the component: MS_S3.Meter_uG.VCn_RMS
+    // Generated from the component: MS_S3.Meter_uG.VLL_RMS
+    // Generated from the component: MS_S3.Meter_uG.VN
+    // Generated from the component: MS_S3.Meter_uG.VN_RMS
+    // Generated from the component: MS_S3.Meter_uG.gain
+    _ms_s3_meter_ug_gain__out[0] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[1] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[2] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[3] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[4] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[5] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[6] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[7] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[8] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[9] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[10] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    _ms_s3_meter_ug_gain__out[11] = 0.0 * _ms_s3_meter_ug_input_bus__out29;
+    // Generated from the component: MS_S3.uG-I_rms
+    HIL_OutAO(0x40d9, (float)_ms_s3_meter_ug_input_bus__out21);
+    // Generated from the component: MS_S3.uG-P
+    HIL_OutAO(0x40da, (float)_ms_s3_meter_ug_input_bus__out22);
+    // Generated from the component: MS_S3.uG-Q
+    HIL_OutAO(0x40db, (float)_ms_s3_meter_ug_input_bus__out23);
+    // Generated from the component: MS_S3.uG-Vln_rms
+    HIL_OutAO(0x40dc, (float)_ms_s3_meter_ug_input_bus__out13);
+    // Generated from the component: MS_S3.uG-f
+    HIL_OutAO(0x40dd, (float)_ms_s3_meter_ug_input_bus__out9);
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Kb
+    _ms_s3_tpm_ug_pll_pid_kb__out = 1.0 * _ms_s3_tpm_ug_pll_pid_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.b0
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out = 9.82591682e-06 * _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Edge Detection1.Relational operator1
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_relational_operator1__out = (_battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out != _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__out) ? 1 : 0;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Sum7
+    _battery_inverter__average_1_control_pll_pu_pll_pid_sum7__out = _battery_inverter__average_1_control_pll_pu_pll_pid_ki__out + _battery_inverter__average_1_control_pll_pu_pll_pid_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.live_grid
+    HIL_OutAO(0x4045, (float)_battery_inverter__average_1_control_synch_check_grid_logical_operator15__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Sum7
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum7__out = _battery_inverter__average_1_control_synch_pll_util_pll_pid_ki__out + _battery_inverter__average_1_control_synch_pll_util_pll_pid_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Kb
+    _battery_inverter__average_1_control_synch_phase_match_pi_kb__out = 1.0 * _battery_inverter__average_1_control_synch_phase_match_pi_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Gain12
+    _battery_inverter__average_1_control_synch_phase_match_gain12__out = 0.02 * _battery_inverter__average_1_control_synch_phase_match_product1__out;
+    // Generated from the component: Battery inverter (Average)1.Inv_Idc
+    HIL_OutAO(0x404b, (float)_battery_inverter__average_1_product1__out);
+    // Generated from the component: Battery inverter (Average)1.Isp1.Is1
+    HIL_OutFloat(137101315, (float) _battery_inverter__average_1_product1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.S
+    HIL_OutAO(0x401b, (float)_battery_inverter__average_1_control_power_meas_gain3__out);
+    // Generated from the component: MS_S1.Meter_Grid.extra_input_bus
+    _ms_s1_meter_grid_extra_input_bus__out = _ms_s1_meter_grid_gain__out[0];
+    _ms_s1_meter_grid_extra_input_bus__out1 = _ms_s1_meter_grid_gain__out[1];
+    _ms_s1_meter_grid_extra_input_bus__out2 = _ms_s1_meter_grid_gain__out[2];
+    _ms_s1_meter_grid_extra_input_bus__out3 = _ms_s1_meter_grid_gain__out[3];
+    _ms_s1_meter_grid_extra_input_bus__out4 = _ms_s1_meter_grid_gain__out[4];
+    _ms_s1_meter_grid_extra_input_bus__out5 = _ms_s1_meter_grid_gain__out[5];
+    _ms_s1_meter_grid_extra_input_bus__out6 = _ms_s1_meter_grid_gain__out[6];
+    _ms_s1_meter_grid_extra_input_bus__out7 = _ms_s1_meter_grid_gain__out[7];
+    _ms_s1_meter_grid_extra_input_bus__out8 = _ms_s1_meter_grid_gain__out[8];
+    _ms_s1_meter_grid_extra_input_bus__out9 = _ms_s1_meter_grid_gain__out[9];
+    _ms_s1_meter_grid_extra_input_bus__out10 = _ms_s1_meter_grid_gain__out[10];
+    _ms_s1_meter_grid_extra_input_bus__out11 = _ms_s1_meter_grid_gain__out[11];
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Sum7
+    _ms_s1_tpm_grid_pll_pid_sum7__out = _ms_s1_tpm_grid_pll_pid_ki__out + _ms_s1_tpm_grid_pll_pid_kb__out;
+    // Generated from the component: MS_S2.Ia_mean
+    HIL_OutAO(0x407f, (float)_ms_s2_ia_meanvalue__out);
+    // Generated from the component: MS_S2.Meter_Load.extra_input_bus
+    _ms_s2_meter_load_extra_input_bus__out = _ms_s2_meter_load_gain__out[0];
+    _ms_s2_meter_load_extra_input_bus__out1 = _ms_s2_meter_load_gain__out[1];
+    _ms_s2_meter_load_extra_input_bus__out2 = _ms_s2_meter_load_gain__out[2];
+    _ms_s2_meter_load_extra_input_bus__out3 = _ms_s2_meter_load_gain__out[3];
+    _ms_s2_meter_load_extra_input_bus__out4 = _ms_s2_meter_load_gain__out[4];
+    _ms_s2_meter_load_extra_input_bus__out5 = _ms_s2_meter_load_gain__out[5];
+    _ms_s2_meter_load_extra_input_bus__out6 = _ms_s2_meter_load_gain__out[6];
+    _ms_s2_meter_load_extra_input_bus__out7 = _ms_s2_meter_load_gain__out[7];
+    _ms_s2_meter_load_extra_input_bus__out8 = _ms_s2_meter_load_gain__out[8];
+    _ms_s2_meter_load_extra_input_bus__out9 = _ms_s2_meter_load_gain__out[9];
+    _ms_s2_meter_load_extra_input_bus__out10 = _ms_s2_meter_load_gain__out[10];
+    _ms_s2_meter_load_extra_input_bus__out11 = _ms_s2_meter_load_gain__out[11];
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Sum7
+    _ms_s2_tpm_load_pll_pid_sum7__out = _ms_s2_tpm_load_pll_pid_ki__out + _ms_s2_tpm_load_pll_pid_kb__out;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Sum7
+    _ms_s2_three_phase_pll1_pid_sum7__out = _ms_s2_three_phase_pll1_pid_ki__out + _ms_s2_three_phase_pll1_pid_kb__out;
+    // Generated from the component: MS_S3.Meter_Grid.extra_input_bus
+    _ms_s3_meter_grid_extra_input_bus__out = _ms_s3_meter_grid_gain__out[0];
+    _ms_s3_meter_grid_extra_input_bus__out1 = _ms_s3_meter_grid_gain__out[1];
+    _ms_s3_meter_grid_extra_input_bus__out2 = _ms_s3_meter_grid_gain__out[2];
+    _ms_s3_meter_grid_extra_input_bus__out3 = _ms_s3_meter_grid_gain__out[3];
+    _ms_s3_meter_grid_extra_input_bus__out4 = _ms_s3_meter_grid_gain__out[4];
+    _ms_s3_meter_grid_extra_input_bus__out5 = _ms_s3_meter_grid_gain__out[5];
+    _ms_s3_meter_grid_extra_input_bus__out6 = _ms_s3_meter_grid_gain__out[6];
+    _ms_s3_meter_grid_extra_input_bus__out7 = _ms_s3_meter_grid_gain__out[7];
+    _ms_s3_meter_grid_extra_input_bus__out8 = _ms_s3_meter_grid_gain__out[8];
+    _ms_s3_meter_grid_extra_input_bus__out9 = _ms_s3_meter_grid_gain__out[9];
+    _ms_s3_meter_grid_extra_input_bus__out10 = _ms_s3_meter_grid_gain__out[10];
+    _ms_s3_meter_grid_extra_input_bus__out11 = _ms_s3_meter_grid_gain__out[11];
+    // Generated from the component: PCC_Control.d_0_f
+    HIL_OutAO(0x40e2, (float)_pcc_control_frt_f_besf_sagc__d0);
+    // Generated from the component: PCC_Control.d_1_f
+    HIL_OutAO(0x40e4, (float)_pcc_control_frt_f_besf_sagc__d1);
+    // Generated from the component: PCC_Control.d_2_f
+    HIL_OutAO(0x40e6, (float)_pcc_control_frt_f_besf_sagc__d2);
+    // Generated from the component: PCC_Control.d_3_f
+    HIL_OutAO(0x40e8, (float)_pcc_control_frt_f_besf_sagc__d3);
+    // Generated from the component: PCC_Control.d_4_f
+    HIL_OutAO(0x40ea, (float)_pcc_control_frt_f_besf_sagc__d4);
+    // Generated from the component: PCC_Control.d_5_f
+    HIL_OutAO(0x40eb, (float)_pcc_control_frt_f_besf_sagc__d5);
+    // Generated from the component: PCC_Control.d_6_f
+    HIL_OutAO(0x40ec, (float)_pcc_control_frt_f_besf_sagc__d6);
+    // Generated from the component: PCC_Control.fault_fpu
+    HIL_OutAO(0x40ed, (float)_pcc_control_f_pu__out);
+    // Generated from the component: PCC_Control.V_Check_BESF
+    _pcc_control_v_check_besf__Input = _pcc_control_v_pu__out;
+    {
+        _pcc_control_v_check_besf__Fault = _pcc_control_v_check_besf__Trip_Zone ;
+        if ( _pcc_control_v_check_besf__Trip_Zone > - 1 )     {
+            _pcc_control_v_check_besf__Trip = 1 ;
+        }
+        else     {
+            _pcc_control_v_check_besf__Trip = 0 ;
+        }
+        _pcc_control_v_check_besf__d0 = _pcc_control_v_check_besf__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control_v_check_besf__d1 = _pcc_control_v_check_besf__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control_v_check_besf__d2 = _pcc_control_v_check_besf__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control_v_check_besf__d3 = _pcc_control_v_check_besf__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control_v_check_besf__d4 = _pcc_control_v_check_besf__uv_zones [ 2 ] . timer * 1e-06 ;
+    }
+    // Generated from the component: PCC_Control.fault_vpu
+    HIL_OutAO(0x40ee, (float)_pcc_control_v_pu__out);
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Sum7
+    _ms_s3_tpm_grid_pll_pid_sum7__out = _ms_s3_tpm_grid_pll_pid_ki__out + _ms_s3_tpm_grid_pll_pid_kb__out;
+    // Generated from the component: MS_S3.Meter_uG.extra_input_bus
+    _ms_s3_meter_ug_extra_input_bus__out = _ms_s3_meter_ug_gain__out[0];
+    _ms_s3_meter_ug_extra_input_bus__out1 = _ms_s3_meter_ug_gain__out[1];
+    _ms_s3_meter_ug_extra_input_bus__out2 = _ms_s3_meter_ug_gain__out[2];
+    _ms_s3_meter_ug_extra_input_bus__out3 = _ms_s3_meter_ug_gain__out[3];
+    _ms_s3_meter_ug_extra_input_bus__out4 = _ms_s3_meter_ug_gain__out[4];
+    _ms_s3_meter_ug_extra_input_bus__out5 = _ms_s3_meter_ug_gain__out[5];
+    _ms_s3_meter_ug_extra_input_bus__out6 = _ms_s3_meter_ug_gain__out[6];
+    _ms_s3_meter_ug_extra_input_bus__out7 = _ms_s3_meter_ug_gain__out[7];
+    _ms_s3_meter_ug_extra_input_bus__out8 = _ms_s3_meter_ug_gain__out[8];
+    _ms_s3_meter_ug_extra_input_bus__out9 = _ms_s3_meter_ug_gain__out[9];
+    _ms_s3_meter_ug_extra_input_bus__out10 = _ms_s3_meter_ug_gain__out[10];
+    _ms_s3_meter_ug_extra_input_bus__out11 = _ms_s3_meter_ug_gain__out[11];
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Sum7
+    _ms_s3_tpm_ug_pll_pid_sum7__out = _ms_s3_tpm_ug_pll_pid_ki__out + _ms_s3_tpm_ug_pll_pid_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Sum1
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out + _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.wait_to_change
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__in = _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out;
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__reset = _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_relational_operator1__out;
+    {
+        if ( _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__in <= 0 )     {
+            _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter = 0 ;
+            _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out = 0 ;
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter >= _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__wait_time )         {
+                _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out = 1 ;
+            }
+            else         {
+                _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out = 0 ;
+                _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter += 1e-06 * _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__in ;
+            }
+        }
+        if ( _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__reset == 1 )     {
+            _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter = 0 ;
+            _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out = 0 ;
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Sum7
+    _battery_inverter__average_1_control_synch_phase_match_pi_sum7__out = _battery_inverter__average_1_control_synch_phase_match_pi_ki__out + _battery_inverter__average_1_control_synch_phase_match_pi_kb__out;
+    // Generated from the component: MS_S1.Meter_Grid.POWER_PA
+    // Generated from the component: MS_S1.Meter_Grid.POWER_PB
+    // Generated from the component: MS_S1.Meter_Grid.POWER_PC
+    // Generated from the component: MS_S1.Meter_Grid.POWER_PFA
+    // Generated from the component: MS_S1.Meter_Grid.POWER_PFB
+    // Generated from the component: MS_S1.Meter_Grid.POWER_PFC
+    // Generated from the component: MS_S1.Meter_Grid.POWER_QA
+    // Generated from the component: MS_S1.Meter_Grid.POWER_QB
+    // Generated from the component: MS_S1.Meter_Grid.POWER_QC
+    // Generated from the component: MS_S1.Meter_Grid.POWER_SA
+    // Generated from the component: MS_S1.Meter_Grid.POWER_SB
+    // Generated from the component: MS_S1.Meter_Grid.POWER_SC
+    // Generated from the component: MS_S2.Meter_Load.POWER_PA
+    // Generated from the component: MS_S2.Meter_Load.POWER_PB
+    // Generated from the component: MS_S2.Meter_Load.POWER_PC
+    // Generated from the component: MS_S2.Meter_Load.POWER_PFA
+    // Generated from the component: MS_S2.Meter_Load.POWER_PFB
+    // Generated from the component: MS_S2.Meter_Load.POWER_PFC
+    // Generated from the component: MS_S2.Meter_Load.POWER_QA
+    // Generated from the component: MS_S2.Meter_Load.POWER_QB
+    // Generated from the component: MS_S2.Meter_Load.POWER_QC
+    // Generated from the component: MS_S2.Meter_Load.POWER_SA
+    // Generated from the component: MS_S2.Meter_Load.POWER_SB
+    // Generated from the component: MS_S2.Meter_Load.POWER_SC
+    // Generated from the component: MS_S3.Meter_Grid.POWER_PA
+    // Generated from the component: MS_S3.Meter_Grid.POWER_PB
+    // Generated from the component: MS_S3.Meter_Grid.POWER_PC
+    // Generated from the component: MS_S3.Meter_Grid.POWER_PFA
+    // Generated from the component: MS_S3.Meter_Grid.POWER_PFB
+    // Generated from the component: MS_S3.Meter_Grid.POWER_PFC
+    // Generated from the component: MS_S3.Meter_Grid.POWER_QA
+    // Generated from the component: MS_S3.Meter_Grid.POWER_QB
+    // Generated from the component: MS_S3.Meter_Grid.POWER_QC
+    // Generated from the component: MS_S3.Meter_Grid.POWER_SA
+    // Generated from the component: MS_S3.Meter_Grid.POWER_SB
+    // Generated from the component: MS_S3.Meter_Grid.POWER_SC
+    // Generated from the component: PCC_Control.Output_Check
+    _pcc_control_output_check__F_Trip = _pcc_control_frt_f_besf_sagc__Trip;
+    _pcc_control_output_check__F_Zone = _pcc_control_frt_f_besf_sagc__Fault;
+    _pcc_control_output_check__Reset = _reset_cb__out;
+    _pcc_control_output_check__V_Trip = _pcc_control_v_check_besf__Trip;
+    _pcc_control_output_check__V_Zone = _pcc_control_v_check_besf__Fault;
+    {
+        _pcc_control_output_check__CB = _pcc_control_output_check__var_CB ;
+        _pcc_control_output_check__GFL = _pcc_control_output_check__var_GFL ;
+        _pcc_control_output_check__Fault_Zone = _pcc_control_output_check__var_Fault_Zone ;
+    }
+    // Generated from the component: PCC_Control.d_0_V
+    HIL_OutAO(0x40e1, (float)_pcc_control_v_check_besf__d0);
+    // Generated from the component: PCC_Control.d_1_V
+    HIL_OutAO(0x40e3, (float)_pcc_control_v_check_besf__d1);
+    // Generated from the component: PCC_Control.d_2_V
+    HIL_OutAO(0x40e5, (float)_pcc_control_v_check_besf__d2);
+    // Generated from the component: PCC_Control.d_3_V
+    HIL_OutAO(0x40e7, (float)_pcc_control_v_check_besf__d3);
+    // Generated from the component: PCC_Control.d_4_V
+    HIL_OutAO(0x40e9, (float)_pcc_control_v_check_besf__d4);
+    // Generated from the component: MS_S3.Meter_uG.POWER_PA
+    // Generated from the component: MS_S3.Meter_uG.POWER_PB
+    // Generated from the component: MS_S3.Meter_uG.POWER_PC
+    // Generated from the component: MS_S3.Meter_uG.POWER_PFA
+    // Generated from the component: MS_S3.Meter_uG.POWER_PFB
+    // Generated from the component: MS_S3.Meter_uG.POWER_PFC
+    // Generated from the component: MS_S3.Meter_uG.POWER_QA
+    // Generated from the component: MS_S3.Meter_uG.POWER_QB
+    // Generated from the component: MS_S3.Meter_uG.POWER_QC
+    // Generated from the component: MS_S3.Meter_uG.POWER_SA
+    // Generated from the component: MS_S3.Meter_uG.POWER_SB
+    // Generated from the component: MS_S3.Meter_uG.POWER_SC
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.PI_Ph
+    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int = _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state + 8.0 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
+    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out = _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.dPh
+    HIL_OutAO(0x4036, (float)_battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.on_nominal
+    HIL_OutInt32(0xf0040d, _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.on_nominal
+    HIL_OutAO(0x4046, (float)_battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out);
+    // Generated from the component: Multiport signal switch1
+    switch((X_UnInt32) _bi_mode_scada__out) {
+    case 1:
+        _multiport_signal_switch1__out = _c_gfl__out;
+        break;
+    case 2:
+        _multiport_signal_switch1__out = _c_gfm__out;
+        break;
+    case 3:
+        _multiport_signal_switch1__out = _pcc_control_output_check__GFL;
+        break;
+    default:
+        _multiport_signal_switch1__out = 0x0;
+    }
+    // Generated from the component: Multiport signal switch2
+    switch((X_UnInt32) _cb_state_scada__out) {
+    case 1:
+        _multiport_signal_switch2__out = _c_cb0__out;
+        break;
+    case 2:
+        _multiport_signal_switch2__out = _c_cb1__out;
+        break;
+    case 3:
+        _multiport_signal_switch2__out = _pcc_control_output_check__CB;
+        break;
+    default:
+        _multiport_signal_switch2__out = 0x0;
+    }
+    // Generated from the component: PCC_Control.CB_faults
+    HIL_OutAO(0x40de, (float)_pcc_control_output_check__CB);
+    // Generated from the component: PCC_Control.Fault
+    HIL_OutAO(0x40df, (float)_pcc_control_output_check__Fault_Zone);
+    // Generated from the component: PCC_Control.GFL
+    HIL_OutAO(0x40e0, (float)_pcc_control_output_check__GFL);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Gain1
+    _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out = 0.02 * _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.uPh
+    HIL_OutAO(0x4037, (float)_battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out);
+    // Generated from the component: BI_Inputs
+    _bi_inputs__out[0] = _eut_interface_enable_i__out;
+    _bi_inputs__out[1] = _multiport_signal_switch1__out;
+    _bi_inputs__out[2] = _g_fgrid_hz__out;
+    _bi_inputs__out[3] = _g_vll_rms__out;
+    _bi_inputs__out[4] = _g_pess__out;
+    _bi_inputs__out[5] = _g_qess__out;
+    // Generated from the component: MS_S3.S1.Triple S1 ideal.CTC_Wrapper
+    _ms_s3_s1_triple_s1_ideal_ctc_wrapper__feedback_out = HIL_InInt32(0xf80403);
+    if (_multiport_signal_switch2__out == 0x0) {
+        HIL_OutInt32(0x8240483, 0x0);
+    }
+    else {
+        HIL_OutInt32(0x8240483, 0x1);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control_Inputs.Bus Split2
+    _battery_inverter__average_1_control_inputs_bus_split2__out = _bi_inputs__out[0];
+    _battery_inverter__average_1_control_inputs_bus_split2__out1 = _bi_inputs__out[1];
+    _battery_inverter__average_1_control_inputs_bus_split2__out2 = _bi_inputs__out[2];
+    _battery_inverter__average_1_control_inputs_bus_split2__out3 = _bi_inputs__out[3];
+    _battery_inverter__average_1_control_inputs_bus_split2__out4 = _bi_inputs__out[4];
+    _battery_inverter__average_1_control_inputs_bus_split2__out5 = _bi_inputs__out[5];
+    // Generated from the component: MS_S3.Sfb
+    HIL_OutAO(0x40a5, (float)_ms_s3_s1_triple_s1_ideal_ctc_wrapper__feedback_out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Gain1
+    _battery_inverter__average_1_control_imode_control_gain1__out = 1e-05 * _battery_inverter__average_1_control_inputs_bus_split2__out4;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Gain2
+    _battery_inverter__average_1_control_imode_control_gain2__out = 1e-05 * _battery_inverter__average_1_control_inputs_bus_split2__out5;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Gain1
+    _battery_inverter__average_1_control_vmode_control_gain1__out = 0.0025 * _battery_inverter__average_1_control_inputs_bus_split2__out3;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Gain2
+    _battery_inverter__average_1_control_vmode_control_gain2__out = 0.02 * _battery_inverter__average_1_control_inputs_bus_split2__out2;
+    // Generated from the component: Battery inverter (Average)1.Control_Inputs.Limit1
+    _battery_inverter__average_1_control_inputs_limit1__out = MIN(MAX(_battery_inverter__average_1_control_inputs_bus_split2__out, 0.0), 1.0);
+    // Generated from the component: Battery inverter (Average)1.Control_Inputs.Limit2
+    _battery_inverter__average_1_control_inputs_limit2__out = MIN(MAX(_battery_inverter__average_1_control_inputs_bus_split2__out1, 0.0), 1.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.priority_PQlim.PQ limiting with priority
+    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref = _battery_inverter__average_1_control_imode_control_gain1__out;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref = _battery_inverter__average_1_control_imode_control_gain2__out;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax = _battery_inverter__average_1_control_imode_control_constant1__out;
+    {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref = sqrt ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref + _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref ) ;
+        if ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref >= 0 ) _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signQ = 1 ;
+        else _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signQ = - 1 ;
+        if ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref >= 0 ) _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signP = 1 ;
+        else _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signP = - 1 ;
+        if ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref <= _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax )     {
+            _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref ;
+            _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref ;
+            _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref ;
+        }
+        else     {
+            _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax ;
+            if ( 1.0 == 1 )         {
+                if ( fabs ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref ) > _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax )             {
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signP * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax ;
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q = 0 ;
+                }
+                else             {
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref ;
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signQ * sqrt ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax - _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref ) ;
+                }
+            }
+            else if ( 1.0 == 2 )         {
+                if ( fabs ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref ) > _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax )             {
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signQ * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax ;
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P = 0 ;
+                }
+                else             {
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref ;
+                    _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__signP * sqrt ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax - _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref ) ;
+                }
+            }
+            else         {
+                _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P = ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref / _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref ) * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax ;
+                _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q = ( _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref / _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref ) * _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Rate Limiter2
+    _battery_inverter__average_1_control_vmode_control_rate_limiter2__rising_rate_lim[0] = 10.0 * 1e-06;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter2__falling_rate_lim[0] = -10.0 * 1e-06;
+    if (_battery_inverter__average_1_control_vmode_control_rate_limiter2__first_step) {
+        _battery_inverter__average_1_control_vmode_control_rate_limiter2__out = _battery_inverter__average_1_control_vmode_control_gain2__out;
+        _battery_inverter__average_1_control_vmode_control_rate_limiter2__state = _battery_inverter__average_1_control_vmode_control_gain2__out;
+    } else {
+        _battery_inverter__average_1_control_vmode_control_rate_limiter2__out = _battery_inverter__average_1_control_vmode_control_gain2__out;
+        if (_battery_inverter__average_1_control_vmode_control_gain2__out - _battery_inverter__average_1_control_vmode_control_rate_limiter2__state > _battery_inverter__average_1_control_vmode_control_rate_limiter2__rising_rate_lim[0])
+            _battery_inverter__average_1_control_vmode_control_rate_limiter2__out = _battery_inverter__average_1_control_vmode_control_rate_limiter2__state + (_battery_inverter__average_1_control_vmode_control_rate_limiter2__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_vmode_control_gain2__out - _battery_inverter__average_1_control_vmode_control_rate_limiter2__state < _battery_inverter__average_1_control_vmode_control_rate_limiter2__falling_rate_lim[0])
+            _battery_inverter__average_1_control_vmode_control_rate_limiter2__out = _battery_inverter__average_1_control_vmode_control_rate_limiter2__state + (_battery_inverter__average_1_control_vmode_control_rate_limiter2__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control_Inputs.Round2
+    _battery_inverter__average_1_control_inputs_round2__out =  round(_battery_inverter__average_1_control_inputs_limit1__out);
+    // Generated from the component: Battery inverter (Average)1.Control_Inputs.Round1
+    _battery_inverter__average_1_control_inputs_round1__out =  round(_battery_inverter__average_1_control_inputs_limit2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.P rate limit
+    _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__rising_rate_lim[0] = 100000.0 * 1e-06;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__falling_rate_lim[0] = -100000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__first_step) {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P;
+        _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P;
+    } else {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P;
+        if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P - _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state > _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__rising_rate_lim[0])
+            _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state + (_battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P - _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state < _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__falling_rate_lim[0])
+            _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state + (_battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.Q rate limit
+    _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__rising_rate_lim[0] = 100000.0 * 1e-06;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__falling_rate_lim[0] = -100000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__first_step) {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q;
+        _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q;
+    } else {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q;
+        if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q - _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state > _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__rising_rate_lim[0])
+            _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state + (_battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q - _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state < _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__falling_rate_lim[0])
+            _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state + (_battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.S rate limit
+    _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__rising_rate_lim[0] = 100000.0 * 1e-06;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__falling_rate_lim[0] = -100000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__first_step) {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S;
+        _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S;
+    } else {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S;
+        if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S - _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state > _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__rising_rate_lim[0])
+            _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state + (_battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S - _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state < _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__falling_rate_lim[0])
+            _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__out = _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state + (_battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Edge Detection2.Relational operator1
+    _battery_inverter__average_1_control_imode_control_edge_detection2_relational_operator1__out = (_battery_inverter__average_1_control_inputs_round2__out != _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__out) ? 1 : 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.on
+    HIL_OutInt32(0xf00405, _battery_inverter__average_1_control_inputs_round2__out != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Edge Detection2.Relational operator1
+    _battery_inverter__average_1_control_vmode_control_edge_detection2_relational_operator1__out = (_battery_inverter__average_1_control_inputs_round2__out != _battery_inverter__average_1_control_vmode_control_edge_detection2_unit_delay1__out) ? 1 : 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Signal switch1
+    _battery_inverter__average_1_control_vmode_control_signal_switch1__out = (_battery_inverter__average_1_control_inputs_round2__out > 0.5f) ? _battery_inverter__average_1_control_vmode_control_gain1__out : _battery_inverter__average_1_control_vmode_control_constant1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.Inv_Cab_SM
+    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__On = _battery_inverter__average_1_control_inputs_round2__out;
+    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__grid_locked = _battery_inverter__average_1_control_synch_phase_match_unit_delay4__out;
+    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__live_grid = _battery_inverter__average_1_control_synch_check_grid_logical_operator15__out;
+    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__mode = _battery_inverter__average_1_control_inputs_round1__out;
+    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__on_nominal = _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out;
+    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__v_match = _battery_inverter__average_1_control_synch_vmatch_unit_delay4__out;
+    {
+        if ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__On == 0 )     {
+            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor = 0 ;
+            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch = 0 ;
+            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode = 1 ;
+            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock1 = 0 ;
+            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock2 = 0 ;
+            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode = 0 ;
+            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__from_grid_follow = 0 ;
+        }
+        else     {
+            if ( ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__mode == 0 ) && ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock1 == 0 ) )         {
+                _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock2 = 0 ;
+                if ( ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__on_nominal ) || ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__from_grid_follow ) )             {
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode = 1 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor = 1 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch = 0 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock1 = 1 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode = 1 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__from_grid_follow = 0 ;
+                }
+                else             {
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode = 1 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor = 0 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch = 0 ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode = 0 ;
+                }
+            }
+            else         {
+                if ( ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__mode == 1 ) && ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock2 == 0 ) )             {
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock1 = 0 ;
+                    if ( ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__on_nominal ) && ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__live_grid == 1 ) )                 {
+                        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch = 1 ;
+                        if ( ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__grid_locked == 1 ) && ( _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__v_match == 1 ) )                     {
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode = 0 ;
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor = 1 ;
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch = 0 ;
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__lock2 = 1 ;
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode = 2 ;
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__from_grid_follow = 1 ;
+                        }
+                        else                     {
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode = 1 ;
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor = 0 ;
+                            _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode = 0 ;
+                        }
+                    }
+                    else                 {
+                        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode = 1 ;
+                        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor = 0 ;
+                        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch = 0 ;
+                        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode = 0 ;
+                    }
+                }
+                else             {
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode_state ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor_state ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch_state ;
+                    _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode_state ;
+                }
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.limS_overPQ.S limiting over PQ
+    _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Pref = _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__out;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Qref = _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__out;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Sref = _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__out;
+    {
+        _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__S_PQref = sqrt ( _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Pref * _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Pref + _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Qref * _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Qref ) ;
+        if ( _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__S_PQref > _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Sref )     {
+            _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__P = ( _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Pref / _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__S_PQref ) * _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Sref ;
+            _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Q = ( _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Qref / _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__S_PQref ) * _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Sref ;
+        }
+        else     {
+            _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__P = _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Pref ;
+            _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Q = _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Qref ;
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Rate Limiter1
+    _battery_inverter__average_1_control_vmode_control_rate_limiter1__rising_rate_lim[0] = 10000.0 * 1e-06;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter1__falling_rate_lim[0] = -10000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_vmode_control_rate_limiter1__first_step) {
+        _battery_inverter__average_1_control_vmode_control_rate_limiter1__out = _battery_inverter__average_1_control_vmode_control_signal_switch1__out;
+        _battery_inverter__average_1_control_vmode_control_rate_limiter1__state = _battery_inverter__average_1_control_vmode_control_signal_switch1__out;
+    } else {
+        _battery_inverter__average_1_control_vmode_control_rate_limiter1__out = _battery_inverter__average_1_control_vmode_control_signal_switch1__out;
+        if (_battery_inverter__average_1_control_vmode_control_signal_switch1__out - _battery_inverter__average_1_control_vmode_control_rate_limiter1__state > _battery_inverter__average_1_control_vmode_control_rate_limiter1__rising_rate_lim[0])
+            _battery_inverter__average_1_control_vmode_control_rate_limiter1__out = _battery_inverter__average_1_control_vmode_control_rate_limiter1__state + (_battery_inverter__average_1_control_vmode_control_rate_limiter1__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_vmode_control_signal_switch1__out - _battery_inverter__average_1_control_vmode_control_rate_limiter1__state < _battery_inverter__average_1_control_vmode_control_rate_limiter1__falling_rate_lim[0])
+            _battery_inverter__average_1_control_vmode_control_rate_limiter1__out = _battery_inverter__average_1_control_vmode_control_rate_limiter1__state + (_battery_inverter__average_1_control_vmode_control_rate_limiter1__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Change_CtrlMode.Signal switch3
+    _battery_inverter__average_1_control_change_ctrlmode_signal_switch3__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode > 0.5f) ? _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output : _battery_inverter__average_1_control_imode_control_sum12__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Edge Detection1.Relational operator1
+    _battery_inverter__average_1_control_imode_control_edge_detection1_relational_operator1__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode != _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__out) ? 1 : 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.CB_status
+    HIL_OutInt32(0xf00400, _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.V_mode
+    HIL_OutInt32(0xf00401, _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.verify_mode
+    _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__control_mode = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode;
+    {
+        if ( _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__control_mode == 0 )     {
+            _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__stand_by = 1 ;
+            _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_forming = 0 ;
+            _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_following = 0 ;
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__control_mode == 1 )         {
+                _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__stand_by = 0 ;
+                _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_forming = 1 ;
+                _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_following = 0 ;
+            }
+            else         {
+                _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__stand_by = 0 ;
+                _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_forming = 0 ;
+                _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_following = 1 ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.synch
+    HIL_OutInt32(0xf00406, _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Phase-Synch-Switching
+    _battery_inverter__average_1_control_phase_synch_switching__in_phase = _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out;
+    _battery_inverter__average_1_control_phase_synch_switching__in_sw = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor;
+    _battery_inverter__average_1_control_phase_synch_switching__in_target = _battery_inverter__average_1_control_inv_wt_target__out;
+    {
+        _battery_inverter__average_1_control_phase_synch_switching__out_sw = _battery_inverter__average_1_control_phase_synch_switching__sw_out ;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Integrator1
+    if (((_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.0) && (_battery_inverter__average_1_control_synch_vmatch_pi_integrator1__reset_state <= 0)) || ((_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch <= 0.0) && (_battery_inverter__average_1_control_synch_vmatch_pi_integrator1__reset_state == 1))) {
+        _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__state = 0.0;
+    }
+    _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__out = _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Signal switch2
+    _battery_inverter__average_1_control_synch_vmatch_signal_switch2__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.0f) ? _battery_inverter__average_1_control_synch_vmatch_sum10__out : _battery_inverter__average_1_control_synch_vmatch_constant3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Integrator1
+    if ((_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.0) && (_battery_inverter__average_1_control_synch_f_match_pi_integrator1__reset_state <= 0)) {
+        _battery_inverter__average_1_control_synch_f_match_pi_integrator1__state = 0.0;
+    }
+    _battery_inverter__average_1_control_synch_f_match_pi_integrator1__out = _battery_inverter__average_1_control_synch_f_match_pi_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Signal switch2
+    _battery_inverter__average_1_control_synch_f_match_signal_switch2__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.0f) ? _battery_inverter__average_1_control_synch_f_match_low_pass_sum1__out : _battery_inverter__average_1_control_synch_f_match_constant3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Edge Detection1.Relational operator1
+    _battery_inverter__average_1_control_vmode_control_edge_detection1_relational_operator1__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode != _battery_inverter__average_1_control_vmode_control_edge_detection1_unit_delay1__out) ? 1 : 0;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Logical operator2
+    _battery_inverter__average_1_control_df_switch_logical_operator2__out = !_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.switch_GFM_df
+    _battery_inverter__average_1_control_df_switch_switch_gfm_df__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.5f) ? _battery_inverter__average_1_control_synch_phase_match_unit_delay5__out : _battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Sum3
+    _battery_inverter__average_1_control_vmode_control_sum3__out = _battery_inverter__average_1_control_vmode_control_rate_limiter1__out + _battery_inverter__average_1_control_synch_vmatch_unit_delay5__out;
+    // Generated from the component: Battery inverter (Average)1.Control.wt_out
+    HIL_OutAO(0x404a, (float)_battery_inverter__average_1_control_change_ctrlmode_signal_switch3__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Logical operator1
+    _battery_inverter__average_1_control_imode_control_logical_operator1__out = _battery_inverter__average_1_control_imode_control_edge_detection1_relational_operator1__out || _battery_inverter__average_1_control_imode_control_edge_detection2_relational_operator1__out ;
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.Grid following
+    HIL_OutInt32(0xf00402, _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_following != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.Grid forming
+    HIL_OutInt32(0xf00403, _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__grid_forming != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.StandBy
+    HIL_OutInt32(0xf00404, _battery_inverter__average_1_control_inv_cab_sm_read_mode_verify_mode__stand_by != 0x0);
+    // Generated from the component: Battery inverter (Average)1.Contactor
+    HIL_OutAO(0x4001, (float)_battery_inverter__average_1_control_phase_synch_switching__out_sw);
+    // Generated from the component: Battery inverter (Average)1.Output.Bus Join1
+    _battery_inverter__average_1_output_bus_join1__out[0] = _battery_inverter__average_1_control_phase_synch_switching__out_sw;
+    _battery_inverter__average_1_output_bus_join1__out[1] = _battery_inverter__average_1_control_inputs_round2__out;
+    _battery_inverter__average_1_output_bus_join1__out[2] = _battery_inverter__average_1_converter_meas_va_va1__out;
+    _battery_inverter__average_1_output_bus_join1__out[3] = _battery_inverter__average_1_converter_meas_vb_va1__out;
+    _battery_inverter__average_1_output_bus_join1__out[4] = _battery_inverter__average_1_converter_meas_vc_va1__out;
+    _battery_inverter__average_1_output_bus_join1__out[5] = _battery_inverter__average_1_control_pll_pu_pll_normalize__pk;
+    _battery_inverter__average_1_output_bus_join1__out[6] = _battery_inverter__average_1_ia_ia1__out;
+    _battery_inverter__average_1_output_bus_join1__out[7] = _battery_inverter__average_1_ib_ia1__out;
+    _battery_inverter__average_1_output_bus_join1__out[8] = _battery_inverter__average_1_ic_ia1__out;
+    _battery_inverter__average_1_output_bus_join1__out[9] = _battery_inverter__average_1_control_pll_pu_pll_to_hz__out;
+    _battery_inverter__average_1_output_bus_join1__out[10] = _battery_inverter__average_1_control_power_meas_gain1__out;
+    _battery_inverter__average_1_output_bus_join1__out[11] = _battery_inverter__average_1_control_power_meas_gain2__out;
+    _battery_inverter__average_1_output_bus_join1__out[12] = _battery_inverter__average_1_control_power_meas_gain3__out;
+    _battery_inverter__average_1_output_bus_join1__out[13] = _battery_inverter__average_1_control_power_meas_power_meas_dq_s_and_pf__pf;
+    // Generated from the component: Battery inverter (Average)1.S1.Triple S1 ideal.CTC_Wrapper
+    if (_battery_inverter__average_1_control_phase_synch_switching__out_sw == 0x0) {
+        HIL_OutInt32(0x8240480, 0x0);
+    }
+    else {
+        HIL_OutInt32(0x8240480, 0x1);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Ki
+    _battery_inverter__average_1_control_synch_vmatch_pi_ki__out = 5.0 * _battery_inverter__average_1_control_synch_vmatch_signal_switch2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Kp
+    _battery_inverter__average_1_control_synch_vmatch_pi_kp__out = 0.1 * _battery_inverter__average_1_control_synch_vmatch_signal_switch2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Ki
+    _battery_inverter__average_1_control_synch_f_match_pi_ki__out = 3.0 * _battery_inverter__average_1_control_synch_f_match_signal_switch2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Kp
+    _battery_inverter__average_1_control_synch_f_match_pi_kp__out = 0.01 * _battery_inverter__average_1_control_synch_f_match_signal_switch2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Logical operator1
+    _battery_inverter__average_1_control_vmode_control_logical_operator1__out = _battery_inverter__average_1_control_vmode_control_edge_detection1_relational_operator1__out || _battery_inverter__average_1_control_vmode_control_edge_detection2_relational_operator1__out ;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Logical operator1
+    _battery_inverter__average_1_control_df_switch_logical_operator1__out = _battery_inverter__average_1_control_df_switch_logical_operator2__out && _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode ;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.Sum4
+    _battery_inverter__average_1_control_vmode_control_current_ref_sum4__out = _battery_inverter__average_1_control_vmode_control_sum3__out - _battery_inverter__average_1_control_pll_pu_gain4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Vt_ref
+    HIL_OutAO(0x4031, (float)_battery_inverter__average_1_control_vmode_control_sum3__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Integrator1
+    if (((_battery_inverter__average_1_control_imode_control_logical_operator1__out > 0.0) && (_battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__reset_state <= 0)) || ((_battery_inverter__average_1_control_imode_control_logical_operator1__out <= 0.0) && (_battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__reset_state == 1))) {
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__state = 0.0;
+    }
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Integrator1
+    if (((_battery_inverter__average_1_control_imode_control_logical_operator1__out > 0.0) && (_battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__reset_state <= 0)) || ((_battery_inverter__average_1_control_imode_control_logical_operator1__out <= 0.0) && (_battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__reset_state == 1))) {
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__state = 0.0;
+    }
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__state;
+    // Generated from the component: BI_Outputs
+    _bi_outputs__out = _battery_inverter__average_1_output_bus_join1__out[0];
+    _bi_outputs__out1 = _battery_inverter__average_1_output_bus_join1__out[1];
+    _bi_outputs__out2 = _battery_inverter__average_1_output_bus_join1__out[2];
+    _bi_outputs__out3 = _battery_inverter__average_1_output_bus_join1__out[3];
+    _bi_outputs__out4 = _battery_inverter__average_1_output_bus_join1__out[4];
+    _bi_outputs__out5 = _battery_inverter__average_1_output_bus_join1__out[5];
+    _bi_outputs__out6 = _battery_inverter__average_1_output_bus_join1__out[6];
+    _bi_outputs__out7 = _battery_inverter__average_1_output_bus_join1__out[7];
+    _bi_outputs__out8 = _battery_inverter__average_1_output_bus_join1__out[8];
+    _bi_outputs__out9 = _battery_inverter__average_1_output_bus_join1__out[9];
+    _bi_outputs__out10 = _battery_inverter__average_1_output_bus_join1__out[10];
+    _bi_outputs__out11 = _battery_inverter__average_1_output_bus_join1__out[11];
+    _bi_outputs__out12 = _battery_inverter__average_1_output_bus_join1__out[12];
+    _bi_outputs__out13 = _battery_inverter__average_1_output_bus_join1__out[13];
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Sum5
+    _battery_inverter__average_1_control_synch_vmatch_pi_sum5__out = _battery_inverter__average_1_control_synch_vmatch_pi_kp__out + _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Sum5
+    _battery_inverter__average_1_control_synch_f_match_pi_sum5__out = _battery_inverter__average_1_control_synch_f_match_pi_kp__out + _battery_inverter__average_1_control_synch_f_match_pi_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Integrator1
+    if (((_battery_inverter__average_1_control_vmode_control_logical_operator1__out > 0.0) && (_battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__reset_state <= 0)) || ((_battery_inverter__average_1_control_vmode_control_logical_operator1__out <= 0.0) && (_battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__reset_state == 1))) {
+        _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__state = 0.03829230913020472;
+    }
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__out = _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Integrator1
+    if (((_battery_inverter__average_1_control_vmode_control_logical_operator1__out > 0.0) && (_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__reset_state <= 0)) || ((_battery_inverter__average_1_control_vmode_control_logical_operator1__out <= 0.0) && (_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__reset_state == 1))) {
+        _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__state = 0.0;
+    }
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__out = _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__state;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.switch_GFM_df1
+    _battery_inverter__average_1_control_df_switch_switch_gfm_df1__out = (_battery_inverter__average_1_control_df_switch_logical_operator1__out > 0.5f) ? _battery_inverter__average_1_control_df_switch_constant1__out : _battery_inverter__average_1_control_df_switch_switch_gfm_df__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Ki
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_ki__out = 10.0 * _battery_inverter__average_1_control_vmode_control_current_ref_sum4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Kp
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_kp__out = 10.0 * _battery_inverter__average_1_control_vmode_control_current_ref_sum4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.Verror
+    HIL_OutAO(0x402b, (float)_battery_inverter__average_1_control_vmode_control_current_ref_sum4__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Sum5
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum5__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_kp__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Sum5
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum5__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_kp__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__out;
+    // Generated from the component: EUT_Interface.On_o
+    HIL_OutInt32(0xf0040f, _bi_outputs__out1 != 0x0);
+    // Generated from the component: EUT_Interface.Peut_o
+    HIL_OutAO(0x404f, (float)_bi_outputs__out10);
+    // Generated from the component: EUT_Interface.Qeut_o
+    HIL_OutAO(0x4050, (float)_bi_outputs__out11);
+    // Generated from the component: EUT_Interface.Relay_o
+    HIL_OutInt32(0xf00410, _bi_outputs__out != 0x0);
+    // Generated from the component: EUT_Interface.Veut_o
+    HIL_OutAO(0x4052, (float)_bi_outputs__out5);
+    // Generated from the component: EUT_Interface.f_o
+    HIL_OutAO(0x4053, (float)_bi_outputs__out9);
+    // Generated from the component: EUT_Interface.ia_o
+    HIL_OutAO(0x4054, (float)_bi_outputs__out6);
+    // Generated from the component: EUT_Interface.ib_o
+    HIL_OutAO(0x4055, (float)_bi_outputs__out7);
+    // Generated from the component: EUT_Interface.ic_o
+    HIL_OutAO(0x4056, (float)_bi_outputs__out8);
+    // Generated from the component: EUT_Interface.va_o
+    HIL_OutAO(0x4057, (float)_bi_outputs__out2);
+    // Generated from the component: EUT_Interface.vb_o
+    HIL_OutAO(0x4058, (float)_bi_outputs__out3);
+    // Generated from the component: EUT_Interface.vc_o
+    HIL_OutAO(0x4059, (float)_bi_outputs__out4);
+    // Generated from the component: Seut
+    // Generated from the component: pf_eut
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Limit1
+    _battery_inverter__average_1_control_synch_vmatch_pi_limit1__out = MIN(MAX(_battery_inverter__average_1_control_synch_vmatch_pi_sum5__out, -14700.0), 14700.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Limit1
+    _battery_inverter__average_1_control_synch_f_match_pi_limit1__out = MIN(MAX(_battery_inverter__average_1_control_synch_f_match_pi_sum5__out, -16600.0), 16600.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.internal_frequency.Sum1
+    _battery_inverter__average_1_control_vmode_control_internal_frequency_sum1__out = _battery_inverter__average_1_control_vmode_control_rate_limiter2__out + _battery_inverter__average_1_control_df_switch_switch_gfm_df1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.df_o
+    HIL_OutAO(0x4039, (float)_battery_inverter__average_1_control_df_switch_switch_gfm_df1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Sum5
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum5__out = _battery_inverter__average_1_control_vmode_control_current_ref_pi_kp__out + _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Limit1
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_limit1__out = MIN(MAX(_battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum5__out, -100000.0), 100000.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Limit1
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_limit1__out = MIN(MAX(_battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum5__out, -100000.0), 100000.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Sum6
+    _battery_inverter__average_1_control_synch_vmatch_pi_sum6__out =  - _battery_inverter__average_1_control_synch_vmatch_pi_sum5__out + _battery_inverter__average_1_control_synch_vmatch_pi_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Sum6
+    _battery_inverter__average_1_control_synch_f_match_pi_sum6__out =  - _battery_inverter__average_1_control_synch_f_match_pi_sum5__out + _battery_inverter__average_1_control_synch_f_match_pi_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Sum1
+    _battery_inverter__average_1_control_synch_phase_match_sum1__out = _battery_inverter__average_1_control_synch_f_match_pi_limit1__out + _battery_inverter__average_1_control_synch_phase_match_gain12__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.internal_frequency.Gain1
+    _battery_inverter__average_1_control_vmode_control_internal_frequency_gain1__out = 50.0 * _battery_inverter__average_1_control_vmode_control_internal_frequency_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.internal_frequency.inner_f
+    HIL_OutAO(0x4033, (float)_battery_inverter__average_1_control_vmode_control_internal_frequency_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Limit1
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_limit1__out = MIN(MAX(_battery_inverter__average_1_control_vmode_control_current_ref_pi_sum5__out, -1.0), 1.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Sum6
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum6__out =  - _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum5__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Sum9
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_sum9__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_limit1__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_sum10__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Sum6
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum6__out =  - _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum5__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Sum12
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_sum12__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_sum13__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Kb
+    _battery_inverter__average_1_control_synch_vmatch_pi_kb__out = 1.0 * _battery_inverter__average_1_control_synch_vmatch_pi_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Kb
+    _battery_inverter__average_1_control_synch_f_match_pi_kb__out = 1.0 * _battery_inverter__average_1_control_synch_f_match_pi_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Signal switch2
+    _battery_inverter__average_1_control_synch_phase_match_signal_switch2__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.5f) ? _battery_inverter__average_1_control_synch_phase_match_sum1__out : _battery_inverter__average_1_control_synch_phase_match_constant4__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.internal_frequency.Angle generator.Gain1
+    _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_gain1__out = 6.283185307179586 * _battery_inverter__average_1_control_vmode_control_internal_frequency_gain1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Sum6
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum6__out =  - _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum5__out + _battery_inverter__average_1_control_vmode_control_current_ref_pi_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Id_ref
+    HIL_OutAO(0x402c, (float)_battery_inverter__average_1_control_vmode_control_current_ref_pi_limit1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Sum15
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum15__out =  - _battery_inverter__average_1_control_abctodq_gain1__out + _battery_inverter__average_1_control_vmode_control_current_ref_pi_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Kb
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_kb__out = 1.0 * _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Product5
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_product5__out = (_battery_inverter__average_1_control_imode_control_dq_current_controller_sum9__out) * 1.0 / (_battery_inverter__average_1_control_imode_control_dq_current_controller_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Kb
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_kb__out = 1.0 * _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Product7
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_product7__out = (_battery_inverter__average_1_control_imode_control_dq_current_controller_sum12__out) * 1.0 / (_battery_inverter__average_1_control_imode_control_dq_current_controller_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Sum7
+    _battery_inverter__average_1_control_synch_vmatch_pi_sum7__out = _battery_inverter__average_1_control_synch_vmatch_pi_ki__out + _battery_inverter__average_1_control_synch_vmatch_pi_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Sum7
+    _battery_inverter__average_1_control_synch_f_match_pi_sum7__out = _battery_inverter__average_1_control_synch_f_match_pi_ki__out + _battery_inverter__average_1_control_synch_f_match_pi_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.3 hz per sec
+    _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__rising_rate_lim[0] = 2000.0 * 1e-06;
+    _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__falling_rate_lim[0] = -2000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__first_step) {
+        _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__out = _battery_inverter__average_1_control_synch_phase_match_signal_switch2__out;
+        _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state = _battery_inverter__average_1_control_synch_phase_match_signal_switch2__out;
+    } else {
+        _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__out = _battery_inverter__average_1_control_synch_phase_match_signal_switch2__out;
+        if (_battery_inverter__average_1_control_synch_phase_match_signal_switch2__out - _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state > _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__rising_rate_lim[0])
+            _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__out = _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state + (_battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__rising_rate_lim[0]);
+        if (_battery_inverter__average_1_control_synch_phase_match_signal_switch2__out - _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state < _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__falling_rate_lim[0])
+            _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__out = _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state + (_battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__falling_rate_lim[0]);
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Kb
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_kb__out = 1.0 * _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Ierror
+    HIL_OutAO(0x402d, (float)_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum15__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Ki
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_ki__out = 833.33 * _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum15__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Kp
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_kp__out = 0.8328 * _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum15__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Sum7
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum7__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_ki__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Gain10
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_gain10__out = 0.38423368514245926 * _battery_inverter__average_1_control_imode_control_dq_current_controller_product5__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.md_pu
+    HIL_OutAO(0x4006, (float)_battery_inverter__average_1_control_imode_control_dq_current_controller_product5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Sum7
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum7__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_ki__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.Gain11
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_gain11__out = 0.38423368514245926 * _battery_inverter__average_1_control_imode_control_dq_current_controller_product7__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Sum7
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum7__out = _battery_inverter__average_1_control_vmode_control_current_ref_pi_ki__out + _battery_inverter__average_1_control_vmode_control_current_ref_pi_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Sum5
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum5__out = _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_kp__out + _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.damper.Sum8
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_sum8__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_gain10__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_id_damp__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.md_pre-damp
+    HIL_OutAO(0x4005, (float)_battery_inverter__average_1_control_imode_control_dq_current_controller_gain10__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.damper.Sum9
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_sum9__out = _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_iq_damp__out + _battery_inverter__average_1_control_imode_control_dq_current_controller_gain11__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Limit1
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_limit1__out = MIN(MAX(_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum5__out, -10.0), 10.0);
+    // Generated from the component: Battery inverter (Average)1.Control.Change_CtrlMode.Signal switch2
+    _battery_inverter__average_1_control_change_ctrlmode_signal_switch2__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode > 0.5f) ? _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_constant1__out : _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_sum9__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Sum6
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum6__out =  - _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum5__out + _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Product11
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_product11__out = (_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_limit1__out) * 1.0 / (_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.ud_preOvMod
+    HIL_OutAO(0x4030, (float)_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_limit1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Limit3
+    _battery_inverter__average_1_control_duty_cycle_limit3__out = MIN(MAX(_battery_inverter__average_1_control_change_ctrlmode_signal_switch2__out, -1.1546), 1.1546);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Kb
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_kb__out = 1.0 * _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum6__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Gain10
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain10__out = 0.38423368514245926 * _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_product11__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.ud_OvMod
+    HIL_OutAO(0x402f, (float)_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_product11__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.m_q
+    HIL_OutAO(0x4043, (float)_battery_inverter__average_1_control_duty_cycle_limit3__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Sum7
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum7__out = _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_ki__out + _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_kb__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Sum8
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum8__out = _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain10__out + _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_id_damp__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.md_predamp
+    HIL_OutAO(0x402e, (float)_battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain10__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Change_CtrlMode.Signal switch1
+    _battery_inverter__average_1_control_change_ctrlmode_signal_switch1__out = (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode > 0.5f) ? _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_sum8__out : _battery_inverter__average_1_control_imode_control_dq_current_controller_damper_sum8__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Limit2
+    _battery_inverter__average_1_control_duty_cycle_limit2__out = MIN(MAX(_battery_inverter__average_1_control_change_ctrlmode_signal_switch1__out, -1.1546), 1.1546);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.dq to abc1.dq to alpha beta
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k1 = cos(_battery_inverter__average_1_control_change_ctrlmode_signal_switch3__out);
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k2 = sin(_battery_inverter__average_1_control_change_ctrlmode_signal_switch3__out);
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__alpha = _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k2 * _battery_inverter__average_1_control_duty_cycle_limit2__out + _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k1 * _battery_inverter__average_1_control_duty_cycle_limit3__out;
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__beta = _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k2 * _battery_inverter__average_1_control_duty_cycle_limit3__out - _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__k1 * _battery_inverter__average_1_control_duty_cycle_limit2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.m_d
+    HIL_OutAO(0x4042, (float)_battery_inverter__average_1_control_duty_cycle_limit2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.dq to abc1.alpha beta to abc
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A = 1 * _battery_inverter__average_1_control_duty_cycle_o_ref__out;
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B = _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A - 0.5 * _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__alpha;
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__C = _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B - 0.8660254037844386 * _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__beta;
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B += 0.8660254037844386 * _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__beta;
+    _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A += 1 * _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_dq_to_alpha_beta__alpha;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Da
+    HIL_OutAO(0x403b, (float)_battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Db
+    HIL_OutAO(0x403c, (float)_battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Dc
+    HIL_OutAO(0x403d, (float)_battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__C);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Min Max1
+    _battery_inverter__average_1_control_duty_cycle_zsm_min_max1__out = MIN(MIN(_battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A, _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B), _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__C);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Min Max2
+    _battery_inverter__average_1_control_duty_cycle_zsm_min_max2__out = MAX(MAX(_battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A, _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B), _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__C);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Product2
+    _battery_inverter__average_1_control_duty_cycle_zsm_product2__out = (_battery_inverter__average_1_control_duty_cycle_zsm_sum2__out * _battery_inverter__average_1_control_duty_cycle_zsm_min_max1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Sum1
+    _battery_inverter__average_1_control_duty_cycle_zsm_sum1__out =  - _battery_inverter__average_1_control_duty_cycle_zsm_min_max2__out + _battery_inverter__average_1_control_duty_cycle_zsm_constant2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Product1
+    _battery_inverter__average_1_control_duty_cycle_zsm_product1__out = (_battery_inverter__average_1_control_duty_cycle_zsm_limit1__out * _battery_inverter__average_1_control_duty_cycle_zsm_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Sum3
+    _battery_inverter__average_1_control_duty_cycle_zsm_sum3__out =  - _battery_inverter__average_1_control_duty_cycle_zsm_sum8__out - _battery_inverter__average_1_control_duty_cycle_zsm_product2__out + _battery_inverter__average_1_control_duty_cycle_zsm_product1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Sum5
+    _battery_inverter__average_1_control_duty_cycle_zsm_sum5__out = _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__A + _battery_inverter__average_1_control_duty_cycle_zsm_sum3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Sum6
+    _battery_inverter__average_1_control_duty_cycle_zsm_sum6__out = _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__B + _battery_inverter__average_1_control_duty_cycle_zsm_sum3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Sum7
+    _battery_inverter__average_1_control_duty_cycle_zsm_sum7__out = _battery_inverter__average_1_control_duty_cycle_dq_to_abc1_alpha_beta_to_abc__C + _battery_inverter__average_1_control_duty_cycle_zsm_sum3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.ZSM.Z0
+    HIL_OutAO(0x4041, (float)_battery_inverter__average_1_control_duty_cycle_zsm_sum3__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Dz_A
+    HIL_OutAO(0x403e, (float)_battery_inverter__average_1_control_duty_cycle_zsm_sum5__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Product1
+    _battery_inverter__average_1_control_duty_cycle_product1__out = (_battery_inverter__average_1_control_duty_cycle_gain1__out * _battery_inverter__average_1_control_duty_cycle_zsm_sum5__out * _battery_inverter__average_1_control_inputs_round2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Dz_B
+    HIL_OutAO(0x403f, (float)_battery_inverter__average_1_control_duty_cycle_zsm_sum6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Product2
+    _battery_inverter__average_1_control_duty_cycle_product2__out = (_battery_inverter__average_1_control_duty_cycle_gain1__out * _battery_inverter__average_1_control_duty_cycle_zsm_sum6__out * _battery_inverter__average_1_control_inputs_round2__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Dz_C
+    HIL_OutAO(0x4040, (float)_battery_inverter__average_1_control_duty_cycle_zsm_sum7__out);
+    // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Product3
+    _battery_inverter__average_1_control_duty_cycle_product3__out = (_battery_inverter__average_1_control_duty_cycle_gain1__out * _battery_inverter__average_1_control_duty_cycle_zsm_sum7__out * _battery_inverter__average_1_control_inputs_round2__out);
+    // Generated from the component: Battery inverter (Average)1.VspA.Vs1
+    HIL_OutFloat(137101312, (float) _battery_inverter__average_1_control_duty_cycle_product1__out);
+    // Generated from the component: Battery inverter (Average)1.VspB.Vs1
+    HIL_OutFloat(137101313, (float) _battery_inverter__average_1_control_duty_cycle_product2__out);
+    // Generated from the component: Battery inverter (Average)1.VspC.Vs1
+    HIL_OutFloat(137101314, (float) _battery_inverter__average_1_control_duty_cycle_product3__out);
+//@cmp.out.block.end
+    //////////////////////////////////////////////////////////////////////////
+    // Update block
+    //////////////////////////////////////////////////////////////////////////
+    //@cmp.update.block.start
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Edge Detection1.Unit Delay1
+    _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__state = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Edge Detection2.Unit Delay1
+    _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__state = _battery_inverter__average_1_control_inputs_round2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.Unit Delay1
+    _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__state = _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__P;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.Unit Delay2
+    _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay2__state = _battery_inverter__average_1_control_imode_control_limit_pqref_lims_overpq_s_limiting_over_pq__Q;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.LPF.LPF
+    for (_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i = 1; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i > 0; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i--) {
+        _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_sum += _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_coeff[_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i + 1] * _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i];
+    }
+    _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_sum += _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[0] * _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_coeff[1];
+    _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__delay_line_in = _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__out - _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__a_sum;
+    for (_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i = 1; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i > 0; _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i--) {
+        _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i] = _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[_battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__i - 1];
+    }
+    _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__states[0] = _battery_inverter__average_1_control_pll_pu_pll_lpf_lpf__delay_line_in;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Integrator1
+    _battery_inverter__average_1_control_pll_pu_pll_pid_integrator1__state += _battery_inverter__average_1_control_pll_pu_pll_pid_sum7__out * 1e-06;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Integrator2
+    _battery_inverter__average_1_control_pll_pu_pll_pid_integrator2__state += _battery_inverter__average_1_control_pll_pu_pll_pid_gain1__out * 1e-06;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.Unit Delay1
+    _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__state = _battery_inverter__average_1_control_pll_pu_pll_integrator__out;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.abc to dq.LPF_d
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_d__previous_in = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__d;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.abc to dq.LPF_q
+    _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_lpf_q__previous_in = _battery_inverter__average_1_control_pll_pu_pll_abc_to_dq_alpha_beta_to_dq__q;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Edge Detection1.Unit Delay1
+    _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__state = _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.LPF.LPF
+    for (_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i = 1; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i > 0; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i--) {
+        _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_sum += _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_coeff[_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i + 1] * _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i];
+    }
+    _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_sum += _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[0] * _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_coeff[1];
+    _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__delay_line_in = _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__out - _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__a_sum;
+    for (_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i = 1; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i > 0; _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i--) {
+        _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i] = _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[_battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__i - 1];
+    }
+    _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__states[0] = _battery_inverter__average_1_control_synch_pll_util_pll_lpf_lpf__delay_line_in;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Integrator1
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator1__state += _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum7__out * 1e-06;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.PID.Integrator2
+    _battery_inverter__average_1_control_synch_pll_util_pll_pid_integrator2__state += _battery_inverter__average_1_control_synch_pll_util_pll_pid_gain1__out * 1e-06;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.Unit Delay1
+    _battery_inverter__average_1_control_synch_pll_util_pll_unit_delay1__state = _battery_inverter__average_1_control_synch_pll_util_pll_integrator__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.abc to dq.LPF_d
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_d__previous_in = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__d;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.abc to dq.LPF_q
+    _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_lpf_q__previous_in = _battery_inverter__average_1_control_synch_pll_util_pll_abc_to_dq_alpha_beta_to_dq__q;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Counter1.Accumulator1
+    if ((_battery_inverter__average_1_control_synch_vmatch_logical_operator1__out != 0.0) || (_battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__reset_state != 0)) {
+        _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__state = 0.0;
+    } else
+        _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__state = (_battery_inverter__average_1_control_synch_vmatch_logical_operator1__out == 0) ? _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__state + _battery_inverter__average_1_control_synch_vmatch_counter1_en_switch__out : 0.0;
+    if (_battery_inverter__average_1_control_synch_vmatch_logical_operator1__out > 0)
+        _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_synch_vmatch_logical_operator1__out < 0)
+        _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_synch_vmatch_counter1_accumulator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Unit Delay3
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay3__state = _battery_inverter__average_1_control_synch_vmatch_comparator2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Unit Delay4
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay4__state = _battery_inverter__average_1_control_synch_vmatch_c_function__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Unit Delay5
+    _battery_inverter__average_1_control_synch_vmatch_unit_delay5__state = _battery_inverter__average_1_control_synch_vmatch_pi_limit1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Counter1.Accumulator1
+    if ((_battery_inverter__average_1_control_synch_f_match_logical_operator1__out != 0.0) || (_battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__reset_state != 0)) {
+        _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__state = 0.0;
+    } else
+        _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__state = (_battery_inverter__average_1_control_synch_f_match_logical_operator1__out == 0) ? _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__state + _battery_inverter__average_1_control_synch_f_match_counter1_en_switch__out : 0.0;
+    if (_battery_inverter__average_1_control_synch_f_match_logical_operator1__out > 0)
+        _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_synch_f_match_logical_operator1__out < 0)
+        _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_synch_f_match_counter1_accumulator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Delay1
+    _battery_inverter__average_1_control_synch_f_match_delay1__state[_battery_inverter__average_1_control_synch_f_match_delay1__cbi] = _battery_inverter__average_1_control_synch_f_match_c_function__out;
+    if (_battery_inverter__average_1_control_synch_f_match_delay1__cbi < 9)
+        _battery_inverter__average_1_control_synch_f_match_delay1__cbi++;
+    else
+        _battery_inverter__average_1_control_synch_f_match_delay1__cbi = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Unit Delay1
+    _battery_inverter__average_1_control_synch_f_match_unit_delay1__state = _battery_inverter__average_1_control_synch_f_match_c_function__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay1
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__state = _battery_inverter__average_1_control_synch_f_match_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay2
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay2__state = _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay3
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__state = _battery_inverter__average_1_control_synch_f_match_low_pass_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.low pass.Unit Delay4
+    _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay4__state = _battery_inverter__average_1_control_synch_f_match_low_pass_unit_delay3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Counter1.Accumulator1
+    if ((_battery_inverter__average_1_control_synch_phase_match_logical_operator1__out != 0.0) || (_battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__reset_state != 0)) {
+        _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__state = 0.0;
+    } else
+        _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__state = (_battery_inverter__average_1_control_synch_phase_match_logical_operator1__out == 0) ? _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__state + _battery_inverter__average_1_control_synch_phase_match_counter1_en_switch__out : 0.0;
+    if (_battery_inverter__average_1_control_synch_phase_match_logical_operator1__out > 0)
+        _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_synch_phase_match_logical_operator1__out < 0)
+        _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_synch_phase_match_counter1_accumulator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Unit Delay3
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay3__state = _battery_inverter__average_1_control_synch_phase_match_comparator2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Unit Delay4
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay4__state = _battery_inverter__average_1_control_synch_phase_match_c_function__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Unit Delay5
+    _battery_inverter__average_1_control_synch_phase_match_unit_delay5__state = _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay1
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__state = _battery_inverter__average_1_control_synch_phase_match_confine_phase__dtheta_confined;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay2
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay2__state = _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay3
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__state = _battery_inverter__average_1_control_synch_phase_match_low_pass_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.low pass.Unit Delay4
+    _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay4__state = _battery_inverter__average_1_control_synch_phase_match_low_pass_unit_delay3__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Edge Detection1.Unit Delay1
+    _battery_inverter__average_1_control_vmode_control_edge_detection1_unit_delay1__state = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Edge Detection2.Unit Delay1
+    _battery_inverter__average_1_control_vmode_control_edge_detection2_unit_delay1__state = _battery_inverter__average_1_control_inputs_round2__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.internal_frequency.Angle generator.int_n_wrap
+    _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__in = _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_gain1__out;
+    {
+        _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out += 1e-06 * _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__in ;
+        if ( _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__in >= 0.0 )     {
+            if ( _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out >= 6.283185307179586 )         {
+                _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out -= 6.283185307179586 ;
+            }
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out <= - 6.283185307179586 )         {
+                _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__out += 6.283185307179586 ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Unit Delay5
+    _battery_inverter__average_1_control_df_switch_phase_synch_unit_delay5__state = _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay1
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__state = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay2
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__state = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay3
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__state = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay4
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__state = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__out;
+    // Generated from the component: Grid_Inputs.F_FRT_pu.Clock1
+    _grid_inputs_f_frt_pu_clock1__state += 1e-06;
+    if (_grid_inputs_f_frt_pu_clock1__state >= 124.92)
+        _grid_inputs_f_frt_pu_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.F_Trip1.Clock1
+    _grid_inputs_f_trip1_clock1__state += 1e-06;
+    if (_grid_inputs_f_trip1_clock1__state >= 62.0)
+        _grid_inputs_f_trip1_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.F_Trip2.Clock1
+    _grid_inputs_f_trip2_clock1__state += 1e-06;
+    if (_grid_inputs_f_trip2_clock1__state >= 6.5)
+        _grid_inputs_f_trip2_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.F_Trip3.Clock1
+    _grid_inputs_f_trip3_clock1__state += 1e-06;
+    if (_grid_inputs_f_trip3_clock1__state >= 62.0)
+        _grid_inputs_f_trip3_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.F_Trip4.Clock1
+    _grid_inputs_f_trip4_clock1__state += 1e-06;
+    if (_grid_inputs_f_trip4_clock1__state >= 13.0)
+        _grid_inputs_f_trip4_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.F_Trip5.Clock1
+    _grid_inputs_f_trip5_clock1__state += 1e-06;
+    if (_grid_inputs_f_trip5_clock1__state >= 9.5)
+        _grid_inputs_f_trip5_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.F_Trip6.Clock1
+    _grid_inputs_f_trip6_clock1__state += 1e-06;
+    if (_grid_inputs_f_trip6_clock1__state >= 4.0)
+        _grid_inputs_f_trip6_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.F_Trip7.Clock1
+    _grid_inputs_f_trip7_clock1__state += 1e-06;
+    if (_grid_inputs_f_trip7_clock1__state >= 3.0)
+        _grid_inputs_f_trip7_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.V_FRT_pu.Clock1
+    _grid_inputs_v_frt_pu_clock1__state += 1e-06;
+    if (_grid_inputs_v_frt_pu_clock1__state >= 6.0)
+        _grid_inputs_v_frt_pu_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.V_Trip1.Clock1
+    _grid_inputs_v_trip1_clock1__state += 1e-06;
+    if (_grid_inputs_v_trip1_clock1__state >= 4.0)
+        _grid_inputs_v_trip1_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.V_Trip2.Clock1
+    _grid_inputs_v_trip2_clock1__state += 1e-06;
+    if (_grid_inputs_v_trip2_clock1__state >= 2.0)
+        _grid_inputs_v_trip2_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.V_Trip3.Clock1
+    _grid_inputs_v_trip3_clock1__state += 1e-06;
+    if (_grid_inputs_v_trip3_clock1__state >= 2.0)
+        _grid_inputs_v_trip3_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.V_Trip4.Clock1
+    _grid_inputs_v_trip4_clock1__state += 1e-06;
+    if (_grid_inputs_v_trip4_clock1__state >= 2.0)
+        _grid_inputs_v_trip4_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs.V_Trip5.Clock1
+    _grid_inputs_v_trip5_clock1__state += 1e-06;
+    if (_grid_inputs_v_trip5_clock1__state >= 2.0)
+        _grid_inputs_v_trip5_clock1__state = 0.0f;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.LPF.LPF
+    for (_ms_s1_tpm_grid_pll_lpf_lpf__i = 1; _ms_s1_tpm_grid_pll_lpf_lpf__i > 0; _ms_s1_tpm_grid_pll_lpf_lpf__i--) {
+        _ms_s1_tpm_grid_pll_lpf_lpf__a_sum += _ms_s1_tpm_grid_pll_lpf_lpf__a_coeff[_ms_s1_tpm_grid_pll_lpf_lpf__i + 1] * _ms_s1_tpm_grid_pll_lpf_lpf__states[_ms_s1_tpm_grid_pll_lpf_lpf__i];
+    }
+    _ms_s1_tpm_grid_pll_lpf_lpf__a_sum += _ms_s1_tpm_grid_pll_lpf_lpf__states[0] * _ms_s1_tpm_grid_pll_lpf_lpf__a_coeff[1];
+    _ms_s1_tpm_grid_pll_lpf_lpf__delay_line_in = _ms_s1_tpm_grid_pll_rate_limiter1__out - _ms_s1_tpm_grid_pll_lpf_lpf__a_sum;
+    for (_ms_s1_tpm_grid_pll_lpf_lpf__i = 1; _ms_s1_tpm_grid_pll_lpf_lpf__i > 0; _ms_s1_tpm_grid_pll_lpf_lpf__i--) {
+        _ms_s1_tpm_grid_pll_lpf_lpf__states[_ms_s1_tpm_grid_pll_lpf_lpf__i] = _ms_s1_tpm_grid_pll_lpf_lpf__states[_ms_s1_tpm_grid_pll_lpf_lpf__i - 1];
+    }
+    _ms_s1_tpm_grid_pll_lpf_lpf__states[0] = _ms_s1_tpm_grid_pll_lpf_lpf__delay_line_in;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Integrator1
+    _ms_s1_tpm_grid_pll_pid_integrator1__state += _ms_s1_tpm_grid_pll_pid_sum7__out * 1e-06;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.PID.Integrator2
+    _ms_s1_tpm_grid_pll_pid_integrator2__state += _ms_s1_tpm_grid_pll_pid_gain1__out * 1e-06;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.Unit Delay1
+    _ms_s1_tpm_grid_pll_unit_delay1__state = _ms_s1_tpm_grid_pll_integrator__out;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.abc to dq.LPF_d
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_d__previous_in = _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__d;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.abc to dq.LPF_q
+    _ms_s1_tpm_grid_pll_abc_to_dq_lpf_q__previous_in = _ms_s1_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__q;
+    // Generated from the component: MS_S2.TPM_Load.PLL.LPF.LPF
+    for (_ms_s2_tpm_load_pll_lpf_lpf__i = 1; _ms_s2_tpm_load_pll_lpf_lpf__i > 0; _ms_s2_tpm_load_pll_lpf_lpf__i--) {
+        _ms_s2_tpm_load_pll_lpf_lpf__a_sum += _ms_s2_tpm_load_pll_lpf_lpf__a_coeff[_ms_s2_tpm_load_pll_lpf_lpf__i + 1] * _ms_s2_tpm_load_pll_lpf_lpf__states[_ms_s2_tpm_load_pll_lpf_lpf__i];
+    }
+    _ms_s2_tpm_load_pll_lpf_lpf__a_sum += _ms_s2_tpm_load_pll_lpf_lpf__states[0] * _ms_s2_tpm_load_pll_lpf_lpf__a_coeff[1];
+    _ms_s2_tpm_load_pll_lpf_lpf__delay_line_in = _ms_s2_tpm_load_pll_rate_limiter1__out - _ms_s2_tpm_load_pll_lpf_lpf__a_sum;
+    for (_ms_s2_tpm_load_pll_lpf_lpf__i = 1; _ms_s2_tpm_load_pll_lpf_lpf__i > 0; _ms_s2_tpm_load_pll_lpf_lpf__i--) {
+        _ms_s2_tpm_load_pll_lpf_lpf__states[_ms_s2_tpm_load_pll_lpf_lpf__i] = _ms_s2_tpm_load_pll_lpf_lpf__states[_ms_s2_tpm_load_pll_lpf_lpf__i - 1];
+    }
+    _ms_s2_tpm_load_pll_lpf_lpf__states[0] = _ms_s2_tpm_load_pll_lpf_lpf__delay_line_in;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Integrator1
+    _ms_s2_tpm_load_pll_pid_integrator1__state += _ms_s2_tpm_load_pll_pid_sum7__out * 1e-06;
+    // Generated from the component: MS_S2.TPM_Load.PLL.PID.Integrator2
+    _ms_s2_tpm_load_pll_pid_integrator2__state += _ms_s2_tpm_load_pll_pid_gain1__out * 1e-06;
+    // Generated from the component: MS_S2.TPM_Load.PLL.Unit Delay1
+    _ms_s2_tpm_load_pll_unit_delay1__state = _ms_s2_tpm_load_pll_integrator__out;
+    // Generated from the component: MS_S2.TPM_Load.PLL.abc to dq.LPF_d
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_d__previous_in = _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__d;
+    // Generated from the component: MS_S2.TPM_Load.PLL.abc to dq.LPF_q
+    _ms_s2_tpm_load_pll_abc_to_dq_lpf_q__previous_in = _ms_s2_tpm_load_pll_abc_to_dq_alpha_beta_to_dq__q;
+    // Generated from the component: MS_S2.Three phase PLL1.LPF.LPF
+    for (_ms_s2_three_phase_pll1_lpf_lpf__i = 1; _ms_s2_three_phase_pll1_lpf_lpf__i > 0; _ms_s2_three_phase_pll1_lpf_lpf__i--) {
+        _ms_s2_three_phase_pll1_lpf_lpf__a_sum += _ms_s2_three_phase_pll1_lpf_lpf__a_coeff[_ms_s2_three_phase_pll1_lpf_lpf__i + 1] * _ms_s2_three_phase_pll1_lpf_lpf__states[_ms_s2_three_phase_pll1_lpf_lpf__i];
+    }
+    _ms_s2_three_phase_pll1_lpf_lpf__a_sum += _ms_s2_three_phase_pll1_lpf_lpf__states[0] * _ms_s2_three_phase_pll1_lpf_lpf__a_coeff[1];
+    _ms_s2_three_phase_pll1_lpf_lpf__delay_line_in = _ms_s2_three_phase_pll1_rate_limiter1__out - _ms_s2_three_phase_pll1_lpf_lpf__a_sum;
+    for (_ms_s2_three_phase_pll1_lpf_lpf__i = 1; _ms_s2_three_phase_pll1_lpf_lpf__i > 0; _ms_s2_three_phase_pll1_lpf_lpf__i--) {
+        _ms_s2_three_phase_pll1_lpf_lpf__states[_ms_s2_three_phase_pll1_lpf_lpf__i] = _ms_s2_three_phase_pll1_lpf_lpf__states[_ms_s2_three_phase_pll1_lpf_lpf__i - 1];
+    }
+    _ms_s2_three_phase_pll1_lpf_lpf__states[0] = _ms_s2_three_phase_pll1_lpf_lpf__delay_line_in;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Integrator1
+    _ms_s2_three_phase_pll1_pid_integrator1__state += _ms_s2_three_phase_pll1_pid_sum7__out * 1e-06;
+    // Generated from the component: MS_S2.Three phase PLL1.PID.Integrator2
+    _ms_s2_three_phase_pll1_pid_integrator2__state += _ms_s2_three_phase_pll1_pid_gain1__out * 1e-06;
+    // Generated from the component: MS_S2.Three phase PLL1.Unit Delay1
+    _ms_s2_three_phase_pll1_unit_delay1__state = _ms_s2_three_phase_pll1_integrator__out;
+    // Generated from the component: MS_S2.Three phase PLL1.abc to dq.LPF_d
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_d__previous_in = _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__d;
+    // Generated from the component: MS_S2.Three phase PLL1.abc to dq.LPF_q
+    _ms_s2_three_phase_pll1_abc_to_dq_lpf_q__previous_in = _ms_s2_three_phase_pll1_abc_to_dq_alpha_beta_to_dq__q;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.LPF.LPF
+    for (_ms_s3_tpm_grid_pll_lpf_lpf__i = 1; _ms_s3_tpm_grid_pll_lpf_lpf__i > 0; _ms_s3_tpm_grid_pll_lpf_lpf__i--) {
+        _ms_s3_tpm_grid_pll_lpf_lpf__a_sum += _ms_s3_tpm_grid_pll_lpf_lpf__a_coeff[_ms_s3_tpm_grid_pll_lpf_lpf__i + 1] * _ms_s3_tpm_grid_pll_lpf_lpf__states[_ms_s3_tpm_grid_pll_lpf_lpf__i];
+    }
+    _ms_s3_tpm_grid_pll_lpf_lpf__a_sum += _ms_s3_tpm_grid_pll_lpf_lpf__states[0] * _ms_s3_tpm_grid_pll_lpf_lpf__a_coeff[1];
+    _ms_s3_tpm_grid_pll_lpf_lpf__delay_line_in = _ms_s3_tpm_grid_pll_rate_limiter1__out - _ms_s3_tpm_grid_pll_lpf_lpf__a_sum;
+    for (_ms_s3_tpm_grid_pll_lpf_lpf__i = 1; _ms_s3_tpm_grid_pll_lpf_lpf__i > 0; _ms_s3_tpm_grid_pll_lpf_lpf__i--) {
+        _ms_s3_tpm_grid_pll_lpf_lpf__states[_ms_s3_tpm_grid_pll_lpf_lpf__i] = _ms_s3_tpm_grid_pll_lpf_lpf__states[_ms_s3_tpm_grid_pll_lpf_lpf__i - 1];
+    }
+    _ms_s3_tpm_grid_pll_lpf_lpf__states[0] = _ms_s3_tpm_grid_pll_lpf_lpf__delay_line_in;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Integrator1
+    _ms_s3_tpm_grid_pll_pid_integrator1__state += _ms_s3_tpm_grid_pll_pid_sum7__out * 1e-06;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Integrator2
+    _ms_s3_tpm_grid_pll_pid_integrator2__state += _ms_s3_tpm_grid_pll_pid_gain1__out * 1e-06;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.Unit Delay1
+    _ms_s3_tpm_grid_pll_unit_delay1__state = _ms_s3_tpm_grid_pll_integrator__out;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.abc to dq.LPF_d
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_d__previous_in = _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__d;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.abc to dq.LPF_q
+    _ms_s3_tpm_grid_pll_abc_to_dq_lpf_q__previous_in = _ms_s3_tpm_grid_pll_abc_to_dq_alpha_beta_to_dq__q;
+    // Generated from the component: MS_S3.TPM_uG.PLL.LPF.LPF
+    for (_ms_s3_tpm_ug_pll_lpf_lpf__i = 1; _ms_s3_tpm_ug_pll_lpf_lpf__i > 0; _ms_s3_tpm_ug_pll_lpf_lpf__i--) {
+        _ms_s3_tpm_ug_pll_lpf_lpf__a_sum += _ms_s3_tpm_ug_pll_lpf_lpf__a_coeff[_ms_s3_tpm_ug_pll_lpf_lpf__i + 1] * _ms_s3_tpm_ug_pll_lpf_lpf__states[_ms_s3_tpm_ug_pll_lpf_lpf__i];
+    }
+    _ms_s3_tpm_ug_pll_lpf_lpf__a_sum += _ms_s3_tpm_ug_pll_lpf_lpf__states[0] * _ms_s3_tpm_ug_pll_lpf_lpf__a_coeff[1];
+    _ms_s3_tpm_ug_pll_lpf_lpf__delay_line_in = _ms_s3_tpm_ug_pll_rate_limiter1__out - _ms_s3_tpm_ug_pll_lpf_lpf__a_sum;
+    for (_ms_s3_tpm_ug_pll_lpf_lpf__i = 1; _ms_s3_tpm_ug_pll_lpf_lpf__i > 0; _ms_s3_tpm_ug_pll_lpf_lpf__i--) {
+        _ms_s3_tpm_ug_pll_lpf_lpf__states[_ms_s3_tpm_ug_pll_lpf_lpf__i] = _ms_s3_tpm_ug_pll_lpf_lpf__states[_ms_s3_tpm_ug_pll_lpf_lpf__i - 1];
+    }
+    _ms_s3_tpm_ug_pll_lpf_lpf__states[0] = _ms_s3_tpm_ug_pll_lpf_lpf__delay_line_in;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Integrator1
+    _ms_s3_tpm_ug_pll_pid_integrator1__state += _ms_s3_tpm_ug_pll_pid_sum7__out * 1e-06;
+    // Generated from the component: MS_S3.TPM_uG.PLL.PID.Integrator2
+    _ms_s3_tpm_ug_pll_pid_integrator2__state += _ms_s3_tpm_ug_pll_pid_gain1__out * 1e-06;
+    // Generated from the component: MS_S3.TPM_uG.PLL.Unit Delay1
+    _ms_s3_tpm_ug_pll_unit_delay1__state = _ms_s3_tpm_ug_pll_integrator__out;
+    // Generated from the component: MS_S3.TPM_uG.PLL.abc to dq.LPF_d
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_d__previous_in = _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__d;
+    // Generated from the component: MS_S3.TPM_uG.PLL.abc to dq.LPF_q
+    _ms_s3_tpm_ug_pll_abc_to_dq_lpf_q__previous_in = _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__q;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.normalize
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.normalize
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.c_function
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.c_function
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.PI.Integrator1
+    _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__state += _battery_inverter__average_1_control_synch_phase_match_pi_sum7__out * 1e-06;
+    if (_battery_inverter__average_1_control_synch_f_match_delay1__out > 0)
+        _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_synch_f_match_delay1__out < 0)
+        _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_synch_phase_match_pi_integrator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.c_function
+    {
+    }
+    // Generated from the component: MS_S1.TPM_Grid.PLL.normalize
+    {
+    }
+    // Generated from the component: MS_S2.TPM_Load.PLL.normalize
+    {
+    }
+    // Generated from the component: MS_S2.Phase-Synch-Switching
+    {
+        _ms_s2_phase_synch_switching__sw_in = _ms_s2_phase_synch_switching__in_sw ;
+        _ms_s2_phase_synch_switching__ph_in = _ms_s2_phase_synch_switching__in_phase ;
+        _ms_s2_phase_synch_switching__ph_targ = _ms_s2_phase_synch_switching__in_target ;
+        if ( _ms_s2_phase_synch_switching__sw_in != _ms_s2_phase_synch_switching__sw_last )     {
+            if ( ( _ms_s2_phase_synch_switching__ph_in < ( _ms_s2_phase_synch_switching__ph_targ + _ms_s2_phase_synch_switching__ph_tol ) ) && ( _ms_s2_phase_synch_switching__ph_in > ( _ms_s2_phase_synch_switching__ph_targ - _ms_s2_phase_synch_switching__ph_tol ) ) )         {
+                _ms_s2_phase_synch_switching__sw_out = _ms_s2_phase_synch_switching__sw_in ;
+                _ms_s2_phase_synch_switching__sw_last = _ms_s2_phase_synch_switching__sw_in ;
+            }
+        }
+    }
+    // Generated from the component: MS_S2.Three phase PLL1.normalize
+    {
+    }
+    // Generated from the component: MS_S3.TPM_Grid.PLL.normalize
+    {
+    }
+    // Generated from the component: MS_S3.TPM_uG.PLL.normalize
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.confine_phase
+    {
+    }
+    // Generated from the component: MS_S1.TPM_Grid.measSM.mode_and_dFract
+    {
+    }
+    // Generated from the component: MS_S2.TPM_Load.measSM.mode_and_dFract
+    {
+    }
+    // Generated from the component: MS_S3.TPM_Grid.measSM.mode_and_dFract
+    {
+    }
+    // Generated from the component: MS_S3.TPM_uG.measSM.mode_and_dFract
+    {
+    }
+    // Generated from the component: Grid_Inputs.Input-Synch-Switching_F
+    {
+        _grid_inputs_input_synch_switching_f__sw_in = _grid_inputs_input_synch_switching_f__in_sw ;
+        if ( _grid_inputs_input_synch_switching_f__sw_in != _grid_inputs_input_synch_switching_f__sw_last )     {
+            switch ( _grid_inputs_input_synch_switching_f__sw_in )         {
+            case 1 :
+                _grid_inputs_input_synch_switching_f__V_in = 1 ;
+                break;
+            case 2 :
+                _grid_inputs_input_synch_switching_f__V_in = _grid_inputs_input_synch_switching_f__in_FRT ;
+                break;
+            case 3 :
+                _grid_inputs_input_synch_switching_f__V_in = _grid_inputs_input_synch_switching_f__in_Trip ;
+                break;
+            }
+            if ( ( _grid_inputs_input_synch_switching_f__V_in < ( _grid_inputs_input_synch_switching_f__V_targ + 0.001 ) ) && ( _grid_inputs_input_synch_switching_f__V_in > ( _grid_inputs_input_synch_switching_f__V_targ - 0.001 ) ) )         {
+                _grid_inputs_input_synch_switching_f__sw_out = _grid_inputs_input_synch_switching_f__sw_in ;
+                _grid_inputs_input_synch_switching_f__sw_last = _grid_inputs_input_synch_switching_f__sw_in ;
+            }
+        }
+    }
+    // Generated from the component: Grid_Inputs.Input-Synch-Switching_V
+    {
+        _grid_inputs_input_synch_switching_v__sw_in = _grid_inputs_input_synch_switching_v__in_sw ;
+        if ( _grid_inputs_input_synch_switching_v__sw_in != _grid_inputs_input_synch_switching_v__sw_last )     {
+            switch ( _grid_inputs_input_synch_switching_v__sw_in )         {
+            case 1 :
+                _grid_inputs_input_synch_switching_v__V_in = 1 ;
+                break;
+            case 2 :
+                _grid_inputs_input_synch_switching_v__V_in = _grid_inputs_input_synch_switching_v__in_FRT ;
+                break;
+            case 3 :
+                _grid_inputs_input_synch_switching_v__V_in = _grid_inputs_input_synch_switching_v__in_Trip ;
+                break;
+            }
+            if ( ( _grid_inputs_input_synch_switching_v__V_in < ( _grid_inputs_input_synch_switching_v__V_targ + 0.001 ) ) && ( _grid_inputs_input_synch_switching_v__V_in > ( _grid_inputs_input_synch_switching_v__V_targ - 0.001 ) ) )         {
+                _grid_inputs_input_synch_switching_v__sw_out = _grid_inputs_input_synch_switching_v__sw_in ;
+                _grid_inputs_input_synch_switching_v__sw_last = _grid_inputs_input_synch_switching_v__sw_in ;
+            }
+        }
+    }
+    // Generated from the component: MS_S1.TPM_Grid.I_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S1.TPM_Grid.VLn_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S2.TPM_Load.I_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S2.TPM_Load.VLn_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S3.TPM_Grid.I_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S3.TPM_Grid.VLn_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S3.TPM_uG.I_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S3.TPM_uG.VLn_RMS_calc.RMS
+    {
+    }
+    // Generated from the component: MS_S1.TPM_Grid.Power Meter.POWER
+    {
+    }
+    // Generated from the component: MS_S2.TPM_Load.Power Meter.POWER
+    {
+    }
+    // Generated from the component: MS_S3.TPM_Grid.Power Meter.POWER
+    {
+    }
+    // Generated from the component: MS_S3.TPM_uG.Power Meter.POWER
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Comparator2
+    if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs2__out < _battery_inverter__average_1_control_synch_check_nominal_conditions___10___out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__state = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs2__out > _battery_inverter__average_1_control_synch_check_nominal_conditions___10___out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__state = 1;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Comparator2
+    if (_battery_inverter__average_1_control_synch_check_grid_abs2__out < _battery_inverter__average_1_control_synch_check_grid___10___out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator2__state = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_grid_abs2__out > _battery_inverter__average_1_control_synch_check_grid___10___out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator2__state = 1;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.Comparator2
+    if (_battery_inverter__average_1_control_synch_vmatch_sum2__out < _battery_inverter__average_1_control_synch_vmatch_abs2__out) {
+        _battery_inverter__average_1_control_synch_vmatch_comparator2__state = 0;
+    } else if (_battery_inverter__average_1_control_synch_vmatch_sum2__out > _battery_inverter__average_1_control_synch_vmatch_abs2__out) {
+        _battery_inverter__average_1_control_synch_vmatch_comparator2__state = 1;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Comparator1
+    if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs1__out < _battery_inverter__average_1_control_synch_check_nominal_conditions___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__state = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_nominal_conditions_abs1__out > _battery_inverter__average_1_control_synch_check_nominal_conditions___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__state = 1;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.Comparator1
+    if (_battery_inverter__average_1_control_synch_check_grid_abs1__out < _battery_inverter__average_1_control_synch_check_grid___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator1__state = 0;
+    } else if (_battery_inverter__average_1_control_synch_check_grid_abs1__out > _battery_inverter__average_1_control_synch_check_grid___1_5_hz__out) {
+        _battery_inverter__average_1_control_synch_check_grid_comparator1__state = 1;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.Comparator2
+    if (_battery_inverter__average_1_control_synch_phase_match_sum2__out < _battery_inverter__average_1_control_synch_phase_match_abs2__out) {
+        _battery_inverter__average_1_control_synch_phase_match_comparator2__state = 0;
+    } else if (_battery_inverter__average_1_control_synch_phase_match_sum2__out > _battery_inverter__average_1_control_synch_phase_match_abs2__out) {
+        _battery_inverter__average_1_control_synch_phase_match_comparator2__state = 1;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.LPF_P
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__states[0] = _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_p__delay_line_in;
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.LPF_Q
+    _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__states[0] = _battery_inverter__average_1_control_power_meas_power_meas_dq_lpf_q__delay_line_in;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.Rate Limiter1
+    _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__rising_rate_lim[0] = 1570.7963267948965 * 1e-06;
+    _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__falling_rate_lim[0] = -1570.7963267948965 * 1e-06;
+    if (_battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out - _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state > _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__rising_rate_lim[0])
+        _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state += _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out - _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state < _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__falling_rate_lim[0])
+        _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state += (_battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state = _battery_inverter__average_1_control_pll_pu_pll_pid_limit1__out;
+    _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__first_step = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.integrator
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.Comparator1
+    if (_battery_inverter__average_1_control_synch_f_match_sum2__out < _battery_inverter__average_1_control_synch_f_match_abs3__out) {
+        _battery_inverter__average_1_control_synch_f_match_comparator1__state = 0;
+    } else if (_battery_inverter__average_1_control_synch_f_match_sum2__out > _battery_inverter__average_1_control_synch_f_match_abs3__out) {
+        _battery_inverter__average_1_control_synch_f_match_comparator1__state = 1;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.Rate Limiter1
+    _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__rising_rate_lim[0] = 1570.7963267948965 * 1e-06;
+    _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__falling_rate_lim[0] = -1570.7963267948965 * 1e-06;
+    if (_battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out - _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state > _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__rising_rate_lim[0])
+        _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state += _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out - _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state < _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__falling_rate_lim[0])
+        _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state += (_battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__state = _battery_inverter__average_1_control_synch_pll_util_pll_pid_limit1__out;
+    _battery_inverter__average_1_control_synch_pll_util_pll_rate_limiter1__first_step = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.PLL_Util.PLL.integrator
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.S_and_pf
+    {
+    }
+    // Generated from the component: MS_S1.TPM_Grid.PLL.Rate Limiter1
+    _ms_s1_tpm_grid_pll_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s1_tpm_grid_pll_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s1_tpm_grid_pll_pid_limit1__out - _ms_s1_tpm_grid_pll_rate_limiter1__state > _ms_s1_tpm_grid_pll_rate_limiter1__rising_rate_lim[0])
+        _ms_s1_tpm_grid_pll_rate_limiter1__state += _ms_s1_tpm_grid_pll_rate_limiter1__rising_rate_lim[0];
+    else  if (_ms_s1_tpm_grid_pll_pid_limit1__out - _ms_s1_tpm_grid_pll_rate_limiter1__state < _ms_s1_tpm_grid_pll_rate_limiter1__falling_rate_lim[0])
+        _ms_s1_tpm_grid_pll_rate_limiter1__state += (_ms_s1_tpm_grid_pll_rate_limiter1__falling_rate_lim[0]);
+    else
+        _ms_s1_tpm_grid_pll_rate_limiter1__state = _ms_s1_tpm_grid_pll_pid_limit1__out;
+    _ms_s1_tpm_grid_pll_rate_limiter1__first_step = 0;
+    // Generated from the component: MS_S1.TPM_Grid.PLL.integrator
+    {
+    }
+    // Generated from the component: MS_S2.TPM_Load.PLL.Rate Limiter1
+    _ms_s2_tpm_load_pll_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s2_tpm_load_pll_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s2_tpm_load_pll_pid_limit1__out - _ms_s2_tpm_load_pll_rate_limiter1__state > _ms_s2_tpm_load_pll_rate_limiter1__rising_rate_lim[0])
+        _ms_s2_tpm_load_pll_rate_limiter1__state += _ms_s2_tpm_load_pll_rate_limiter1__rising_rate_lim[0];
+    else  if (_ms_s2_tpm_load_pll_pid_limit1__out - _ms_s2_tpm_load_pll_rate_limiter1__state < _ms_s2_tpm_load_pll_rate_limiter1__falling_rate_lim[0])
+        _ms_s2_tpm_load_pll_rate_limiter1__state += (_ms_s2_tpm_load_pll_rate_limiter1__falling_rate_lim[0]);
+    else
+        _ms_s2_tpm_load_pll_rate_limiter1__state = _ms_s2_tpm_load_pll_pid_limit1__out;
+    _ms_s2_tpm_load_pll_rate_limiter1__first_step = 0;
+    // Generated from the component: MS_S2.TPM_Load.PLL.integrator
+    {
+    }
+    // Generated from the component: MS_S2.Three phase PLL1.Rate Limiter1
+    _ms_s2_three_phase_pll1_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s2_three_phase_pll1_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s2_three_phase_pll1_pid_limit1__out - _ms_s2_three_phase_pll1_rate_limiter1__state > _ms_s2_three_phase_pll1_rate_limiter1__rising_rate_lim[0])
+        _ms_s2_three_phase_pll1_rate_limiter1__state += _ms_s2_three_phase_pll1_rate_limiter1__rising_rate_lim[0];
+    else  if (_ms_s2_three_phase_pll1_pid_limit1__out - _ms_s2_three_phase_pll1_rate_limiter1__state < _ms_s2_three_phase_pll1_rate_limiter1__falling_rate_lim[0])
+        _ms_s2_three_phase_pll1_rate_limiter1__state += (_ms_s2_three_phase_pll1_rate_limiter1__falling_rate_lim[0]);
+    else
+        _ms_s2_three_phase_pll1_rate_limiter1__state = _ms_s2_three_phase_pll1_pid_limit1__out;
+    _ms_s2_three_phase_pll1_rate_limiter1__first_step = 0;
+    // Generated from the component: MS_S2.Three phase PLL1.integrator
+    {
+    }
+    // Generated from the component: MS_S3.TPM_Grid.PLL.Rate Limiter1
+    _ms_s3_tpm_grid_pll_rate_limiter1__rising_rate_lim[0] = 314.1592653589793 * 1e-06;
+    _ms_s3_tpm_grid_pll_rate_limiter1__falling_rate_lim[0] = -314.1592653589793 * 1e-06;
+    if (_ms_s3_tpm_grid_pll_pid_limit1__out - _ms_s3_tpm_grid_pll_rate_limiter1__state > _ms_s3_tpm_grid_pll_rate_limiter1__rising_rate_lim[0])
+        _ms_s3_tpm_grid_pll_rate_limiter1__state += _ms_s3_tpm_grid_pll_rate_limiter1__rising_rate_lim[0];
+    else  if (_ms_s3_tpm_grid_pll_pid_limit1__out - _ms_s3_tpm_grid_pll_rate_limiter1__state < _ms_s3_tpm_grid_pll_rate_limiter1__falling_rate_lim[0])
+        _ms_s3_tpm_grid_pll_rate_limiter1__state += (_ms_s3_tpm_grid_pll_rate_limiter1__falling_rate_lim[0]);
+    else
+        _ms_s3_tpm_grid_pll_rate_limiter1__state = _ms_s3_tpm_grid_pll_pid_limit1__out;
+    _ms_s3_tpm_grid_pll_rate_limiter1__first_step = 0;
+    // Generated from the component: MS_S3.TPM_Grid.PLL.integrator
+    {
+    }
+    // Generated from the component: MS_S3.TPM_uG.PLL.Rate Limiter1
+    _ms_s3_tpm_ug_pll_rate_limiter1__rising_rate_lim[0] = 75.39822368615503 * 1e-06;
+    _ms_s3_tpm_ug_pll_rate_limiter1__falling_rate_lim[0] = -75.39822368615503 * 1e-06;
+    if (_ms_s3_tpm_ug_pll_pid_limit1__out - _ms_s3_tpm_ug_pll_rate_limiter1__state > _ms_s3_tpm_ug_pll_rate_limiter1__rising_rate_lim[0])
+        _ms_s3_tpm_ug_pll_rate_limiter1__state += _ms_s3_tpm_ug_pll_rate_limiter1__rising_rate_lim[0];
+    else  if (_ms_s3_tpm_ug_pll_pid_limit1__out - _ms_s3_tpm_ug_pll_rate_limiter1__state < _ms_s3_tpm_ug_pll_rate_limiter1__falling_rate_lim[0])
+        _ms_s3_tpm_ug_pll_rate_limiter1__state += (_ms_s3_tpm_ug_pll_rate_limiter1__falling_rate_lim[0]);
+    else
+        _ms_s3_tpm_ug_pll_rate_limiter1__state = _ms_s3_tpm_ug_pll_pid_limit1__out;
+    _ms_s3_tpm_ug_pll_rate_limiter1__first_step = 0;
+    // Generated from the component: MS_S3.TPM_uG.PLL.integrator
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.confine_phase
+    {
+    }
+    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
+    {
+        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+        for ( int  i = 0  ; i < 3 ; i ++ )     {
+            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control_frt_f_besf_sagc__Input > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . V_limit )         {
+                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            }
+            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
+                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . t_limit )             {
+                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i ;
+                }
+            }
+            else         {
+                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer = 0.0f ;
+            }
+        }
+        for ( int  i = 0  ; i < 4 ; i ++ )     {
+            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control_frt_f_besf_sagc__Input < _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . V_limit )         {
+                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            }
+            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
+                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . t_limit )             {
+                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i + 3 ;
+                }
+            }
+            else         {
+                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer = 0.0f ;
+            }
+        }
+    }
+    // Generated from the component: PCC_Control.V_Check_BESF
+    {
+        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
+        for ( int  i = 0  ; i < 2 ; i ++ )     {
+            _pcc_control_v_check_besf__Violation = 0 ;
+            if ( _pcc_control_v_check_besf__Input > _pcc_control_v_check_besf__ov_zones [ i ] . V_limit )         {
+                _pcc_control_v_check_besf__Violation = 1 ;
+            }
+            if ( _pcc_control_v_check_besf__Violation )         {
+                _pcc_control_v_check_besf__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control_v_check_besf__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__ov_zones [ i ] . t_limit )             {
+                    _pcc_control_v_check_besf__Trip_Zone = i ;
+                }
+            }
+            else         {
+                _pcc_control_v_check_besf__ov_zones [ i ] . timer = 0.0f ;
+            }
+        }
+        for ( int  i = 0  ; i < 3 ; i ++ )     {
+            _pcc_control_v_check_besf__Violation = 0 ;
+            if ( _pcc_control_v_check_besf__Input < _pcc_control_v_check_besf__uv_zones [ i ] . V_limit )         {
+                _pcc_control_v_check_besf__Violation = 1 ;
+            }
+            if ( _pcc_control_v_check_besf__Violation )         {
+                _pcc_control_v_check_besf__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control_v_check_besf__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__uv_zones [ i ] . t_limit )             {
+                    _pcc_control_v_check_besf__Trip_Zone = i + 2 ;
+                }
+            }
+            else         {
+                _pcc_control_v_check_besf__uv_zones [ i ] . timer = 0.0f ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.wait_to_change
+    {
+    }
+    // Generated from the component: PCC_Control.Output_Check
+    {
+        if ( _pcc_control_output_check__Reset )     {
+            _pcc_control_output_check__var_CB = 1 ;
+            _pcc_control_output_check__var_GFL = 1 ;
+            _pcc_control_output_check__var_Fault_Zone = - 1 ;
+        }
+        else     {
+            if ( _pcc_control_output_check__var_Fault_Zone == - 1 )         {
+                if ( _pcc_control_output_check__V_Trip )             {
+                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__V_Zone ;
+                }
+                else if ( _pcc_control_output_check__F_Trip )             {
+                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__F_Zone + ( 5 ) ;
+                }
+                if ( _pcc_control_output_check__var_Fault_Zone != - 1 )             {
+                    _pcc_control_output_check__var_CB = 0 ;
+                    _pcc_control_output_check__var_GFL = 0 ;
+                }
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.PI_Ph
+    if (((_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.0) && (_battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state <= 0)) || ((_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch <= 0.0) && (_battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state == 1))) {
+        _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state = 0.0;
+        _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__filter_state = 0.0;
+    }
+    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state += 230.0 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out * 1e-06;
+    if (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0)
+        _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state = 1.0;
+    else if (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch < 0)
+        _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state = -1.0;
+    else
+        _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state = 0.0;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.priority_PQlim.PQ limiting with priority
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Rate Limiter2
+    _battery_inverter__average_1_control_vmode_control_rate_limiter2__rising_rate_lim[0] = 10.0 * 1e-06;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter2__falling_rate_lim[0] = -10.0 * 1e-06;
+    if (_battery_inverter__average_1_control_vmode_control_gain2__out - _battery_inverter__average_1_control_vmode_control_rate_limiter2__state > _battery_inverter__average_1_control_vmode_control_rate_limiter2__rising_rate_lim[0])
+        _battery_inverter__average_1_control_vmode_control_rate_limiter2__state += _battery_inverter__average_1_control_vmode_control_rate_limiter2__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_vmode_control_gain2__out - _battery_inverter__average_1_control_vmode_control_rate_limiter2__state < _battery_inverter__average_1_control_vmode_control_rate_limiter2__falling_rate_lim[0])
+        _battery_inverter__average_1_control_vmode_control_rate_limiter2__state += (_battery_inverter__average_1_control_vmode_control_rate_limiter2__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_vmode_control_rate_limiter2__state = _battery_inverter__average_1_control_vmode_control_gain2__out;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter2__first_step = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.P rate limit
+    _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__rising_rate_lim[0] = 100000.0 * 1e-06;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__falling_rate_lim[0] = -100000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P - _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state > _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__rising_rate_lim[0])
+        _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state += _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P - _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state < _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__falling_rate_lim[0])
+        _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state += (_battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__state = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__P;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_p_rate_limit__first_step = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.Q rate limit
+    _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__rising_rate_lim[0] = 100000.0 * 1e-06;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__falling_rate_lim[0] = -100000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q - _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state > _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__rising_rate_lim[0])
+        _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state += _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q - _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state < _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__falling_rate_lim[0])
+        _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state += (_battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__state = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Q;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_q_rate_limit__first_step = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.S rate limit
+    _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__rising_rate_lim[0] = 100000.0 * 1e-06;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__falling_rate_lim[0] = -100000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S - _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state > _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__rising_rate_lim[0])
+        _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state += _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S - _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state < _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__falling_rate_lim[0])
+        _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state += (_battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__state = _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__S;
+    _battery_inverter__average_1_control_imode_control_limit_pqref_s_rate_limit__first_step = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.Inv_Cab_SM
+    {
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode_state = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__Vmode ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor_state = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__contactor ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch_state = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch ;
+        _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode_state = _battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__control_mode ;
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.limS_overPQ.S limiting over PQ
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Rate Limiter1
+    _battery_inverter__average_1_control_vmode_control_rate_limiter1__rising_rate_lim[0] = 10000.0 * 1e-06;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter1__falling_rate_lim[0] = -10000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_vmode_control_signal_switch1__out - _battery_inverter__average_1_control_vmode_control_rate_limiter1__state > _battery_inverter__average_1_control_vmode_control_rate_limiter1__rising_rate_lim[0])
+        _battery_inverter__average_1_control_vmode_control_rate_limiter1__state += _battery_inverter__average_1_control_vmode_control_rate_limiter1__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_vmode_control_signal_switch1__out - _battery_inverter__average_1_control_vmode_control_rate_limiter1__state < _battery_inverter__average_1_control_vmode_control_rate_limiter1__falling_rate_lim[0])
+        _battery_inverter__average_1_control_vmode_control_rate_limiter1__state += (_battery_inverter__average_1_control_vmode_control_rate_limiter1__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_vmode_control_rate_limiter1__state = _battery_inverter__average_1_control_vmode_control_signal_switch1__out;
+    _battery_inverter__average_1_control_vmode_control_rate_limiter1__first_step = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.verify_mode
+    {
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Phase-Synch-Switching
+    {
+        _battery_inverter__average_1_control_phase_synch_switching__sw_in = _battery_inverter__average_1_control_phase_synch_switching__in_sw ;
+        _battery_inverter__average_1_control_phase_synch_switching__ph_in = _battery_inverter__average_1_control_phase_synch_switching__in_phase ;
+        _battery_inverter__average_1_control_phase_synch_switching__ph_targ = _battery_inverter__average_1_control_phase_synch_switching__in_target ;
+        if ( _battery_inverter__average_1_control_phase_synch_switching__sw_in != _battery_inverter__average_1_control_phase_synch_switching__sw_last )     {
+            if ( ( _battery_inverter__average_1_control_phase_synch_switching__ph_in < ( _battery_inverter__average_1_control_phase_synch_switching__ph_targ + _battery_inverter__average_1_control_phase_synch_switching__ph_tol ) ) && ( _battery_inverter__average_1_control_phase_synch_switching__ph_in > ( _battery_inverter__average_1_control_phase_synch_switching__ph_targ - _battery_inverter__average_1_control_phase_synch_switching__ph_tol ) ) )         {
+                _battery_inverter__average_1_control_phase_synch_switching__sw_out = _battery_inverter__average_1_control_phase_synch_switching__sw_in ;
+                _battery_inverter__average_1_control_phase_synch_switching__sw_last = _battery_inverter__average_1_control_phase_synch_switching__sw_in ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Vmatch.PI.Integrator1
+    _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__state += _battery_inverter__average_1_control_synch_vmatch_pi_sum7__out * 1e-06;
+    if (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0)
+        _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch < 0)
+        _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_synch_vmatch_pi_integrator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.f_match.PI.Integrator1
+    _battery_inverter__average_1_control_synch_f_match_pi_integrator1__state += _battery_inverter__average_1_control_synch_f_match_pi_sum7__out * 1e-06;
+    if (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0)
+        _battery_inverter__average_1_control_synch_f_match_pi_integrator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch < 0)
+        _battery_inverter__average_1_control_synch_f_match_pi_integrator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_synch_f_match_pi_integrator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_d.Integrator1
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__state += _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_sum7__out * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_logical_operator1__out > 0)
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_imode_control_logical_operator1__out < 0)
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_d_integrator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Dq current controller.PI_q.Integrator1
+    _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__state += _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_sum7__out * 1e-06;
+    if (_battery_inverter__average_1_control_imode_control_logical_operator1__out > 0)
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_imode_control_logical_operator1__out < 0)
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_integrator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Current_ref.PI.Integrator1
+    _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__state += _battery_inverter__average_1_control_vmode_control_current_ref_pi_sum7__out * 1e-06;
+    if (_battery_inverter__average_1_control_vmode_control_logical_operator1__out > 0)
+        _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_vmode_control_logical_operator1__out < 0)
+        _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_vmode_control_current_ref_pi_integrator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.PI_d.Integrator1
+    _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__state += _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_sum7__out * 1e-06;
+    if (_battery_inverter__average_1_control_vmode_control_logical_operator1__out > 0)
+        _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__reset_state = 1;
+    else if (_battery_inverter__average_1_control_vmode_control_logical_operator1__out < 0)
+        _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__reset_state = -1;
+    else
+        _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_pi_d_integrator1__reset_state = 0;
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.phase_match.3 hz per sec
+    _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__rising_rate_lim[0] = 2000.0 * 1e-06;
+    _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__falling_rate_lim[0] = -2000.0 * 1e-06;
+    if (_battery_inverter__average_1_control_synch_phase_match_signal_switch2__out - _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state > _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__rising_rate_lim[0])
+        _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state += _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__rising_rate_lim[0];
+    else  if (_battery_inverter__average_1_control_synch_phase_match_signal_switch2__out - _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state < _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__falling_rate_lim[0])
+        _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state += (_battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__falling_rate_lim[0]);
+    else
+        _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__state = _battery_inverter__average_1_control_synch_phase_match_signal_switch2__out;
+    _battery_inverter__average_1_control_synch_phase_match_3_hz_per_sec__first_step = 0;
+    //@cmp.update.block.end
+}
+void TimerCounterHandler_1_user_sp_cpu0_dev0() {
+#if DEBUG_MODE
+    printf("\n\rTimerCounterHandler_1");
+#endif
+    //////////////////////////////////////////////////////////////////////////
+    // Set tunable parameters
+    //////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+    // Output block
+    //////////////////////////////////////////////////////////////////////////
+    //@cmp.out.block.start
+    // Generated from the component: Ca-In
+    _ca_in__out = XIo_InFloat(0x2f800014);
+    // Generated from the component: Cb-In
+    _cb_in__out = XIo_InFloat(0x2f800018);
+    // Generated from the component: Cc-In
+    _cc_in__out = XIo_InFloat(0x2f80001c);
+    // Generated from the component: La-In
+    _la_in__out = XIo_InFloat(0x2f800040);
+    // Generated from the component: Lb-In
+    _lb_in__out = XIo_InFloat(0x2f800044);
+    // Generated from the component: Lc-In
+    _lc_in__out = XIo_InFloat(0x2f800048);
+    // Generated from the component: RLC_parallel_variable.ICb.Ia1
+    _rlc_parallel_variable_icb_ia1__out = (HIL_InFloat(0xc80000 + 0x52));
+    // Generated from the component: RLC_parallel_variable.ICc.Ia1
+    _rlc_parallel_variable_icc_ia1__out = (HIL_InFloat(0xc80000 + 0x53));
+    // Generated from the component: RLC_parallel_variable.ILb.Ia1
+    _rlc_parallel_variable_ilb_ia1__out = (HIL_InFloat(0xc80000 + 0x55));
+    // Generated from the component: RLC_parallel_variable.ILc.Ia1
+    _rlc_parallel_variable_ilc_ia1__out = (HIL_InFloat(0xc80000 + 0x56));
+    // Generated from the component: RLC_parallel_variable.IRb.Ia1
+    _rlc_parallel_variable_irb_ia1__out = (HIL_InFloat(0xc80000 + 0x58));
+    // Generated from the component: RLC_parallel_variable.IRc.Ia1
+    _rlc_parallel_variable_irc_ia1__out = (HIL_InFloat(0xc80000 + 0x59));
+    // Generated from the component: Ra-In
+    _ra_in__out = XIo_InFloat(0x2f80005c);
+    // Generated from the component: Rb-In
+    _rb_in__out = XIo_InFloat(0x2f800060);
+    // Generated from the component: Rc-In
+    _rc_in__out = XIo_InFloat(0x2f800064);
+    // Generated from the component: G_Ca-base
+    _g_ca_base__out = 0.00198944 * _ca_in__out;
+    // Generated from the component: G_Cb-base
+    _g_cb_base__out = 0.00198944 * _cb_in__out;
+    // Generated from the component: G_Cc-base
+    _g_cc_base__out = 0.00198944 * _cc_in__out;
+    // Generated from the component: G_La-base
+    _g_la_base__out = 0.005093 * _la_in__out;
+    // Generated from the component: G_Lb-base
+    _g_lb_base__out = 0.005093 * _lb_in__out;
+    // Generated from the component: G_Lc-base
+    _g_lc_base__out = 0.005093 * _lc_in__out;
+    // Generated from the component: RLC_parallel_variable.ICb_out
+    HIL_OutAO(0x40f2, (float)_rlc_parallel_variable_icb_ia1__out);
+    // Generated from the component: RLC_parallel_variable.ICc_out
+    HIL_OutAO(0x40f3, (float)_rlc_parallel_variable_icc_ia1__out);
+    // Generated from the component: RLC_parallel_variable.ILb_out
+    HIL_OutAO(0x40f6, (float)_rlc_parallel_variable_ilb_ia1__out);
+    // Generated from the component: RLC_parallel_variable.ILc_out
+    HIL_OutAO(0x40f7, (float)_rlc_parallel_variable_ilc_ia1__out);
+    // Generated from the component: RLC_parallel_variable.IRb_out
+    HIL_OutAO(0x40fa, (float)_rlc_parallel_variable_irb_ia1__out);
+    // Generated from the component: RLC_parallel_variable.IRc_out
+    HIL_OutAO(0x40fb, (float)_rlc_parallel_variable_irc_ia1__out);
+    // Generated from the component: G_Ra-base
+    _g_ra_base__out = 1.6 * _ra_in__out;
+    // Generated from the component: G_Rb-base
+    _g_rb_base__out = 1.6 * _rb_in__out;
+    // Generated from the component: G_Rc-base
+    _g_rc_base__out = 1.6 * _rc_in__out;
+    // Generated from the component: RLC_parallel_variable.Ca.reciprocal
+    _rlc_parallel_variable_ca_reciprocal__out = 1.0 / (_g_ca_base__out);
+    // Generated from the component: RLC_parallel_variable.Cb.reciprocal
+    _rlc_parallel_variable_cb_reciprocal__out = 1.0 / (_g_cb_base__out);
+    // Generated from the component: RLC_parallel_variable.Cc.reciprocal
+    _rlc_parallel_variable_cc_reciprocal__out = 1.0 / (_g_cc_base__out);
+    // Generated from the component: RLC_parallel_variable.La.reciprocal
+    _rlc_parallel_variable_la_reciprocal__out = 1.0 / (_g_la_base__out);
+    // Generated from the component: RLC_parallel_variable.Lb.reciprocal
+    _rlc_parallel_variable_lb_reciprocal__out = 1.0 / (_g_lb_base__out);
+    // Generated from the component: RLC_parallel_variable.Lc.reciprocal
+    _rlc_parallel_variable_lc_reciprocal__out = 1.0 / (_g_lc_base__out);
+    // Generated from the component: RLC_parallel_variable.RLa.Vs
+    HIL_OutFloat(137363459, (float) _g_ra_base__out);
+    // Generated from the component: RLC_parallel_variable.RLb.Vs
+    HIL_OutFloat(137363460, (float) _g_rb_base__out);
+    // Generated from the component: RLC_parallel_variable.RLc.Vs
+    HIL_OutFloat(137363461, (float) _g_rc_base__out);
+    // Generated from the component: RLC_parallel_variable.Ca.Vs
+    HIL_OutFloat(137363456, (float) _rlc_parallel_variable_ca_reciprocal__out);
+    // Generated from the component: RLC_parallel_variable.Cb.Vs
+    HIL_OutFloat(137363457, (float) _rlc_parallel_variable_cb_reciprocal__out);
+    // Generated from the component: RLC_parallel_variable.Cc.Vs
+    HIL_OutFloat(137363458, (float) _rlc_parallel_variable_cc_reciprocal__out);
+    // Generated from the component: RLC_parallel_variable.La.Is
+    HIL_OutFloat(137363462, (float) _rlc_parallel_variable_la_reciprocal__out);
+    // Generated from the component: RLC_parallel_variable.Lb.Is
+    HIL_OutFloat(137363463, (float) _rlc_parallel_variable_lb_reciprocal__out);
+    // Generated from the component: RLC_parallel_variable.Lc.Is
+    HIL_OutFloat(137363464, (float) _rlc_parallel_variable_lc_reciprocal__out);
+//@cmp.out.block.end
+    //////////////////////////////////////////////////////////////////////////
+    // Update block
+    //////////////////////////////////////////////////////////////////////////
+    //@cmp.update.block.start
+    //@cmp.update.block.end
+}
+// ----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
