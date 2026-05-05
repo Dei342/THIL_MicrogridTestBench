@@ -1,0 +1,2859 @@
+//
+// Saved by sw version: 2025.2
+//
+
+library "Thesis_Stuff" {
+    configuration {
+        hil_device = "VHIL+"
+        hil_configuration_id = 1
+        simulation_method = exact
+        simulation_time_step = 1e-6
+        simulation_discret_scaling = 1.0
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        device_ao_limit_enable = False
+        reset_analog_outputs_on_sim_stop = True
+        reset_analog_outputs_on_sim_stop_mode = Offset values
+        reset_digital_outputs_on_sim_stop = True
+        vhil_adio_loopback = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+        user_cpu_part_option = "default"
+        matrix_based_reduction = True
+        cpl_dynamics_analysis = False
+        export_ss_to_pickle = False
+        ground_scope_core = False
+        dss_num_tol = 1e-15
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_term_var_location = "local"
+        cce_directory = ""
+        cce_custom_type_int = ""
+        cce_custom_type_uint = ""
+        cce_custom_type_real = ""
+        tunable_params = "component defined"
+        sp_compiler_type = "C compiler"
+        sig_stim = "off"
+        export_resource_list = ""
+        export_dependency_list = ""
+        excluded_resource_list = ""
+        excluded_component_from_locking_list = ""
+        export_out_file = ""
+        export_lock_top_level = False
+        export_encrypt_library = False
+        export_encrypt_resources = False
+        solver_type = "DAE"
+        integration_method = "BDF"
+        max_sim_step = 1e-4
+        simulation_time = 1.0
+        abs_tol = 1e-3
+        rel_tol = 1e-3
+        init_sim_step = 1e-6
+        r_on_sw = 1e-3
+        v_on_diode = 0.2
+        data_sampling_rate = 0
+        feedthrough_validation_error_level = error
+    }
+
+    component Subsystem Root {
+        component Category Microgrid {
+            layout = dynamic
+            component Category Control {
+                layout = dynamic
+                component "core/C function" FRT_V_BESF-SAGC {
+                    arb_defs = "/*Begin code section*/
+typedef struct {
+    float V_limit;
+    float t_limit;
+    int timer;
+} FRT_Zone;
+
+#define OV_Num 2 
+#define UV_Num 3 
+
+FRT_Zone ov_zones[OV_Num] = {
+    {1.1f, 2.0f, 0},
+    {1.2f, 0.04f, 0}
+}; 
+
+FRT_Zone uv_zones[UV_Num] = {
+    {0.85f, 0.5f, 0},
+    {0.8f, 0.15f, 0},
+    {0.6f, 0.04f, 0}
+};
+
+//float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+/*End code section*/"
+                    global_variables = "int Violation;int Trip_Zone;"
+                    init_fnc = "/*Begin code section*/
+Violation = 0;
+Trip_Zone = -1;
+/*End code section*/"
+                    input_terminals = "real Input;"
+                    input_terminals_dimensions = "inherit"
+                    input_terminals_feedthrough = "True"
+                    input_terminals_show_labels = "True"
+                    output_fnc = "/*Begin code section*/
+Fault = Trip_Zone;
+
+if (Trip_Zone > -1){
+    Trip = 1;
+}
+else { Trip = 0;}
+
+
+
+// for (int i = 0; i < OV_Num; i++ ){
+//     debug[i] = ov_zones[i].timer*execution_rate;
+// }
+// for (int i = 0; i < UV_Num; i++){
+//     debug[i+OV_Num] = uv_zones[i].timer*execution_rate;
+// }
+
+// o_debug = debug;
+
+d0 = ov_zones[0].timer*execution_rate;
+d1 = ov_zones[1].timer*execution_rate;
+d2 = uv_zones[0].timer*execution_rate;
+d3 = uv_zones[1].timer*execution_rate;
+d4 = uv_zones[2].timer*execution_rate;
+/*End code section*/"
+                    output_terminals = "real Trip;inherit Fault;inherit d0;inherit d1;inherit d2;inherit d3;inherit d4;"
+                    output_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit;inherit;inherit"
+                    output_terminals_feedthrough = "True;True;True;True;True;True;True"
+                    output_terminals_show_labels = "True;True;True;True;True;True;True"
+                    update_fnc = "/*Begin code section*/
+//Initialise
+Trip_Zone = -1;
+
+//OV check, Zones 0 and 1
+for(int i = 0; i < OV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input > ov_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        ov_zones[i].timer++;
+        
+        if ((ov_zones[i].timer*execution_rate) > ov_zones[i].t_limit){
+            //debug = ov_zones[i].timer*execution_rate;
+            Trip_Zone = i;
+        }
+    }
+    else { ov_zones[i].timer = 0.0f;}
+    
+    
+}
+
+//UV Check, Zones 2, 3 and 4
+for(int i = 0; i < UV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input < uv_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        uv_zones[i].timer++;
+        if ((uv_zones[i].timer*execution_rate) > uv_zones[i].t_limit){
+            Trip_Zone = i + OV_Num;
+        }
+    }
+    else { uv_zones[i].timer = 0.0f;}
+}
+/*End code section*/"
+                }
+                [
+                    position = 7368, 7820
+                    size = 168, 168
+                ]
+
+                component "core/C function" FRT_F_BESF-SAGC {
+                    arb_defs = "/*Begin code section*/
+typedef struct {
+    float V_limit;
+    float t_limit;
+    int timer;
+} fFRT_Zone;
+
+#define OV_Num 3
+#define UV_Num 4 
+
+fFRT_Zone ov_zones[OV_Num] = {
+    {51.0f, 60.0f, 0},
+    {51.5f, 4.0f, 0},
+    {52.0f, 0.04f, 0}
+}; 
+
+fFRT_Zone uv_zones[UV_Num] = {
+    {49.0f, 60.0f, 0},
+    {48.0f, 10.0f, 0},
+    {47.5f, 6.0f, 0},
+    {47.0f, 0.2f, 0}
+};
+
+//float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+/*End code section*/"
+                    global_variables = "int Violation;int Trip_Zone;"
+                    init_fnc = "/*Begin code section*/
+Violation = 0;
+Trip_Zone = -1;
+/*End code section*/"
+                    input_terminals = "real Input;"
+                    input_terminals_dimensions = "inherit"
+                    input_terminals_feedthrough = "True"
+                    input_terminals_show_labels = "True"
+                    output_fnc = "/*Begin code section*/
+Fault = Trip_Zone;
+
+if (Trip_Zone > -1){
+    Trip = 1;
+}
+else { Trip = 0;}
+
+
+
+// for (int i = 0; i < OV_Num; i++ ){
+//     debug[i] = ov_zones[i].timer*execution_rate;
+// }
+// for (int i = 0; i < UV_Num; i++){
+//     debug[i+OV_Num] = uv_zones[i].timer*execution_rate;
+// }
+
+// o_debug = debug;
+
+d0 = ov_zones[0].timer*execution_rate;
+d1 = ov_zones[1].timer*execution_rate;
+d2 = ov_zones[2].timer*execution_rate;
+d3 = uv_zones[0].timer*execution_rate;
+d4 = uv_zones[1].timer*execution_rate;
+d5 = uv_zones[2].timer*execution_rate;
+d6 = uv_zones[3].timer*execution_rate;
+/*End code section*/"
+                    output_terminals = "real Trip;inherit Fault;inherit d0;inherit d1;inherit d2;inherit d3;inherit d4;inherit d5;inherit d6;"
+                    output_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit;inherit;inherit;inherit;inherit"
+                    output_terminals_feedthrough = "True;True;True;True;True;True;True;True;True"
+                    output_terminals_show_labels = "True;True;True;True;True;True;True;True;True"
+                    update_fnc = "/*Begin code section*/
+//Initialise
+Trip_Zone = -1;
+
+
+//OF check, Zones 0, 1 and 2
+for(int i = 0; i < OV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input > ov_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        ov_zones[i].timer++;
+        
+        if ((ov_zones[i].timer*execution_rate) > ov_zones[i].t_limit){
+            //debug = ov_zones[i].timer*execution_rate;
+            Trip_Zone = i;
+        }
+    }
+    else { ov_zones[i].timer = 0.0f;}
+    
+    
+}
+
+//UF Check, Zones 3, 4, 5 and 6 
+for(int i = 0; i < UV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input < uv_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        uv_zones[i].timer++;
+        if ((uv_zones[i].timer*execution_rate) > uv_zones[i].t_limit){
+            Trip_Zone = i + OV_Num;
+        }
+    }
+    else { uv_zones[i].timer = 0.0f;}
+}
+/*End code section*/"
+                }
+                [
+                    position = 7368, 8056
+                    size = 168, 168
+                ]
+
+                component Subsystem PCC_Control_Old {
+                    layout = dynamic
+                    component "core/C function" Check_Limits {
+                        arb_defs = "/*Begin code section*/
+
+/*End code section*/"
+                        execution_rate = "Ts_i"
+                        global_variables = "real v_V;real v_f;real varCB;real varFault;real v_GFL;real v_Debug;"
+                        init_fnc = "/*Begin code section*/
+//initially trip is 0
+varFault = 0;
+
+//initially CB is closed
+varCB = 1;
+
+
+// BI switch command ( 1 -> stay in GFL ; 0 -> switch to GFM) Grid Forming vs Grid foLlowing
+v_GFL = 1;
+
+//initialise
+
+v_V = 1;
+v_f = 1;
+
+v_Debug = 1;
+/*End code section*/"
+                        input_terminals = "real Vup;real Vlow;real Fup;real Flow;inherit V;inherit f;int Reset;"
+                        input_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit;inherit;inherit"
+                        input_terminals_feedthrough = "True;True;True;True;True;True;True"
+                        input_terminals_show_labels = "True;True;True;True;True;True;True"
+                        output_fnc = "/*Begin code section*/
+// Check if parameters within limits
+// If not, set trip(output) to appropriate value (0,1,2,3,4)
+
+//Limits
+if(varCB == 1){ //CB closed, if open don\'t change Fault value
+    if(v_V > Vup){ //OV
+        varFault = 1;
+    }
+    else if(v_V < Vlow){ //UV
+        varFault = 2;
+    }
+    
+    else if(v_f > Fup){ //OF
+        varFault = 3;
+    }
+    
+    else if(v_f < Flow){ //UF
+        varFault = 4;
+    }
+}    
+
+// CB stays closed as long as there\'s no fault, GFL = true
+if(varFault < 1){ //Fault = 0
+    varCB = 1;
+    v_GFL = 1;
+}
+else{ //Fault means open CB, send instruction to transition to GFM
+    varCB = 0;
+    v_GFL = 0;
+}
+
+//Update outputs
+Fault = varFault;
+CB = varCB;
+
+GFL = v_GFL;
+
+oDebug = v_Debug;
+/*End code section*/"
+                        output_terminals = "int Fault;int CB;real GFL;real oDebug;"
+                        output_terminals_dimensions = "inherit;inherit;inherit;inherit"
+                        output_terminals_feedthrough = "True;True;True;True"
+                        output_terminals_show_labels = "True;True;True;True"
+                        update_fnc = "/*Begin code section*/
+v_V = V;
+v_f = f;
+
+
+if(Reset){
+    varFault = 0;
+    varCB = 1;
+    v_GFL = 1;
+}
+/*End code section*/"
+                    }
+                    [
+                        position = 8296, 8184
+                        size = 88, 128
+                    ]
+
+                    component "core/Gain" v_pu {
+                        execution_rate = "Ts_i"
+                        gain = "np.sqrt(3)/Vess"
+                    }
+                    [
+                        position = 8120, 8316
+                    ]
+
+                    component "core/Gain" Gain1 {
+                        execution_rate = "Ts_i"
+                        gain = "1/fgrid"
+                    }
+                    [
+                        position = 8120, 8372
+                    ]
+
+                    component "core/Probe" fault_vpu {
+                    }
+                    [
+                        position = 8280, 8316
+                    ]
+
+                    component "core/Probe" fault_fpu {
+                    }
+                    [
+                        position = 8280, 8372
+                    ]
+
+                    component "core/Probe" Debug {
+                    }
+                    [
+                        position = 8532, 8028
+                    ]
+
+                    component "core/Probe" CB_faults {
+                    }
+                    [
+                        position = 8440, 7956
+                        rotation = left
+                    ]
+
+                    component "core/Probe" Fault {
+                    }
+                    [
+                        position = 8408, 7920
+                        rotation = left
+                    ]
+
+                    component "core/Probe" GFL {
+                    }
+                    [
+                        position = 8476, 7992
+                        rotation = left
+                    ]
+
+                    port oFault {
+                        position = auto:auto
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8608, 8084
+                    ]
+
+                    port oCB {
+                        position = auto:auto
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8608, 8168
+                    ]
+
+                    port oGFL {
+                        position = auto:auto
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8608, 8256
+                    ]
+
+                    port iV {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7856, 8316
+                    ]
+
+                    port if {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7856, 8372
+                    ]
+
+                    port iVup {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7856, 8068
+                    ]
+
+                    port iVlow {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7856, 8132
+                    ]
+
+                    port iFup {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7856, 8192
+                    ]
+
+                    port iFlow {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7856, 8252
+                    ]
+
+                    port iReset {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7856, 8432
+                    ]
+
+                    junction Junction50 sp
+                    [
+                        position = 8152, 8316
+                    ]
+
+                    junction Junction53 sp
+                    [
+                        position = 8168, 8372
+                    ]
+
+                    junction Junction54 sp
+                    [
+                        position = 8408, 8136
+                    ]
+
+                    junction Junction59 sp
+                    [
+                        position = 8440, 8168
+                    ]
+
+                    junction Junction60 sp
+                    [
+                        position = 8476, 8200
+                    ]
+
+                    connect Check_Limits.Fault Junction54 as Connection593
+                    [
+                        breakpoints = 8396, 8136
+                    ]
+                    connect Junction54 oFault as Connection594
+                    [
+                        breakpoints = 8560, 8136; 8560, 8112
+                    ]
+                    connect Fault.in Junction54 as Connection595
+                    connect iV v_pu.in as Connection602
+                    connect if Gain1.in as Connection603
+                    connect iFlow Check_Limits.Flow as Connection604
+                    [
+                        breakpoints = 8144, 8252; 8144, 8184
+                    ]
+                    connect iFup Check_Limits.Fup as Connection605
+                    [
+                        breakpoints = 8136, 8192; 8136, 8168
+                    ]
+                    connect iVlow Check_Limits.Vlow as Connection606
+                    [
+                        breakpoints = 8136, 8132; 8136, 8152
+                    ]
+                    connect iVup Check_Limits.Vup as Connection607
+                    [
+                        breakpoints = 8144, 8068; 8144, 8136
+                    ]
+                    connect iReset Check_Limits.Reset as Connection608
+                    [
+                        breakpoints = 8188, 8432; 8188, 8232
+                    ]
+                    connect Check_Limits.oDebug Debug.in as Connection613
+                    connect CB_faults.in Junction59 as Connection619
+                    connect Junction59 Check_Limits.CB as Connection620
+                    [
+                        breakpoints = 8440, 8168
+                    ]
+                    connect oCB Junction59 as Connection621
+                    connect Check_Limits.GFL Junction60 as Connection623
+                    connect Junction60 GFL.in as Connection624
+                    [
+                        breakpoints = 8476, 8200
+                    ]
+                    connect oGFL Junction60 as Connection625
+                    [
+                        breakpoints = 8560, 8256; 8560, 8200
+                    ]
+                    connect v_pu.out Junction50 as Connection557
+                    connect Junction50 Check_Limits.V as Connection558
+                    [
+                        breakpoints = 8152, 8296; 8152, 8200
+                    ]
+                    connect fault_vpu.in Junction50 as Connection559
+                    connect Gain1.out Junction53 as Connection571
+                    connect Junction53 Check_Limits.f as Connection572
+                    [
+                        breakpoints = 8168, 8360; 8168, 8216
+                    ]
+                    connect fault_fpu.in Junction53 as Connection573
+                }
+                [
+                    position = 7092, 7588
+                    size = 104, 128
+                ]
+
+                component Subsystem dV_Switch {
+                    layout = dynamic
+                    component "core/Probe" dV_o {
+                    }
+                    [
+                        position = 8528, 8064
+                    ]
+
+                    component "core/Probe" dV_diff {
+                    }
+                    [
+                        position = 8348, 7936
+                    ]
+
+                    component "core/Probe" dV_sync {
+                    }
+                    [
+                        position = 8348, 7992
+                    ]
+
+                    component "core/Signal switch" switch_GFM_df1 {
+                    }
+                    [
+                        position = 8404, 8140
+                        hide_name = True
+                        scale = 1, -1
+                    ]
+
+                    component "core/Constant" Constant1 {
+                        execution_rate = "Ts_i"
+                        value = "0"
+                    }
+                    [
+                        position = 8308, 8260
+                    ]
+
+                    component "core/Logical operator" "Logical operator1" {
+                    }
+                    [
+                        position = 8236, 8308
+                    ]
+
+                    component "core/Logical operator" "Logical operator2" {
+                        operator = "NOT"
+                    }
+                    [
+                        position = 8128, 8284
+                        hide_name = True
+                    ]
+
+                    component Subsystem Vref_Synch {
+                        layout = dynamic
+                        component "core/Probe" dV {
+                        }
+                        [
+                            position = 8168, 8064
+                        ]
+
+                        component "core/PID controller" PI_V {
+                            controller_type = "PI"
+                            ki = "230"
+                            kp = "8"
+                            show_reset = "either"
+                        }
+                        [
+                            position = 8208, 8204
+                        ]
+
+                        component "core/Gain" Gain1 {
+                            gain = "1.0/fn"
+                        }
+                        [
+                            position = 8352, 8204
+                        ]
+
+                        component "core/Unit Delay" "Unit Delay5" {
+                        }
+                        [
+                            position = 8452, 8204
+                            hide_name = True
+                        ]
+
+                        component "core/Probe" uV {
+                        }
+                        [
+                            position = 8348, 8064
+                        ]
+
+                        component "core/Sum" Sum3 {
+                            signs = "+-"
+                        }
+                        [
+                            position = 8004, 8196
+                            hide_name = True
+                        ]
+
+                        port V_GFL {
+                            position = left:1
+                            kind = sp
+                            direction =  out
+                            sp_type {
+                                default = auto
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 7920, 8144
+                        ]
+
+                        port dV_GFM {
+                            position = right:1
+                            kind = sp
+                            direction =  in
+                            sp_type {
+                                default = inherit
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 8560, 8204
+                        ]
+
+                        port V_GFM {
+                            position = left:2
+                            kind = sp
+                            direction =  out
+                            sp_type {
+                                default = auto
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 7920, 8244
+                        ]
+
+                        port Synch {
+                            position = bottom:1
+                            kind = sp
+                            direction =  out
+                            sp_type {
+                                default = auto
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 8108, 8312
+                            rotation = left
+                        ]
+
+                        junction Junction2 sp
+                        [
+                            position = 8280, 8204
+                        ]
+
+                        junction Junction3 sp
+                        [
+                            position = 8108, 8196
+                        ]
+
+                        connect Sum3.in1 V_GFM as Connection2095
+                        connect Sum3.in V_GFL as Connection2093
+                        connect Synch PI_V.reset as Connection2100
+                        connect "Unit Delay5.in" Gain1.out as Connection2102
+                        connect Gain1.in Junction2 as Connection2104
+                        connect Junction2 PI_V.out as Connection2105
+                        connect uV.in Junction2 as Connection2106
+                        connect dV_GFM "Unit Delay5.out" as Connection2110
+                        connect PI_V.in Junction3 as Connection2113
+                        connect Junction3 dV.in as Connection2114
+                        [
+                            breakpoints = 8108, 8196; 8108, 8064
+                        ]
+                        connect Sum3.out Junction3 as Connection2115
+                    }
+                    [
+                        position = 8128, 8108
+                        size = 120, 64
+                    ]
+
+                    component "core/Signal switch" switch_GFM_df {
+                    }
+                    [
+                        position = 8256, 8124
+                        hide_name = True
+                        scale = 1, -1
+                    ]
+
+                    port dV_synch {
+                        position = left:3
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8200
+                    ]
+
+                    port Synch {
+                        position = left:4
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8252
+                    ]
+
+                    port dV {
+                        position = right:1
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8536, 8140
+                    ]
+
+                    port V_GFL {
+                        position = left:1
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8080
+                    ]
+
+                    port V_GFM {
+                        position = left:2
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8140
+                    ]
+
+                    port Vmode {
+                        position = left:5
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8316
+                    ]
+
+                    junction Junction352 sp
+                    [
+                        position = 8212, 8108
+                    ]
+
+                    junction Junction353 sp
+                    [
+                        position = 8224, 8140
+                    ]
+
+                    junction Junction354 sp
+                    [
+                        position = 8472, 8140
+                    ]
+
+                    junction Junction355 sp
+                    [
+                        position = 8064, 8252
+                    ]
+
+                    junction Junction350 sp
+                    [
+                        position = 8128, 8252
+                    ]
+
+                    comment Comment1 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">THIS IS A CONCEPT</p><p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html> ENDCOMMENT 
+                    [
+                        position = 8004, 7924
+                    ]
+
+                    connect Vref_Synch.V_GFL V_GFL as Connection2895
+                    connect Vref_Synch.V_GFM V_GFM as Connection2896
+                    connect Vref_Synch.dV_GFM Junction352 as Connection2900
+                    connect Junction352 switch_GFM_df.in1 as Connection2901
+                    connect dV_diff.in Junction352 as Connection2902
+                    connect switch_GFM_df.in Junction353 as Connection2903
+                    connect Junction353 dV_synch as Connection2904
+                    connect dV_sync.in Junction353 as Connection2905
+                    connect Constant1.out switch_GFM_df1.in as Connection2907
+                    connect switch_GFM_df1.in1 switch_GFM_df.out as Connection2909
+                    connect dV Junction354 as Connection2914
+                    connect Junction354 switch_GFM_df1.out as Connection2915
+                    connect dV_o.in Junction354 as Connection2916
+                    connect Junction350 Junction355 as Connection2918
+                    connect Junction355 Synch as Connection2919
+                    connect "Logical operator2.in" Junction355 as Connection2920
+                    connect "Logical operator1.out" switch_GFM_df1.in2 as Connection2922
+                    connect "Logical operator1.in" "Logical operator2.out" as Connection2923
+                    [
+                        breakpoints = 8176, 8300; 8176, 8284
+                    ]
+                    connect Vmode "Logical operator1.in1" as Connection2924
+                    connect Junction350 switch_GFM_df.in2 as Connection2890
+                    connect Vref_Synch.Synch Junction350 as Connection2891
+                }
+                [
+                    position = 7820, 7876
+                    size = 96, 144
+                ]
+
+                component Subsystem PCC_Control {
+                    layout = dynamic
+                    component "core/Gain" v_pu {
+                        execution_rate = "Ts_i"
+                        gain = "np.sqrt(3)/Vess"
+                    }
+                    [
+                        position = 7908, 7976
+                    ]
+
+                    component "core/Gain" f_pu {
+                        execution_rate = "Ts_i"
+                        gain = "1/fgrid"
+                    }
+                    [
+                        position = 7964, 8308
+                        rotation = right
+                    ]
+
+                    component "core/Probe" fault_vpu {
+                    }
+                    [
+                        position = 7964, 7848
+                        rotation = left
+                    ]
+
+                    component "core/Probe" fault_fpu {
+                    }
+                    [
+                        position = 7964, 8412
+                        rotation = right
+                    ]
+
+                    component "core/Probe" CB_faults {
+                    }
+                    [
+                        position = 8820, 7952
+                        rotation = left
+                    ]
+
+                    component "core/Probe" Fault {
+                    }
+                    [
+                        position = 8788, 7916
+                        rotation = left
+                    ]
+
+                    component "core/Probe" GFL {
+                    }
+                    [
+                        position = 8856, 7988
+                        rotation = left
+                    ]
+
+                    component "Thesis_Stuff/FRT_V_BESF-SAGC" V_Check_BESF {
+                        arb_defs = "/*Begin code section*/
+typedef struct {
+    float V_limit;
+    float t_limit;
+    int timer;
+} FRT_Zone;
+
+#define OV_Num 2 
+#define UV_Num 3 
+
+FRT_Zone ov_zones[OV_Num] = {
+    {1.1f, 2.0f, 0},
+    {1.2f, 0.04f, 0}
+}; 
+
+FRT_Zone uv_zones[UV_Num] = {
+    {0.85f, 0.5f, 0},
+    {0.8f, 0.15f, 0},
+    {0.6f, 0.04f, 0}
+};
+
+//float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+/*End code section*/"
+                        global_variables = "int Violation;int Trip_Zone;"
+                        init_fnc = "/*Begin code section*/
+Violation = 0;
+Trip_Zone = -1;
+/*End code section*/"
+                        input_terminals = "real Input;"
+                        input_terminals_dimensions = "inherit"
+                        input_terminals_feedthrough = "True"
+                        input_terminals_show_labels = "True"
+                        output_fnc = "/*Begin code section*/
+Fault = Trip_Zone;
+
+if (Trip_Zone > -1){
+    Trip = 1;
+}
+else { Trip = 0;}
+
+
+
+// for (int i = 0; i < OV_Num; i++ ){
+//     debug[i] = ov_zones[i].timer*execution_rate;
+// }
+// for (int i = 0; i < UV_Num; i++){
+//     debug[i+OV_Num] = uv_zones[i].timer*execution_rate;
+// }
+
+// o_debug = debug;
+
+d0 = ov_zones[0].timer*execution_rate;
+d1 = ov_zones[1].timer*execution_rate;
+d2 = uv_zones[0].timer*execution_rate;
+d3 = uv_zones[1].timer*execution_rate;
+d4 = uv_zones[2].timer*execution_rate;
+/*End code section*/"
+                        output_terminals = "real Trip;inherit Fault;inherit d0;inherit d1;inherit d2;inherit d3;inherit d4;"
+                        output_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit;inherit;inherit"
+                        output_terminals_feedthrough = "True;True;True;True;True;True;True"
+                        output_terminals_show_labels = "True;True;True;True;True;True;True"
+                        update_fnc = "/*Begin code section*/
+//Initialise
+Trip_Zone = -1;
+
+//OV check, Zones 0 and 1
+for(int i = 0; i < OV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input > ov_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        ov_zones[i].timer++;
+        
+        if ((ov_zones[i].timer*execution_rate) > ov_zones[i].t_limit){
+            //debug = ov_zones[i].timer*execution_rate;
+            Trip_Zone = i;
+        }
+    }
+    else { ov_zones[i].timer = 0.0f;}
+    
+    
+}
+
+//UV Check, Zones 2, 3 and 4
+for(int i = 0; i < UV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input < uv_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        uv_zones[i].timer++;
+        if ((uv_zones[i].timer*execution_rate) > uv_zones[i].t_limit){
+            Trip_Zone = i + OV_Num;
+        }
+    }
+    else { uv_zones[i].timer = 0.0f;}
+}
+/*End code section*/"
+                    }
+                    [
+                        position = 8168, 7976
+                        size = 168, 168
+                    ]
+
+                    component "core/Probe" d_0_V {
+                    }
+                    [
+                        position = 8296, 7688
+                        rotation = left
+                    ]
+
+                    component "core/Probe" d_1_V {
+                    }
+                    [
+                        position = 8328, 7720
+                        rotation = left
+                    ]
+
+                    component "core/Probe" d_2_V {
+                    }
+                    [
+                        position = 8364, 7748
+                        rotation = left
+                    ]
+
+                    component "core/Probe" d_3_V {
+                    }
+                    [
+                        position = 8400, 7780
+                        rotation = left
+                    ]
+
+                    component "core/Probe" d_4_V {
+                    }
+                    [
+                        position = 8436, 7812
+                        rotation = left
+                    ]
+
+                    component "core/Probe" d_0_f {
+                    }
+                    [
+                        position = 8456, 8520
+                        rotation = right
+                    ]
+
+                    component "core/Probe" d_1_f {
+                    }
+                    [
+                        position = 8424, 8488
+                        rotation = right
+                    ]
+
+                    component "core/Probe" d_2_f {
+                    }
+                    [
+                        position = 8392, 8456
+                        rotation = right
+                    ]
+
+                    component "core/Probe" d_3_f {
+                    }
+                    [
+                        position = 8360, 8424
+                        rotation = right
+                    ]
+
+                    component "core/Probe" d_4_f {
+                    }
+                    [
+                        position = 8328, 8392
+                        rotation = right
+                    ]
+
+                    component "core/Probe" d_5_f {
+                    }
+                    [
+                        position = 8296, 8364
+                        rotation = right
+                    ]
+
+                    component "core/C function" Output_Check {
+                        arb_defs = "/*Begin code section*/
+#define NumV (5)
+#define NumF (7)
+/*End code section*/"
+                        global_variables = "real var_Fault_Zone;real var_CB;real var_GFL;"
+                        init_fnc = "/*Begin code section*/
+var_CB = 1;
+var_GFL = 1;
+var_Fault_Zone = -1;
+/*End code section*/"
+                        input_terminals = "int V_Trip;int V_Zone;int Reset;int F_Trip;int F_Zone;"
+                        input_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit"
+                        input_terminals_feedthrough = "True;True;True;True;True"
+                        input_terminals_show_labels = "True;True;True;True;True"
+                        output_fnc = "/*Begin code section*/
+CB = var_CB;
+GFL = var_GFL;
+Fault_Zone = var_Fault_Zone;
+/*End code section*/"
+                        output_terminals = "int Fault_Zone;int CB;int GFL;"
+                        output_terminals_dimensions = "inherit;inherit;inherit"
+                        output_terminals_feedthrough = "True;True;True"
+                        output_terminals_show_labels = "True;True;True"
+                        update_fnc = "/*Begin code section*/
+//Inputs -> variables, necessary?
+// var_V_Zone = V_Zone;
+// var_F_Zone = F_Zone;
+
+//Reset
+if(Reset){
+    var_CB = 1;
+    var_GFL = 1;
+    var_Fault_Zone = -1;
+}
+else{ //So check fault zone
+    if(var_Fault_Zone == -1){ //No trips have occured yet
+        //Volt Zone
+        if(V_Trip){ // V fault
+            var_Fault_Zone = V_Zone;
+        }
+        // Frequency Zone
+        else if(F_Trip){ // F Fault
+            var_Fault_Zone = F_Zone+NumV;
+        }  
+        
+        if(var_Fault_Zone != -1){//Trip detected
+            var_CB = 0;
+            var_GFL = 0;
+        }
+    }
+}
+/*End code section*/"
+                    }
+                    [
+                        position = 8648, 8108
+                        size = 120, 160
+                    ]
+
+                    component "core/C function" FRT_F_BESF-SAGC {
+                        arb_defs = "/*Begin code section*/
+typedef struct {
+    float V_limit;
+    float t_limit;
+    int timer;
+} fFRT_Zone;
+
+#define OV_Num 3
+#define UV_Num 4 
+
+fFRT_Zone ov_zones[OV_Num] = {
+    {51.0f, 60.0f, 0},
+    {51.5f, 4.0f, 0},
+    {52.0f, 0.04f, 0}
+}; 
+
+fFRT_Zone uv_zones[UV_Num] = {
+    {49.0f, 60.0f, 0},
+    {48.0f, 10.0f, 0},
+    {47.5f, 6.0f, 0},
+    {47.0f, 0.2f, 0}
+};
+
+//float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+/*End code section*/"
+                        global_variables = "int Violation;int Trip_Zone;"
+                        init_fnc = "/*Begin code section*/
+Violation = 0;
+Trip_Zone = -1;
+/*End code section*/"
+                        input_terminals = "real Input;"
+                        input_terminals_dimensions = "inherit"
+                        input_terminals_feedthrough = "True"
+                        input_terminals_show_labels = "True"
+                        output_fnc = "/*Begin code section*/
+Fault = Trip_Zone;
+
+if (Trip_Zone > -1){
+    Trip = 1;
+}
+else { Trip = 0;}
+
+
+
+// for (int i = 0; i < OV_Num; i++ ){
+//     debug[i] = ov_zones[i].timer*execution_rate;
+// }
+// for (int i = 0; i < UV_Num; i++){
+//     debug[i+OV_Num] = uv_zones[i].timer*execution_rate;
+// }
+
+// o_debug = debug;
+
+d0 = ov_zones[0].timer*execution_rate;
+d1 = ov_zones[1].timer*execution_rate;
+d2 = ov_zones[2].timer*execution_rate;
+d3 = uv_zones[0].timer*execution_rate;
+d4 = uv_zones[1].timer*execution_rate;
+d5 = uv_zones[2].timer*execution_rate;
+d6 = uv_zones[3].timer*execution_rate;
+/*End code section*/"
+                        output_terminals = "real Trip;inherit Fault;inherit d0;inherit d1;inherit d2;inherit d3;inherit d4;inherit d5;inherit d6;"
+                        output_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit;inherit;inherit;inherit;inherit"
+                        output_terminals_feedthrough = "True;True;True;True;True;True;True;True;True"
+                        output_terminals_show_labels = "True;True;True;True;True;True;True;True;True"
+                        update_fnc = "/*Begin code section*/
+//Initialise
+Trip_Zone = -1;
+
+
+//OF check, Zones 0, 1 and 2
+for(int i = 0; i < OV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input > ov_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        ov_zones[i].timer++;
+        
+        if ((ov_zones[i].timer*execution_rate) > ov_zones[i].t_limit){
+            //debug = ov_zones[i].timer*execution_rate;
+            Trip_Zone = i;
+        }
+    }
+    else { ov_zones[i].timer = 0.0f;}
+    
+    
+}
+
+//UF Check, Zones 3, 4, 5 and 6 
+for(int i = 0; i < UV_Num; i++)
+{
+    Violation = 0;
+    
+    if (Input < uv_zones[i].V_limit ){
+        Violation = 1;
+    }
+    
+    if (Violation){
+        uv_zones[i].timer++;
+        if ((uv_zones[i].timer*execution_rate) > uv_zones[i].t_limit){
+            Trip_Zone = i + OV_Num;
+        }
+    }
+    else { uv_zones[i].timer = 0.0f;}
+}
+/*End code section*/"
+                    }
+                    [
+                        position = 8156, 8240
+                        size = 168, 168
+                    ]
+
+                    component "core/Probe" d_6_f {
+                    }
+                    [
+                        position = 8264, 8336
+                        rotation = right
+                    ]
+
+                    port oFault {
+                        position = auto:auto
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8944, 8052
+                    ]
+
+                    port oCB {
+                        position = auto:auto
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8944, 8108
+                    ]
+
+                    port oGFL {
+                        position = auto:auto
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8944, 8164
+                    ]
+
+                    port iV {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7808, 7976
+                    ]
+
+                    port if {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7804, 8240
+                    ]
+
+                    port iReset {
+                        position = auto:auto
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7804, 8108
+                    ]
+
+                    junction Junction2 sp
+                    [
+                        position = 7964, 7976
+                    ]
+
+                    junction Junction3 sp
+                    [
+                        position = 8856, 8164
+                    ]
+
+                    junction Junction4 sp
+                    [
+                        position = 8820, 8108
+                    ]
+
+                    junction Junction5 sp
+                    [
+                        position = 8788, 8052
+                    ]
+
+                    junction Junction6 sp
+                    [
+                        position = 7964, 8240
+                    ]
+
+                    connect iV v_pu.in as Connection602
+                    connect f_pu.out fault_fpu.in as Connection635
+                    connect fault_vpu.in Junction2 as Connection636
+                    connect Junction2 v_pu.out as Connection637
+                    connect V_Check_BESF.Input Junction2 as Connection638
+                    connect d_0_V.in V_Check_BESF.d0 as Connection688
+                    connect d_1_V.in V_Check_BESF.d1 as Connection689
+                    connect d_2_V.in V_Check_BESF.d2 as Connection690
+                    connect d_3_V.in V_Check_BESF.d3 as Connection691
+                    connect d_4_V.in V_Check_BESF.d4 as Connection692
+                    connect oGFL Junction3 as Connection702
+                    connect Junction3 Output_Check.GFL as Connection703
+                    connect GFL.in Junction3 as Connection704
+                    connect oCB Junction4 as Connection705
+                    connect Junction4 Output_Check.CB as Connection706
+                    connect CB_faults.in Junction4 as Connection707
+                    connect oFault Junction5 as Connection708
+                    connect Junction5 Output_Check.Fault_Zone as Connection709
+                    connect Fault.in Junction5 as Connection710
+                    connect iReset Output_Check.Reset as Connection716
+                    connect V_Check_BESF.Trip Output_Check.V_Trip as Connection717
+                    [
+                        breakpoints = 8532, 7928; 8532, 8060
+                    ]
+                    connect V_Check_BESF.Fault Output_Check.V_Zone as Connection718
+                    [
+                        breakpoints = 8520, 7944; 8520, 8084
+                    ]
+                    connect if Junction6 as Connection722
+                    connect Junction6 f_pu.in as Connection723
+                    [
+                        breakpoints = 7964, 8240
+                    ]
+                    connect FRT_F_BESF-SAGC.Input Junction6 as Connection724
+                    connect FRT_F_BESF-SAGC.Trip Output_Check.F_Trip as Connection725
+                    [
+                        breakpoints = 8524, 8176; 8524, 8132
+                    ]
+                    connect FRT_F_BESF-SAGC.Fault Output_Check.F_Zone as Connection726
+                    [
+                        breakpoints = 8540, 8192; 8540, 8156
+                    ]
+                    connect FRT_F_BESF-SAGC.d0 d_0_f.in as Connection727
+                    connect FRT_F_BESF-SAGC.d1 d_1_f.in as Connection728
+                    connect FRT_F_BESF-SAGC.d2 d_2_f.in as Connection729
+                    connect FRT_F_BESF-SAGC.d3 d_3_f.in as Connection730
+                    connect FRT_F_BESF-SAGC.d4 d_4_f.in as Connection731
+                    connect FRT_F_BESF-SAGC.d5 d_5_f.in as Connection732
+                    connect d_6_f.in FRT_F_BESF-SAGC.d6 as Connection733
+                }
+                [
+                    position = 7368, 7588
+                    size = 104, 160
+                ]
+
+                component "core/C function" Phase-Synch-Switching {
+                    arb_defs = "/*Begin code section*/
+float sw_in, sw_out, sw_last;
+float ph_in, ph_targ, ph_tol;
+/*End code section*/"
+                    init_fnc = "/*Begin code section*/
+sw_in = 0;
+sw_out = 0;
+sw_last = 0;
+
+ph_in = 0;
+ph_targ = 0;
+//Tollerance
+ph_tol = 0.063; //1% of total (2pi)
+/*End code section*/"
+                    input_terminals = "real in_sw;inherit in_phase;inherit in_target;"
+                    input_terminals_dimensions = "inherit;inherit;inherit"
+                    input_terminals_feedthrough = "True;True;True"
+                    input_terminals_show_labels = "True;True;True"
+                    output_fnc = "/*Begin code section*/
+out_sw = sw_out;
+/*End code section*/"
+                    output_terminals = "real out_sw;"
+                    output_terminals_dimensions = "inherit"
+                    output_terminals_feedthrough = "True"
+                    output_terminals_show_labels = "True"
+                    update_fnc = "/*Begin code section*/
+//Update holders with inputs
+sw_in = in_sw;
+ph_in = in_phase;
+ph_targ = in_target;
+
+if(sw_in != sw_last){
+    //Edge detected
+    if( (ph_in < (ph_targ + ph_tol))&&(ph_in > (ph_targ - ph_tol)) ){
+        //in bounds
+        sw_out = sw_in;     //update output
+        sw_last = sw_in;    //update edge memory
+    } // else not in bounds
+} // else no edge
+/*End code section*/"
+                }
+                [
+                    position = 7844, 7604
+                    size = 160, 176
+                ]
+
+                component Subsystem df_Switch {
+                    layout = dynamic
+                    component "core/Probe" df_o {
+                    }
+                    [
+                        position = 8528, 8064
+                    ]
+
+                    component "core/Probe" df_diff {
+                    }
+                    [
+                        position = 8348, 7936
+                    ]
+
+                    component "core/Probe" df_sync {
+                    }
+                    [
+                        position = 8348, 7992
+                    ]
+
+                    component "core/Signal switch" switch_GFM_df1 {
+                    }
+                    [
+                        position = 8404, 8140
+                        hide_name = True
+                        scale = 1, -1
+                    ]
+
+                    component "core/Constant" Constant1 {
+                        execution_rate = "Ts_i"
+                        value = "0"
+                    }
+                    [
+                        position = 8308, 8260
+                    ]
+
+                    component "core/Logical operator" "Logical operator1" {
+                    }
+                    [
+                        position = 8236, 8308
+                    ]
+
+                    component "core/Logical operator" "Logical operator2" {
+                        operator = "NOT"
+                    }
+                    [
+                        position = 8128, 8284
+                        hide_name = True
+                    ]
+
+                    component Subsystem Phase_Synch {
+                        layout = dynamic
+                        component "core/Probe" dPh {
+                        }
+                        [
+                            position = 8168, 8064
+                        ]
+
+                        component "core/PID controller" PI_Ph {
+                            controller_type = "PI"
+                            ki = "230"
+                            kp = "8"
+                            show_reset = "either"
+                        }
+                        [
+                            position = 8208, 8204
+                        ]
+
+                        component "core/Gain" Gain1 {
+                            gain = "1.0/fn"
+                        }
+                        [
+                            position = 8352, 8204
+                        ]
+
+                        component "core/Unit Delay" "Unit Delay5" {
+                        }
+                        [
+                            position = 8452, 8204
+                            hide_name = True
+                        ]
+
+                        component "core/Probe" uPh {
+                        }
+                        [
+                            position = 8348, 8064
+                        ]
+
+                        component "core/Sum" Sum3 {
+                            signs = "+-"
+                        }
+                        [
+                            position = 7788, 8196
+                            hide_name = True
+                        ]
+
+                        component Subsystem "low pass" {
+                            layout = dynamic
+                            component "core/Gain" b0 {
+                                gain = "b[0]"
+                            }
+                            [
+                                position = 8120, 8056
+                            ]
+
+                            component "core/Gain" b1 {
+                                gain = "b[1]"
+                            }
+                            [
+                                position = 8120, 8184
+                            ]
+
+                            component "core/Gain" a2 {
+                                gain = "a[1]"
+                            }
+                            [
+                                position = 8280, 8336
+                                scale = -1, 1
+                            ]
+
+                            component "core/Sum" Sum3 {
+                                signs = "+-"
+                            }
+                            [
+                                position = 8192, 8296
+                                rotation = left
+                                hide_name = True
+                            ]
+
+                            component "core/Unit Delay" "Unit Delay1" {
+                            }
+                            [
+                                position = 8048, 8120
+                                rotation = right
+                                hide_name = True
+                            ]
+
+                            component "core/Gain" b2 {
+                                gain = "b[2]"
+                            }
+                            [
+                                position = 8112, 8336
+                            ]
+
+                            component "core/Unit Delay" "Unit Delay4" {
+                            }
+                            [
+                                position = 8336, 8264
+                                rotation = right
+                                hide_name = True
+                            ]
+
+                            component "core/Unit Delay" "Unit Delay3" {
+                            }
+                            [
+                                position = 8336, 8128
+                                rotation = right
+                                hide_name = True
+                            ]
+
+                            component "core/Sum" Sum1 {
+                            }
+                            [
+                                position = 8232, 8064
+                                hide_name = True
+                            ]
+
+                            component "core/Gain" a1 {
+                                gain = "a[0]"
+                            }
+                            [
+                                position = 8280, 8184
+                                scale = -1, 1
+                            ]
+
+                            component "core/Unit Delay" "Unit Delay2" {
+                            }
+                            [
+                                position = 8048, 8264
+                                rotation = right
+                                hide_name = True
+                            ]
+
+                            component "core/Sum" Sum2 {
+                                signs = "++-"
+                            }
+                            [
+                                position = 8192, 8152
+                                rotation = left
+                                hide_name = True
+                            ]
+
+                            port Out {
+                                position = right:1
+                                kind = sp
+                                direction =  in
+                                sp_type {
+                                    default = inherit
+                                    readonly = True
+                                }
+                            }
+                            [
+                                position = 8384, 8064
+                            ]
+
+                            port In {
+                                position = left:1
+                                kind = sp
+                                direction =  out
+                                sp_type {
+                                    default = auto
+                                    readonly = True
+                                }
+                            }
+                            [
+                                position = 8000, 8080
+                            ]
+
+                            junction Junction4 sp
+                            [
+                                position = 8336, 8064
+                            ]
+
+                            junction Junction3 sp
+                            [
+                                position = 8048, 8184
+                            ]
+
+                            junction Junction2 sp
+                            [
+                                position = 8336, 8176
+                            ]
+
+                            junction Junction1 sp
+                            [
+                                position = 8048, 8080
+                            ]
+
+                            connect "Unit Delay3.out" Junction2 as Connection621
+                            connect "Unit Delay1.out" Junction3 as Connection624
+                            connect Sum1.in b0.out as Connection632
+                            connect b0.in Junction1 as Connection633
+                            connect a2.out Sum3.in1 as Connection638
+                            connect Junction4 "Unit Delay3.in" as Connection630
+                            connect a2.in "Unit Delay4.out" as Connection639
+                            connect Sum1.out Junction4 as Connection629
+                            connect Junction4 Out as Connection642
+                            connect b2.in "Unit Delay2.out" as Connection637
+                            connect a1.in Junction2 as Connection641
+                            connect b1.in Junction3 as Connection635
+                            connect Junction1 "Unit Delay1.in" as Connection615
+                            connect b2.out Sum3.in as Connection636
+                            connect Sum2.out Sum1.in1 as Connection617
+                            connect Junction1 In as Connection643
+                            connect Sum3.out Sum2.in1 as Connection620
+                            connect Sum2.in b1.out as Connection634
+                            connect Junction3 "Unit Delay2.in" as Connection625
+                            connect Junction2 "Unit Delay4.in" as Connection622
+                            connect Sum2.in2 a1.out as Connection640
+
+                            a = "alowpass"
+                            b = "blowpass"
+
+                            mask {
+                                description = "Digital biquad filter
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Direct form 1"
+
+                                b {
+                                    label = "b"
+                                    widget = edit
+                                    type = generic
+                                    default_value = "bnotch"
+                                }
+
+                                a {
+                                    label = "a"
+                                    widget = edit
+                                    type = generic
+                                    default_value = "anotch"
+                                }
+
+                                CODE open
+                                    from typhoon.apps.schematic_editor.dialogs.component_property_dialogs.general import RegularComponentPropertiesDialog
+                                
+                                    dialog = RegularComponentPropertiesDialog(
+                                        component=component,
+                                        property_container=component.masks[-1],
+                                        current_diagram=current_diagram
+                                    )
+                                    dialog.exec_()
+                                
+                                ENDCODE
+                            }
+                        }
+                        [
+                            position = 8020, 8196
+                            size = 48, 48
+                        ]
+
+                        component "core/C function" confine_phase {
+                            arb_defs = "/*Begin code section*/
+
+/*End code section*/"
+                            init_fnc = "/*Begin code section*/
+
+/*End code section*/"
+                            input_terminals = "real dtheta;"
+                            input_terminals_dimensions = "inherit"
+                            input_terminals_feedthrough = "True"
+                            input_terminals_show_labels = "False"
+                            output_fnc = "/*Begin code section*/
+if (dtheta > 3.14159265359) {//confine theta to +/- 2*pi;
+    dtheta_confined = dtheta - 6.28318530718;
+}
+else{
+    if (dtheta < -3.14159265359){
+        dtheta_confined = dtheta + 6.28318530718;
+    }
+    else{
+        dtheta_confined = dtheta;
+    }
+}
+/*End code section*/"
+                            output_terminals = "real dtheta_confined;"
+                            output_terminals_dimensions = "inherit"
+                            output_terminals_feedthrough = "True"
+                            output_terminals_show_labels = "False"
+                            update_fnc = "/*Begin code section*/
+
+/*End code section*/"
+                        }
+                        [
+                            position = 7908, 8196
+                            size = 48, 48
+                        ]
+
+                        port Ph_GFL {
+                            position = left:1
+                            kind = sp
+                            direction =  out
+                            sp_type {
+                                default = auto
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 7704, 8144
+                        ]
+
+                        port df_GFM {
+                            position = right:1
+                            kind = sp
+                            direction =  in
+                            sp_type {
+                                default = inherit
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 8560, 8204
+                        ]
+
+                        port Ph_GFM {
+                            position = left:2
+                            kind = sp
+                            direction =  out
+                            sp_type {
+                                default = auto
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 7704, 8244
+                        ]
+
+                        port Synch {
+                            position = bottom:1
+                            kind = sp
+                            direction =  out
+                            sp_type {
+                                default = auto
+                                readonly = True
+                            }
+                        }
+                        [
+                            position = 8108, 8312
+                            rotation = left
+                        ]
+
+                        junction Junction1 sp
+                        [
+                            position = 8108, 8196
+                        ]
+
+                        junction Junction2 sp
+                        [
+                            position = 8280, 8204
+                        ]
+
+                        connect Sum3.in1 Ph_GFM as Connection2095
+                        connect Sum3.in Ph_GFL as Connection2093
+                        connect dPh.in Junction1 as Connection2097
+                        [
+                            breakpoints = 8108, 8064
+                        ]
+                        connect Junction1 "low pass.Out" as Connection2098
+                        [
+                            breakpoints = 8108, 8196
+                        ]
+                        connect PI_Ph.in Junction1 as Connection2099
+                        connect Synch PI_Ph.reset as Connection2100
+                        connect "Unit Delay5.in" Gain1.out as Connection2102
+                        connect Gain1.in Junction2 as Connection2104
+                        connect Junction2 PI_Ph.out as Connection2105
+                        connect uPh.in Junction2 as Connection2106
+                        connect df_GFM "Unit Delay5.out" as Connection2110
+                        connect confine_phase.dtheta Sum3.out as Connection2092
+                        connect confine_phase.dtheta_confined "low pass.In" as Connection2091
+                    }
+                    [
+                        position = 8128, 8108
+                        size = 120, 64
+                    ]
+
+                    component "core/Signal switch" switch_GFM_df {
+                    }
+                    [
+                        position = 8256, 8124
+                        hide_name = True
+                        scale = 1, -1
+                    ]
+
+                    port df_synch {
+                        position = left:3
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8200
+                    ]
+
+                    port Synch {
+                        position = left:4
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8252
+                    ]
+
+                    port df {
+                        position = right:1
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8536, 8140
+                    ]
+
+                    port Ph_GFL {
+                        position = left:1
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8080
+                    ]
+
+                    port Ph_GFM {
+                        position = left:2
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8140
+                    ]
+
+                    port Vmode {
+                        position = left:5
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8012, 8316
+                    ]
+
+                    junction Junction352 sp
+                    [
+                        position = 8212, 8108
+                    ]
+
+                    junction Junction353 sp
+                    [
+                        position = 8224, 8140
+                    ]
+
+                    junction Junction354 sp
+                    [
+                        position = 8472, 8140
+                    ]
+
+                    junction Junction355 sp
+                    [
+                        position = 8064, 8252
+                    ]
+
+                    junction Junction350 sp
+                    [
+                        position = 8128, 8252
+                    ]
+
+                    connect Phase_Synch.Ph_GFL Ph_GFL as Connection2895
+                    connect Phase_Synch.Ph_GFM Ph_GFM as Connection2896
+                    connect Phase_Synch.df_GFM Junction352 as Connection2900
+                    connect Junction352 switch_GFM_df.in1 as Connection2901
+                    connect df_diff.in Junction352 as Connection2902
+                    connect switch_GFM_df.in Junction353 as Connection2903
+                    connect Junction353 df_synch as Connection2904
+                    connect df_sync.in Junction353 as Connection2905
+                    connect Constant1.out switch_GFM_df1.in as Connection2907
+                    connect switch_GFM_df1.in1 switch_GFM_df.out as Connection2909
+                    connect df Junction354 as Connection2914
+                    connect Junction354 switch_GFM_df1.out as Connection2915
+                    connect df_o.in Junction354 as Connection2916
+                    connect Junction350 Junction355 as Connection2918
+                    connect Junction355 Synch as Connection2919
+                    connect "Logical operator2.in" Junction355 as Connection2920
+                    connect "Logical operator1.out" switch_GFM_df1.in2 as Connection2922
+                    connect "Logical operator1.in" "Logical operator2.out" as Connection2923
+                    [
+                        breakpoints = 8176, 8300; 8176, 8284
+                    ]
+                    connect Vmode "Logical operator1.in1" as Connection2924
+                    connect Junction350 switch_GFM_df.in2 as Connection2890
+                    connect Phase_Synch.Synch Junction350 as Connection2891
+                }
+                [
+                    position = 7820, 8056
+                    size = 96, 144
+                ]
+            }
+            [
+                position = 7572, 8088
+                size = 176, 152
+            ]
+
+            component Category Grid {
+                layout = dynamic
+                component Subsystem Grid_Inputs {
+                    layout = dynamic
+                    component "core/Multiport signal switch" Mux_V_g {
+                        number_of_input_terminals = "3"
+                    }
+                    [
+                        position = 7828, 8012
+                        scale = -1, 1
+                    ]
+
+                    component "core/Multiport signal switch" Mux_f_g {
+                        number_of_input_terminals = "3"
+                    }
+                    [
+                        position = 7828, 8484
+                        scale = -1, 1
+                    ]
+
+                    component "core/Multiport signal switch" Mux_Ph_g {
+                        number_of_input_terminals = "1"
+                    }
+                    [
+                        position = 7828, 8728
+                        scale = -1, 1
+                    ]
+
+                    component "core/Dynamic Table" V_FRT_pu {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/FRT/V-FRT_BESF_02.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.02, 1.04, 1.13, 1.15, 1.17, 1.48, 1.5, 1.52, 3.0, 3.02, 3.04, 4.98, 5.0, 5.02, 6.0]"
+                        y_vec = "[[1.0, 1.0, 0.6, 0.79, 0.79, 0.8, 0.84, 0.84, 0.85, 1.0, 1.0, 1.2, 1.19, 1.11, 1.1, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8180, 7980
+                        scale = -1, 1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" F_FRT_pu {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/FRT/F-FRT_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 2.2, 2.24, 2.32, 2.36, 2.52, 7.92, 7.96, 8.12, 11.72, 11.76, 12.12, 61.32, 61.36, 61.76, 62.96, 63.56, 63.6, 67.48, 67.52, 67.68, 123.22, 123.32, 123.72, 124.92]"
+                        y_vec = "[[1.0, 1.0, 0.94, 0.938, 0.938, 0.94, 0.948, 0.948, 0.95, 0.958, 0.958, 0.96, 0.978, 0.978, 0.98, 1.0, 1.0, 1.03, 1.032, 1.032, 1.03, 1.022, 1.022, 1.02, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8180, 8452
+                        scale = -1, 1
+                        size = 48, 48
+                    ]
+
+                    component "core/Multiport signal switch" Mux_V_g_Trip {
+                        number_of_input_terminals = "5"
+                    }
+                    [
+                        position = 8404, 8028
+                        scale = -1, 1
+                    ]
+
+                    component "core/Multiport signal switch" Mux_F_g_Trip {
+                        number_of_input_terminals = "7"
+                    }
+                    [
+                        position = 8408, 8500
+                        scale = -1, 1
+                    ]
+
+                    component "core/Dynamic Table" V_Trip1 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OV1_BESF.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.01, 3.03, 3.04, 4.0]"
+                        y_vec = "[[1.0, 1.0, 1.11, 1.11, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8460, 7940
+                        rotation = right
+                        scale = -1, 1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" V_Trip2 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OV2_BESF.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.01, 1.051, 1.061, 2.0]"
+                        y_vec = "[[1.0, 1.0, 1.21, 1.21, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8516, 7940
+                        rotation = right
+                        hide_name = True
+                        scale = -1, 1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" V_Trip3 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UV1_BESF.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.01, 1.53, 1.54, 2.0]"
+                        y_vec = "[[1.0, 1.0, 0.84, 0.84, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8572, 7940
+                        rotation = right
+                        hide_name = True
+                        scale = -1, 1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" V_Trip4 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UV2_BESF.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.01, 1.18, 1.19, 2.0]"
+                        y_vec = "[[1.0, 1.0, 0.79, 0.79, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8628, 7940
+                        rotation = right
+                        hide_name = True
+                        scale = -1, 1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" V_Trip5 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UV3_BESF.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.01, 1.051, 1.061, 2.0]"
+                        y_vec = "[[1.0, 1.0, 0.59, 0.59, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8684, 7940
+                        rotation = right
+                        hide_name = True
+                        scale = -1, 1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" F_Trip6 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF4_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 2.24, 2.44, 3.68, 4.0]"
+                        y_vec = "[[1.0, 1.0, 0.938, 0.938, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8464, 8604
+                        rotation = right
+                        scale = -1, -1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" F_Trip5 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF3_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 2.04, 8.04, 9.08, 9.5]"
+                        y_vec = "[[1.0, 1.0, 0.948, 0.948, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8520, 8604
+                        rotation = right
+                        hide_name = True
+                        scale = -1, -1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" F_Trip4 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF2_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.84, 11.84, 12.68, 13.0]"
+                        y_vec = "[[1.0, 1.0, 0.958, 0.958, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8576, 8604
+                        rotation = right
+                        hide_name = True
+                        scale = -1, -1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" F_Trip3 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF1_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.44, 61.44, 61.88, 62.0]"
+                        y_vec = "[[1.0, 1.0, 0.978, 0.978, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8632, 8604
+                        rotation = right
+                        hide_name = True
+                        scale = -1, -1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" F_Trip2 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OF2_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.64, 5.64, 6.28, 6.5]"
+                        y_vec = "[[1.0, 1.0, 1.032, 1.032, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8744, 8604
+                        rotation = right
+                        hide_name = True
+                        scale = -1, -1
+                        size = 48, 48
+                    ]
+
+                    component "core/Dynamic Table" F_Trip1 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OF1_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.44, 61.44, 61.88, 62.0]"
+                        y_vec = "[[1.0, 1.0, 1.022, 1.022, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8800, 8604
+                        rotation = right
+                        hide_name = True
+                        scale = -1, -1
+                        size = 48, 48
+                    ]
+
+                    component "Thesis_Stuff/Phase-Synch-Switching" Input-Synch-Switching_V {
+                        arb_defs = "/*Begin code section*/
+int sw_in, sw_out, sw_last;
+float V_in, V_targ;
+/*End code section*/"
+                        init_fnc = "/*Begin code section*/
+sw_in = 1;
+sw_out = 1;
+sw_last = 1;
+
+V_in = 1;
+V_targ = 1;
+/*End code section*/"
+                        input_terminals = "int in_sw;inherit in_FRT;inherit in_Trip;"
+                        input_terminals_dimensions = "inherit;inherit;inherit"
+                        input_terminals_feedthrough = "True;True;True"
+                        input_terminals_show_labels = "True;True;True"
+                        output_fnc = "/*Begin code section*/
+out_sw = sw_out;
+/*End code section*/"
+                        output_terminals = "real out_sw;"
+                        output_terminals_dimensions = "inherit"
+                        output_terminals_feedthrough = "True"
+                        output_terminals_show_labels = "True"
+                        update_fnc = "/*Begin code section*/
+//Update holders with inputs
+sw_in = in_sw;
+// ph_in = in_phase;
+// ph_targ = in_target;
+
+if(sw_in != sw_last){//Edge detected
+    switch (sw_in){
+    case 1: //Input
+        V_in = 1;    
+        break;
+    case 2: //FRT
+        V_in = in_FRT;    
+        break;
+    case 3: //Trip
+        V_in = in_Trip;    
+        break;    
+    }    
+ 
+    
+    if( (V_in < (V_targ+0.001))&&(V_in > (V_targ-0.001)) ){
+        //in bounds
+        sw_out = sw_in;     //update output
+        sw_last = sw_in;    //update edge memory
+    } // else not in bounds
+} // else no edge
+/*End code section*/"
+                    }
+                    [
+                        position = 7868, 7800
+                        rotation = right
+                        scale = -1, 1
+                        size = 160, 120
+                    ]
+
+                    component "Thesis_Stuff/Phase-Synch-Switching" Input-Synch-Switching_F {
+                        arb_defs = "/*Begin code section*/
+int sw_in, sw_out, sw_last;
+float V_in, V_targ;
+/*End code section*/"
+                        init_fnc = "/*Begin code section*/
+sw_in = 1;
+sw_out = 1;
+sw_last = 1;
+
+V_in = 1;
+V_targ = 1;
+/*End code section*/"
+                        input_terminals = "int in_sw;inherit in_FRT;inherit in_Trip;"
+                        input_terminals_dimensions = "inherit;inherit;inherit"
+                        input_terminals_feedthrough = "True;True;True"
+                        input_terminals_show_labels = "True;True;True"
+                        output_fnc = "/*Begin code section*/
+out_sw = sw_out;
+/*End code section*/"
+                        output_terminals = "real out_sw;"
+                        output_terminals_dimensions = "inherit"
+                        output_terminals_feedthrough = "True"
+                        output_terminals_show_labels = "True"
+                        update_fnc = "/*Begin code section*/
+//Update holders with inputs
+sw_in = in_sw;
+// ph_in = in_phase;
+// ph_targ = in_target;
+
+if(sw_in != sw_last){//Edge detected
+    switch (sw_in){
+    case 1: //Input
+        V_in = 1;    
+        break;
+    case 2: //FRT
+        V_in = in_FRT;    
+        break;
+    case 3: //Trip
+        V_in = in_Trip;    
+        break;    
+    }    
+ 
+    
+    if( (V_in < (V_targ+0.001))&&(V_in > (V_targ-0.001)) ){
+        //in bounds
+        sw_out = sw_in;     //update output
+        sw_last = sw_in;    //update edge memory
+    } // else not in bounds
+} // else no edge
+/*End code section*/"
+                    }
+                    [
+                        position = 7868, 8292
+                        rotation = right
+                        scale = -1, 1
+                        size = 160, 120
+                    ]
+
+                    component "core/Dynamic Table" F_Trip7 {
+                        execution_rate = "Ts_i"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OF3_BESF_pu.csv"
+                        model_load_legacy = "1"
+                        signal_names = "[\'Signal\']"
+                        x_vec = "[0.0, 1.0, 1.804, 2.014, 2.818, 3.0]"
+                        y_vec = "[[1.0, 1.0, 1.0402, 1.0402, 1.0, 1.0]]"
+                    }
+                    [
+                        position = 8688, 8604
+                        rotation = right
+                        hide_name = True
+                        scale = -1, -1
+                        size = 48, 48
+                    ]
+
+                    port In3 {
+                        label = "F_choice"
+                        position = top:3
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7828, 8152
+                        rotation = right
+                    ]
+
+                    port In5 {
+                        label = "V_Trip_Choice"
+                        position = top:5
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8312, 7932
+                        rotation = right
+                    ]
+
+                    port In2 {
+                        label = "V_choice"
+                        position = top:2
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7828, 7644
+                        rotation = right
+                    ]
+
+                    port In6 {
+                        label = "V_pu_in"
+                        position = right:1
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8088, 7928
+                        rotation = right
+                    ]
+
+                    port In8 {
+                        label = "Ph_deg_In"
+                        position = right:3
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7976, 8728
+                        rotation = down
+                    ]
+
+                    port In1 {
+                        label = "Ph_choice"
+                        position = top:1
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7828, 8644
+                        rotation = right
+                    ]
+
+                    port Out11 {
+                        label = "Ph_deg_out"
+                        position = left:3
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7752, 8728
+                        rotation = down
+                    ]
+
+                    port Out10 {
+                        label = "f_pu_out"
+                        position = left:2
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7752, 8484
+                        rotation = down
+                    ]
+
+                    port In4 {
+                        label = "F_Trip_Choice"
+                        position = top:4
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8316, 8368
+                        rotation = right
+                    ]
+
+                    port Out9 {
+                        label = "V_pu_out"
+                        position = left:1
+                        kind = sp
+                        direction =  in
+                        sp_type {
+                            default = inherit
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 7752, 8012
+                        rotation = down
+                    ]
+
+                    port In7 {
+                        label = "f_pu_in"
+                        position = right:2
+                        kind = sp
+                        direction =  out
+                        sp_type {
+                            default = auto
+                            readonly = True
+                        }
+                    }
+                    [
+                        position = 8088, 8396
+                        rotation = right
+                    ]
+
+                    junction Junction1 sp
+                    [
+                        position = 7956, 8028
+                    ]
+
+                    junction Junction2 sp
+                    [
+                        position = 7988, 8012
+                    ]
+
+                    junction Junction3 sp
+                    [
+                        position = 7952, 8500
+                    ]
+
+                    junction Junction4 sp
+                    [
+                        position = 8008, 8484
+                    ]
+
+                    connect Mux_f_g.in In7 as Connection733
+                    connect Mux_V_g_Trip.ctrl In5 as Connection724
+                    connect Mux_Ph_g.ctrl In1 as Connection728
+                    connect Mux_F_g_Trip.ctrl In4 as Connection731
+                    connect Mux_V_g.in In6 as Connection726
+                    connect Mux_Ph_g.out Out11 as Connection729
+                    connect Mux_f_g.out Out10 as Connection730
+                    connect Mux_V_g.out Out9 as Connection732
+                    connect Mux_Ph_g.in In8 as Connection727
+                    connect V_Trip1.out Mux_V_g_Trip.in as Connection712
+                    connect V_Trip2.out Mux_V_g_Trip.in1 as Connection713
+                    connect V_Trip3.out Mux_V_g_Trip.in2 as Connection714
+                    connect V_Trip4.out Mux_V_g_Trip.in3 as Connection715
+                    connect V_Trip5.out Mux_V_g_Trip.in4 as Connection716
+                    connect F_Trip2.out Mux_F_g_Trip.in1 as Connection721
+                    connect F_Trip1.out Mux_F_g_Trip.in as Connection722
+                    connect In2 Input-Synch-Switching_V.in_sw as Connection737
+                    [
+                        breakpoints = 7828, 7704
+                    ]
+                    connect Input-Synch-Switching_V.out_sw Mux_V_g.ctrl as Connection749
+                    [
+                        breakpoints = 7828, 7888; 7828, 7972
+                    ]
+                    connect Mux_V_g_Trip.out Junction1 as Connection752
+                    [
+                        breakpoints = 7988, 8028
+                    ]
+                    connect Junction1 Mux_V_g.in2 as Connection753
+                    connect Input-Synch-Switching_V.in_Trip Junction1 as Connection754
+                    [
+                        breakpoints = 7908, 7700; 7956, 7700
+                    ]
+                    connect Mux_V_g.in1 Junction2 as Connection755
+                    connect Junction2 V_FRT_pu.out as Connection756
+                    [
+                        breakpoints = 8100, 8012; 8100, 7980
+                    ]
+                    connect Input-Synch-Switching_V.in_FRT Junction2 as Connection757
+                    [
+                        breakpoints = 7868, 7676; 7988, 7676
+                    ]
+                    connect Input-Synch-Switching_F.out_sw Mux_f_g.ctrl as Connection758
+                    [
+                        breakpoints = 7868, 8384; 7828, 8384
+                    ]
+                    connect In3 Input-Synch-Switching_F.in_sw as Connection759
+                    connect Mux_F_g_Trip.out Junction3 as Connection760
+                    connect Junction3 Mux_f_g.in2 as Connection761
+                    connect Input-Synch-Switching_F.in_Trip Junction3 as Connection762
+                    [
+                        breakpoints = 7908, 8192; 7952, 8192
+                    ]
+                    connect F_FRT_pu.out Junction4 as Connection763
+                    [
+                        breakpoints = 8104, 8452; 8104, 8484
+                    ]
+                    connect Junction4 Mux_f_g.in1 as Connection764
+                    connect Input-Synch-Switching_F.in_FRT Junction4 as Connection765
+                    [
+                        breakpoints = 7868, 8168; 8008, 8168
+                    ]
+                    connect F_Trip6.out Mux_F_g_Trip.in6 as Connection766
+                    connect F_Trip5.out Mux_F_g_Trip.in5 as Connection767
+                    connect F_Trip4.out Mux_F_g_Trip.in4 as Connection768
+                    connect F_Trip3.out Mux_F_g_Trip.in3 as Connection769
+                    connect F_Trip7.out Mux_F_g_Trip.in2 as Connection770
+                }
+                [
+                    position = 7832, 8108
+                    size = 272, 152
+                ]
+            }
+            [
+                position = 7820, 8092
+                size = 160, 152
+            ]
+        }
+        [
+            position = 4304, 4388
+            size = 208, 168
+        ]
+
+        comment Comment1 START Consider using the Category component to better organize your library items in the tree. ENDCOMMENT 
+        [
+            position = 4192, 4192
+        ]
+    }
+
+    default {
+    }
+}

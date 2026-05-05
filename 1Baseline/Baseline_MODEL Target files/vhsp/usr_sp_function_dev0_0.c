@@ -1032,8 +1032,8 @@ typedef struct {
     float  t_limit ;
     int  timer ;
 } fFRT_Zone  ;
-fFRT_Zone  _pcc_control_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.2f ,  0  }  };
-fFRT_Zone  _pcc_control_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
+fFRT_Zone  _pcc_control1_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.04f ,  0  }  };
+fFRT_Zone  _pcc_control1_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
 
 
 
@@ -1099,8 +1099,8 @@ typedef struct {
     float  t_limit ;
     int  timer ;
 } FRT_Zone  ;
-FRT_Zone  _pcc_control_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.05f ,  0  }  };
-FRT_Zone  _pcc_control_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.05f ,  0  }  };
+FRT_Zone  _pcc_control1_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.04f ,  0  }  };
+FRT_Zone  _pcc_control1_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.04f ,  0  }  };
 
 
 
@@ -2580,20 +2580,20 @@ double _ms_s2_meter_load_gain__out[12];
 double _ms_s2_tpm_load_pll_pid_kb__out;
 double _ms_s2_three_phase_pll1_pid_kb__out;
 double _ms_s3_meter_grid_gain__out[12];
-double _pcc_control_frt_f_besf_sagc__Input;
+double _pcc_control1_frt_f_besf_sagc__Input;
 
-double _pcc_control_frt_f_besf_sagc__Fault;
-double _pcc_control_frt_f_besf_sagc__Trip;
-double _pcc_control_frt_f_besf_sagc__d0;
-double _pcc_control_frt_f_besf_sagc__d1;
-double _pcc_control_frt_f_besf_sagc__d2;
-double _pcc_control_frt_f_besf_sagc__d3;
-double _pcc_control_frt_f_besf_sagc__d4;
-double _pcc_control_frt_f_besf_sagc__d5;
-double _pcc_control_frt_f_besf_sagc__d6;
+double _pcc_control1_frt_f_besf_sagc__Fault;
+double _pcc_control1_frt_f_besf_sagc__Trip;
+double _pcc_control1_frt_f_besf_sagc__d0;
+double _pcc_control1_frt_f_besf_sagc__d1;
+double _pcc_control1_frt_f_besf_sagc__d2;
+double _pcc_control1_frt_f_besf_sagc__d3;
+double _pcc_control1_frt_f_besf_sagc__d4;
+double _pcc_control1_frt_f_besf_sagc__d5;
+double _pcc_control1_frt_f_besf_sagc__d6;
 
-double _pcc_control_f_pu__out;
-double _pcc_control_v_pu__out;
+double _pcc_control1_f_pu__out;
+double _pcc_control1_v_pu__out;
 double _ms_s3_tpm_grid_pll_pid_kb__out;
 double _ms_s3_meter_ug_gain__out[12];
 double _ms_s3_tpm_ug_pll_pid_kb__out;
@@ -2641,15 +2641,15 @@ double _ms_s3_meter_grid_extra_input_bus__out8;
 double _ms_s3_meter_grid_extra_input_bus__out9;
 double _ms_s3_meter_grid_extra_input_bus__out10;
 double _ms_s3_meter_grid_extra_input_bus__out11;
-double _pcc_control_v_check_besf__Input;
+double _pcc_control1_v_check_besf__Input;
 
-double _pcc_control_v_check_besf__Fault;
-double _pcc_control_v_check_besf__Trip;
-double _pcc_control_v_check_besf__d0;
-double _pcc_control_v_check_besf__d1;
-double _pcc_control_v_check_besf__d2;
-double _pcc_control_v_check_besf__d3;
-double _pcc_control_v_check_besf__d4;
+double _pcc_control1_v_check_besf__Fault;
+double _pcc_control1_v_check_besf__Trip;
+double _pcc_control1_v_check_besf__d0;
+double _pcc_control1_v_check_besf__d1;
+double _pcc_control1_v_check_besf__d2;
+double _pcc_control1_v_check_besf__d3;
+double _pcc_control1_v_check_besf__d4;
 
 double _ms_s3_tpm_grid_pll_pid_sum7__out;
 double _ms_s3_meter_ug_extra_input_bus__out;
@@ -2671,15 +2671,15 @@ double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out;
 
 double _battery_inverter__average_1_control_synch_phase_match_pi_sum7__out;
-X_Int32 _pcc_control_output_check__F_Trip;
-X_Int32 _pcc_control_output_check__F_Zone;
-X_Int32 _pcc_control_output_check__Reset;
-X_Int32 _pcc_control_output_check__V_Trip;
-X_Int32 _pcc_control_output_check__V_Zone;
+X_Int32 _pcc_control1_output_check__F_Trip;
+X_Int32 _pcc_control1_output_check__F_Zone;
+X_Int32 _pcc_control1_output_check__Reset;
+X_Int32 _pcc_control1_output_check__V_Trip;
+X_Int32 _pcc_control1_output_check__V_Zone;
 
-X_Int32 _pcc_control_output_check__CB;
-X_Int32 _pcc_control_output_check__Fault_Zone;
-X_Int32 _pcc_control_output_check__GFL;
+X_Int32 _pcc_control1_output_check__CB;
+X_Int32 _pcc_control1_output_check__Fault_Zone;
+X_Int32 _pcc_control1_output_check__GFL;
 
 float _battery_inverter__average_1_control_synch_on_nominal__tmp;
 double _multiport_signal_switch1__out;
@@ -3570,16 +3570,16 @@ double _ms_s2_ia_meanvalue__vector[20000];
 double _ms_s2_ia_meanvalue__sum;
 X_Int32 _ms_s2_ia_meanvalue__cnt_i;
 X_Int32 _ms_s2_ia_meanvalue__cnt_j;
-X_Int32 _pcc_control_frt_f_besf_sagc__Violation;
+X_Int32 _pcc_control1_frt_f_besf_sagc__Violation;
 
-X_Int32 _pcc_control_frt_f_besf_sagc__Trip_Zone;
-
-
+X_Int32 _pcc_control1_frt_f_besf_sagc__Trip_Zone;
 
 
-X_Int32 _pcc_control_v_check_besf__Violation;
 
-X_Int32 _pcc_control_v_check_besf__Trip_Zone;
+
+X_Int32 _pcc_control1_v_check_besf__Violation;
+
+X_Int32 _pcc_control1_v_check_besf__Trip_Zone;
 
 
 
@@ -3591,11 +3591,11 @@ double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_
 
 
 
-double _pcc_control_output_check__var_Fault_Zone;
+double _pcc_control1_output_check__var_Fault_Zone;
 
-double _pcc_control_output_check__var_CB;
+double _pcc_control1_output_check__var_CB;
 
-double _pcc_control_output_check__var_GFL;
+double _pcc_control1_output_check__var_GFL;
 
 
 
@@ -4310,8 +4310,8 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40d2, 0.0f);
     HIL_OutAO(0x40d3, 0.0f);
     {
-        _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+        _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+        _pcc_control1_frt_f_besf_sagc__Trip_Zone = - 1 ;
     }
     HIL_OutAO(0x40d4, 0.0f);
     HIL_OutAO(0x40d5, 0.0f);
@@ -4332,8 +4332,8 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40e7, 0.0f);
     HIL_OutAO(0x40e8, 0.0f);
     {
-        _pcc_control_v_check_besf__Violation = 0 ;
-        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
+        _pcc_control1_v_check_besf__Violation = 0 ;
+        _pcc_control1_v_check_besf__Trip_Zone = - 1 ;
     }
     HIL_OutAO(0x40e9, 0.0f);
     {
@@ -4341,9 +4341,9 @@ void ReInit_user_sp_cpu0_dev0() {
         _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__wait_time = 0.01 ;
     }
     {
-        _pcc_control_output_check__var_CB = 1 ;
-        _pcc_control_output_check__var_GFL = 1 ;
-        _pcc_control_output_check__var_Fault_Zone = - 1 ;
+        _pcc_control1_output_check__var_CB = 1 ;
+        _pcc_control1_output_check__var_GFL = 1 ;
+        _pcc_control1_output_check__var_Fault_Zone = - 1 ;
     }
     HIL_OutAO(0x40dc, 0.0f);
     HIL_OutAO(0x40de, 0.0f);
@@ -8740,28 +8740,28 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40d2, (float)_ms_s3_meter_grid_input_bus__out10);
     // Generated from the component: MS_S3.Van_Grid
     HIL_OutAO(0x40d3, (float)_ms_s3_meter_grid_input_bus__out);
-    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
-    _pcc_control_frt_f_besf_sagc__Input = _ms_s3_meter_grid_input_bus__out9;
+    // Generated from the component: PCC_Control1.FRT_F_BESF-SAGC
+    _pcc_control1_frt_f_besf_sagc__Input = _ms_s3_meter_grid_input_bus__out9;
     {
-        _pcc_control_frt_f_besf_sagc__Fault = _pcc_control_frt_f_besf_sagc__Trip_Zone ;
-        if ( _pcc_control_frt_f_besf_sagc__Trip_Zone > - 1 )     {
-            _pcc_control_frt_f_besf_sagc__Trip = 1 ;
+        _pcc_control1_frt_f_besf_sagc__Fault = _pcc_control1_frt_f_besf_sagc__Trip_Zone ;
+        if ( _pcc_control1_frt_f_besf_sagc__Trip_Zone > - 1 )     {
+            _pcc_control1_frt_f_besf_sagc__Trip = 1 ;
         }
         else     {
-            _pcc_control_frt_f_besf_sagc__Trip = 0 ;
+            _pcc_control1_frt_f_besf_sagc__Trip = 0 ;
         }
-        _pcc_control_frt_f_besf_sagc__d0 = _pcc_control_frt_f_besf_sagc__ov_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d1 = _pcc_control_frt_f_besf_sagc__ov_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d2 = _pcc_control_frt_f_besf_sagc__ov_zones [ 2 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d3 = _pcc_control_frt_f_besf_sagc__uv_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d4 = _pcc_control_frt_f_besf_sagc__uv_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d5 = _pcc_control_frt_f_besf_sagc__uv_zones [ 2 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d6 = _pcc_control_frt_f_besf_sagc__uv_zones [ 3 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d0 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d1 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d2 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d3 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d4 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d5 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d6 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 3 ] . timer * 1e-06 ;
     }
-    // Generated from the component: PCC_Control.f_pu
-    _pcc_control_f_pu__out = 0.02 * _ms_s3_meter_grid_input_bus__out9;
-    // Generated from the component: PCC_Control.v_pu
-    _pcc_control_v_pu__out = 0.004330127018922193 * _ms_s3_meter_grid_input_bus__out10;
+    // Generated from the component: PCC_Control1.f_pu
+    _pcc_control1_f_pu__out = 0.02 * _ms_s3_meter_grid_input_bus__out9;
+    // Generated from the component: PCC_Control1.v_pu
+    _pcc_control1_v_pu__out = 0.004330127018922193 * _ms_s3_meter_grid_input_bus__out10;
     // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Kb
     _ms_s3_tpm_grid_pll_pid_kb__out = 1.0 * _ms_s3_tpm_grid_pll_pid_sum6__out;
     // Generated from the component: MS_S3.Meter_uG.IA
@@ -8879,40 +8879,40 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _ms_s3_meter_grid_extra_input_bus__out9 = _ms_s3_meter_grid_gain__out[9];
     _ms_s3_meter_grid_extra_input_bus__out10 = _ms_s3_meter_grid_gain__out[10];
     _ms_s3_meter_grid_extra_input_bus__out11 = _ms_s3_meter_grid_gain__out[11];
-    // Generated from the component: PCC_Control.d_0_f
-    HIL_OutAO(0x40dd, (float)_pcc_control_frt_f_besf_sagc__d0);
-    // Generated from the component: PCC_Control.d_1_f
-    HIL_OutAO(0x40df, (float)_pcc_control_frt_f_besf_sagc__d1);
-    // Generated from the component: PCC_Control.d_2_f
-    HIL_OutAO(0x40e1, (float)_pcc_control_frt_f_besf_sagc__d2);
-    // Generated from the component: PCC_Control.d_3_f
-    HIL_OutAO(0x40e3, (float)_pcc_control_frt_f_besf_sagc__d3);
-    // Generated from the component: PCC_Control.d_4_f
-    HIL_OutAO(0x40e5, (float)_pcc_control_frt_f_besf_sagc__d4);
-    // Generated from the component: PCC_Control.d_5_f
-    HIL_OutAO(0x40e6, (float)_pcc_control_frt_f_besf_sagc__d5);
-    // Generated from the component: PCC_Control.d_6_f
-    HIL_OutAO(0x40e7, (float)_pcc_control_frt_f_besf_sagc__d6);
-    // Generated from the component: PCC_Control.fault_fpu
-    HIL_OutAO(0x40e8, (float)_pcc_control_f_pu__out);
-    // Generated from the component: PCC_Control.V_Check_BESF
-    _pcc_control_v_check_besf__Input = _pcc_control_v_pu__out;
+    // Generated from the component: PCC_Control1.d_0_f
+    HIL_OutAO(0x40dd, (float)_pcc_control1_frt_f_besf_sagc__d0);
+    // Generated from the component: PCC_Control1.d_1_f
+    HIL_OutAO(0x40df, (float)_pcc_control1_frt_f_besf_sagc__d1);
+    // Generated from the component: PCC_Control1.d_2_f
+    HIL_OutAO(0x40e1, (float)_pcc_control1_frt_f_besf_sagc__d2);
+    // Generated from the component: PCC_Control1.d_3_f
+    HIL_OutAO(0x40e3, (float)_pcc_control1_frt_f_besf_sagc__d3);
+    // Generated from the component: PCC_Control1.d_4_f
+    HIL_OutAO(0x40e5, (float)_pcc_control1_frt_f_besf_sagc__d4);
+    // Generated from the component: PCC_Control1.d_5_f
+    HIL_OutAO(0x40e6, (float)_pcc_control1_frt_f_besf_sagc__d5);
+    // Generated from the component: PCC_Control1.d_6_f
+    HIL_OutAO(0x40e7, (float)_pcc_control1_frt_f_besf_sagc__d6);
+    // Generated from the component: PCC_Control1.fault_fpu
+    HIL_OutAO(0x40e8, (float)_pcc_control1_f_pu__out);
+    // Generated from the component: PCC_Control1.V_Check_BESF
+    _pcc_control1_v_check_besf__Input = _pcc_control1_v_pu__out;
     {
-        _pcc_control_v_check_besf__Fault = _pcc_control_v_check_besf__Trip_Zone ;
-        if ( _pcc_control_v_check_besf__Trip_Zone > - 1 )     {
-            _pcc_control_v_check_besf__Trip = 1 ;
+        _pcc_control1_v_check_besf__Fault = _pcc_control1_v_check_besf__Trip_Zone ;
+        if ( _pcc_control1_v_check_besf__Trip_Zone > - 1 )     {
+            _pcc_control1_v_check_besf__Trip = 1 ;
         }
         else     {
-            _pcc_control_v_check_besf__Trip = 0 ;
+            _pcc_control1_v_check_besf__Trip = 0 ;
         }
-        _pcc_control_v_check_besf__d0 = _pcc_control_v_check_besf__ov_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d1 = _pcc_control_v_check_besf__ov_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d2 = _pcc_control_v_check_besf__uv_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d3 = _pcc_control_v_check_besf__uv_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d4 = _pcc_control_v_check_besf__uv_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d0 = _pcc_control1_v_check_besf__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d1 = _pcc_control1_v_check_besf__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d2 = _pcc_control1_v_check_besf__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d3 = _pcc_control1_v_check_besf__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d4 = _pcc_control1_v_check_besf__uv_zones [ 2 ] . timer * 1e-06 ;
     }
-    // Generated from the component: PCC_Control.fault_vpu
-    HIL_OutAO(0x40e9, (float)_pcc_control_v_pu__out);
+    // Generated from the component: PCC_Control1.fault_vpu
+    HIL_OutAO(0x40e9, (float)_pcc_control1_v_pu__out);
     // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Sum7
     _ms_s3_tpm_grid_pll_pid_sum7__out = _ms_s3_tpm_grid_pll_pid_ki__out + _ms_s3_tpm_grid_pll_pid_kb__out;
     // Generated from the component: MS_S3.Meter_uG.extra_input_bus
@@ -8990,27 +8990,27 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.Meter_Grid.POWER_SA
     // Generated from the component: MS_S3.Meter_Grid.POWER_SB
     // Generated from the component: MS_S3.Meter_Grid.POWER_SC
-    // Generated from the component: PCC_Control.Output_Check
-    _pcc_control_output_check__F_Trip = _pcc_control_frt_f_besf_sagc__Trip;
-    _pcc_control_output_check__F_Zone = _pcc_control_frt_f_besf_sagc__Fault;
-    _pcc_control_output_check__Reset = _reset_cb__out;
-    _pcc_control_output_check__V_Trip = _pcc_control_v_check_besf__Trip;
-    _pcc_control_output_check__V_Zone = _pcc_control_v_check_besf__Fault;
+    // Generated from the component: PCC_Control1.Output_Check
+    _pcc_control1_output_check__F_Trip = _pcc_control1_frt_f_besf_sagc__Trip;
+    _pcc_control1_output_check__F_Zone = _pcc_control1_frt_f_besf_sagc__Fault;
+    _pcc_control1_output_check__Reset = _reset_cb__out;
+    _pcc_control1_output_check__V_Trip = _pcc_control1_v_check_besf__Trip;
+    _pcc_control1_output_check__V_Zone = _pcc_control1_v_check_besf__Fault;
     {
-        _pcc_control_output_check__CB = _pcc_control_output_check__var_CB ;
-        _pcc_control_output_check__GFL = _pcc_control_output_check__var_GFL ;
-        _pcc_control_output_check__Fault_Zone = _pcc_control_output_check__var_Fault_Zone ;
+        _pcc_control1_output_check__CB = _pcc_control1_output_check__var_CB ;
+        _pcc_control1_output_check__GFL = _pcc_control1_output_check__var_GFL ;
+        _pcc_control1_output_check__Fault_Zone = _pcc_control1_output_check__var_Fault_Zone ;
     }
-    // Generated from the component: PCC_Control.d_0_V
-    HIL_OutAO(0x40dc, (float)_pcc_control_v_check_besf__d0);
-    // Generated from the component: PCC_Control.d_1_V
-    HIL_OutAO(0x40de, (float)_pcc_control_v_check_besf__d1);
-    // Generated from the component: PCC_Control.d_2_V
-    HIL_OutAO(0x40e0, (float)_pcc_control_v_check_besf__d2);
-    // Generated from the component: PCC_Control.d_3_V
-    HIL_OutAO(0x40e2, (float)_pcc_control_v_check_besf__d3);
-    // Generated from the component: PCC_Control.d_4_V
-    HIL_OutAO(0x40e4, (float)_pcc_control_v_check_besf__d4);
+    // Generated from the component: PCC_Control1.d_0_V
+    HIL_OutAO(0x40dc, (float)_pcc_control1_v_check_besf__d0);
+    // Generated from the component: PCC_Control1.d_1_V
+    HIL_OutAO(0x40de, (float)_pcc_control1_v_check_besf__d1);
+    // Generated from the component: PCC_Control1.d_2_V
+    HIL_OutAO(0x40e0, (float)_pcc_control1_v_check_besf__d2);
+    // Generated from the component: PCC_Control1.d_3_V
+    HIL_OutAO(0x40e2, (float)_pcc_control1_v_check_besf__d3);
+    // Generated from the component: PCC_Control1.d_4_V
+    HIL_OutAO(0x40e4, (float)_pcc_control1_v_check_besf__d4);
     // Generated from the component: MS_S3.Meter_uG.POWER_PA
     // Generated from the component: MS_S3.Meter_uG.POWER_PB
     // Generated from the component: MS_S3.Meter_uG.POWER_PC
@@ -9036,7 +9036,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         _multiport_signal_switch1__out = _c_gfm__out;
         break;
     case 3:
-        _multiport_signal_switch1__out = _pcc_control_output_check__GFL;
+        _multiport_signal_switch1__out = _pcc_control1_output_check__GFL;
         break;
     default:
         _multiport_signal_switch1__out = 0x0;
@@ -9050,17 +9050,17 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         _multiport_signal_switch2__out = _c_cb1__out;
         break;
     case 3:
-        _multiport_signal_switch2__out = _pcc_control_output_check__CB;
+        _multiport_signal_switch2__out = _pcc_control1_output_check__CB;
         break;
     default:
         _multiport_signal_switch2__out = 0x0;
     }
-    // Generated from the component: PCC_Control.CB_faults
-    HIL_OutAO(0x40d9, (float)_pcc_control_output_check__CB);
-    // Generated from the component: PCC_Control.Fault
-    HIL_OutAO(0x40da, (float)_pcc_control_output_check__Fault_Zone);
-    // Generated from the component: PCC_Control.GFL
-    HIL_OutAO(0x40db, (float)_pcc_control_output_check__GFL);
+    // Generated from the component: PCC_Control1.CB_faults
+    HIL_OutAO(0x40d9, (float)_pcc_control1_output_check__CB);
+    // Generated from the component: PCC_Control1.Fault
+    HIL_OutAO(0x40da, (float)_pcc_control1_output_check__Fault_Zone);
+    // Generated from the component: PCC_Control1.GFL
+    HIL_OutAO(0x40db, (float)_pcc_control1_output_check__GFL);
     // Generated from the component: BI_Inputs
     _bi_inputs__out[0] = _eut_interface_enable_i__out;
     _bi_inputs__out[1] = _multiport_signal_switch1__out;
@@ -10249,95 +10249,95 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.TPM_uG.PLL.integrator
     {
     }
-    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
+    // Generated from the component: PCC_Control1.FRT_F_BESF-SAGC
     {
-        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+        _pcc_control1_frt_f_besf_sagc__Trip_Zone = - 1 ;
         for ( int  i = 0  ; i < 3 ; i ++ )     {
-            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-            if ( _pcc_control_frt_f_besf_sagc__Input > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . V_limit )         {
-                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Input > _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . V_limit )         {
+                _pcc_control1_frt_f_besf_sagc__Violation = 1 ;
             }
-            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
-                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . t_limit )             {
-                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i ;
+            if ( _pcc_control1_frt_f_besf_sagc__Violation )         {
+                _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . t_limit )             {
+                    _pcc_control1_frt_f_besf_sagc__Trip_Zone = i ;
                 }
             }
             else         {
-                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer = 0.0f ;
             }
         }
         for ( int  i = 0  ; i < 4 ; i ++ )     {
-            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-            if ( _pcc_control_frt_f_besf_sagc__Input < _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . V_limit )         {
-                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Input < _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . V_limit )         {
+                _pcc_control1_frt_f_besf_sagc__Violation = 1 ;
             }
-            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
-                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . t_limit )             {
-                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i + 3 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Violation )         {
+                _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . t_limit )             {
+                    _pcc_control1_frt_f_besf_sagc__Trip_Zone = i + 3 ;
                 }
             }
             else         {
-                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer = 0.0f ;
             }
         }
     }
-    // Generated from the component: PCC_Control.V_Check_BESF
+    // Generated from the component: PCC_Control1.V_Check_BESF
     {
-        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
+        _pcc_control1_v_check_besf__Trip_Zone = - 1 ;
         for ( int  i = 0  ; i < 2 ; i ++ )     {
-            _pcc_control_v_check_besf__Violation = 0 ;
-            if ( _pcc_control_v_check_besf__Input > _pcc_control_v_check_besf__ov_zones [ i ] . V_limit )         {
-                _pcc_control_v_check_besf__Violation = 1 ;
+            _pcc_control1_v_check_besf__Violation = 0 ;
+            if ( _pcc_control1_v_check_besf__Input > _pcc_control1_v_check_besf__ov_zones [ i ] . V_limit )         {
+                _pcc_control1_v_check_besf__Violation = 1 ;
             }
-            if ( _pcc_control_v_check_besf__Violation )         {
-                _pcc_control_v_check_besf__ov_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_v_check_besf__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__ov_zones [ i ] . t_limit )             {
-                    _pcc_control_v_check_besf__Trip_Zone = i ;
+            if ( _pcc_control1_v_check_besf__Violation )         {
+                _pcc_control1_v_check_besf__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_v_check_besf__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control1_v_check_besf__ov_zones [ i ] . t_limit )             {
+                    _pcc_control1_v_check_besf__Trip_Zone = i ;
                 }
             }
             else         {
-                _pcc_control_v_check_besf__ov_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_v_check_besf__ov_zones [ i ] . timer = 0.0f ;
             }
         }
         for ( int  i = 0  ; i < 3 ; i ++ )     {
-            _pcc_control_v_check_besf__Violation = 0 ;
-            if ( _pcc_control_v_check_besf__Input < _pcc_control_v_check_besf__uv_zones [ i ] . V_limit )         {
-                _pcc_control_v_check_besf__Violation = 1 ;
+            _pcc_control1_v_check_besf__Violation = 0 ;
+            if ( _pcc_control1_v_check_besf__Input < _pcc_control1_v_check_besf__uv_zones [ i ] . V_limit )         {
+                _pcc_control1_v_check_besf__Violation = 1 ;
             }
-            if ( _pcc_control_v_check_besf__Violation )         {
-                _pcc_control_v_check_besf__uv_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_v_check_besf__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__uv_zones [ i ] . t_limit )             {
-                    _pcc_control_v_check_besf__Trip_Zone = i + 2 ;
+            if ( _pcc_control1_v_check_besf__Violation )         {
+                _pcc_control1_v_check_besf__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_v_check_besf__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control1_v_check_besf__uv_zones [ i ] . t_limit )             {
+                    _pcc_control1_v_check_besf__Trip_Zone = i + 2 ;
                 }
             }
             else         {
-                _pcc_control_v_check_besf__uv_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_v_check_besf__uv_zones [ i ] . timer = 0.0f ;
             }
         }
     }
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.wait_to_change
     {
     }
-    // Generated from the component: PCC_Control.Output_Check
+    // Generated from the component: PCC_Control1.Output_Check
     {
-        if ( _pcc_control_output_check__Reset )     {
-            _pcc_control_output_check__var_CB = 1 ;
-            _pcc_control_output_check__var_GFL = 1 ;
-            _pcc_control_output_check__var_Fault_Zone = - 1 ;
+        if ( _pcc_control1_output_check__Reset )     {
+            _pcc_control1_output_check__var_CB = 1 ;
+            _pcc_control1_output_check__var_GFL = 1 ;
+            _pcc_control1_output_check__var_Fault_Zone = - 1 ;
         }
         else     {
-            if ( _pcc_control_output_check__var_Fault_Zone == - 1 )         {
-                if ( _pcc_control_output_check__V_Trip )             {
-                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__V_Zone ;
+            if ( _pcc_control1_output_check__var_Fault_Zone == - 1 )         {
+                if ( _pcc_control1_output_check__V_Trip )             {
+                    _pcc_control1_output_check__var_Fault_Zone = _pcc_control1_output_check__V_Zone ;
                 }
-                else if ( _pcc_control_output_check__F_Trip )             {
-                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__F_Zone + ( 5 ) ;
+                else if ( _pcc_control1_output_check__F_Trip )             {
+                    _pcc_control1_output_check__var_Fault_Zone = _pcc_control1_output_check__F_Zone + ( 5 ) ;
                 }
-                if ( _pcc_control_output_check__var_Fault_Zone != - 1 )             {
-                    _pcc_control_output_check__var_CB = 0 ;
-                    _pcc_control_output_check__var_GFL = 0 ;
+                if ( _pcc_control1_output_check__var_Fault_Zone != - 1 )             {
+                    _pcc_control1_output_check__var_CB = 0 ;
+                    _pcc_control1_output_check__var_GFL = 0 ;
                 }
             }
         }

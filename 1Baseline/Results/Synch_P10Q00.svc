@@ -1,0 +1,283 @@
+{
+    "signals": {
+        "Battery inverter (Average)1.Control.Inv_Cab_SM.V_mode": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#FF0000"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.Grid following": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#00CC00"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Inv_Cab_SM.read_mode.StandBy": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#0099FF"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.V_lock": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#FFCC00"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.on_nominal": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#FF00FF"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.phase_lock": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#33CCCC"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "EUT_Interface.On_o": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#FF0000"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "EUT_Interface.Relay_o": {
+            "viewports": [
+                1
+            ],
+            "type": "digital",
+            "color": {
+                "1": "#00CC00"
+            },
+            "display": {
+                "1": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.Vt_i": {
+            "viewports": [
+                2
+            ],
+            "type": "analog",
+            "color": {
+                "2": "#FF0000"
+            },
+            "display": {
+                "2": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.Vt_u": {
+            "viewports": [
+                2
+            ],
+            "type": "analog",
+            "color": {
+                "2": "#00CC00"
+            },
+            "display": {
+                "2": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.f_i": {
+            "viewports": [
+                2
+            ],
+            "type": "analog",
+            "color": {
+                "2": "#0099FF"
+            },
+            "display": {
+                "2": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.f_u": {
+            "viewports": [
+                2
+            ],
+            "type": "analog",
+            "color": {
+                "2": "#FFCC00"
+            },
+            "display": {
+                "2": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.dV": {
+            "viewports": [
+                3
+            ],
+            "type": "analog",
+            "color": {
+                "3": "#FF0000"
+            },
+            "display": {
+                "3": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.df": {
+            "viewports": [
+                3
+            ],
+            "type": "analog",
+            "color": {
+                "3": "#00CC00"
+            },
+            "display": {
+                "3": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Synch.phase_match.dwt": {
+            "viewports": [
+                3
+            ],
+            "type": "analog",
+            "color": {
+                "3": "#0099FF"
+            },
+            "display": {
+                "3": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Imode_control.Idref": {
+            "viewports": [
+                4
+            ],
+            "type": "analog",
+            "color": {
+                "4": "#FF0000"
+            },
+            "display": {
+                "4": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Id_out": {
+            "viewports": [
+                4
+            ],
+            "type": "analog",
+            "color": {
+                "4": "#00CC00"
+            },
+            "display": {
+                "4": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Imode_control.Iqref": {
+            "viewports": [
+                4
+            ],
+            "type": "analog",
+            "color": {
+                "4": "#0099FF"
+            },
+            "display": {
+                "4": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Iq_out": {
+            "viewports": [
+                4
+            ],
+            "type": "analog",
+            "color": {
+                "4": "#FFCC00"
+            },
+            "display": {
+                "4": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Vd": {
+            "viewports": [
+                4
+            ],
+            "type": "analog",
+            "color": {
+                "4": "#FF00FF"
+            },
+            "display": {
+                "4": "solid"
+            }
+        },
+        "Battery inverter (Average)1.Control.Vq": {
+            "viewports": [
+                4
+            ],
+            "type": "analog",
+            "color": {
+                "4": "#33CCCC"
+            },
+            "display": {
+                "4": "solid"
+            }
+        }
+    },
+    "viewports": {
+        "1": {
+            "log_scale_x": false,
+            "log_scale_y": false,
+            "y_axis_db": false
+        },
+        "2": {
+            "log_scale_x": false,
+            "log_scale_y": false,
+            "y_axis_db": false
+        },
+        "3": {
+            "log_scale_x": false,
+            "log_scale_y": false,
+            "y_axis_db": false
+        },
+        "4": {
+            "log_scale_x": false,
+            "log_scale_y": false,
+            "y_axis_db": false
+        }
+    },
+    "plot_settings": {
+        "layout": "Vertical",
+        "background_color": "white",
+        "legend_visible": true
+    }
+}

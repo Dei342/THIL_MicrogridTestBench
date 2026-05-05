@@ -3231,9 +3231,9 @@ Update_TBC_C(C_c)
                                 <device>0</device>
                                 <is_force>False</is_force>
                                 <type>Analog</type>
-                                <source><![CDATA[MS_S1.S1_fb]]></source>
-                                <edge>Falling edge</edge>
-                                <treshold>0.99</treshold>
+                                <source><![CDATA[PCC_Control.Fault]]></source>
+                                <edge>Rising edge</edge>
+                                <treshold>-0.99</treshold>
                                 <offset>10.0</offset>
                                 <useFirstTrigger>True</useFirstTrigger>
                             </trigger>
@@ -3465,9 +3465,9 @@ Update_TBC_C(C_c)
                         <legend>True</legend>
                         <trigger>
                             <type>Analog</type>
-                            <source>MS_S1.S1_fb</source>
-                            <edge>Falling edge</edge>
-                            <treshold>0.99</treshold>
+                            <source>PCC_Control.Fault</source>
+                            <edge>Rising edge</edge>
+                            <treshold>-0.99</treshold>
                             <offset>10.0</offset>
                             <useFirstTrigger>True</useFirstTrigger>
                         </trigger>
@@ -4133,7 +4133,7 @@ widgetValue = None
 widgetValue = hil.model_read('MS_S2.S2_Enable')
 ]]></on_timer_code>
                 <on_start_code_source><![CDATA[Macro code]]></on_start_code_source>
-                <inputValue><![CDATA[0]]></inputValue>
+                <inputValue><![CDATA[1.0]]></inputValue>
                 <min>0.0</min>
                 <max>1.0</max>
                 <step>1.0</step>
@@ -4617,7 +4617,7 @@ widgetValue = None
 widgetValue = hil.model_read('MS_S1.S1_Enable')
 ]]></on_timer_code>
                 <on_start_code_source><![CDATA[Macro code]]></on_start_code_source>
-                <inputValue><![CDATA[1.0]]></inputValue>
+                <inputValue><![CDATA[0]]></inputValue>
                 <min>0.0</min>
                 <max>1.0</max>
                 <step>1.0</step>
@@ -5150,7 +5150,7 @@ p, li { white-space: pre-wrap; }
                 <name><![CDATA[Text note]]></name>
                 <type>TextNote</type>
                 <description><![CDATA[]]></description>
-                <text><![CDATA[3.245]]></text>
+                <text><![CDATA[1.786]]></text>
                 <widget_settings>
                     <x>56</x>
                     <y>168</y>
@@ -5169,7 +5169,7 @@ p, li { white-space: pre-wrap; }
                 <name><![CDATA[Text note6]]></name>
                 <type>TextNote</type>
                 <description><![CDATA[]]></description>
-                <text><![CDATA[10.186]]></text>
+                <text><![CDATA[12.732]]></text>
                 <widget_settings>
                     <x>200</x>
                     <y>168</y>
@@ -5188,7 +5188,7 @@ p, li { white-space: pre-wrap; }
                 <name><![CDATA[Text note7]]></name>
                 <type>TextNote</type>
                 <description><![CDATA[]]></description>
-                <text><![CDATA[998.699]]></text>
+                <text><![CDATA[801.744]]></text>
                 <widget_settings>
                     <x>336</x>
                     <y>168</y>
@@ -5527,7 +5527,7 @@ widgetValue = None
 widgetValue = None
 ]]></on_timer_code>
                 <on_start_code_source><![CDATA[Custom code]]></on_start_code_source>
-                <inputValue><![CDATA[0.493]]></inputValue>
+                <inputValue><![CDATA[0.896]]></inputValue>
                 <min>0.1</min>
                 <max>1.5</max>
                 <step>0.1</step>
@@ -5595,7 +5595,7 @@ widgetValue = None
 widgetValue = None
 ]]></on_timer_code>
                 <on_start_code_source><![CDATA[Custom code]]></on_start_code_source>
-                <inputValue><![CDATA[0.5]]></inputValue>
+                <inputValue><![CDATA[0.4]]></inputValue>
                 <min>0.1</min>
                 <max>1.5</max>
                 <step>0.1</step>
@@ -5663,7 +5663,7 @@ widgetValue = None
 widgetValue = None
 ]]></on_timer_code>
                 <on_start_code_source><![CDATA[Custom code]]></on_start_code_source>
-                <inputValue><![CDATA[0.502]]></inputValue>
+                <inputValue><![CDATA[0.403]]></inputValue>
                 <min>0.1</min>
                 <max>1.5</max>
                 <step>0.1</step>
@@ -5929,7 +5929,7 @@ widgetValue = None
 widgetValue = hil.model_read('RESET_CB')
 ]]></on_timer_code>
                 <on_start_code_source><![CDATA[Macro code]]></on_start_code_source>
-                <inputValue><![CDATA[1.0]]></inputValue>
+                <inputValue><![CDATA[0]]></inputValue>
                 <min>0.0</min>
                 <max>1.0</max>
                 <step>1.0</step>
