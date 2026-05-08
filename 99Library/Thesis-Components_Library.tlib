@@ -92,13 +92,13 @@ typedef struct {
 
 FRT_Zone ov_zones[OV_Num] = {
     {1.1f, 2.0f, 0},
-    {1.2f, 0.04f, 0}
+    {1.2f, 0.02f, 0}
 }; 
 
 FRT_Zone uv_zones[UV_Num] = {
     {0.85f, 0.5f, 0},
     {0.8f, 0.15f, 0},
-    {0.6f, 0.04f, 0}
+    {0.6f, 0.02f, 0}
 };
 
 //float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
@@ -205,7 +205,7 @@ typedef struct {
 fFRT_Zone ov_zones[OV_Num] = {
     {51.0f, 60.0f, 0},
     {51.5f, 4.0f, 0},
-    {52.0f, 0.04f, 0}
+    {52.0f, 0.2f, 0}
 }; 
 
 fFRT_Zone uv_zones[UV_Num] = {
@@ -1066,13 +1066,13 @@ typedef struct {
 
 FRT_Zone ov_zones[OV_Num] = {
     {1.1f, 2.0f, 0},
-    {1.2f, 0.04f, 0}
+    {1.2f, 0.02f, 0}
 }; 
 
 FRT_Zone uv_zones[UV_Num] = {
     {0.85f, 0.5f, 0},
     {0.8f, 0.15f, 0},
-    {0.6f, 0.04f, 0}
+    {0.6f, 0.02f, 0}
 };
 
 //float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
@@ -1315,7 +1315,7 @@ typedef struct {
 fFRT_Zone ov_zones[OV_Num] = {
     {51.0f, 60.0f, 0},
     {51.5f, 4.0f, 0},
-    {52.0f, 0.04f, 0}
+    {52.0f, 0.2f, 0}
 }; 
 
 fFRT_Zone uv_zones[UV_Num] = {

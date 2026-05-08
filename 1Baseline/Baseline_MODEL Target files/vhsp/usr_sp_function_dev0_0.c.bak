@@ -1028,7 +1028,7 @@ typedef double real;
 
 
     typedef struct { float  V_limit ; float  t_limit ; int  timer ; } fFRT_Zone  ;
- fFRT_Zone  _pcc_control1_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.04f ,  0  }  };
+ fFRT_Zone  _pcc_control1_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.2f ,  0  }  };
  fFRT_Zone  _pcc_control1_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
 
 
@@ -1091,8 +1091,8 @@ typedef double real;
 
 
     typedef struct { float  V_limit ; float  t_limit ; int  timer ; } FRT_Zone  ;
- FRT_Zone  _pcc_control1_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.04f ,  0  }  };
- FRT_Zone  _pcc_control1_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.04f ,  0  }  };
+ FRT_Zone  _pcc_control1_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.02f ,  0  }  };
+ FRT_Zone  _pcc_control1_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.02f ,  0  }  };
 
 
 

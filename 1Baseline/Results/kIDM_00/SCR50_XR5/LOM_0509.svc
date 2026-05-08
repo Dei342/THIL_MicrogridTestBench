@@ -36,7 +36,7 @@
                 "2": "solid"
             }
         },
-        "PCC_Control.CB_faults": {
+        "PCC_Control1.CB_faults": {
             "viewports": [
                 2
             ],
@@ -48,7 +48,7 @@
                 "2": "solid"
             }
         },
-        "PCC_Control.Fault": {
+        "PCC_Control1.Fault": {
             "viewports": [
                 2
             ],
@@ -60,19 +60,7 @@
                 "2": "solid"
             }
         },
-        "PCC_Control.GFL": {
-            "viewports": [
-                2
-            ],
-            "type": "analog",
-            "color": {
-                "2": "#FFCC00"
-            },
-            "display": {
-                "2": "solid"
-            }
-        },
-        "PCC_Control.fault_vpu": {
+        "PCC_Control1.fault_vpu": {
             "viewports": [
                 3
             ],
@@ -84,7 +72,7 @@
                 "3": "solid"
             }
         },
-        "PCC_Control.fault_fpu": {
+        "PCC_Control1.fault_fpu": {
             "viewports": [
                 3
             ],

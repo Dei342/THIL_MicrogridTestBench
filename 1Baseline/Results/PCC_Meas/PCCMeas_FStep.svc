@@ -1,6 +1,6 @@
 {
     "signals": {
-        "EUT_Interface.ia_o": {
+        "MS_S3.Van_Grid": {
             "viewports": [
                 1
             ],
@@ -12,19 +12,7 @@
                 "1": "solid"
             }
         },
-        "EUT_Interface.va_o": {
-            "viewports": [
-                1
-            ],
-            "type": "analog",
-            "color": {
-                "1": "#00CC00"
-            },
-            "display": {
-                "1": "solid"
-            }
-        },
-        "MS_S1.S1_fb": {
+        "MS_S3.VAn_RMS_Grid": {
             "viewports": [
                 2
             ],
@@ -36,31 +24,7 @@
                 "2": "solid"
             }
         },
-        "PCC_Control1.CB_faults": {
-            "viewports": [
-                2
-            ],
-            "type": "analog",
-            "color": {
-                "2": "#00CC00"
-            },
-            "display": {
-                "2": "solid"
-            }
-        },
-        "PCC_Control1.Fault": {
-            "viewports": [
-                2
-            ],
-            "type": "analog",
-            "color": {
-                "2": "#0099FF"
-            },
-            "display": {
-                "2": "solid"
-            }
-        },
-        "PCC_Control1.fault_vpu": {
+        "MS_S3.Freq_Grid": {
             "viewports": [
                 3
             ],
@@ -72,19 +36,31 @@
                 "3": "solid"
             }
         },
-        "PCC_Control1.fault_fpu": {
+        "Fg_Input": {
             "viewports": [
-                3
+                4
             ],
             "type": "analog",
             "color": {
-                "3": "#00CC00"
+                "4": "#FFCC00"
             },
             "display": {
-                "3": "solid"
+                "4": "solid"
             }
         },
-        "Battery inverter (Average)1.Control.wt_Imode": {
+        "PCC_Control1.fault_fpu": {
+            "viewports": [
+                4
+            ],
+            "type": "analog",
+            "color": {
+                "4": "#00CC00"
+            },
+            "display": {
+                "4": "solid"
+            }
+        },
+        "PCC_Control1.fault_vpu": {
             "viewports": [
                 4
             ],
@@ -96,13 +72,13 @@
                 "4": "solid"
             }
         },
-        "Battery inverter (Average)1.Control.wt_Vmode": {
+        "Vg_Input": {
             "viewports": [
                 4
             ],
             "type": "analog",
             "color": {
-                "4": "#00CC00"
+                "4": "#0099FF"
             },
             "display": {
                 "4": "solid"
