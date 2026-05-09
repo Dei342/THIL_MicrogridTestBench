@@ -935,8 +935,6 @@ float  _grid_inputs_input_synch_switching_v__V_in , _grid_inputs_input_synch_swi
 
 
 
-
-
 #define _vg_tdf_sg_ctrl_sine1__no_of_points 1000
 #define _vg_tdf_sg_ctrl_sine1__max_int40 (1099511627775)
 #define _vg_tdf_sg_ctrl_sine1__max_int32 (4294967295)
@@ -1051,8 +1049,8 @@ typedef struct {
     float  t_limit ;
     int  timer ;
 } fFRT_Zone  ;
-fFRT_Zone  _pcc_control_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.2f ,  0  }  };
-fFRT_Zone  _pcc_control_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
+fFRT_Zone  _pcc_control1_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.2f ,  0  }  };
+fFRT_Zone  _pcc_control1_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
 
 
 
@@ -1121,8 +1119,11 @@ typedef struct {
     float  t_limit ;
     int  timer ;
 } FRT_Zone  ;
-FRT_Zone  _pcc_control_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.05f ,  0  }  };
-FRT_Zone  _pcc_control_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.05f ,  0  }  };
+FRT_Zone  _pcc_control1_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.02f ,  0  }  };
+FRT_Zone  _pcc_control1_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.02f ,  0  }  };
+
+
+
 
 
 
@@ -1422,7 +1423,7 @@ double _bi_vref_pu__out;
 double _bi_fref_pu__out;
 double _battery_inverter__average_1_control_imode_control_constant1__out = 1.0;
 double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant6__out = 1.0;
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out = 0.3;
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out = 0.2;
 double _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__out;
 double _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__out;
 double _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out;
@@ -2382,7 +2383,7 @@ double _ms_s3_tpm_grid_output_bus__out[30];
 double _ms_s3_tpm_grid_pll_pid_limit1__out;
 double _ms_s3_tpm_ug_output_bus__out[30];
 double _ms_s3_tpm_ug_pll_pid_limit1__out;
-double _battery_inverter__average_1_control_imode_control_sum12__out;
+double _battery_inverter__average_1_control_imode_control_dwt_limit__out;
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator1__out;
 float _battery_inverter__average_1_control_synch_check_nominal_conditions_f_out_nom__tmp;
 double _battery_inverter__average_1_control_imode_control_dq_current_controller_pi_q_ki__out;
@@ -2595,10 +2596,7 @@ double _ms_s3_tpm_ug_pll_integrator__in;
 
 double _ms_s3_tpm_ug_pll_integrator__out;
 
-double _battery_inverter__average_1_control_imode_control_confine_phase__dtheta;
-
-double _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined;
-
+double _battery_inverter__average_1_control_imode_control_sum12__out;
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out;
 double _battery_inverter__average_1_control_pll_pu_pll_pid_kb__out;
 double _battery_inverter__average_1_control_synch_check_grid_logical_operator15__out;
@@ -2632,24 +2630,27 @@ double _ms_s2_meter_load_gain__out[12];
 double _ms_s2_tpm_load_pll_pid_kb__out;
 double _ms_s2_three_phase_pll1_pid_kb__out;
 double _ms_s3_meter_grid_gain__out[12];
-double _pcc_control_frt_f_besf_sagc__Input;
+double _pcc_control1_frt_f_besf_sagc__Input;
 
-double _pcc_control_frt_f_besf_sagc__Fault;
-double _pcc_control_frt_f_besf_sagc__Trip;
-double _pcc_control_frt_f_besf_sagc__d0;
-double _pcc_control_frt_f_besf_sagc__d1;
-double _pcc_control_frt_f_besf_sagc__d2;
-double _pcc_control_frt_f_besf_sagc__d3;
-double _pcc_control_frt_f_besf_sagc__d4;
-double _pcc_control_frt_f_besf_sagc__d5;
-double _pcc_control_frt_f_besf_sagc__d6;
+double _pcc_control1_frt_f_besf_sagc__Fault;
+double _pcc_control1_frt_f_besf_sagc__Trip;
+double _pcc_control1_frt_f_besf_sagc__d0;
+double _pcc_control1_frt_f_besf_sagc__d1;
+double _pcc_control1_frt_f_besf_sagc__d2;
+double _pcc_control1_frt_f_besf_sagc__d3;
+double _pcc_control1_frt_f_besf_sagc__d4;
+double _pcc_control1_frt_f_besf_sagc__d5;
+double _pcc_control1_frt_f_besf_sagc__d6;
 
-double _pcc_control_f_pu__out;
-double _pcc_control_v_pu__out;
+double _pcc_control1_f_pu__out;
+double _pcc_control1_v_pu__out;
 double _ms_s3_tpm_grid_pll_pid_kb__out;
 double _ms_s3_meter_ug_gain__out[12];
 double _ms_s3_tpm_ug_pll_pid_kb__out;
-double _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out;
+double _battery_inverter__average_1_control_imode_control_confine_phase__dtheta;
+
+double _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined;
+
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_relational_operator1__out;
 double _battery_inverter__average_1_control_pll_pu_pll_pid_sum7__out;
 double _battery_inverter__average_1_control_synch_pll_util_pll_pid_sum7__out;
@@ -2694,15 +2695,15 @@ double _ms_s3_meter_grid_extra_input_bus__out8;
 double _ms_s3_meter_grid_extra_input_bus__out9;
 double _ms_s3_meter_grid_extra_input_bus__out10;
 double _ms_s3_meter_grid_extra_input_bus__out11;
-double _pcc_control_v_check_besf__Input;
+double _pcc_control1_v_check_besf__Input;
 
-double _pcc_control_v_check_besf__Fault;
-double _pcc_control_v_check_besf__Trip;
-double _pcc_control_v_check_besf__d0;
-double _pcc_control_v_check_besf__d1;
-double _pcc_control_v_check_besf__d2;
-double _pcc_control_v_check_besf__d3;
-double _pcc_control_v_check_besf__d4;
+double _pcc_control1_v_check_besf__Fault;
+double _pcc_control1_v_check_besf__Trip;
+double _pcc_control1_v_check_besf__d0;
+double _pcc_control1_v_check_besf__d1;
+double _pcc_control1_v_check_besf__d2;
+double _pcc_control1_v_check_besf__d3;
+double _pcc_control1_v_check_besf__d4;
 
 double _ms_s3_tpm_grid_pll_pid_sum7__out;
 double _ms_s3_meter_ug_extra_input_bus__out;
@@ -2718,48 +2719,49 @@ double _ms_s3_meter_ug_extra_input_bus__out9;
 double _ms_s3_meter_ug_extra_input_bus__out10;
 double _ms_s3_meter_ug_extra_input_bus__out11;
 double _ms_s3_tpm_ug_pll_pid_sum7__out;
-double _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta;
-
-double _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined;
-
+double _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out;
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__in;
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__reset;
 
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out;
 
 double _battery_inverter__average_1_control_synch_phase_match_pi_sum7__out;
-X_Int32 _pcc_control_output_check__F_Trip;
-X_Int32 _pcc_control_output_check__F_Zone;
-X_Int32 _pcc_control_output_check__Reset;
-X_Int32 _pcc_control_output_check__V_Trip;
-X_Int32 _pcc_control_output_check__V_Zone;
+X_Int32 _pcc_control1_output_check__F_Trip;
+X_Int32 _pcc_control1_output_check__F_Zone;
+X_Int32 _pcc_control1_output_check__Reset;
+X_Int32 _pcc_control1_output_check__V_Trip;
+X_Int32 _pcc_control1_output_check__V_Zone;
 
-X_Int32 _pcc_control_output_check__CB;
-X_Int32 _pcc_control_output_check__Fault_Zone;
-X_Int32 _pcc_control_output_check__GFL;
+X_Int32 _pcc_control1_output_check__CB;
+X_Int32 _pcc_control1_output_check__Fault_Zone;
+X_Int32 _pcc_control1_output_check__GFL;
 
-double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta;
+
+double _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined;
+
 float _battery_inverter__average_1_control_synch_on_nominal__tmp;
 double _multiport_signal_switch1__out;
 double _multiport_signal_switch2__out;
-double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out;
 double _bi_inputs__out[6];
 double _ms_s3_s1_triple_s1_ideal_ctc_wrapper__feedback_out = 0;
-double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
-double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int;
+double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
 double _battery_inverter__average_1_control_inputs_bus_split2__out;
 double _battery_inverter__average_1_control_inputs_bus_split2__out1;
 double _battery_inverter__average_1_control_inputs_bus_split2__out2;
 double _battery_inverter__average_1_control_inputs_bus_split2__out3;
 double _battery_inverter__average_1_control_inputs_bus_split2__out4;
 double _battery_inverter__average_1_control_inputs_bus_split2__out5;
-double _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int;
 double _battery_inverter__average_1_control_imode_control_gain1__out;
 double _battery_inverter__average_1_control_imode_control_gain2__out;
 double _battery_inverter__average_1_control_vmode_control_gain1__out;
 double _battery_inverter__average_1_control_vmode_control_gain2__out;
 double _battery_inverter__average_1_control_inputs_limit1__out;
 double _battery_inverter__average_1_control_inputs_limit2__out;
+double _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out;
 double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref;
 double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref;
 double _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Smax;
@@ -3637,26 +3639,23 @@ double _ms_s3_tpm_ug_pll_integrator__state;
 
 
 
-
-
-
 double _ms_s2_ia_meanvalue__vector[20000];
 double _ms_s2_ia_meanvalue__sum;
 X_Int32 _ms_s2_ia_meanvalue__cnt_i;
 X_Int32 _ms_s2_ia_meanvalue__cnt_j;
-X_Int32 _pcc_control_frt_f_besf_sagc__Violation;
+X_Int32 _pcc_control1_frt_f_besf_sagc__Violation;
 
-X_Int32 _pcc_control_frt_f_besf_sagc__Trip_Zone;
-
-
-
-
-X_Int32 _pcc_control_v_check_besf__Violation;
-
-X_Int32 _pcc_control_v_check_besf__Trip_Zone;
+X_Int32 _pcc_control1_frt_f_besf_sagc__Trip_Zone;
 
 
 
+
+
+
+
+X_Int32 _pcc_control1_v_check_besf__Violation;
+
+X_Int32 _pcc_control1_v_check_besf__Trip_Zone;
 
 
 
@@ -3668,11 +3667,14 @@ double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_
 
 
 
-double _pcc_control_output_check__var_Fault_Zone;
+double _pcc_control1_output_check__var_Fault_Zone;
 
-double _pcc_control_output_check__var_CB;
+double _pcc_control1_output_check__var_CB;
 
-double _pcc_control_output_check__var_GFL;
+double _pcc_control1_output_check__var_GFL;
+
+
+
 
 
 
@@ -4284,7 +4286,6 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40bf, 0.0f);
     HIL_OutAO(0x40c4, 0.0f);
     HIL_OutAO(0x40d8, 0.0f);
-    HIL_OutAO(0x400c, 0.0f);
     _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__state = 0;
     _battery_inverter__average_1_control_pll_pu_pll_rate_limiter1__first_step = 1;
     {
@@ -4323,9 +4324,7 @@ void ReInit_user_sp_cpu0_dev0() {
     {
         _ms_s3_tpm_ug_pll_integrator__state = 0 ;
     }
-    {
-    }
-    HIL_OutAO(0x400f, 0.0f);
+    HIL_OutAO(0x400c, 0.0f);
     HIL_OutAO(0x4028, 0.0f);
     HIL_OutAO(0x4012, 0.0f);
     HIL_OutAO(0x401c, 0.0f);
@@ -4399,16 +4398,17 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40d9, 0.0f);
     HIL_OutAO(0x40da, 0.0f);
     {
-        _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+        _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+        _pcc_control1_frt_f_besf_sagc__Trip_Zone = - 1 ;
     }
     HIL_OutAO(0x40db, 0.0f);
     HIL_OutAO(0x40dc, 0.0f);
     HIL_OutAO(0x40dd, 0.0f);
     HIL_OutAO(0x40de, 0.0f);
     HIL_OutAO(0x40df, 0.0f);
-    HIL_OutAO(0x400e, 0.0f);
-    HIL_OutAO(0x404a, 0.0f);
+    {
+    }
+    HIL_OutAO(0x400f, 0.0f);
     HIL_OutAO(0x4047, 0.0f);
     HIL_OutAO(0x404d, 0.0f);
     HIL_OutFloat(137101315, 0.0);
@@ -4423,34 +4423,36 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40ee, 0.0f);
     HIL_OutAO(0x40ef, 0.0f);
     {
-        _pcc_control_v_check_besf__Violation = 0 ;
-        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
+        _pcc_control1_v_check_besf__Violation = 0 ;
+        _pcc_control1_v_check_besf__Trip_Zone = - 1 ;
     }
     HIL_OutAO(0x40f0, 0.0f);
-    {
-    }
+    HIL_OutAO(0x400e, 0.0f);
+    HIL_OutAO(0x404a, 0.0f);
     {
         _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter = 0 ;
         _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__wait_time = 0.01 ;
     }
     {
-        _pcc_control_output_check__var_CB = 1 ;
-        _pcc_control_output_check__var_GFL = 1 ;
-        _pcc_control_output_check__var_Fault_Zone = - 1 ;
+        _pcc_control1_output_check__var_CB = 1 ;
+        _pcc_control1_output_check__var_GFL = 1 ;
+        _pcc_control1_output_check__var_Fault_Zone = - 1 ;
     }
     HIL_OutAO(0x40e3, 0.0f);
     HIL_OutAO(0x40e5, 0.0f);
     HIL_OutAO(0x40e7, 0.0f);
     HIL_OutAO(0x40e9, 0.0f);
     HIL_OutAO(0x40eb, 0.0f);
+    {
+    }
     HIL_OutAO(0x4048, 0.0f);
     HIL_OutAO(0x40e0, 0.0f);
     HIL_OutAO(0x40e1, 0.0f);
     HIL_OutAO(0x40e2, 0.0f);
+    HIL_OutAO(0x40a7, 0.0f);
     _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state =  0.0;
     _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__filter_state =  0.0;
     HIL_OutAO(0x4038, 0.0f);
-    HIL_OutAO(0x40a7, 0.0f);
     HIL_OutAO(0x4039, 0.0f);
     {
         _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Sref = 0 ;
@@ -8215,10 +8217,8 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _ms_s3_tpm_ug_output_bus__out[29] = _ms_s3_tpm_ug_zero__out;
     // Generated from the component: MS_S3.TPM_uG.PLL.PID.Limit1
     _ms_s3_tpm_ug_pll_pid_limit1__out = MIN(MAX(_ms_s3_tpm_ug_pll_pid_sum5__out, -10000.0), 10000.0);
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Sum12
-    _battery_inverter__average_1_control_imode_control_sum12__out = _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out + _battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out;
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.d_wt
-    HIL_OutAO(0x400c, (float)_battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.dwt_Limit
+    _battery_inverter__average_1_control_imode_control_dwt_limit__out = MIN(MAX(_battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out, -1.5), 1.5);
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Logical operator1
     _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator1__out = _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out || _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out ;
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.f_out_nom
@@ -8614,23 +8614,10 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         }
         _ms_s3_tpm_ug_pll_integrator__out = _ms_s3_tpm_ug_pll_integrator__state ;
     }
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.confine_phase
-    _battery_inverter__average_1_control_imode_control_confine_phase__dtheta = _battery_inverter__average_1_control_imode_control_sum12__out;
-    {
-        if ( _battery_inverter__average_1_control_imode_control_confine_phase__dtheta > 6.28318530718 )     {
-            _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta - 6.28318530718 ;
-        }
-        else     {
-            if ( _battery_inverter__average_1_control_imode_control_confine_phase__dtheta < 0 )         {
-                _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta + 6.28318530718 ;
-            }
-            else         {
-                _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta ;
-            }
-        }
-    }
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.wt_out
-    HIL_OutAO(0x400f, (float)_battery_inverter__average_1_control_imode_control_sum12__out);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Sum12
+    _battery_inverter__average_1_control_imode_control_sum12__out = _battery_inverter__average_1_control_pll_pu_pll_unit_delay1__out + _battery_inverter__average_1_control_imode_control_dwt_limit__out;
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.d_wt
+    HIL_OutAO(0x400c, (float)_battery_inverter__average_1_control_imode_control_dwt_limit__out);
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Logical operator15
     _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out = !_battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator1__out;
     // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Kb
@@ -8882,28 +8869,28 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40d9, (float)_ms_s3_meter_grid_input_bus__out10);
     // Generated from the component: MS_S3.Van_Grid
     HIL_OutAO(0x40da, (float)_ms_s3_meter_grid_input_bus__out);
-    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
-    _pcc_control_frt_f_besf_sagc__Input = _ms_s3_meter_grid_input_bus__out9;
+    // Generated from the component: PCC_Control1.FRT_F_BESF-SAGC
+    _pcc_control1_frt_f_besf_sagc__Input = _ms_s3_meter_grid_input_bus__out9;
     {
-        _pcc_control_frt_f_besf_sagc__Fault = _pcc_control_frt_f_besf_sagc__Trip_Zone ;
-        if ( _pcc_control_frt_f_besf_sagc__Trip_Zone > - 1 )     {
-            _pcc_control_frt_f_besf_sagc__Trip = 1 ;
+        _pcc_control1_frt_f_besf_sagc__Fault = _pcc_control1_frt_f_besf_sagc__Trip_Zone ;
+        if ( _pcc_control1_frt_f_besf_sagc__Trip_Zone > - 1 )     {
+            _pcc_control1_frt_f_besf_sagc__Trip = 1 ;
         }
         else     {
-            _pcc_control_frt_f_besf_sagc__Trip = 0 ;
+            _pcc_control1_frt_f_besf_sagc__Trip = 0 ;
         }
-        _pcc_control_frt_f_besf_sagc__d0 = _pcc_control_frt_f_besf_sagc__ov_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d1 = _pcc_control_frt_f_besf_sagc__ov_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d2 = _pcc_control_frt_f_besf_sagc__ov_zones [ 2 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d3 = _pcc_control_frt_f_besf_sagc__uv_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d4 = _pcc_control_frt_f_besf_sagc__uv_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d5 = _pcc_control_frt_f_besf_sagc__uv_zones [ 2 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d6 = _pcc_control_frt_f_besf_sagc__uv_zones [ 3 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d0 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d1 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d2 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d3 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d4 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d5 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d6 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 3 ] . timer * 1e-06 ;
     }
-    // Generated from the component: PCC_Control.f_pu
-    _pcc_control_f_pu__out = 0.02 * _ms_s3_meter_grid_input_bus__out9;
-    // Generated from the component: PCC_Control.v_pu
-    _pcc_control_v_pu__out = 0.004330127018922193 * _ms_s3_meter_grid_input_bus__out10;
+    // Generated from the component: PCC_Control1.f_pu
+    _pcc_control1_f_pu__out = 0.02 * _ms_s3_meter_grid_input_bus__out9;
+    // Generated from the component: PCC_Control1.v_pu
+    _pcc_control1_v_pu__out = 0.004330127018922193 * _ms_s3_meter_grid_input_bus__out10;
     // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Kb
     _ms_s3_tpm_grid_pll_pid_kb__out = 1.0 * _ms_s3_tpm_grid_pll_pid_sum6__out;
     // Generated from the component: MS_S3.Meter_uG.IA
@@ -8956,12 +8943,23 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40df, (float)_ms_s3_meter_ug_input_bus__out9);
     // Generated from the component: MS_S3.TPM_uG.PLL.PID.Kb
     _ms_s3_tpm_ug_pll_pid_kb__out = 1.0 * _ms_s3_tpm_ug_pll_pid_sum6__out;
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.wt_confined
-    HIL_OutAO(0x400e, (float)_battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined);
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Sum3
-    _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined - _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output;
-    // Generated from the component: Battery inverter (Average)1.Control.wt_Imode
-    HIL_OutAO(0x404a, (float)_battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined);
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.confine_phase
+    _battery_inverter__average_1_control_imode_control_confine_phase__dtheta = _battery_inverter__average_1_control_imode_control_sum12__out;
+    {
+        if ( _battery_inverter__average_1_control_imode_control_confine_phase__dtheta > 6.28318530718 )     {
+            _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta - 6.28318530718 ;
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_imode_control_confine_phase__dtheta < 0 )         {
+                _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta + 6.28318530718 ;
+            }
+            else         {
+                _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.wt_out
+    HIL_OutAO(0x400f, (float)_battery_inverter__average_1_control_imode_control_sum12__out);
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Edge Detection1.Relational operator1
     _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_relational_operator1__out = (_battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out != _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_unit_delay1__out) ? 1 : 0;
     // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.PLL.PID.Sum7
@@ -9027,40 +9025,40 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _ms_s3_meter_grid_extra_input_bus__out9 = _ms_s3_meter_grid_gain__out[9];
     _ms_s3_meter_grid_extra_input_bus__out10 = _ms_s3_meter_grid_gain__out[10];
     _ms_s3_meter_grid_extra_input_bus__out11 = _ms_s3_meter_grid_gain__out[11];
-    // Generated from the component: PCC_Control.d_0_f
-    HIL_OutAO(0x40e4, (float)_pcc_control_frt_f_besf_sagc__d0);
-    // Generated from the component: PCC_Control.d_1_f
-    HIL_OutAO(0x40e6, (float)_pcc_control_frt_f_besf_sagc__d1);
-    // Generated from the component: PCC_Control.d_2_f
-    HIL_OutAO(0x40e8, (float)_pcc_control_frt_f_besf_sagc__d2);
-    // Generated from the component: PCC_Control.d_3_f
-    HIL_OutAO(0x40ea, (float)_pcc_control_frt_f_besf_sagc__d3);
-    // Generated from the component: PCC_Control.d_4_f
-    HIL_OutAO(0x40ec, (float)_pcc_control_frt_f_besf_sagc__d4);
-    // Generated from the component: PCC_Control.d_5_f
-    HIL_OutAO(0x40ed, (float)_pcc_control_frt_f_besf_sagc__d5);
-    // Generated from the component: PCC_Control.d_6_f
-    HIL_OutAO(0x40ee, (float)_pcc_control_frt_f_besf_sagc__d6);
-    // Generated from the component: PCC_Control.fault_fpu
-    HIL_OutAO(0x40ef, (float)_pcc_control_f_pu__out);
-    // Generated from the component: PCC_Control.V_Check_BESF
-    _pcc_control_v_check_besf__Input = _pcc_control_v_pu__out;
+    // Generated from the component: PCC_Control1.d_0_f
+    HIL_OutAO(0x40e4, (float)_pcc_control1_frt_f_besf_sagc__d0);
+    // Generated from the component: PCC_Control1.d_1_f
+    HIL_OutAO(0x40e6, (float)_pcc_control1_frt_f_besf_sagc__d1);
+    // Generated from the component: PCC_Control1.d_2_f
+    HIL_OutAO(0x40e8, (float)_pcc_control1_frt_f_besf_sagc__d2);
+    // Generated from the component: PCC_Control1.d_3_f
+    HIL_OutAO(0x40ea, (float)_pcc_control1_frt_f_besf_sagc__d3);
+    // Generated from the component: PCC_Control1.d_4_f
+    HIL_OutAO(0x40ec, (float)_pcc_control1_frt_f_besf_sagc__d4);
+    // Generated from the component: PCC_Control1.d_5_f
+    HIL_OutAO(0x40ed, (float)_pcc_control1_frt_f_besf_sagc__d5);
+    // Generated from the component: PCC_Control1.d_6_f
+    HIL_OutAO(0x40ee, (float)_pcc_control1_frt_f_besf_sagc__d6);
+    // Generated from the component: PCC_Control1.fault_fpu
+    HIL_OutAO(0x40ef, (float)_pcc_control1_f_pu__out);
+    // Generated from the component: PCC_Control1.V_Check_BESF
+    _pcc_control1_v_check_besf__Input = _pcc_control1_v_pu__out;
     {
-        _pcc_control_v_check_besf__Fault = _pcc_control_v_check_besf__Trip_Zone ;
-        if ( _pcc_control_v_check_besf__Trip_Zone > - 1 )     {
-            _pcc_control_v_check_besf__Trip = 1 ;
+        _pcc_control1_v_check_besf__Fault = _pcc_control1_v_check_besf__Trip_Zone ;
+        if ( _pcc_control1_v_check_besf__Trip_Zone > - 1 )     {
+            _pcc_control1_v_check_besf__Trip = 1 ;
         }
         else     {
-            _pcc_control_v_check_besf__Trip = 0 ;
+            _pcc_control1_v_check_besf__Trip = 0 ;
         }
-        _pcc_control_v_check_besf__d0 = _pcc_control_v_check_besf__ov_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d1 = _pcc_control_v_check_besf__ov_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d2 = _pcc_control_v_check_besf__uv_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d3 = _pcc_control_v_check_besf__uv_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d4 = _pcc_control_v_check_besf__uv_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d0 = _pcc_control1_v_check_besf__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d1 = _pcc_control1_v_check_besf__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d2 = _pcc_control1_v_check_besf__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d3 = _pcc_control1_v_check_besf__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d4 = _pcc_control1_v_check_besf__uv_zones [ 2 ] . timer * 1e-06 ;
     }
-    // Generated from the component: PCC_Control.fault_vpu
-    HIL_OutAO(0x40f0, (float)_pcc_control_v_pu__out);
+    // Generated from the component: PCC_Control1.fault_vpu
+    HIL_OutAO(0x40f0, (float)_pcc_control1_v_pu__out);
     // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Sum7
     _ms_s3_tpm_grid_pll_pid_sum7__out = _ms_s3_tpm_grid_pll_pid_ki__out + _ms_s3_tpm_grid_pll_pid_kb__out;
     // Generated from the component: MS_S3.Meter_uG.extra_input_bus
@@ -9078,21 +9076,12 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _ms_s3_meter_ug_extra_input_bus__out11 = _ms_s3_meter_ug_gain__out[11];
     // Generated from the component: MS_S3.TPM_uG.PLL.PID.Sum7
     _ms_s3_tpm_ug_pll_pid_sum7__out = _ms_s3_tpm_ug_pll_pid_ki__out + _ms_s3_tpm_ug_pll_pid_kb__out;
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.confine_phase
-    _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta = _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out;
-    {
-        if ( _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta > 3.14159265359 )     {
-            _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta - 6.28318530718 ;
-        }
-        else     {
-            if ( _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta < - 3.14159265359 )         {
-                _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta + 6.28318530718 ;
-            }
-            else         {
-                _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta ;
-            }
-        }
-    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.wt_confined
+    HIL_OutAO(0x400e, (float)_battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Sum3
+    _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined - _battery_inverter__average_1_control_vmode_control_internal_frequency_angle_generator_int_n_wrap__output;
+    // Generated from the component: Battery inverter (Average)1.Control.wt_Imode
+    HIL_OutAO(0x404a, (float)_battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined);
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.wait_to_change
     _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__in = _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator15__out;
     _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__reset = _battery_inverter__average_1_control_synch_check_nominal_conditions_edge_detection1_relational_operator1__out;
@@ -9153,27 +9142,27 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.Meter_Grid.POWER_SA
     // Generated from the component: MS_S3.Meter_Grid.POWER_SB
     // Generated from the component: MS_S3.Meter_Grid.POWER_SC
-    // Generated from the component: PCC_Control.Output_Check
-    _pcc_control_output_check__F_Trip = _pcc_control_frt_f_besf_sagc__Trip;
-    _pcc_control_output_check__F_Zone = _pcc_control_frt_f_besf_sagc__Fault;
-    _pcc_control_output_check__Reset = _reset_cb__out;
-    _pcc_control_output_check__V_Trip = _pcc_control_v_check_besf__Trip;
-    _pcc_control_output_check__V_Zone = _pcc_control_v_check_besf__Fault;
+    // Generated from the component: PCC_Control1.Output_Check
+    _pcc_control1_output_check__F_Trip = _pcc_control1_frt_f_besf_sagc__Trip;
+    _pcc_control1_output_check__F_Zone = _pcc_control1_frt_f_besf_sagc__Fault;
+    _pcc_control1_output_check__Reset = _reset_cb__out;
+    _pcc_control1_output_check__V_Trip = _pcc_control1_v_check_besf__Trip;
+    _pcc_control1_output_check__V_Zone = _pcc_control1_v_check_besf__Fault;
     {
-        _pcc_control_output_check__CB = _pcc_control_output_check__var_CB ;
-        _pcc_control_output_check__GFL = _pcc_control_output_check__var_GFL ;
-        _pcc_control_output_check__Fault_Zone = _pcc_control_output_check__var_Fault_Zone ;
+        _pcc_control1_output_check__CB = _pcc_control1_output_check__var_CB ;
+        _pcc_control1_output_check__GFL = _pcc_control1_output_check__var_GFL ;
+        _pcc_control1_output_check__Fault_Zone = _pcc_control1_output_check__var_Fault_Zone ;
     }
-    // Generated from the component: PCC_Control.d_0_V
-    HIL_OutAO(0x40e3, (float)_pcc_control_v_check_besf__d0);
-    // Generated from the component: PCC_Control.d_1_V
-    HIL_OutAO(0x40e5, (float)_pcc_control_v_check_besf__d1);
-    // Generated from the component: PCC_Control.d_2_V
-    HIL_OutAO(0x40e7, (float)_pcc_control_v_check_besf__d2);
-    // Generated from the component: PCC_Control.d_3_V
-    HIL_OutAO(0x40e9, (float)_pcc_control_v_check_besf__d3);
-    // Generated from the component: PCC_Control.d_4_V
-    HIL_OutAO(0x40eb, (float)_pcc_control_v_check_besf__d4);
+    // Generated from the component: PCC_Control1.d_0_V
+    HIL_OutAO(0x40e3, (float)_pcc_control1_v_check_besf__d0);
+    // Generated from the component: PCC_Control1.d_1_V
+    HIL_OutAO(0x40e5, (float)_pcc_control1_v_check_besf__d1);
+    // Generated from the component: PCC_Control1.d_2_V
+    HIL_OutAO(0x40e7, (float)_pcc_control1_v_check_besf__d2);
+    // Generated from the component: PCC_Control1.d_3_V
+    HIL_OutAO(0x40e9, (float)_pcc_control1_v_check_besf__d3);
+    // Generated from the component: PCC_Control1.d_4_V
+    HIL_OutAO(0x40eb, (float)_pcc_control1_v_check_besf__d4);
     // Generated from the component: MS_S3.Meter_uG.POWER_PA
     // Generated from the component: MS_S3.Meter_uG.POWER_PB
     // Generated from the component: MS_S3.Meter_uG.POWER_PC
@@ -9186,8 +9175,21 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.Meter_uG.POWER_SA
     // Generated from the component: MS_S3.Meter_uG.POWER_SB
     // Generated from the component: MS_S3.Meter_uG.POWER_SC
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.b0
-    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out = 9.82591682e-06 * _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.confine_phase
+    _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta = _battery_inverter__average_1_control_df_switch_phase_synch_sum3__out;
+    {
+        if ( _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta > 3.14159265359 )     {
+            _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta - 6.28318530718 ;
+        }
+        else     {
+            if ( _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta < - 3.14159265359 )         {
+                _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta + 6.28318530718 ;
+            }
+            else         {
+                _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined = _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta ;
+            }
+        }
+    }
     // Generated from the component: Battery inverter (Average)1.Control.Synch.on_nominal
     HIL_OutInt32(0xf0040d, _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out != 0x0);
     // Generated from the component: Battery inverter (Average)1.Control.on_nominal
@@ -9201,7 +9203,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         _multiport_signal_switch1__out = _c_gfm__out;
         break;
     case 3:
-        _multiport_signal_switch1__out = _pcc_control_output_check__GFL;
+        _multiport_signal_switch1__out = _pcc_control1_output_check__GFL;
         break;
     default:
         _multiport_signal_switch1__out = 0x0;
@@ -9215,19 +9217,19 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         _multiport_signal_switch2__out = _c_cb1__out;
         break;
     case 3:
-        _multiport_signal_switch2__out = _pcc_control_output_check__CB;
+        _multiport_signal_switch2__out = _pcc_control1_output_check__CB;
         break;
     default:
         _multiport_signal_switch2__out = 0x0;
     }
-    // Generated from the component: PCC_Control.CB_faults
-    HIL_OutAO(0x40e0, (float)_pcc_control_output_check__CB);
-    // Generated from the component: PCC_Control.Fault
-    HIL_OutAO(0x40e1, (float)_pcc_control_output_check__Fault_Zone);
-    // Generated from the component: PCC_Control.GFL
-    HIL_OutAO(0x40e2, (float)_pcc_control_output_check__GFL);
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Sum1
-    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out + _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum2__out;
+    // Generated from the component: PCC_Control1.CB_faults
+    HIL_OutAO(0x40e0, (float)_pcc_control1_output_check__CB);
+    // Generated from the component: PCC_Control1.Fault
+    HIL_OutAO(0x40e1, (float)_pcc_control1_output_check__Fault_Zone);
+    // Generated from the component: PCC_Control1.GFL
+    HIL_OutAO(0x40e2, (float)_pcc_control1_output_check__GFL);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.b0
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out = 9.82591682e-06 * _battery_inverter__average_1_control_df_switch_phase_synch_confine_phase__dtheta_confined;
     // Generated from the component: BI_Inputs
     _bi_inputs__out[0] = _eut_interface_enable_i__out;
     _bi_inputs__out[1] = _multiport_signal_switch1__out;
@@ -9243,11 +9245,8 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     else {
         HIL_OutInt32(0x8240483, 0x1);
     }
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.PI_Ph
-    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int = _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state + 8.0 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
-    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out = _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int;
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.dPh
-    HIL_OutAO(0x4038, (float)_battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Sum1
+    _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_b0__out + _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum2__out;
     // Generated from the component: Battery inverter (Average)1.Control_Inputs.Bus Split2
     _battery_inverter__average_1_control_inputs_bus_split2__out = _bi_inputs__out[0];
     _battery_inverter__average_1_control_inputs_bus_split2__out1 = _bi_inputs__out[1];
@@ -9257,10 +9256,11 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_inputs_bus_split2__out5 = _bi_inputs__out[5];
     // Generated from the component: MS_S3.Sfb
     HIL_OutAO(0x40a7, (float)_ms_s3_s1_triple_s1_ideal_ctc_wrapper__feedback_out);
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Gain1
-    _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out = 0.02 * _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
-    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.uPh
-    HIL_OutAO(0x4039, (float)_battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.PI_Ph
+    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int = _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state + 8.0 * _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
+    _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out = _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.dPh
+    HIL_OutAO(0x4038, (float)_battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out);
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Gain1
     _battery_inverter__average_1_control_imode_control_gain1__out = 1e-05 * _battery_inverter__average_1_control_inputs_bus_split2__out4;
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Gain2
@@ -9273,6 +9273,10 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_inputs_limit1__out = MIN(MAX(_battery_inverter__average_1_control_inputs_bus_split2__out, 0.0), 1.0);
     // Generated from the component: Battery inverter (Average)1.Control_Inputs.Limit2
     _battery_inverter__average_1_control_inputs_limit2__out = MIN(MAX(_battery_inverter__average_1_control_inputs_bus_split2__out1, 0.0), 1.0);
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Gain1
+    _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out = 0.02 * _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
+    // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.uPh
+    HIL_OutAO(0x4039, (float)_battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out);
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Limit_PQref.priority_PQlim.PQ limiting with priority
     _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Pref = _battery_inverter__average_1_control_imode_control_gain1__out;
     _battery_inverter__average_1_control_imode_control_limit_pqref_priority_pqlim_pq_limiting_with_priority__Qref = _battery_inverter__average_1_control_imode_control_gain2__out;
@@ -10445,104 +10449,104 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.TPM_uG.PLL.integrator
     {
     }
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.confine_phase
+    // Generated from the component: PCC_Control1.FRT_F_BESF-SAGC
     {
-    }
-    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
-    {
-        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+        _pcc_control1_frt_f_besf_sagc__Trip_Zone = - 1 ;
         for ( int  i = 0  ; i < 3 ; i ++ )     {
-            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-            if ( _pcc_control_frt_f_besf_sagc__Input > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . V_limit )         {
-                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Input > _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . V_limit )         {
+                _pcc_control1_frt_f_besf_sagc__Violation = 1 ;
             }
-            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
-                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . t_limit )             {
-                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i ;
+            if ( _pcc_control1_frt_f_besf_sagc__Violation )         {
+                _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . t_limit )             {
+                    _pcc_control1_frt_f_besf_sagc__Trip_Zone = i ;
                 }
             }
             else         {
-                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer = 0.0f ;
             }
         }
         for ( int  i = 0  ; i < 4 ; i ++ )     {
-            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-            if ( _pcc_control_frt_f_besf_sagc__Input < _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . V_limit )         {
-                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Input < _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . V_limit )         {
+                _pcc_control1_frt_f_besf_sagc__Violation = 1 ;
             }
-            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
-                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . t_limit )             {
-                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i + 3 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Violation )         {
+                _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . t_limit )             {
+                    _pcc_control1_frt_f_besf_sagc__Trip_Zone = i + 3 ;
                 }
             }
             else         {
-                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer = 0.0f ;
             }
         }
     }
-    // Generated from the component: PCC_Control.V_Check_BESF
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.confine_phase
     {
-        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
+    }
+    // Generated from the component: PCC_Control1.V_Check_BESF
+    {
+        _pcc_control1_v_check_besf__Trip_Zone = - 1 ;
         for ( int  i = 0  ; i < 2 ; i ++ )     {
-            _pcc_control_v_check_besf__Violation = 0 ;
-            if ( _pcc_control_v_check_besf__Input > _pcc_control_v_check_besf__ov_zones [ i ] . V_limit )         {
-                _pcc_control_v_check_besf__Violation = 1 ;
+            _pcc_control1_v_check_besf__Violation = 0 ;
+            if ( _pcc_control1_v_check_besf__Input > _pcc_control1_v_check_besf__ov_zones [ i ] . V_limit )         {
+                _pcc_control1_v_check_besf__Violation = 1 ;
             }
-            if ( _pcc_control_v_check_besf__Violation )         {
-                _pcc_control_v_check_besf__ov_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_v_check_besf__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__ov_zones [ i ] . t_limit )             {
-                    _pcc_control_v_check_besf__Trip_Zone = i ;
+            if ( _pcc_control1_v_check_besf__Violation )         {
+                _pcc_control1_v_check_besf__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_v_check_besf__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control1_v_check_besf__ov_zones [ i ] . t_limit )             {
+                    _pcc_control1_v_check_besf__Trip_Zone = i ;
                 }
             }
             else         {
-                _pcc_control_v_check_besf__ov_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_v_check_besf__ov_zones [ i ] . timer = 0.0f ;
             }
         }
         for ( int  i = 0  ; i < 3 ; i ++ )     {
-            _pcc_control_v_check_besf__Violation = 0 ;
-            if ( _pcc_control_v_check_besf__Input < _pcc_control_v_check_besf__uv_zones [ i ] . V_limit )         {
-                _pcc_control_v_check_besf__Violation = 1 ;
+            _pcc_control1_v_check_besf__Violation = 0 ;
+            if ( _pcc_control1_v_check_besf__Input < _pcc_control1_v_check_besf__uv_zones [ i ] . V_limit )         {
+                _pcc_control1_v_check_besf__Violation = 1 ;
             }
-            if ( _pcc_control_v_check_besf__Violation )         {
-                _pcc_control_v_check_besf__uv_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_v_check_besf__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__uv_zones [ i ] . t_limit )             {
-                    _pcc_control_v_check_besf__Trip_Zone = i + 2 ;
+            if ( _pcc_control1_v_check_besf__Violation )         {
+                _pcc_control1_v_check_besf__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_v_check_besf__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control1_v_check_besf__uv_zones [ i ] . t_limit )             {
+                    _pcc_control1_v_check_besf__Trip_Zone = i + 2 ;
                 }
             }
             else         {
-                _pcc_control_v_check_besf__uv_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_v_check_besf__uv_zones [ i ] . timer = 0.0f ;
+            }
+        }
+    }
+    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.wait_to_change
+    {
+    }
+    // Generated from the component: PCC_Control1.Output_Check
+    {
+        if ( _pcc_control1_output_check__Reset )     {
+            _pcc_control1_output_check__var_CB = 1 ;
+            _pcc_control1_output_check__var_GFL = 1 ;
+            _pcc_control1_output_check__var_Fault_Zone = - 1 ;
+        }
+        else     {
+            if ( _pcc_control1_output_check__var_Fault_Zone == - 1 )         {
+                if ( _pcc_control1_output_check__V_Trip )             {
+                    _pcc_control1_output_check__var_Fault_Zone = _pcc_control1_output_check__V_Zone ;
+                }
+                else if ( _pcc_control1_output_check__F_Trip )             {
+                    _pcc_control1_output_check__var_Fault_Zone = _pcc_control1_output_check__F_Zone + ( 5 ) ;
+                }
+                if ( _pcc_control1_output_check__var_Fault_Zone != - 1 )             {
+                    _pcc_control1_output_check__var_CB = 0 ;
+                    _pcc_control1_output_check__var_GFL = 0 ;
+                }
             }
         }
     }
     // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.confine_phase
     {
-    }
-    // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.wait_to_change
-    {
-    }
-    // Generated from the component: PCC_Control.Output_Check
-    {
-        if ( _pcc_control_output_check__Reset )     {
-            _pcc_control_output_check__var_CB = 1 ;
-            _pcc_control_output_check__var_GFL = 1 ;
-            _pcc_control_output_check__var_Fault_Zone = - 1 ;
-        }
-        else     {
-            if ( _pcc_control_output_check__var_Fault_Zone == - 1 )         {
-                if ( _pcc_control_output_check__V_Trip )             {
-                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__V_Zone ;
-                }
-                else if ( _pcc_control_output_check__F_Trip )             {
-                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__F_Zone + ( 5 ) ;
-                }
-                if ( _pcc_control_output_check__var_Fault_Zone != - 1 )             {
-                    _pcc_control_output_check__var_CB = 0 ;
-                    _pcc_control_output_check__var_GFL = 0 ;
-                }
-            }
-        }
     }
     // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.PI_Ph
     if (((_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch > 0.0) && (_battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state <= 0)) || ((_battery_inverter__average_1_control_inv_cab_sm_inv_cab_sm__synch <= 0.0) && (_battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__reset_state == 1))) {

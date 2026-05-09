@@ -10364,6 +10364,14 @@ else{
                         position = 8096, 8508
                     ]
 
+                    component "core/Limit" dwt_Limit {
+                        lower_limit = "-dwtLimit"
+                        upper_limit = "dwtLimit"
+                    }
+                    [
+                        position = 7824, 8688
+                    ]
+
                     port Vdc {
                         position = top:1
                         kind = sp
@@ -10759,12 +10767,13 @@ else{
                     connect confine_phase.dtheta Junction13 as Connection2583
                     connect Junction13 Sum12.out as Connection2584
                     connect wt_out.in Junction13 as Connection2585
-                    connect Sum12.in1 Junction14 as Connection2592
-                    connect Junction14 d_wt.in as Connection2593
+                    connect dwt_Limit.in "Default_A-IDM_APS.phase shift" as Connection2596
+                    connect Sum12.in1 Junction14 as Connection2597
+                    connect Junction14 d_wt.in as Connection2598
                     [
                         breakpoints = 7888, 8628; 7888, 8628
                     ]
-                    connect "Default_A-IDM_APS.phase shift" Junction14 as Connection2594
+                    connect dwt_Limit.out Junction14 as Connection2599
                 }
                 [
                     position = 8216, 8384
@@ -18696,12 +18705,12 @@ else{
                 connect "Power Meter.PFb" GoToPFb as ConnPMPFb
                 connect "Power Meter.PFc" GoToPFc as ConnPMPFc
                 connect "Power Meter.PF" GoToPF as ConnPMPF
-                connect Junction221 Ra.p_node as Connection3597
-                connect Ra.n_node Junction230 as Connection3598
-                connect Junction220 Rb.p_node as Connection3599
-                connect Rb.n_node Junction225 as Connection3600
-                connect Junction219 Rc.p_node as Connection3601
-                connect Rc.n_node Junction225 as Connection3602
+                connect Junction221 Ra.p_node as Connection3609
+                connect Ra.n_node Junction230 as Connection3610
+                connect Junction220 Rb.p_node as Connection3611
+                connect Rb.n_node Junction225 as Connection3612
+                connect Junction219 Rc.p_node as Connection3613
+                connect Rc.n_node Junction225 as Connection3614
                 connect JunAn+ VAn.p_node as ConnAn+
                 connect JunAn- VAn.n_node as ConnAn-
                 connect VAn.out GoToVAn as ConnAnSP
@@ -21171,590 +21180,6 @@ else{
             scale = -1, 1
         ]
 
-        component Subsystem PCC_Control {
-            layout = dynamic
-            component "core/Gain" v_pu {
-                execution_rate = "Ts_i"
-                gain = "np.sqrt(3)/Vess"
-            }
-            [
-                position = 7908, 7976
-            ]
-
-            component "core/Gain" f_pu {
-                execution_rate = "Ts_i"
-                gain = "1/fgrid"
-            }
-            [
-                position = 7964, 8308
-                rotation = right
-            ]
-
-            component "core/Probe" fault_vpu {
-            }
-            [
-                position = 7964, 7848
-                rotation = left
-            ]
-
-            component "core/Probe" fault_fpu {
-            }
-            [
-                position = 7964, 8412
-                rotation = right
-            ]
-
-            component "core/Probe" CB_faults {
-            }
-            [
-                position = 8820, 7952
-                rotation = left
-            ]
-
-            component "core/Probe" Fault {
-            }
-            [
-                position = 8788, 7916
-                rotation = left
-            ]
-
-            component "core/Probe" GFL {
-            }
-            [
-                position = 8856, 7988
-                rotation = left
-            ]
-
-            component "Thesis_Stuff/FRT_V_BESF-SAGC" V_Check_BESF {
-                arb_defs = "/*Begin code section*/
-typedef struct {
-    float V_limit;
-    float t_limit;
-    int timer;
-} FRT_Zone;
-
-#define OV_Num 2 
-#define UV_Num 3 
-
-FRT_Zone ov_zones[OV_Num] = {
-    {1.1f, 2.0f, 0},
-    {1.2f, 0.05f, 0}
-}; 
-
-FRT_Zone uv_zones[UV_Num] = {
-    {0.85f, 0.5f, 0},
-    {0.8f, 0.15f, 0},
-    {0.6f, 0.05f, 0}
-};
-
-//float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
-/*End code section*/"
-                global_variables = "int Violation;int Trip_Zone;"
-                init_fnc = "/*Begin code section*/
-Violation = 0;
-Trip_Zone = -1;
-/*End code section*/"
-                input_terminals = "real Input;"
-                input_terminals_dimensions = "inherit"
-                input_terminals_feedthrough = "True"
-                input_terminals_show_labels = "True"
-                output_fnc = "/*Begin code section*/
-Fault = Trip_Zone;
-
-if (Trip_Zone > -1){
-    Trip = 1;
-}
-else { Trip = 0;}
-
-
-
-// for (int i = 0; i < OV_Num; i++ ){
-//     debug[i] = ov_zones[i].timer*execution_rate;
-// }
-// for (int i = 0; i < UV_Num; i++){
-//     debug[i+OV_Num] = uv_zones[i].timer*execution_rate;
-// }
-
-// o_debug = debug;
-
-d0 = ov_zones[0].timer*execution_rate;
-d1 = ov_zones[1].timer*execution_rate;
-d2 = uv_zones[0].timer*execution_rate;
-d3 = uv_zones[1].timer*execution_rate;
-d4 = uv_zones[2].timer*execution_rate;
-/*End code section*/"
-                output_terminals = "real Trip;inherit Fault;inherit d0;inherit d1;inherit d2;inherit d3;inherit d4;"
-                output_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit;inherit;inherit"
-                output_terminals_feedthrough = "True;True;True;True;True;True;True"
-                output_terminals_show_labels = "True;True;True;True;True;True;True"
-                update_fnc = "/*Begin code section*/
-//Initialise
-Trip_Zone = -1;
-
-//OV check, Zones 0 and 1
-for(int i = 0; i < OV_Num; i++)
-{
-    Violation = 0;
-    
-    if (Input > ov_zones[i].V_limit ){
-        Violation = 1;
-    }
-    
-    if (Violation){
-        ov_zones[i].timer++;
-        
-        if ((ov_zones[i].timer*execution_rate) > ov_zones[i].t_limit){
-            //debug = ov_zones[i].timer*execution_rate;
-            Trip_Zone = i;
-        }
-    }
-    else { ov_zones[i].timer = 0.0f;}
-    
-    
-}
-
-//UV Check, Zones 2, 3 and 4
-for(int i = 0; i < UV_Num; i++)
-{
-    Violation = 0;
-    
-    if (Input < uv_zones[i].V_limit ){
-        Violation = 1;
-    }
-    
-    if (Violation){
-        uv_zones[i].timer++;
-        if ((uv_zones[i].timer*execution_rate) > uv_zones[i].t_limit){
-            Trip_Zone = i + OV_Num;
-        }
-    }
-    else { uv_zones[i].timer = 0.0f;}
-}
-/*End code section*/"
-            }
-            [
-                position = 8168, 7976
-                size = 168, 168
-            ]
-
-            component "core/Probe" d_0_V {
-            }
-            [
-                position = 8296, 7688
-                rotation = left
-            ]
-
-            component "core/Probe" d_1_V {
-            }
-            [
-                position = 8328, 7720
-                rotation = left
-            ]
-
-            component "core/Probe" d_2_V {
-            }
-            [
-                position = 8364, 7748
-                rotation = left
-            ]
-
-            component "core/Probe" d_3_V {
-            }
-            [
-                position = 8400, 7780
-                rotation = left
-            ]
-
-            component "core/Probe" d_4_V {
-            }
-            [
-                position = 8436, 7812
-                rotation = left
-            ]
-
-            component "core/Probe" d_0_f {
-            }
-            [
-                position = 8456, 8520
-                rotation = right
-            ]
-
-            component "core/Probe" d_1_f {
-            }
-            [
-                position = 8424, 8488
-                rotation = right
-            ]
-
-            component "core/Probe" d_2_f {
-            }
-            [
-                position = 8392, 8456
-                rotation = right
-            ]
-
-            component "core/Probe" d_3_f {
-            }
-            [
-                position = 8360, 8424
-                rotation = right
-            ]
-
-            component "core/Probe" d_4_f {
-            }
-            [
-                position = 8328, 8392
-                rotation = right
-            ]
-
-            component "core/Probe" d_5_f {
-            }
-            [
-                position = 8296, 8364
-                rotation = right
-            ]
-
-            component "core/C function" Output_Check {
-                arb_defs = "/*Begin code section*/
-#define NumV (5)
-#define NumF (7)
-/*End code section*/"
-                global_variables = "real var_Fault_Zone;real var_CB;real var_GFL;"
-                init_fnc = "/*Begin code section*/
-var_CB = 1;
-var_GFL = 1;
-var_Fault_Zone = -1;
-/*End code section*/"
-                input_terminals = "int V_Trip;int V_Zone;int Reset;int F_Trip;int F_Zone;"
-                input_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit"
-                input_terminals_feedthrough = "True;True;True;True;True"
-                input_terminals_show_labels = "True;True;True;True;True"
-                output_fnc = "/*Begin code section*/
-CB = var_CB;
-GFL = var_GFL;
-Fault_Zone = var_Fault_Zone;
-/*End code section*/"
-                output_terminals = "int Fault_Zone;int CB;int GFL;"
-                output_terminals_dimensions = "inherit;inherit;inherit"
-                output_terminals_feedthrough = "True;True;True"
-                output_terminals_show_labels = "True;True;True"
-                update_fnc = "/*Begin code section*/
-//Inputs -> variables, necessary?
-// var_V_Zone = V_Zone;
-// var_F_Zone = F_Zone;
-
-//Reset
-if(Reset){
-    var_CB = 1;
-    var_GFL = 1;
-    var_Fault_Zone = -1;
-}
-else{ //So check fault zone
-    if(var_Fault_Zone == -1){ //No trips have occured yet
-        //Volt Zone
-        if(V_Trip){ // V fault
-            var_Fault_Zone = V_Zone;
-        }
-        // Frequency Zone
-        else if(F_Trip){ // F Fault
-            var_Fault_Zone = F_Zone+NumV;
-        }  
-        
-        if(var_Fault_Zone != -1){//Trip detected
-            var_CB = 0;
-            var_GFL = 0;
-        }
-    }
-}
-/*End code section*/"
-            }
-            [
-                position = 8648, 8108
-                size = 120, 160
-            ]
-
-            component "core/C function" FRT_F_BESF-SAGC {
-                arb_defs = "/*Begin code section*/
-typedef struct {
-    float V_limit;
-    float t_limit;
-    int timer;
-} fFRT_Zone;
-
-#define OV_Num 3
-#define UV_Num 4 
-
-fFRT_Zone ov_zones[OV_Num] = {
-    {51.0f, 60.0f, 0},
-    {51.5f, 4.0f, 0},
-    {52.0f, 0.2f, 0}
-}; 
-
-fFRT_Zone uv_zones[UV_Num] = {
-    {49.0f, 60.0f, 0},
-    {48.0f, 10.0f, 0},
-    {47.5f, 6.0f, 0},
-    {47.0f, 0.2f, 0}
-};
-
-//float debug = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
-/*End code section*/"
-                global_variables = "int Violation;int Trip_Zone;"
-                init_fnc = "/*Begin code section*/
-Violation = 0;
-Trip_Zone = -1;
-/*End code section*/"
-                input_terminals = "real Input;"
-                input_terminals_dimensions = "inherit"
-                input_terminals_feedthrough = "True"
-                input_terminals_show_labels = "True"
-                output_fnc = "/*Begin code section*/
-Fault = Trip_Zone;
-
-if (Trip_Zone > -1){
-    Trip = 1;
-}
-else { Trip = 0;}
-
-
-
-// for (int i = 0; i < OV_Num; i++ ){
-//     debug[i] = ov_zones[i].timer*execution_rate;
-// }
-// for (int i = 0; i < UV_Num; i++){
-//     debug[i+OV_Num] = uv_zones[i].timer*execution_rate;
-// }
-
-// o_debug = debug;
-
-d0 = ov_zones[0].timer*execution_rate;
-d1 = ov_zones[1].timer*execution_rate;
-d2 = ov_zones[2].timer*execution_rate;
-d3 = uv_zones[0].timer*execution_rate;
-d4 = uv_zones[1].timer*execution_rate;
-d5 = uv_zones[2].timer*execution_rate;
-d6 = uv_zones[3].timer*execution_rate;
-/*End code section*/"
-                output_terminals = "real Trip;inherit Fault;inherit d0;inherit d1;inherit d2;inherit d3;inherit d4;inherit d5;inherit d6;"
-                output_terminals_dimensions = "inherit;inherit;inherit;inherit;inherit;inherit;inherit;inherit;inherit"
-                output_terminals_feedthrough = "True;True;True;True;True;True;True;True;True"
-                output_terminals_show_labels = "True;True;True;True;True;True;True;True;True"
-                update_fnc = "/*Begin code section*/
-//Initialise
-Trip_Zone = -1;
-
-
-//OF check, Zones 0, 1 and 2
-for(int i = 0; i < OV_Num; i++)
-{
-    Violation = 0;
-    
-    if (Input > ov_zones[i].V_limit ){
-        Violation = 1;
-    }
-    
-    if (Violation){
-        ov_zones[i].timer++;
-        
-        if ((ov_zones[i].timer*execution_rate) > ov_zones[i].t_limit){
-            //debug = ov_zones[i].timer*execution_rate;
-            Trip_Zone = i;
-        }
-    }
-    else { ov_zones[i].timer = 0.0f;}
-    
-    
-}
-
-//UF Check, Zones 3, 4, 5 and 6 
-for(int i = 0; i < UV_Num; i++)
-{
-    Violation = 0;
-    
-    if (Input < uv_zones[i].V_limit ){
-        Violation = 1;
-    }
-    
-    if (Violation){
-        uv_zones[i].timer++;
-        if ((uv_zones[i].timer*execution_rate) > uv_zones[i].t_limit){
-            Trip_Zone = i + OV_Num;
-        }
-    }
-    else { uv_zones[i].timer = 0.0f;}
-}
-/*End code section*/"
-            }
-            [
-                position = 8156, 8240
-                size = 168, 168
-            ]
-
-            component "core/Probe" d_6_f {
-            }
-            [
-                position = 8264, 8336
-                rotation = right
-            ]
-
-            port oFault {
-                position = auto:auto
-                kind = sp
-                direction =  in
-                sp_type {
-                    default = inherit
-                    readonly = True
-                }
-            }
-            [
-                position = 8944, 8052
-            ]
-
-            port oCB {
-                position = auto:auto
-                kind = sp
-                direction =  in
-                sp_type {
-                    default = inherit
-                    readonly = True
-                }
-            }
-            [
-                position = 8944, 8108
-            ]
-
-            port oGFL {
-                position = auto:auto
-                kind = sp
-                direction =  in
-                sp_type {
-                    default = inherit
-                    readonly = True
-                }
-            }
-            [
-                position = 8944, 8164
-            ]
-
-            port iV {
-                position = auto:auto
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 7808, 7976
-            ]
-
-            port if {
-                position = auto:auto
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 7804, 8240
-            ]
-
-            port iReset {
-                position = auto:auto
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 7804, 8108
-            ]
-
-            junction Junction2 sp
-            [
-                position = 7964, 7976
-            ]
-
-            junction Junction3 sp
-            [
-                position = 8856, 8164
-            ]
-
-            junction Junction4 sp
-            [
-                position = 8820, 8108
-            ]
-
-            junction Junction5 sp
-            [
-                position = 8788, 8052
-            ]
-
-            junction Junction6 sp
-            [
-                position = 7964, 8240
-            ]
-
-            connect iV v_pu.in as Connection602
-            connect f_pu.out fault_fpu.in as Connection635
-            connect fault_vpu.in Junction2 as Connection636
-            connect Junction2 v_pu.out as Connection637
-            connect V_Check_BESF.Input Junction2 as Connection638
-            connect d_0_V.in V_Check_BESF.d0 as Connection688
-            connect d_1_V.in V_Check_BESF.d1 as Connection689
-            connect d_2_V.in V_Check_BESF.d2 as Connection690
-            connect d_3_V.in V_Check_BESF.d3 as Connection691
-            connect d_4_V.in V_Check_BESF.d4 as Connection692
-            connect oGFL Junction3 as Connection702
-            connect Junction3 Output_Check.GFL as Connection703
-            connect GFL.in Junction3 as Connection704
-            connect oCB Junction4 as Connection705
-            connect Junction4 Output_Check.CB as Connection706
-            connect CB_faults.in Junction4 as Connection707
-            connect oFault Junction5 as Connection708
-            connect Junction5 Output_Check.Fault_Zone as Connection709
-            connect Fault.in Junction5 as Connection710
-            connect iReset Output_Check.Reset as Connection716
-            connect V_Check_BESF.Trip Output_Check.V_Trip as Connection717
-            [
-                breakpoints = 8532, 7928; 8532, 8060
-            ]
-            connect V_Check_BESF.Fault Output_Check.V_Zone as Connection718
-            [
-                breakpoints = 8520, 7944; 8520, 8084
-            ]
-            connect if Junction6 as Connection722
-            connect Junction6 f_pu.in as Connection723
-            [
-                breakpoints = 7964, 8240
-            ]
-            connect FRT_F_BESF-SAGC.Input Junction6 as Connection724
-            connect FRT_F_BESF-SAGC.Trip Output_Check.F_Trip as Connection725
-            [
-                breakpoints = 8524, 8176; 8524, 8132
-            ]
-            connect FRT_F_BESF-SAGC.Fault Output_Check.F_Zone as Connection726
-            [
-                breakpoints = 8540, 8192; 8540, 8156
-            ]
-            connect FRT_F_BESF-SAGC.d0 d_0_f.in as Connection727
-            connect FRT_F_BESF-SAGC.d1 d_1_f.in as Connection728
-            connect FRT_F_BESF-SAGC.d2 d_2_f.in as Connection729
-            connect FRT_F_BESF-SAGC.d3 d_3_f.in as Connection730
-            connect FRT_F_BESF-SAGC.d4 d_4_f.in as Connection731
-            connect FRT_F_BESF-SAGC.d5 d_5_f.in as Connection732
-            connect d_6_f.in FRT_F_BESF-SAGC.d6 as Connection733
-        }
-        [
-            position = 7312, 7652
-            size = 104, 160
-        ]
-
         component Subsystem Grid_Inputs {
             layout = dynamic
             component "core/Multiport signal switch" Mux_V_g {
@@ -22391,6 +21816,13 @@ if(sw_in != sw_last){//Edge detected
             size = 272, 152
         ]
 
+        component "Thesis_Stuff/PCC_Control" PCC_Control1 {
+        }
+        [
+            position = 7300, 7652
+            size = 104, 160
+        ]
+
         tag Goto2 {
             value = "fCB"
             scope = local
@@ -22926,11 +22358,6 @@ if(sw_in != sw_last){//Edge detected
             background_color = #70aa0000
         ]
 
-        comment Comment4 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Changed V &quot;instant trip&quot; duration to 50ms</p></body></html> ENDCOMMENT 
-        [
-            position = 7160, 7768
-        ]
-
         scheme_area Area1 {
             title = <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><style type="text/css">p, li { white-space: pre-wrap; }</style></head><body style=" font-family:'Tahoma'; font-size:14pt; font-weight:0; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">EUT and DC Voltage</p></body></html>
         }
@@ -23228,12 +22655,12 @@ if(sw_in != sw_last){//Edge detected
             breakpoints = 8304, 7616
         ]
         connect Grid_Inputs.Out9 Junction61 as Connection743
-        connect From1 PCC_Control.iV as Connection744
-        connect RESET_CB.out PCC_Control.iReset as Connection745
-        connect From2 PCC_Control.if as Connection746
-        connect PCC_Control.oFault Goto5 as Connection747
-        connect PCC_Control.oCB Goto17 as Connection748
-        connect PCC_Control.oGFL Goto6 as Connection749
+        connect From1 PCC_Control1.iV as Connection744
+        connect RESET_CB.out PCC_Control1.iReset as Connection745
+        connect From2 PCC_Control1.if as Connection746
+        connect PCC_Control1.oFault Goto5 as Connection747
+        connect PCC_Control1.oCB Goto17 as Connection748
+        connect PCC_Control1.oGFL Goto6 as Connection749
     }
 
     default {
@@ -23333,43 +22760,6 @@ if(sw_in != sw_last){//Edge detected
             a_coeff = "[1,1]"
             signal_out_type = "inherit"
             execution_rate = "inherit"
-        }
-
-        "Thesis_Stuff/FRT_V_BESF-SAGC" {
-            input_terminals = "real in;"
-            input_terminals_show_labels = "False;"
-            input_terminals_feedthrough = "True;"
-            input_terminals_dimensions = "inherit;"
-            output_terminals = "real out;"
-            output_terminals_show_labels = "False;"
-            output_terminals_feedthrough = "True;"
-            output_terminals_dimensions = "inherit;"
-            output_fnc = ""
-            update_fnc = ""
-            init_fnc = ""
-            global_variables = ""
-            parameters = ""
-            library_load_type = "Compile-time load"
-            dll_file_path = ""
-            dll_file_path_full = ""
-            arm_a9_file_path = ""
-            arm_a9_file_path_full = ""
-            arm_a53_file_path = ""
-            arm_a53_file_path_full = ""
-            h_file_path = ""
-            h_file_path_full = ""
-            add_src_path = ""
-            add_src_path_full = ""
-            convert_to_relative_dll = "True"
-            convert_to_relative_a = "True"
-            convert_to_relative_src = "True"
-            arb_defs = ""
-            add_macros = ""
-            skip_pre_cmpl_check = "False"
-            generate_for_hil = "True"
-            execution_rate = "inherit"
-            _supported_platforms = "[\'generic\']"
-            refresh = "refresh"
         }
 
         "core/Gain" {
@@ -23937,9 +23327,10 @@ if(sw_in != sw_last){//Edge detected
         
         #IDM
         #SFS
-        k_SFS = 0.3 #0.1 - 85ms
+        k_SFS = 0.2 #0.1 - 85ms
         feLimit_O = 0.05
         feLimit_U = -0.07
+        dwtLimit = 1.5
         
         
         #Voltage control
