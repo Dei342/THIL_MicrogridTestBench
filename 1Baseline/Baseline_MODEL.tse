@@ -17993,12 +17993,12 @@ if(sw_in != sw_last){
                 connect "Power Meter.PFb" GoToPFb as ConnPMPFb
                 connect "Power Meter.PFc" GoToPFc as ConnPMPFc
                 connect "Power Meter.PF" GoToPF as ConnPMPF
-                connect Junction221 Ra.p_node as Connection3615
-                connect Ra.n_node Junction230 as Connection3616
-                connect Junction220 Rb.p_node as Connection3617
-                connect Rb.n_node Junction225 as Connection3618
-                connect Junction219 Rc.p_node as Connection3619
-                connect Rc.n_node Junction225 as Connection3620
+                connect Junction221 Ra.p_node as Connection3645
+                connect Ra.n_node Junction230 as Connection3646
+                connect Junction220 Rb.p_node as Connection3647
+                connect Rb.n_node Junction225 as Connection3648
+                connect Junction219 Rc.p_node as Connection3649
+                connect Rc.n_node Junction225 as Connection3650
                 connect JunAn+ VAn.p_node as ConnAn+
                 connect JunAn- VAn.n_node as ConnAn-
                 connect VAn.out GoToVAn as ConnAnSP
@@ -20468,647 +20468,18 @@ if(sw_in != sw_last){
             scale = -1, 1
         ]
 
-        component Subsystem Grid_Inputs {
-            layout = dynamic
-            component "core/Multiport signal switch" Mux_V_g {
-                number_of_input_terminals = "3"
-            }
-            [
-                position = 7828, 8012
-                scale = -1, 1
-            ]
-
-            component "core/Multiport signal switch" Mux_f_g {
-                number_of_input_terminals = "3"
-            }
-            [
-                position = 7828, 8484
-                scale = -1, 1
-            ]
-
-            component "core/Multiport signal switch" Mux_Ph_g {
-                number_of_input_terminals = "1"
-            }
-            [
-                position = 7828, 8728
-                scale = -1, 1
-            ]
-
-            component "core/Dynamic Table" V_FRT_pu {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/FRT/V-FRT_BESF_02.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.02, 1.04, 1.13, 1.15, 1.17, 1.48, 1.5, 1.52, 3.0, 3.02, 3.04, 4.98, 5.0, 5.02, 6.0]"
-                y_vec = "[[1.0, 1.0, 0.6, 0.79, 0.79, 0.8, 0.84, 0.84, 0.85, 1.0, 1.0, 1.2, 1.19, 1.11, 1.1, 1.0, 1.0]]"
-            }
-            [
-                position = 8180, 7980
-                scale = -1, 1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" F_FRT_pu {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/FRT/F-FRT_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 2.2, 2.24, 2.32, 2.36, 2.52, 7.92, 7.96, 8.12, 11.72, 11.76, 12.12, 61.32, 61.36, 61.76, 62.96, 63.56, 63.6, 67.48, 67.52, 67.68, 123.22, 123.32, 123.72, 124.92]"
-                y_vec = "[[1.0, 1.0, 0.94, 0.938, 0.938, 0.94, 0.948, 0.948, 0.95, 0.958, 0.958, 0.96, 0.978, 0.978, 0.98, 1.0, 1.0, 1.03, 1.032, 1.032, 1.03, 1.022, 1.022, 1.02, 1.0, 1.0]]"
-            }
-            [
-                position = 8180, 8452
-                scale = -1, 1
-                size = 48, 48
-            ]
-
-            component "core/Multiport signal switch" Mux_V_g_Trip {
-                number_of_input_terminals = "5"
-            }
-            [
-                position = 8404, 8028
-                scale = -1, 1
-            ]
-
-            component "core/Multiport signal switch" Mux_F_g_Trip {
-                number_of_input_terminals = "7"
-            }
-            [
-                position = 8408, 8500
-                scale = -1, 1
-            ]
-
-            component "core/Dynamic Table" V_Trip1 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OV1_BESF.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.01, 3.03, 3.04, 4.0]"
-                y_vec = "[[1.0, 1.0, 1.11, 1.11, 1.0, 1.0]]"
-            }
-            [
-                position = 8460, 7940
-                rotation = right
-                scale = -1, 1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" V_Trip2 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OV2_BESF.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.01, 1.051, 1.061, 2.0]"
-                y_vec = "[[1.0, 1.0, 1.21, 1.21, 1.0, 1.0]]"
-            }
-            [
-                position = 8516, 7940
-                rotation = right
-                hide_name = True
-                scale = -1, 1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" V_Trip3 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UV1_BESF.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.01, 1.53, 1.54, 2.0]"
-                y_vec = "[[1.0, 1.0, 0.84, 0.84, 1.0, 1.0]]"
-            }
-            [
-                position = 8572, 7940
-                rotation = right
-                hide_name = True
-                scale = -1, 1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" V_Trip4 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UV2_BESF.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.01, 1.18, 1.19, 2.0]"
-                y_vec = "[[1.0, 1.0, 0.79, 0.79, 1.0, 1.0]]"
-            }
-            [
-                position = 8628, 7940
-                rotation = right
-                hide_name = True
-                scale = -1, 1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" V_Trip5 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UV3_BESF.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.01, 1.051, 1.061, 2.0]"
-                y_vec = "[[1.0, 1.0, 0.59, 0.59, 1.0, 1.0]]"
-            }
-            [
-                position = 8684, 7940
-                rotation = right
-                hide_name = True
-                scale = -1, 1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" F_Trip6 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF4_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 2.24, 2.44, 3.68, 4.0]"
-                y_vec = "[[1.0, 1.0, 0.938, 0.938, 1.0, 1.0]]"
-            }
-            [
-                position = 8464, 8604
-                rotation = right
-                scale = -1, -1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" F_Trip5 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF3_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 2.04, 8.04, 9.08, 9.5]"
-                y_vec = "[[1.0, 1.0, 0.948, 0.948, 1.0, 1.0]]"
-            }
-            [
-                position = 8520, 8604
-                rotation = right
-                hide_name = True
-                scale = -1, -1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" F_Trip4 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF2_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.84, 11.84, 12.68, 13.0]"
-                y_vec = "[[1.0, 1.0, 0.958, 0.958, 1.0, 1.0]]"
-            }
-            [
-                position = 8576, 8604
-                rotation = right
-                hide_name = True
-                scale = -1, -1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" F_Trip3 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/UF1_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.44, 61.44, 61.88, 62.0]"
-                y_vec = "[[1.0, 1.0, 0.978, 0.978, 1.0, 1.0]]"
-            }
-            [
-                position = 8632, 8604
-                rotation = right
-                hide_name = True
-                scale = -1, -1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" F_Trip2 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OF2_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.64, 5.64, 6.28, 6.5]"
-                y_vec = "[[1.0, 1.0, 1.032, 1.032, 1.0, 1.0]]"
-            }
-            [
-                position = 8744, 8604
-                rotation = right
-                hide_name = True
-                scale = -1, -1
-                size = 48, 48
-            ]
-
-            component "core/Dynamic Table" F_Trip1 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OF1_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.44, 61.44, 61.88, 62.0]"
-                y_vec = "[[1.0, 1.0, 1.022, 1.022, 1.0, 1.0]]"
-            }
-            [
-                position = 8800, 8604
-                rotation = right
-                hide_name = True
-                scale = -1, -1
-                size = 48, 48
-            ]
-
-            component "Thesis_Stuff/Phase-Synch-Switching" Input-Synch-Switching_V {
-                arb_defs = "/*Begin code section*/
-int sw_in, sw_out, sw_last;
-float V_in, V_targ;
-/*End code section*/"
-                init_fnc = "/*Begin code section*/
-sw_in = 1;
-sw_out = 1;
-sw_last = 1;
-
-V_in = 1;
-V_targ = 1;
-/*End code section*/"
-                input_terminals = "int in_sw;inherit in_FRT;inherit in_Trip;"
-                input_terminals_dimensions = "inherit;inherit;inherit"
-                input_terminals_feedthrough = "True;True;True"
-                input_terminals_show_labels = "True;True;True"
-                output_fnc = "/*Begin code section*/
-out_sw = sw_out;
-/*End code section*/"
-                output_terminals = "real out_sw;"
-                output_terminals_dimensions = "inherit"
-                output_terminals_feedthrough = "True"
-                output_terminals_show_labels = "True"
-                update_fnc = "/*Begin code section*/
-//Update holders with inputs
-sw_in = in_sw;
-// ph_in = in_phase;
-// ph_targ = in_target;
-
-if(sw_in != sw_last){//Edge detected
-    switch (sw_in){
-    case 1: //Input
-        V_in = 1;    
-        break;
-    case 2: //FRT
-        V_in = in_FRT;    
-        break;
-    case 3: //Trip
-        V_in = in_Trip;    
-        break;    
-    }    
- 
-    
-    if( (V_in < (V_targ+0.001))&&(V_in > (V_targ-0.001)) ){
-        //in bounds
-        sw_out = sw_in;     //update output
-        sw_last = sw_in;    //update edge memory
-    } // else not in bounds
-} // else no edge
-/*End code section*/"
-            }
-            [
-                position = 7868, 7800
-                rotation = right
-                scale = -1, 1
-                size = 160, 120
-            ]
-
-            component "Thesis_Stuff/Phase-Synch-Switching" Input-Synch-Switching_F {
-                arb_defs = "/*Begin code section*/
-int sw_in, sw_out, sw_last;
-float V_in, V_targ;
-/*End code section*/"
-                init_fnc = "/*Begin code section*/
-sw_in = 1;
-sw_out = 1;
-sw_last = 1;
-
-V_in = 1;
-V_targ = 1;
-/*End code section*/"
-                input_terminals = "int in_sw;inherit in_FRT;inherit in_Trip;"
-                input_terminals_dimensions = "inherit;inherit;inherit"
-                input_terminals_feedthrough = "True;True;True"
-                input_terminals_show_labels = "True;True;True"
-                output_fnc = "/*Begin code section*/
-out_sw = sw_out;
-/*End code section*/"
-                output_terminals = "real out_sw;"
-                output_terminals_dimensions = "inherit"
-                output_terminals_feedthrough = "True"
-                output_terminals_show_labels = "True"
-                update_fnc = "/*Begin code section*/
-//Update holders with inputs
-sw_in = in_sw;
-// ph_in = in_phase;
-// ph_targ = in_target;
-
-if(sw_in != sw_last){//Edge detected
-    switch (sw_in){
-    case 1: //Input
-        V_in = 1;    
-        break;
-    case 2: //FRT
-        V_in = in_FRT;    
-        break;
-    case 3: //Trip
-        V_in = in_Trip;    
-        break;    
-    }    
- 
-    
-    if( (V_in < (V_targ+0.001))&&(V_in > (V_targ-0.001)) ){
-        //in bounds
-        sw_out = sw_in;     //update output
-        sw_last = sw_in;    //update edge memory
-    } // else not in bounds
-} // else no edge
-/*End code section*/"
-            }
-            [
-                position = 7868, 8292
-                rotation = right
-                scale = -1, 1
-                size = 160, 120
-            ]
-
-            component "core/Dynamic Table" F_Trip7 {
-                execution_rate = "Ts_i"
-                import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/Trips/OF3_BESF_pu.csv"
-                model_load_legacy = "1"
-                signal_names = "[\'Signal\']"
-                x_vec = "[0.0, 1.0, 1.804, 2.014, 2.818, 3.0]"
-                y_vec = "[[1.0, 1.0, 1.0402, 1.0402, 1.0, 1.0]]"
-            }
-            [
-                position = 8688, 8604
-                rotation = right
-                hide_name = True
-                scale = -1, -1
-                size = 48, 48
-            ]
-
-            port In3 {
-                label = "F_choice"
-                position = top:3
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 7828, 8152
-                rotation = right
-            ]
-
-            port In5 {
-                label = "V_Trip_Choice"
-                position = top:5
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 8312, 7932
-                rotation = right
-            ]
-
-            port In2 {
-                label = "V_choice"
-                position = top:2
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 7828, 7644
-                rotation = right
-            ]
-
-            port In6 {
-                label = "V_pu_in"
-                position = right:1
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 8088, 7928
-                rotation = right
-            ]
-
-            port In8 {
-                label = "Ph_deg_In"
-                position = right:3
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 7976, 8728
-                rotation = down
-            ]
-
-            port In1 {
-                label = "Ph_choice"
-                position = top:1
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 7828, 8644
-                rotation = right
-            ]
-
-            port Out11 {
-                label = "Ph_deg_out"
-                position = left:3
-                kind = sp
-                direction =  in
-                sp_type {
-                    default = inherit
-                    readonly = True
-                }
-            }
-            [
-                position = 7752, 8728
-                rotation = down
-            ]
-
-            port Out10 {
-                label = "f_pu_out"
-                position = left:2
-                kind = sp
-                direction =  in
-                sp_type {
-                    default = inherit
-                    readonly = True
-                }
-            }
-            [
-                position = 7752, 8484
-                rotation = down
-            ]
-
-            port In4 {
-                label = "F_Trip_Choice"
-                position = top:4
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 8316, 8368
-                rotation = right
-            ]
-
-            port Out9 {
-                label = "V_pu_out"
-                position = left:1
-                kind = sp
-                direction =  in
-                sp_type {
-                    default = inherit
-                    readonly = True
-                }
-            }
-            [
-                position = 7752, 8012
-                rotation = down
-            ]
-
-            port In7 {
-                label = "f_pu_in"
-                position = right:2
-                kind = sp
-                direction =  out
-                sp_type {
-                    default = auto
-                    readonly = True
-                }
-            }
-            [
-                position = 8088, 8396
-                rotation = right
-            ]
-
-            junction Junction1 sp
-            [
-                position = 7956, 8028
-            ]
-
-            junction Junction2 sp
-            [
-                position = 7988, 8012
-            ]
-
-            junction Junction3 sp
-            [
-                position = 7952, 8500
-            ]
-
-            junction Junction4 sp
-            [
-                position = 8008, 8484
-            ]
-
-            connect Mux_f_g.in In7 as Connection733
-            connect Mux_V_g_Trip.ctrl In5 as Connection724
-            connect Mux_Ph_g.ctrl In1 as Connection728
-            connect Mux_F_g_Trip.ctrl In4 as Connection731
-            connect Mux_V_g.in In6 as Connection726
-            connect Mux_Ph_g.out Out11 as Connection729
-            connect Mux_f_g.out Out10 as Connection730
-            connect Mux_V_g.out Out9 as Connection732
-            connect Mux_Ph_g.in In8 as Connection727
-            connect V_Trip1.out Mux_V_g_Trip.in as Connection712
-            connect V_Trip2.out Mux_V_g_Trip.in1 as Connection713
-            connect V_Trip3.out Mux_V_g_Trip.in2 as Connection714
-            connect V_Trip4.out Mux_V_g_Trip.in3 as Connection715
-            connect V_Trip5.out Mux_V_g_Trip.in4 as Connection716
-            connect F_Trip2.out Mux_F_g_Trip.in1 as Connection721
-            connect F_Trip1.out Mux_F_g_Trip.in as Connection722
-            connect In2 Input-Synch-Switching_V.in_sw as Connection737
-            [
-                breakpoints = 7828, 7704
-            ]
-            connect Input-Synch-Switching_V.out_sw Mux_V_g.ctrl as Connection749
-            [
-                breakpoints = 7828, 7888; 7828, 7972
-            ]
-            connect Mux_V_g_Trip.out Junction1 as Connection752
-            [
-                breakpoints = 7988, 8028
-            ]
-            connect Junction1 Mux_V_g.in2 as Connection753
-            connect Input-Synch-Switching_V.in_Trip Junction1 as Connection754
-            [
-                breakpoints = 7908, 7700; 7956, 7700
-            ]
-            connect Mux_V_g.in1 Junction2 as Connection755
-            connect Junction2 V_FRT_pu.out as Connection756
-            [
-                breakpoints = 8100, 8012; 8100, 7980
-            ]
-            connect Input-Synch-Switching_V.in_FRT Junction2 as Connection757
-            [
-                breakpoints = 7868, 7676; 7988, 7676
-            ]
-            connect Input-Synch-Switching_F.out_sw Mux_f_g.ctrl as Connection758
-            [
-                breakpoints = 7868, 8384; 7828, 8384
-            ]
-            connect In3 Input-Synch-Switching_F.in_sw as Connection759
-            connect Mux_F_g_Trip.out Junction3 as Connection760
-            connect Junction3 Mux_f_g.in2 as Connection761
-            connect Input-Synch-Switching_F.in_Trip Junction3 as Connection762
-            [
-                breakpoints = 7908, 8192; 7952, 8192
-            ]
-            connect F_FRT_pu.out Junction4 as Connection763
-            [
-                breakpoints = 8104, 8452; 8104, 8484
-            ]
-            connect Junction4 Mux_f_g.in1 as Connection764
-            connect Input-Synch-Switching_F.in_FRT Junction4 as Connection765
-            [
-                breakpoints = 7868, 8168; 8008, 8168
-            ]
-            connect F_Trip6.out Mux_F_g_Trip.in6 as Connection766
-            connect F_Trip5.out Mux_F_g_Trip.in5 as Connection767
-            connect F_Trip4.out Mux_F_g_Trip.in4 as Connection768
-            connect F_Trip3.out Mux_F_g_Trip.in3 as Connection769
-            connect F_Trip7.out Mux_F_g_Trip.in2 as Connection770
-        }
-        [
-            position = 8508, 7672
-            size = 272, 152
-        ]
-
         component "Thesis_Stuff/PCC_Control" PCC_Control1 {
         }
         [
             position = 7308, 7652
             size = 104, 160
+        ]
+
+        component "Thesis_Stuff/Grid_Inputs" Grid_Inputs1 {
+        }
+        [
+            position = 8504, 7672
+            size = 272, 152
         ]
 
         tag Goto2 {
@@ -21621,17 +20992,17 @@ if(sw_in != sw_last){//Edge detected
 
         junction Junction59 sp
         [
-            position = 8272, 7728
+            position = 8288, 7672
         ]
 
         junction Junction60 sp
         [
-            position = 8288, 7672
+            position = 8304, 7616
         ]
 
         junction Junction61 sp
         [
-            position = 8304, 7616
+            position = 8272, 7728
         ]
 
         comment Comment2 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><style type="text/css">p, li { white-space: pre-wrap; }</style></head><body style=" font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Concerned about common ground</p></body></html> ENDCOMMENT 
@@ -21917,38 +21288,38 @@ if(sw_in != sw_last){//Edge detected
         [
             breakpoints = 8636, 8100; 8636, 8080
         ]
-        connect Grid_Inputs.In8 Vg_ph.out as Connection727
-        connect Phg_Input.in Junction59 as Connection728
-        connect Junction59 Goto20 as Connection729
-        [
-            breakpoints = 8272, 7728
-        ]
-        connect Grid_Inputs.Out11 Junction59 as Connection730
-        connect Vg_f.out Grid_Inputs.In7 as Connection731
-        connect Vg_RMS.out Grid_Inputs.In6 as Connection732
-        connect In_VTrip_Choice.out Grid_Inputs.In5 as Connection733
-        connect In_FTrip_Choice.out Grid_Inputs.In4 as Connection734
-        connect In_fg_Choice.out Grid_Inputs.In3 as Connection735
-        connect In_Vg_Choice.out Grid_Inputs.In2 as Connection736
-        connect In_Phg_Choice.out Grid_Inputs.In1 as Connection737
-        connect Goto19 Junction60 as Connection738
-        connect Junction60 Fg_Input.in as Connection739
-        [
-            breakpoints = 8288, 7672
-        ]
-        connect Grid_Inputs.Out10 Junction60 as Connection740
-        connect Vg_Input.in Junction61 as Connection741
-        connect Junction61 Goto18 as Connection742
-        [
-            breakpoints = 8304, 7616
-        ]
-        connect Grid_Inputs.Out9 Junction61 as Connection743
         connect PCC_Control1.iV From1 as Connection744
         connect PCC_Control1.iReset RESET_CB.out as Connection745
         connect PCC_Control1.if From2 as Connection746
         connect PCC_Control1.oFault Goto5 as Connection747
         connect PCC_Control1.oCB Goto17 as Connection748
         connect PCC_Control1.oGFL Goto6 as Connection749
+        connect Fg_Input.in Junction59 as Connection753
+        connect Junction59 Goto19 as Connection754
+        [
+            breakpoints = 8288, 7672
+        ]
+        connect Grid_Inputs1.Out10 Junction59 as Connection755
+        connect Vg_Input.in Junction60 as Connection756
+        connect Junction60 Goto18 as Connection757
+        [
+            breakpoints = 8304, 7616
+        ]
+        connect Grid_Inputs1.Out9 Junction60 as Connection758
+        connect Phg_Input.in Junction61 as Connection759
+        connect Junction61 Goto20 as Connection760
+        [
+            breakpoints = 8272, 7728
+        ]
+        connect Grid_Inputs1.Out11 Junction61 as Connection761
+        connect Vg_RMS.out Grid_Inputs1.In6 as Connection762
+        connect Vg_f.out Grid_Inputs1.In7 as Connection763
+        connect Vg_ph.out Grid_Inputs1.In8 as Connection764
+        connect In_VTrip_Choice.out Grid_Inputs1.In5 as Connection765
+        connect In_FTrip_Choice.out Grid_Inputs1.In4 as Connection766
+        connect In_fg_Choice.out Grid_Inputs1.In3 as Connection767
+        connect In_Vg_Choice.out Grid_Inputs1.In2 as Connection768
+        connect In_Phg_Choice.out Grid_Inputs1.In1 as Connection769
     }
 
     default {
@@ -22112,43 +21483,6 @@ if(sw_in != sw_last){//Edge detected
             type = "none"
         }
 
-        "Thesis_Stuff/Phase-Synch-Switching" {
-            input_terminals = "real in;"
-            input_terminals_show_labels = "False;"
-            input_terminals_feedthrough = "True;"
-            input_terminals_dimensions = "inherit;"
-            output_terminals = "real out;"
-            output_terminals_show_labels = "False;"
-            output_terminals_feedthrough = "True;"
-            output_terminals_dimensions = "inherit;"
-            output_fnc = ""
-            update_fnc = ""
-            init_fnc = ""
-            global_variables = ""
-            parameters = ""
-            library_load_type = "Compile-time load"
-            dll_file_path = ""
-            dll_file_path_full = ""
-            arm_a9_file_path = ""
-            arm_a9_file_path_full = ""
-            arm_a53_file_path = ""
-            arm_a53_file_path_full = ""
-            h_file_path = ""
-            h_file_path_full = ""
-            add_src_path = ""
-            add_src_path_full = ""
-            convert_to_relative_dll = "True"
-            convert_to_relative_a = "True"
-            convert_to_relative_src = "True"
-            arb_defs = ""
-            add_macros = ""
-            skip_pre_cmpl_check = "False"
-            generate_for_hil = "True"
-            execution_rate = "inherit"
-            _supported_platforms = "[\'generic\']"
-            refresh = "refresh"
-        }
-
         "core/Probe" {
             signal_access = "inherit"
             addr = "0"
@@ -22287,16 +21621,6 @@ if(sw_in != sw_last){//Edge detected
             execution_rate = "inherit"
             feed_forward = "False"
             nd_msr_estimation = "false"
-        }
-
-        "core/Dynamic Table" {
-            x_vec = "[0,2,3,1,5]"
-            y_vec = "[[0,2,3,1,5]]"
-            signal_names = "[\'out0\']"
-            import_dynamic_table_file = "not selected"
-            preview = "Preview Dynamic Table Curve"
-            execution_rate = "100e-6"
-            model_load_legacy = "0"
         }
 
         "core/Edge Detection" {
@@ -22592,7 +21916,7 @@ if(sw_in != sw_last){//Edge detected
         
         #IDM
         #SFS
-        k_SFS = 0.05 #0.1 - 85ms
+        k_SFS = 0.32#0.1 - 85ms
         
         
         #Voltage control

@@ -1425,6 +1425,18 @@ for(int i = 0; i < UV_Num; i++)
                         rotation = right
                     ]
 
+                    component "core/Probe" V_Zone {
+                    }
+                    [
+                        position = 8692, 7884
+                    ]
+
+                    component "core/Probe" F_Zone {
+                    }
+                    [
+                        position = 8692, 8304
+                    ]
+
                     port oFault {
                         position = auto:auto
                         kind = sp
@@ -1528,6 +1540,16 @@ for(int i = 0; i < UV_Num; i++)
                         position = 7964, 8240
                     ]
 
+                    junction Junction7 sp
+                    [
+                        position = 8520, 7944
+                    ]
+
+                    junction Junction8 sp
+                    [
+                        position = 8540, 8192
+                    ]
+
                     connect iV v_pu.in as Connection602
                     connect f_pu.out fault_fpu.in as Connection635
                     connect fault_vpu.in Junction2 as Connection636
@@ -1552,10 +1574,6 @@ for(int i = 0; i < UV_Num; i++)
                     [
                         breakpoints = 8532, 7928; 8532, 8060
                     ]
-                    connect V_Check_BESF.Fault Output_Check.V_Zone as Connection718
-                    [
-                        breakpoints = 8520, 7944; 8520, 8084
-                    ]
                     connect if Junction6 as Connection722
                     connect Junction6 f_pu.in as Connection723
                     [
@@ -1566,10 +1584,6 @@ for(int i = 0; i < UV_Num; i++)
                     [
                         breakpoints = 8524, 8176; 8524, 8132
                     ]
-                    connect FRT_F_BESF-SAGC.Fault Output_Check.F_Zone as Connection726
-                    [
-                        breakpoints = 8540, 8192; 8540, 8156
-                    ]
                     connect FRT_F_BESF-SAGC.d0 d_0_f.in as Connection727
                     connect FRT_F_BESF-SAGC.d1 d_1_f.in as Connection728
                     connect FRT_F_BESF-SAGC.d2 d_2_f.in as Connection729
@@ -1577,6 +1591,18 @@ for(int i = 0; i < UV_Num; i++)
                     connect FRT_F_BESF-SAGC.d4 d_4_f.in as Connection731
                     connect FRT_F_BESF-SAGC.d5 d_5_f.in as Connection732
                     connect d_6_f.in FRT_F_BESF-SAGC.d6 as Connection733
+                    connect V_Check_BESF.Fault Junction7 as Connection734
+                    connect Junction7 Output_Check.V_Zone as Connection735
+                    [
+                        breakpoints = 8520, 7944; 8520, 8084
+                    ]
+                    connect V_Zone.in Junction7 as Connection736
+                    connect FRT_F_BESF-SAGC.Fault Junction8 as Connection737
+                    connect Junction8 Output_Check.F_Zone as Connection738
+                    [
+                        breakpoints = 8540, 8192; 8540, 8156
+                    ]
+                    connect F_Zone.in Junction8 as Connection739
                 }
                 [
                     position = 7368, 7588
@@ -2230,7 +2256,7 @@ else{
 
                     component "core/Dynamic Table" V_FRT_pu {
                         execution_rate = "Ts_i"
-                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/FRT/V-FRT_BESF_02.csv"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Repo/99Library/Inputs/V-FRT_BESF_02.csv"
                         model_load_legacy = "1"
                         signal_names = "[\'Signal\']"
                         x_vec = "[0.0, 1.0, 1.02, 1.04, 1.13, 1.15, 1.17, 1.48, 1.5, 1.52, 3.0, 3.02, 3.04, 4.98, 5.0, 5.02, 6.0]"
@@ -2244,10 +2270,10 @@ else{
 
                     component "core/Dynamic Table" F_FRT_pu {
                         execution_rate = "Ts_i"
-                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Sandbox/FRT/Inputs/FRT/F-FRT_BESF_pu.csv"
+                        import_dynamic_table_file = "C:/Users/Judhi/Work/Workbook/Typhoon_HIL/Repo/99Library/Inputs/F-FRT_BESF_pu_3sIntro.csv"
                         model_load_legacy = "1"
                         signal_names = "[\'Signal\']"
-                        x_vec = "[0.0, 1.0, 2.2, 2.24, 2.32, 2.36, 2.52, 7.92, 7.96, 8.12, 11.72, 11.76, 12.12, 61.32, 61.36, 61.76, 62.96, 63.56, 63.6, 67.48, 67.52, 67.68, 123.22, 123.32, 123.72, 124.92]"
+                        x_vec = "[0.0, 4.0, 5.2, 5.24, 5.32, 5.36, 5.52, 10.92, 10.96, 11.12, 14.72, 14.76, 15.12, 64.32, 64.36, 64.76, 65.96, 66.56, 66.6, 70.48, 70.52, 70.68, 126.22, 126.32, 126.72, 127.92]"
                         y_vec = "[[1.0, 1.0, 0.94, 0.938, 0.938, 0.94, 0.948, 0.948, 0.95, 0.958, 0.958, 0.96, 0.978, 0.978, 0.98, 1.0, 1.0, 1.03, 1.032, 1.032, 1.03, 1.022, 1.022, 1.02, 1.0, 1.0]]"
                     }
                     [

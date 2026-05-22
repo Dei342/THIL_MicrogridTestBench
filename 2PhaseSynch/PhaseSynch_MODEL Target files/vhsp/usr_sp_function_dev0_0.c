@@ -622,11 +622,11 @@ float  _ms_s2_phase_synch_switching__ph_in , _ms_s2_phase_synch_switching__ph_ta
 
 
 
-int  _grid_inputs_input_synch_switching_f__sw_in , _grid_inputs_input_synch_switching_f__sw_out , _grid_inputs_input_synch_switching_f__sw_last;
-float  _grid_inputs_input_synch_switching_f__V_in , _grid_inputs_input_synch_switching_f__V_targ;
+int  _grid_inputs1_input_synch_switching_f__sw_in , _grid_inputs1_input_synch_switching_f__sw_out , _grid_inputs1_input_synch_switching_f__sw_last;
+float  _grid_inputs1_input_synch_switching_f__V_in , _grid_inputs1_input_synch_switching_f__V_targ;
 
-int  _grid_inputs_input_synch_switching_v__sw_in , _grid_inputs_input_synch_switching_v__sw_out , _grid_inputs_input_synch_switching_v__sw_last;
-float  _grid_inputs_input_synch_switching_v__V_in , _grid_inputs_input_synch_switching_v__V_targ;
+int  _grid_inputs1_input_synch_switching_v__sw_in , _grid_inputs1_input_synch_switching_v__sw_out , _grid_inputs1_input_synch_switching_v__sw_last;
+float  _grid_inputs1_input_synch_switching_v__V_in , _grid_inputs1_input_synch_switching_v__V_targ;
 
 
 
@@ -1050,8 +1050,9 @@ typedef struct {
     float  t_limit ;
     int  timer ;
 } fFRT_Zone  ;
-fFRT_Zone  _pcc_control_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.2f ,  0  }  };
-fFRT_Zone  _pcc_control_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
+fFRT_Zone  _pcc_control1_frt_f_besf_sagc__ov_zones [ 3 ] = {  {  51.0f ,  60.0f ,  0  } ,  {  51.5f ,  4.0f ,  0  } ,  {  52.0f ,  0.2f ,  0  }  };
+fFRT_Zone  _pcc_control1_frt_f_besf_sagc__uv_zones [ 4 ] = {  {  49.0f ,  60.0f ,  0  } ,  {  48.0f ,  10.0f ,  0  } ,  {  47.5f ,  6.0f ,  0  } ,  {  47.0f ,  0.2f ,  0  }  };
+
 
 
 
@@ -1118,8 +1119,9 @@ typedef struct {
     float  t_limit ;
     int  timer ;
 } FRT_Zone  ;
-FRT_Zone  _pcc_control_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.05f ,  0  }  };
-FRT_Zone  _pcc_control_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.05f ,  0  }  };
+FRT_Zone  _pcc_control1_v_check_besf__ov_zones [ 2 ] = {  {  1.1f ,  2.0f ,  0  } ,  {  1.2f ,  0.02f ,  0  }  };
+FRT_Zone  _pcc_control1_v_check_besf__uv_zones [ 3 ] = {  {  0.85f ,  0.5f ,  0  } ,  {  0.8f ,  0.15f ,  0  } ,  {  0.6f ,  0.02f ,  0  }  };
+
 
 
 
@@ -1380,34 +1382,34 @@ float  _battery_inverter__average_1_control_phase_synch_switching__ph_in , _batt
 
 
 // const variables
-const double _grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[26] = { 1.0, 1.0, 0.94, 0.938, 0.938, 0.94, 0.948, 0.948, 0.95, 0.958, 0.958, 0.96, 0.978, 0.978, 0.98, 1.0, 1.0, 1.03, 1.032, 1.032, 1.03, 1.022, 1.022, 1.02, 1.0, 1.0 };
-const double _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[26] = { 0.0, 1.0, 2.2, 2.24, 2.32, 2.36, 2.52, 7.92, 7.96, 8.12, 11.72, 11.76, 12.12, 61.32, 61.36, 61.76, 62.96, 63.56, 63.6, 67.48, 67.52, 67.68, 123.22, 123.32, 123.72, 124.92 };
-const double _grid_inputs_f_trip1_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.022, 1.022, 1.0, 1.0 };
-const double _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.44, 61.44, 61.88, 62.0 };
-const double _grid_inputs_f_trip2_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.032, 1.032, 1.0, 1.0 };
-const double _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.64, 5.64, 6.28, 6.5 };
-const double _grid_inputs_f_trip3_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.978, 0.978, 1.0, 1.0 };
-const double _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.44, 61.44, 61.88, 62.0 };
-const double _grid_inputs_f_trip4_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.958, 0.958, 1.0, 1.0 };
-const double _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.84, 11.84, 12.68, 13.0 };
-const double _grid_inputs_f_trip5_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.948, 0.948, 1.0, 1.0 };
-const double _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 2.04, 8.04, 9.08, 9.5 };
-const double _grid_inputs_f_trip6_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.938, 0.938, 1.0, 1.0 };
-const double _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 2.24, 2.44, 3.68, 4.0 };
-const double _grid_inputs_f_trip7_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.0402, 1.0402, 1.0, 1.0 };
-const double _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.804, 2.014, 2.818, 3.0 };
-const double _grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[17] = { 1.0, 1.0, 0.6, 0.79, 0.79, 0.8, 0.84, 0.84, 0.85, 1.0, 1.0, 1.2, 1.19, 1.11, 1.1, 1.0, 1.0 };
-const double _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[17] = { 0.0, 1.0, 1.02, 1.04, 1.13, 1.15, 1.17, 1.48, 1.5, 1.52, 3.0, 3.02, 3.04, 4.98, 5.0, 5.02, 6.0 };
-const double _grid_inputs_v_trip1_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.11, 1.11, 1.0, 1.0 };
-const double _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 3.03, 3.04, 4.0 };
-const double _grid_inputs_v_trip2_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.21, 1.21, 1.0, 1.0 };
-const double _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.051, 1.061, 2.0 };
-const double _grid_inputs_v_trip3_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.84, 0.84, 1.0, 1.0 };
-const double _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.53, 1.54, 2.0 };
-const double _grid_inputs_v_trip4_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.79, 0.79, 1.0, 1.0 };
-const double _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.18, 1.19, 2.0 };
-const double _grid_inputs_v_trip5_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.59, 0.59, 1.0, 1.0 };
-const double _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.051, 1.061, 2.0 };
+const double _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_table[26] = { 1.0, 1.0, 0.94, 0.938, 0.938, 0.94, 0.948, 0.948, 0.95, 0.958, 0.958, 0.96, 0.978, 0.978, 0.98, 1.0, 1.0, 1.03, 1.032, 1.032, 1.03, 1.022, 1.022, 1.02, 1.0, 1.0 };
+const double _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_addrs[26] = { 0.0, 4.0, 5.2, 5.24, 5.32, 5.36, 5.52, 10.92, 10.96, 11.12, 14.72, 14.76, 15.12, 64.32, 64.36, 64.76, 65.96, 66.56, 66.6, 70.48, 70.52, 70.68, 126.22, 126.32, 126.72, 127.92 };
+const double _grid_inputs1_f_trip1_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.022, 1.022, 1.0, 1.0 };
+const double _grid_inputs1_f_trip1_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.44, 61.44, 61.88, 62.0 };
+const double _grid_inputs1_f_trip2_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.032, 1.032, 1.0, 1.0 };
+const double _grid_inputs1_f_trip2_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.64, 5.64, 6.28, 6.5 };
+const double _grid_inputs1_f_trip3_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.978, 0.978, 1.0, 1.0 };
+const double _grid_inputs1_f_trip3_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.44, 61.44, 61.88, 62.0 };
+const double _grid_inputs1_f_trip4_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.958, 0.958, 1.0, 1.0 };
+const double _grid_inputs1_f_trip4_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.84, 11.84, 12.68, 13.0 };
+const double _grid_inputs1_f_trip5_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.948, 0.948, 1.0, 1.0 };
+const double _grid_inputs1_f_trip5_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 2.04, 8.04, 9.08, 9.5 };
+const double _grid_inputs1_f_trip6_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.938, 0.938, 1.0, 1.0 };
+const double _grid_inputs1_f_trip6_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 2.24, 2.44, 3.68, 4.0 };
+const double _grid_inputs1_f_trip7_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.0402, 1.0402, 1.0, 1.0 };
+const double _grid_inputs1_f_trip7_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.804, 2.014, 2.818, 3.0 };
+const double _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_table[17] = { 1.0, 1.0, 0.6, 0.79, 0.79, 0.8, 0.84, 0.84, 0.85, 1.0, 1.0, 1.2, 1.19, 1.11, 1.1, 1.0, 1.0 };
+const double _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_addrs[17] = { 0.0, 1.0, 1.02, 1.04, 1.13, 1.15, 1.17, 1.48, 1.5, 1.52, 3.0, 3.02, 3.04, 4.98, 5.0, 5.02, 6.0 };
+const double _grid_inputs1_v_trip1_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.11, 1.11, 1.0, 1.0 };
+const double _grid_inputs1_v_trip1_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 3.03, 3.04, 4.0 };
+const double _grid_inputs1_v_trip2_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 1.21, 1.21, 1.0, 1.0 };
+const double _grid_inputs1_v_trip2_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.051, 1.061, 2.0 };
+const double _grid_inputs1_v_trip3_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.84, 0.84, 1.0, 1.0 };
+const double _grid_inputs1_v_trip3_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.53, 1.54, 2.0 };
+const double _grid_inputs1_v_trip4_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.79, 0.79, 1.0, 1.0 };
+const double _grid_inputs1_v_trip4_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.18, 1.19, 2.0 };
+const double _grid_inputs1_v_trip5_1d_look_up_table1__lut_table[6] = { 1.0, 1.0, 0.59, 0.59, 1.0, 1.0 };
+const double _grid_inputs1_v_trip5_1d_look_up_table1__lut_addrs[6] = { 0.0, 1.0, 1.01, 1.051, 1.061, 2.0 };
 
 //@cmp.var.start
 // variables
@@ -1416,7 +1418,7 @@ double _bi_vref_pu__out;
 double _bi_fref_pu__out;
 double _battery_inverter__average_1_control_imode_control_constant1__out = 1.0;
 double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant6__out = 1.0;
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out = 0.0;
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out = 0.32;
 double _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__out;
 double _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__out;
 double _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out;
@@ -1527,20 +1529,20 @@ double _cc_in__out;
 double _eut_interface_enable_i__out;
 double _eut_interface_pref_pu_i__out;
 double _eut_interface_qref_pu_i__out;
-double _grid_inputs_f_frt_pu_clock1__out;
-double _grid_inputs_f_trip1_clock1__out;
-double _grid_inputs_f_trip2_clock1__out;
-double _grid_inputs_f_trip3_clock1__out;
-double _grid_inputs_f_trip4_clock1__out;
-double _grid_inputs_f_trip5_clock1__out;
-double _grid_inputs_f_trip6_clock1__out;
-double _grid_inputs_f_trip7_clock1__out;
-double _grid_inputs_v_frt_pu_clock1__out;
-double _grid_inputs_v_trip1_clock1__out;
-double _grid_inputs_v_trip2_clock1__out;
-double _grid_inputs_v_trip3_clock1__out;
-double _grid_inputs_v_trip4_clock1__out;
-double _grid_inputs_v_trip5_clock1__out;
+double _grid_inputs1_f_frt_pu_clock1__out;
+double _grid_inputs1_f_trip1_clock1__out;
+double _grid_inputs1_f_trip2_clock1__out;
+double _grid_inputs1_f_trip3_clock1__out;
+double _grid_inputs1_f_trip4_clock1__out;
+double _grid_inputs1_f_trip5_clock1__out;
+double _grid_inputs1_f_trip6_clock1__out;
+double _grid_inputs1_f_trip7_clock1__out;
+double _grid_inputs1_v_frt_pu_clock1__out;
+double _grid_inputs1_v_trip1_clock1__out;
+double _grid_inputs1_v_trip2_clock1__out;
+double _grid_inputs1_v_trip3_clock1__out;
+double _grid_inputs1_v_trip4_clock1__out;
+double _grid_inputs1_v_trip5_clock1__out;
 double _idc_meas_ia1__out;
 double _ieut_meas_cpu_trans_output__out;
 X_Int32 _in_ftrip_choice__out;
@@ -1745,89 +1747,89 @@ double _g_cb_base__out;
 double _g_cc_base__out;
 double _g_pess__out;
 double _g_qess__out;
-double _grid_inputs_f_frt_pu_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr;
-double _grid_inputs_f_frt_pu_1d_look_up_table1__fraction;
+double _grid_inputs1_f_frt_pu_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_frt_pu_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_frt_pu_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_frt_pu_1d_look_up_table1__fraction;
 
-double _grid_inputs_f_trip1_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_trip1_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_trip1_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_trip1_1d_look_up_table1__curAddr;
-double _grid_inputs_f_trip1_1d_look_up_table1__fraction;
+double _grid_inputs1_f_trip1_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_trip1_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_trip1_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_trip1_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_trip1_1d_look_up_table1__fraction;
 
-double _grid_inputs_f_trip2_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_trip2_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_trip2_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_trip2_1d_look_up_table1__curAddr;
-double _grid_inputs_f_trip2_1d_look_up_table1__fraction;
+double _grid_inputs1_f_trip2_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_trip2_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_trip2_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_trip2_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_trip2_1d_look_up_table1__fraction;
 
-double _grid_inputs_f_trip3_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_trip3_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_trip3_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_trip3_1d_look_up_table1__curAddr;
-double _grid_inputs_f_trip3_1d_look_up_table1__fraction;
+double _grid_inputs1_f_trip3_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_trip3_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_trip3_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_trip3_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_trip3_1d_look_up_table1__fraction;
 
-double _grid_inputs_f_trip4_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_trip4_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_trip4_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_trip4_1d_look_up_table1__curAddr;
-double _grid_inputs_f_trip4_1d_look_up_table1__fraction;
+double _grid_inputs1_f_trip4_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_trip4_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_trip4_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_trip4_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_trip4_1d_look_up_table1__fraction;
 
-double _grid_inputs_f_trip5_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_trip5_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_trip5_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_trip5_1d_look_up_table1__curAddr;
-double _grid_inputs_f_trip5_1d_look_up_table1__fraction;
+double _grid_inputs1_f_trip5_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_trip5_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_trip5_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_trip5_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_trip5_1d_look_up_table1__fraction;
 
-double _grid_inputs_f_trip6_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_trip6_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_trip6_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_trip6_1d_look_up_table1__curAddr;
-double _grid_inputs_f_trip6_1d_look_up_table1__fraction;
+double _grid_inputs1_f_trip6_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_trip6_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_trip6_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_trip6_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_trip6_1d_look_up_table1__fraction;
 
-double _grid_inputs_f_trip7_1d_look_up_table1__value;
-X_Int32 _grid_inputs_f_trip7_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_f_trip7_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_f_trip7_1d_look_up_table1__curAddr;
-double _grid_inputs_f_trip7_1d_look_up_table1__fraction;
+double _grid_inputs1_f_trip7_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_f_trip7_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_f_trip7_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_f_trip7_1d_look_up_table1__curAddr;
+double _grid_inputs1_f_trip7_1d_look_up_table1__fraction;
 
-double _grid_inputs_v_frt_pu_1d_look_up_table1__value;
-X_Int32 _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr;
-double _grid_inputs_v_frt_pu_1d_look_up_table1__fraction;
+double _grid_inputs1_v_frt_pu_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_v_frt_pu_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_v_frt_pu_1d_look_up_table1__curAddr;
+double _grid_inputs1_v_frt_pu_1d_look_up_table1__fraction;
 
-double _grid_inputs_v_trip1_1d_look_up_table1__value;
-X_Int32 _grid_inputs_v_trip1_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_v_trip1_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_v_trip1_1d_look_up_table1__curAddr;
-double _grid_inputs_v_trip1_1d_look_up_table1__fraction;
+double _grid_inputs1_v_trip1_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_v_trip1_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_v_trip1_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_v_trip1_1d_look_up_table1__curAddr;
+double _grid_inputs1_v_trip1_1d_look_up_table1__fraction;
 
-double _grid_inputs_v_trip2_1d_look_up_table1__value;
-X_Int32 _grid_inputs_v_trip2_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_v_trip2_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_v_trip2_1d_look_up_table1__curAddr;
-double _grid_inputs_v_trip2_1d_look_up_table1__fraction;
+double _grid_inputs1_v_trip2_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_v_trip2_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_v_trip2_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_v_trip2_1d_look_up_table1__curAddr;
+double _grid_inputs1_v_trip2_1d_look_up_table1__fraction;
 
-double _grid_inputs_v_trip3_1d_look_up_table1__value;
-X_Int32 _grid_inputs_v_trip3_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_v_trip3_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_v_trip3_1d_look_up_table1__curAddr;
-double _grid_inputs_v_trip3_1d_look_up_table1__fraction;
+double _grid_inputs1_v_trip3_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_v_trip3_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_v_trip3_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_v_trip3_1d_look_up_table1__curAddr;
+double _grid_inputs1_v_trip3_1d_look_up_table1__fraction;
 
-double _grid_inputs_v_trip4_1d_look_up_table1__value;
-X_Int32 _grid_inputs_v_trip4_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_v_trip4_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_v_trip4_1d_look_up_table1__curAddr;
-double _grid_inputs_v_trip4_1d_look_up_table1__fraction;
+double _grid_inputs1_v_trip4_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_v_trip4_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_v_trip4_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_v_trip4_1d_look_up_table1__curAddr;
+double _grid_inputs1_v_trip4_1d_look_up_table1__fraction;
 
-double _grid_inputs_v_trip5_1d_look_up_table1__value;
-X_Int32 _grid_inputs_v_trip5_1d_look_up_table1__leftIndex;
-X_Int32 _grid_inputs_v_trip5_1d_look_up_table1__rightIndex;
-X_Int32 _grid_inputs_v_trip5_1d_look_up_table1__curAddr;
-double _grid_inputs_v_trip5_1d_look_up_table1__fraction;
+double _grid_inputs1_v_trip5_1d_look_up_table1__value;
+X_Int32 _grid_inputs1_v_trip5_1d_look_up_table1__leftIndex;
+X_Int32 _grid_inputs1_v_trip5_1d_look_up_table1__rightIndex;
+X_Int32 _grid_inputs1_v_trip5_1d_look_up_table1__curAddr;
+double _grid_inputs1_v_trip5_1d_look_up_table1__fraction;
 
 double _g_la_base__out;
 double _g_lb_base__out;
@@ -1901,7 +1903,7 @@ double _g_ra_base__out;
 double _g_rb_base__out;
 double _g_rc_base__out;
 double _vi_dc__out;
-double _grid_inputs_mux_ph_g__out;
+double _grid_inputs1_mux_ph_g__out;
 double _battery_inverter__average_1_control_pll_pu_gain6__out;
 double _battery_inverter__average_1_control_imode_control_current_ref_product4__out;
 double _battery_inverter__average_1_control_imode_control_current_ref_product5__out;
@@ -1950,8 +1952,8 @@ double _battery_inverter__average_1_control_gain1__out;
 double _rlc_parallel_variable_ca_reciprocal__out;
 double _rlc_parallel_variable_cb_reciprocal__out;
 double _rlc_parallel_variable_cc_reciprocal__out;
-double _grid_inputs_mux_f_g_trip__out;
-double _grid_inputs_mux_v_g_trip__out;
+double _grid_inputs1_mux_f_g_trip__out;
+double _grid_inputs1_mux_v_g_trip__out;
 double _rlc_parallel_variable_la_reciprocal__out;
 double _rlc_parallel_variable_lb_reciprocal__out;
 double _rlc_parallel_variable_lc_reciprocal__out;
@@ -2039,17 +2041,17 @@ double _battery_inverter__average_1_control_abctodq1_gain2__out;
 double _battery_inverter__average_1_control_imode_control_dq_current_controller_limit3__out;
 double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_limit3__out;
 double _battery_inverter__average_1_control_duty_cycle_gain1__out;
-double _grid_inputs_input_synch_switching_f__in_FRT;
-double _grid_inputs_input_synch_switching_f__in_Trip;
-X_Int32 _grid_inputs_input_synch_switching_f__in_sw;
+double _grid_inputs1_input_synch_switching_f__in_FRT;
+double _grid_inputs1_input_synch_switching_f__in_Trip;
+X_Int32 _grid_inputs1_input_synch_switching_f__in_sw;
 
-double _grid_inputs_input_synch_switching_f__out_sw;
+double _grid_inputs1_input_synch_switching_f__out_sw;
 
-double _grid_inputs_input_synch_switching_v__in_FRT;
-double _grid_inputs_input_synch_switching_v__in_Trip;
-X_Int32 _grid_inputs_input_synch_switching_v__in_sw;
+double _grid_inputs1_input_synch_switching_v__in_FRT;
+double _grid_inputs1_input_synch_switching_v__in_Trip;
+X_Int32 _grid_inputs1_input_synch_switching_v__in_sw;
 
-double _grid_inputs_input_synch_switching_v__out_sw;
+double _grid_inputs1_input_synch_switching_v__out_sw;
 
 double _ms_s1_tpm_grid_i_rms_calc_rms__IN1;
 double _ms_s1_tpm_grid_i_rms_calc_rms__IN2;
@@ -2159,8 +2161,8 @@ double _battery_inverter__average_1_control_power_meas_power_meas_dq_product2__o
 double _battery_inverter__average_1_control_power_meas_power_meas_dq_product3__out;
 double _battery_inverter__average_1_control_imode_control_dq_current_controller_gain5__out;
 double _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain5__out;
-double _grid_inputs_mux_f_g__out;
-double _grid_inputs_mux_v_g__out;
+double _grid_inputs1_mux_f_g__out;
+double _grid_inputs1_mux_v_g__out;
 double _ms_s1_tpm_grid_power_meter_power__Ia;
 double _ms_s1_tpm_grid_power_meter_power__Ib;
 double _ms_s1_tpm_grid_power_meter_power__Ic;
@@ -2626,20 +2628,20 @@ double _ms_s2_meter_load_gain__out[12];
 double _ms_s2_tpm_load_pll_pid_kb__out;
 double _ms_s2_three_phase_pll1_pid_kb__out;
 double _ms_s3_meter_grid_gain__out[12];
-double _pcc_control_frt_f_besf_sagc__Input;
+double _pcc_control1_frt_f_besf_sagc__Input;
 
-double _pcc_control_frt_f_besf_sagc__Fault;
-double _pcc_control_frt_f_besf_sagc__Trip;
-double _pcc_control_frt_f_besf_sagc__d0;
-double _pcc_control_frt_f_besf_sagc__d1;
-double _pcc_control_frt_f_besf_sagc__d2;
-double _pcc_control_frt_f_besf_sagc__d3;
-double _pcc_control_frt_f_besf_sagc__d4;
-double _pcc_control_frt_f_besf_sagc__d5;
-double _pcc_control_frt_f_besf_sagc__d6;
+double _pcc_control1_frt_f_besf_sagc__Fault;
+double _pcc_control1_frt_f_besf_sagc__Trip;
+double _pcc_control1_frt_f_besf_sagc__d0;
+double _pcc_control1_frt_f_besf_sagc__d1;
+double _pcc_control1_frt_f_besf_sagc__d2;
+double _pcc_control1_frt_f_besf_sagc__d3;
+double _pcc_control1_frt_f_besf_sagc__d4;
+double _pcc_control1_frt_f_besf_sagc__d5;
+double _pcc_control1_frt_f_besf_sagc__d6;
 
-double _pcc_control_f_pu__out;
-double _pcc_control_v_pu__out;
+double _pcc_control1_f_pu__out;
+double _pcc_control1_v_pu__out;
 double _ms_s3_tpm_grid_pll_pid_kb__out;
 double _ms_s3_meter_ug_gain__out[12];
 double _ms_s3_tpm_ug_pll_pid_kb__out;
@@ -2688,15 +2690,15 @@ double _ms_s3_meter_grid_extra_input_bus__out8;
 double _ms_s3_meter_grid_extra_input_bus__out9;
 double _ms_s3_meter_grid_extra_input_bus__out10;
 double _ms_s3_meter_grid_extra_input_bus__out11;
-double _pcc_control_v_check_besf__Input;
+double _pcc_control1_v_check_besf__Input;
 
-double _pcc_control_v_check_besf__Fault;
-double _pcc_control_v_check_besf__Trip;
-double _pcc_control_v_check_besf__d0;
-double _pcc_control_v_check_besf__d1;
-double _pcc_control_v_check_besf__d2;
-double _pcc_control_v_check_besf__d3;
-double _pcc_control_v_check_besf__d4;
+double _pcc_control1_v_check_besf__Fault;
+double _pcc_control1_v_check_besf__Trip;
+double _pcc_control1_v_check_besf__d0;
+double _pcc_control1_v_check_besf__d1;
+double _pcc_control1_v_check_besf__d2;
+double _pcc_control1_v_check_besf__d3;
+double _pcc_control1_v_check_besf__d4;
 
 double _ms_s3_tpm_grid_pll_pid_sum7__out;
 double _ms_s3_meter_ug_extra_input_bus__out;
@@ -2719,15 +2721,15 @@ double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__out;
 
 double _battery_inverter__average_1_control_synch_phase_match_pi_sum7__out;
-X_Int32 _pcc_control_output_check__F_Trip;
-X_Int32 _pcc_control_output_check__F_Zone;
-X_Int32 _pcc_control_output_check__Reset;
-X_Int32 _pcc_control_output_check__V_Trip;
-X_Int32 _pcc_control_output_check__V_Zone;
+X_Int32 _pcc_control1_output_check__F_Trip;
+X_Int32 _pcc_control1_output_check__F_Zone;
+X_Int32 _pcc_control1_output_check__Reset;
+X_Int32 _pcc_control1_output_check__V_Trip;
+X_Int32 _pcc_control1_output_check__V_Zone;
 
-X_Int32 _pcc_control_output_check__CB;
-X_Int32 _pcc_control_output_check__Fault_Zone;
-X_Int32 _pcc_control_output_check__GFL;
+X_Int32 _pcc_control1_output_check__CB;
+X_Int32 _pcc_control1_output_check__Fault_Zone;
+X_Int32 _pcc_control1_output_check__GFL;
 
 double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
 double _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__pi_reg_out_int;
@@ -3008,20 +3010,20 @@ double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_
 double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__state;
 double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__state;
 double _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__state;
-double _grid_inputs_f_frt_pu_clock1__state;
-double _grid_inputs_f_trip1_clock1__state;
-double _grid_inputs_f_trip2_clock1__state;
-double _grid_inputs_f_trip3_clock1__state;
-double _grid_inputs_f_trip4_clock1__state;
-double _grid_inputs_f_trip5_clock1__state;
-double _grid_inputs_f_trip6_clock1__state;
-double _grid_inputs_f_trip7_clock1__state;
-double _grid_inputs_v_frt_pu_clock1__state;
-double _grid_inputs_v_trip1_clock1__state;
-double _grid_inputs_v_trip2_clock1__state;
-double _grid_inputs_v_trip3_clock1__state;
-double _grid_inputs_v_trip4_clock1__state;
-double _grid_inputs_v_trip5_clock1__state;
+double _grid_inputs1_f_frt_pu_clock1__state;
+double _grid_inputs1_f_trip1_clock1__state;
+double _grid_inputs1_f_trip2_clock1__state;
+double _grid_inputs1_f_trip3_clock1__state;
+double _grid_inputs1_f_trip4_clock1__state;
+double _grid_inputs1_f_trip5_clock1__state;
+double _grid_inputs1_f_trip6_clock1__state;
+double _grid_inputs1_f_trip7_clock1__state;
+double _grid_inputs1_v_frt_pu_clock1__state;
+double _grid_inputs1_v_trip1_clock1__state;
+double _grid_inputs1_v_trip2_clock1__state;
+double _grid_inputs1_v_trip3_clock1__state;
+double _grid_inputs1_v_trip4_clock1__state;
+double _grid_inputs1_v_trip5_clock1__state;
 double _ms_s1_tpm_grid_pll_lpf_lpf__states[2];
 double _ms_s1_tpm_grid_pll_pid_integrator1__state;
 double _ms_s1_tpm_grid_pll_pid_integrator2__state;
@@ -3633,16 +3635,16 @@ double _ms_s2_ia_meanvalue__vector[20000];
 double _ms_s2_ia_meanvalue__sum;
 X_Int32 _ms_s2_ia_meanvalue__cnt_i;
 X_Int32 _ms_s2_ia_meanvalue__cnt_j;
-X_Int32 _pcc_control_frt_f_besf_sagc__Violation;
+X_Int32 _pcc_control1_frt_f_besf_sagc__Violation;
 
-X_Int32 _pcc_control_frt_f_besf_sagc__Trip_Zone;
-
-
+X_Int32 _pcc_control1_frt_f_besf_sagc__Trip_Zone;
 
 
-X_Int32 _pcc_control_v_check_besf__Violation;
 
-X_Int32 _pcc_control_v_check_besf__Trip_Zone;
+
+X_Int32 _pcc_control1_v_check_besf__Violation;
+
+X_Int32 _pcc_control1_v_check_besf__Trip_Zone;
 
 
 
@@ -3654,11 +3656,11 @@ double _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_
 
 
 
-double _pcc_control_output_check__var_Fault_Zone;
+double _pcc_control1_output_check__var_Fault_Zone;
 
-double _pcc_control_output_check__var_CB;
+double _pcc_control1_output_check__var_CB;
 
-double _pcc_control_output_check__var_GFL;
+double _pcc_control1_output_check__var_GFL;
 
 
 
@@ -3819,20 +3821,20 @@ void ReInit_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay2__state = 0.0;
     _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__state = 0.0;
     _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__state = 0.0;
-    _grid_inputs_f_frt_pu_clock1__state = 0.0f;
-    _grid_inputs_f_trip1_clock1__state = 0.0f;
-    _grid_inputs_f_trip2_clock1__state = 0.0f;
-    _grid_inputs_f_trip3_clock1__state = 0.0f;
-    _grid_inputs_f_trip4_clock1__state = 0.0f;
-    _grid_inputs_f_trip5_clock1__state = 0.0f;
-    _grid_inputs_f_trip6_clock1__state = 0.0f;
-    _grid_inputs_f_trip7_clock1__state = 0.0f;
-    _grid_inputs_v_frt_pu_clock1__state = 0.0f;
-    _grid_inputs_v_trip1_clock1__state = 0.0f;
-    _grid_inputs_v_trip2_clock1__state = 0.0f;
-    _grid_inputs_v_trip3_clock1__state = 0.0f;
-    _grid_inputs_v_trip4_clock1__state = 0.0f;
-    _grid_inputs_v_trip5_clock1__state = 0.0f;
+    _grid_inputs1_f_frt_pu_clock1__state = 0.0f;
+    _grid_inputs1_f_trip1_clock1__state = 0.0f;
+    _grid_inputs1_f_trip2_clock1__state = 0.0f;
+    _grid_inputs1_f_trip3_clock1__state = 0.0f;
+    _grid_inputs1_f_trip4_clock1__state = 0.0f;
+    _grid_inputs1_f_trip5_clock1__state = 0.0f;
+    _grid_inputs1_f_trip6_clock1__state = 0.0f;
+    _grid_inputs1_f_trip7_clock1__state = 0.0f;
+    _grid_inputs1_v_frt_pu_clock1__state = 0.0f;
+    _grid_inputs1_v_trip1_clock1__state = 0.0f;
+    _grid_inputs1_v_trip2_clock1__state = 0.0f;
+    _grid_inputs1_v_trip3_clock1__state = 0.0f;
+    _grid_inputs1_v_trip4_clock1__state = 0.0f;
+    _grid_inputs1_v_trip5_clock1__state = 0.0f;
     X_UnInt32 _ms_s1_tpm_grid_pll_lpf_lpf__i;
     for (_ms_s1_tpm_grid_pll_lpf_lpf__i = 0; _ms_s1_tpm_grid_pll_lpf_lpf__i < 2; _ms_s1_tpm_grid_pll_lpf_lpf__i++) {
         _ms_s1_tpm_grid_pll_lpf_lpf__states[_ms_s1_tpm_grid_pll_lpf_lpf__i] = 0;
@@ -3940,24 +3942,24 @@ void ReInit_user_sp_cpu0_dev0() {
     _rlc_parallel_variable_ica_meanvalue__cnt_i = 0;
     _rlc_parallel_variable_ica_meanvalue__cnt_j = 0;
     _rlc_parallel_variable_ica_meanvalue__vector[_rlc_parallel_variable_ica_meanvalue__cnt_i] = 0;
-    HIL_OutAO(0x40f1, 0.0f);
-    HIL_OutAO(0x40f2, 0.0f);
     HIL_OutAO(0x40f3, 0.0f);
+    HIL_OutAO(0x40f4, 0.0f);
+    HIL_OutAO(0x40f5, 0.0f);
     _rlc_parallel_variable_ila_meanvalue__sum = 0;
     _rlc_parallel_variable_ila_meanvalue__cnt_i = 0;
     _rlc_parallel_variable_ila_meanvalue__cnt_j = 0;
     _rlc_parallel_variable_ila_meanvalue__vector[_rlc_parallel_variable_ila_meanvalue__cnt_i] = 0;
-    HIL_OutAO(0x40f5, 0.0f);
-    HIL_OutAO(0x40f6, 0.0f);
     HIL_OutAO(0x40f7, 0.0f);
+    HIL_OutAO(0x40f8, 0.0f);
+    HIL_OutAO(0x40f9, 0.0f);
     _rlc_parallel_variable_ira_meanvalue__sum = 0;
     _rlc_parallel_variable_ira_meanvalue__cnt_i = 0;
     _rlc_parallel_variable_ira_meanvalue__cnt_j = 0;
     _rlc_parallel_variable_ira_meanvalue__vector[_rlc_parallel_variable_ira_meanvalue__cnt_i] = 0;
-    HIL_OutAO(0x40f9, 0.0f);
-    HIL_OutAO(0x40fa, 0.0f);
     HIL_OutAO(0x40fb, 0.0f);
     HIL_OutAO(0x40fc, 0.0f);
+    HIL_OutAO(0x40fd, 0.0f);
+    HIL_OutAO(0x40fe, 0.0f);
     HIL_OutAO(0x4051, 0.0f);
     HIL_OutAO(0x4017, 0.0f);
     HIL_OutAO(0x4012, 0.0f);
@@ -4001,14 +4003,14 @@ void ReInit_user_sp_cpu0_dev0() {
         _ms_s3_tpm_ug_meassm_mode_and_dfract__dFract_state = 0 ;
         _ms_s3_tpm_ug_meassm_mode_and_dfract__submode_state = 0 ;
     }
-    HIL_OutAO(0x40f0, 0.0f);
-    HIL_OutAO(0x40f4, 0.0f);
-    HIL_OutAO(0x40f8, 0.0f);
+    HIL_OutAO(0x40f2, 0.0f);
+    HIL_OutAO(0x40f6, 0.0f);
+    HIL_OutAO(0x40fa, 0.0f);
     HIL_OutFloat(137363459, 0.0);
     HIL_OutFloat(137363460, 0.0);
     HIL_OutFloat(137363461, 0.0);
     HIL_OutAO(0x404e, 0.0f);
-    HIL_OutAO(0x40ef, 0.0f);
+    HIL_OutAO(0x40f1, 0.0f);
     HIL_OutAO(0x4018, 0.0f);
     HIL_OutAO(0x4023, 0.0f);
     HIL_OutAO(0x4044, 0.0f);
@@ -4023,18 +4025,18 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutFloat(137363457, 0.0);
     HIL_OutFloat(137363458, 0.0);
     {
-        _grid_inputs_input_synch_switching_f__sw_in = 1 ;
-        _grid_inputs_input_synch_switching_f__sw_out = 1 ;
-        _grid_inputs_input_synch_switching_f__sw_last = 1 ;
-        _grid_inputs_input_synch_switching_f__V_in = 1 ;
-        _grid_inputs_input_synch_switching_f__V_targ = 1 ;
+        _grid_inputs1_input_synch_switching_f__sw_in = 1 ;
+        _grid_inputs1_input_synch_switching_f__sw_out = 1 ;
+        _grid_inputs1_input_synch_switching_f__sw_last = 1 ;
+        _grid_inputs1_input_synch_switching_f__V_in = 1 ;
+        _grid_inputs1_input_synch_switching_f__V_targ = 1 ;
     }
     {
-        _grid_inputs_input_synch_switching_v__sw_in = 1 ;
-        _grid_inputs_input_synch_switching_v__sw_out = 1 ;
-        _grid_inputs_input_synch_switching_v__sw_last = 1 ;
-        _grid_inputs_input_synch_switching_v__V_in = 1 ;
-        _grid_inputs_input_synch_switching_v__V_targ = 1 ;
+        _grid_inputs1_input_synch_switching_v__sw_in = 1 ;
+        _grid_inputs1_input_synch_switching_v__sw_out = 1 ;
+        _grid_inputs1_input_synch_switching_v__sw_last = 1 ;
+        _grid_inputs1_input_synch_switching_v__V_in = 1 ;
+        _grid_inputs1_input_synch_switching_v__V_targ = 1 ;
     }
     HIL_OutFloat(137363462, 0.0);
     HIL_OutFloat(137363463, 0.0);
@@ -4185,7 +4187,7 @@ void ReInit_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_synch_vmatch_comparator2__state = 0.0f;
     HIL_OutAO(0x4027, 0.0f);
     HIL_OutAO(0x405a, 0.0f);
-    HIL_OutAO(0x40fd, 0.0f);
+    HIL_OutAO(0x40ff, 0.0f);
     HIL_OutAO(0x4066, 0.0f);
     HIL_OutAO(0x4067, 0.0f);
     HIL_OutAO(0x4068, 0.0f);
@@ -4385,8 +4387,8 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40d7, 0.0f);
     HIL_OutAO(0x40d8, 0.0f);
     {
-        _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+        _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+        _pcc_control1_frt_f_besf_sagc__Trip_Zone = - 1 ;
     }
     HIL_OutAO(0x40d9, 0.0f);
     HIL_OutAO(0x40da, 0.0f);
@@ -4398,40 +4400,42 @@ void ReInit_user_sp_cpu0_dev0() {
     HIL_OutFloat(137101315, 0.0);
     HIL_OutAO(0x401b, 0.0f);
     HIL_OutAO(0x407f, 0.0f);
-    HIL_OutAO(0x40e2, 0.0f);
+    HIL_OutAO(0x40df, 0.0f);
     HIL_OutAO(0x40e4, 0.0f);
     HIL_OutAO(0x40e6, 0.0f);
     HIL_OutAO(0x40e8, 0.0f);
     HIL_OutAO(0x40ea, 0.0f);
-    HIL_OutAO(0x40eb, 0.0f);
     HIL_OutAO(0x40ec, 0.0f);
     HIL_OutAO(0x40ed, 0.0f);
-    {
-        _pcc_control_v_check_besf__Violation = 0 ;
-        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
-    }
     HIL_OutAO(0x40ee, 0.0f);
+    HIL_OutAO(0x40ef, 0.0f);
+    {
+        _pcc_control1_v_check_besf__Violation = 0 ;
+        _pcc_control1_v_check_besf__Trip_Zone = - 1 ;
+    }
+    HIL_OutAO(0x40f0, 0.0f);
     {
         _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__counter = 0 ;
         _battery_inverter__average_1_control_synch_check_nominal_conditions_wait_to_change__wait_time = 0.01 ;
     }
     {
-        _pcc_control_output_check__var_CB = 1 ;
-        _pcc_control_output_check__var_GFL = 1 ;
-        _pcc_control_output_check__var_Fault_Zone = - 1 ;
+        _pcc_control1_output_check__var_CB = 1 ;
+        _pcc_control1_output_check__var_GFL = 1 ;
+        _pcc_control1_output_check__var_Fault_Zone = - 1 ;
     }
-    HIL_OutAO(0x40e1, 0.0f);
+    HIL_OutAO(0x40e2, 0.0f);
     HIL_OutAO(0x40e3, 0.0f);
     HIL_OutAO(0x40e5, 0.0f);
     HIL_OutAO(0x40e7, 0.0f);
     HIL_OutAO(0x40e9, 0.0f);
+    HIL_OutAO(0x40eb, 0.0f);
     _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__integrator_state =  0.0;
     _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__filter_state =  0.0;
     HIL_OutAO(0x4036, 0.0f);
     HIL_OutAO(0x4046, 0.0f);
     HIL_OutAO(0x40de, 0.0f);
-    HIL_OutAO(0x40df, 0.0f);
     HIL_OutAO(0x40e0, 0.0f);
+    HIL_OutAO(0x40e1, 0.0f);
     HIL_OutAO(0x4037, 0.0f);
     HIL_OutAO(0x40a5, 0.0f);
     {
@@ -4777,34 +4781,34 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _eut_interface_pref_pu_i__out = XIo_InFloat(0x2f800024);
     // Generated from the component: EUT_Interface.Qref-pu_i
     _eut_interface_qref_pu_i__out = XIo_InFloat(0x2f800028);
-    // Generated from the component: Grid_Inputs.F_FRT_pu.Clock1
-    _grid_inputs_f_frt_pu_clock1__out = _grid_inputs_f_frt_pu_clock1__state;
-    // Generated from the component: Grid_Inputs.F_Trip1.Clock1
-    _grid_inputs_f_trip1_clock1__out = _grid_inputs_f_trip1_clock1__state;
-    // Generated from the component: Grid_Inputs.F_Trip2.Clock1
-    _grid_inputs_f_trip2_clock1__out = _grid_inputs_f_trip2_clock1__state;
-    // Generated from the component: Grid_Inputs.F_Trip3.Clock1
-    _grid_inputs_f_trip3_clock1__out = _grid_inputs_f_trip3_clock1__state;
-    // Generated from the component: Grid_Inputs.F_Trip4.Clock1
-    _grid_inputs_f_trip4_clock1__out = _grid_inputs_f_trip4_clock1__state;
-    // Generated from the component: Grid_Inputs.F_Trip5.Clock1
-    _grid_inputs_f_trip5_clock1__out = _grid_inputs_f_trip5_clock1__state;
-    // Generated from the component: Grid_Inputs.F_Trip6.Clock1
-    _grid_inputs_f_trip6_clock1__out = _grid_inputs_f_trip6_clock1__state;
-    // Generated from the component: Grid_Inputs.F_Trip7.Clock1
-    _grid_inputs_f_trip7_clock1__out = _grid_inputs_f_trip7_clock1__state;
-    // Generated from the component: Grid_Inputs.V_FRT_pu.Clock1
-    _grid_inputs_v_frt_pu_clock1__out = _grid_inputs_v_frt_pu_clock1__state;
-    // Generated from the component: Grid_Inputs.V_Trip1.Clock1
-    _grid_inputs_v_trip1_clock1__out = _grid_inputs_v_trip1_clock1__state;
-    // Generated from the component: Grid_Inputs.V_Trip2.Clock1
-    _grid_inputs_v_trip2_clock1__out = _grid_inputs_v_trip2_clock1__state;
-    // Generated from the component: Grid_Inputs.V_Trip3.Clock1
-    _grid_inputs_v_trip3_clock1__out = _grid_inputs_v_trip3_clock1__state;
-    // Generated from the component: Grid_Inputs.V_Trip4.Clock1
-    _grid_inputs_v_trip4_clock1__out = _grid_inputs_v_trip4_clock1__state;
-    // Generated from the component: Grid_Inputs.V_Trip5.Clock1
-    _grid_inputs_v_trip5_clock1__out = _grid_inputs_v_trip5_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_FRT_pu.Clock1
+    _grid_inputs1_f_frt_pu_clock1__out = _grid_inputs1_f_frt_pu_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_Trip1.Clock1
+    _grid_inputs1_f_trip1_clock1__out = _grid_inputs1_f_trip1_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_Trip2.Clock1
+    _grid_inputs1_f_trip2_clock1__out = _grid_inputs1_f_trip2_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_Trip3.Clock1
+    _grid_inputs1_f_trip3_clock1__out = _grid_inputs1_f_trip3_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_Trip4.Clock1
+    _grid_inputs1_f_trip4_clock1__out = _grid_inputs1_f_trip4_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_Trip5.Clock1
+    _grid_inputs1_f_trip5_clock1__out = _grid_inputs1_f_trip5_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_Trip6.Clock1
+    _grid_inputs1_f_trip6_clock1__out = _grid_inputs1_f_trip6_clock1__state;
+    // Generated from the component: Grid_Inputs1.F_Trip7.Clock1
+    _grid_inputs1_f_trip7_clock1__out = _grid_inputs1_f_trip7_clock1__state;
+    // Generated from the component: Grid_Inputs1.V_FRT_pu.Clock1
+    _grid_inputs1_v_frt_pu_clock1__out = _grid_inputs1_v_frt_pu_clock1__state;
+    // Generated from the component: Grid_Inputs1.V_Trip1.Clock1
+    _grid_inputs1_v_trip1_clock1__out = _grid_inputs1_v_trip1_clock1__state;
+    // Generated from the component: Grid_Inputs1.V_Trip2.Clock1
+    _grid_inputs1_v_trip2_clock1__out = _grid_inputs1_v_trip2_clock1__state;
+    // Generated from the component: Grid_Inputs1.V_Trip3.Clock1
+    _grid_inputs1_v_trip3_clock1__out = _grid_inputs1_v_trip3_clock1__state;
+    // Generated from the component: Grid_Inputs1.V_Trip4.Clock1
+    _grid_inputs1_v_trip4_clock1__out = _grid_inputs1_v_trip4_clock1__state;
+    // Generated from the component: Grid_Inputs1.V_Trip5.Clock1
+    _grid_inputs1_v_trip5_clock1__out = _grid_inputs1_v_trip5_clock1__state;
     // Generated from the component: Idc_meas.Ia1
     _idc_meas_ia1__out = (HIL_InFloat(0xc80000 + 0x40));
     // Generated from the component: Ieut_meas.cpu_trans.Output
@@ -5185,384 +5189,384 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _g_pess__out = 100000.0 * _eut_interface_pref_pu_i__out;
     // Generated from the component: G_Qess
     _g_qess__out = 100000.0 * _eut_interface_qref_pu_i__out;
-    // Generated from the component: Grid_Inputs.F_FRT_pu.1D look-up table1
-    if(_grid_inputs_f_frt_pu_clock1__out <= _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_frt_pu_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = 0;
+    // Generated from the component: Grid_Inputs1.F_FRT_pu.1D look-up table1
+    if(_grid_inputs1_f_frt_pu_clock1__out <= _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_frt_pu_clock1__out < _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[25]) {
-        _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr = 25 >> 1;
-        _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex = 25;
-        while (1 < _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex - _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_frt_pu_clock1__out < _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex = _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_frt_pu_clock1__out < _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_addrs[25]) {
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__curAddr = 25 >> 1;
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__rightIndex = 25;
+        while (1 < _grid_inputs1_f_frt_pu_1d_look_up_table1__rightIndex - _grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_frt_pu_clock1__out < _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_f_frt_pu_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_frt_pu_1d_look_up_table1__rightIndex = _grid_inputs1_f_frt_pu_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex = _grid_inputs1_f_frt_pu_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_frt_pu_1d_look_up_table1__curAddr = (_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex + _grid_inputs_f_frt_pu_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_frt_pu_1d_look_up_table1__curAddr = (_grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex + _grid_inputs1_f_frt_pu_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_frt_pu_1d_look_up_table1__fraction = (_grid_inputs_f_frt_pu_clock1__out - _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__fraction = (_grid_inputs1_f_frt_pu_clock1__out - _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_frt_pu_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex = 24;
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex = 24;
     }
-    _grid_inputs_f_frt_pu_1d_look_up_table1__value = (_grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_frt_pu_1d_look_up_table1__fraction + _grid_inputs_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_f_frt_pu_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.F_Trip1.1D look-up table1
-    if(_grid_inputs_f_trip1_clock1__out <= _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_trip1_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_frt_pu_1d_look_up_table1__value = (_grid_inputs1_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_frt_pu_1d_look_up_table1__fraction + _grid_inputs1_f_frt_pu_1d_look_up_table1__lut_table[_grid_inputs1_f_frt_pu_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.F_Trip1.1D look-up table1
+    if(_grid_inputs1_f_trip1_clock1__out <= _grid_inputs1_f_trip1_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_trip1_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_trip1_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_trip1_clock1__out < _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_f_trip1_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_trip1_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_f_trip1_1d_look_up_table1__rightIndex - _grid_inputs_f_trip1_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_trip1_clock1__out < _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_trip1_1d_look_up_table1__rightIndex = _grid_inputs_f_trip1_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_trip1_clock1__out < _grid_inputs1_f_trip1_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_f_trip1_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_f_trip1_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_trip1_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_f_trip1_1d_look_up_table1__rightIndex - _grid_inputs1_f_trip1_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_trip1_clock1__out < _grid_inputs1_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip1_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_trip1_1d_look_up_table1__rightIndex = _grid_inputs1_f_trip1_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = _grid_inputs_f_trip1_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_trip1_1d_look_up_table1__leftIndex = _grid_inputs1_f_trip1_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_trip1_1d_look_up_table1__curAddr = (_grid_inputs_f_trip1_1d_look_up_table1__leftIndex + _grid_inputs_f_trip1_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_trip1_1d_look_up_table1__curAddr = (_grid_inputs1_f_trip1_1d_look_up_table1__leftIndex + _grid_inputs1_f_trip1_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_trip1_1d_look_up_table1__fraction = (_grid_inputs_f_trip1_clock1__out - _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_trip1_1d_look_up_table1__fraction = (_grid_inputs1_f_trip1_clock1__out - _grid_inputs1_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip1_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip1_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_trip1_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_trip1_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_f_trip1_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_trip1_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_f_trip1_1d_look_up_table1__value = (_grid_inputs_f_trip1_1d_look_up_table1__lut_table[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip1_1d_look_up_table1__lut_table[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_trip1_1d_look_up_table1__fraction + _grid_inputs_f_trip1_1d_look_up_table1__lut_table[_grid_inputs_f_trip1_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.F_Trip2.1D look-up table1
-    if(_grid_inputs_f_trip2_clock1__out <= _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_trip2_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_trip1_1d_look_up_table1__value = (_grid_inputs1_f_trip1_1d_look_up_table1__lut_table[_grid_inputs1_f_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip1_1d_look_up_table1__lut_table[_grid_inputs1_f_trip1_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_trip1_1d_look_up_table1__fraction + _grid_inputs1_f_trip1_1d_look_up_table1__lut_table[_grid_inputs1_f_trip1_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.F_Trip2.1D look-up table1
+    if(_grid_inputs1_f_trip2_clock1__out <= _grid_inputs1_f_trip2_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_trip2_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_trip2_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_trip2_clock1__out < _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_f_trip2_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_trip2_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_f_trip2_1d_look_up_table1__rightIndex - _grid_inputs_f_trip2_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_trip2_clock1__out < _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_trip2_1d_look_up_table1__rightIndex = _grid_inputs_f_trip2_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_trip2_clock1__out < _grid_inputs1_f_trip2_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_f_trip2_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_f_trip2_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_trip2_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_f_trip2_1d_look_up_table1__rightIndex - _grid_inputs1_f_trip2_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_trip2_clock1__out < _grid_inputs1_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip2_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_trip2_1d_look_up_table1__rightIndex = _grid_inputs1_f_trip2_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = _grid_inputs_f_trip2_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_trip2_1d_look_up_table1__leftIndex = _grid_inputs1_f_trip2_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_trip2_1d_look_up_table1__curAddr = (_grid_inputs_f_trip2_1d_look_up_table1__leftIndex + _grid_inputs_f_trip2_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_trip2_1d_look_up_table1__curAddr = (_grid_inputs1_f_trip2_1d_look_up_table1__leftIndex + _grid_inputs1_f_trip2_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_trip2_1d_look_up_table1__fraction = (_grid_inputs_f_trip2_clock1__out - _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_trip2_1d_look_up_table1__fraction = (_grid_inputs1_f_trip2_clock1__out - _grid_inputs1_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip2_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip2_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_trip2_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_trip2_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_f_trip2_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_trip2_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_f_trip2_1d_look_up_table1__value = (_grid_inputs_f_trip2_1d_look_up_table1__lut_table[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip2_1d_look_up_table1__lut_table[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_trip2_1d_look_up_table1__fraction + _grid_inputs_f_trip2_1d_look_up_table1__lut_table[_grid_inputs_f_trip2_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.F_Trip3.1D look-up table1
-    if(_grid_inputs_f_trip3_clock1__out <= _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_trip3_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_trip2_1d_look_up_table1__value = (_grid_inputs1_f_trip2_1d_look_up_table1__lut_table[_grid_inputs1_f_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip2_1d_look_up_table1__lut_table[_grid_inputs1_f_trip2_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_trip2_1d_look_up_table1__fraction + _grid_inputs1_f_trip2_1d_look_up_table1__lut_table[_grid_inputs1_f_trip2_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.F_Trip3.1D look-up table1
+    if(_grid_inputs1_f_trip3_clock1__out <= _grid_inputs1_f_trip3_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_trip3_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_trip3_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_trip3_clock1__out < _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_f_trip3_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_trip3_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_f_trip3_1d_look_up_table1__rightIndex - _grid_inputs_f_trip3_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_trip3_clock1__out < _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_trip3_1d_look_up_table1__rightIndex = _grid_inputs_f_trip3_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_trip3_clock1__out < _grid_inputs1_f_trip3_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_f_trip3_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_f_trip3_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_trip3_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_f_trip3_1d_look_up_table1__rightIndex - _grid_inputs1_f_trip3_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_trip3_clock1__out < _grid_inputs1_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip3_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_trip3_1d_look_up_table1__rightIndex = _grid_inputs1_f_trip3_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = _grid_inputs_f_trip3_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_trip3_1d_look_up_table1__leftIndex = _grid_inputs1_f_trip3_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_trip3_1d_look_up_table1__curAddr = (_grid_inputs_f_trip3_1d_look_up_table1__leftIndex + _grid_inputs_f_trip3_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_trip3_1d_look_up_table1__curAddr = (_grid_inputs1_f_trip3_1d_look_up_table1__leftIndex + _grid_inputs1_f_trip3_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_trip3_1d_look_up_table1__fraction = (_grid_inputs_f_trip3_clock1__out - _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_trip3_1d_look_up_table1__fraction = (_grid_inputs1_f_trip3_clock1__out - _grid_inputs1_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip3_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip3_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_trip3_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_trip3_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_f_trip3_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_trip3_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_f_trip3_1d_look_up_table1__value = (_grid_inputs_f_trip3_1d_look_up_table1__lut_table[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip3_1d_look_up_table1__lut_table[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_trip3_1d_look_up_table1__fraction + _grid_inputs_f_trip3_1d_look_up_table1__lut_table[_grid_inputs_f_trip3_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.F_Trip4.1D look-up table1
-    if(_grid_inputs_f_trip4_clock1__out <= _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_trip4_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_trip3_1d_look_up_table1__value = (_grid_inputs1_f_trip3_1d_look_up_table1__lut_table[_grid_inputs1_f_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip3_1d_look_up_table1__lut_table[_grid_inputs1_f_trip3_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_trip3_1d_look_up_table1__fraction + _grid_inputs1_f_trip3_1d_look_up_table1__lut_table[_grid_inputs1_f_trip3_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.F_Trip4.1D look-up table1
+    if(_grid_inputs1_f_trip4_clock1__out <= _grid_inputs1_f_trip4_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_trip4_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_trip4_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_trip4_clock1__out < _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_f_trip4_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_trip4_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_f_trip4_1d_look_up_table1__rightIndex - _grid_inputs_f_trip4_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_trip4_clock1__out < _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_trip4_1d_look_up_table1__rightIndex = _grid_inputs_f_trip4_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_trip4_clock1__out < _grid_inputs1_f_trip4_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_f_trip4_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_f_trip4_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_trip4_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_f_trip4_1d_look_up_table1__rightIndex - _grid_inputs1_f_trip4_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_trip4_clock1__out < _grid_inputs1_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip4_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_trip4_1d_look_up_table1__rightIndex = _grid_inputs1_f_trip4_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = _grid_inputs_f_trip4_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_trip4_1d_look_up_table1__leftIndex = _grid_inputs1_f_trip4_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_trip4_1d_look_up_table1__curAddr = (_grid_inputs_f_trip4_1d_look_up_table1__leftIndex + _grid_inputs_f_trip4_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_trip4_1d_look_up_table1__curAddr = (_grid_inputs1_f_trip4_1d_look_up_table1__leftIndex + _grid_inputs1_f_trip4_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_trip4_1d_look_up_table1__fraction = (_grid_inputs_f_trip4_clock1__out - _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_trip4_1d_look_up_table1__fraction = (_grid_inputs1_f_trip4_clock1__out - _grid_inputs1_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip4_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip4_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_trip4_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_trip4_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_f_trip4_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_trip4_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_f_trip4_1d_look_up_table1__value = (_grid_inputs_f_trip4_1d_look_up_table1__lut_table[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip4_1d_look_up_table1__lut_table[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_trip4_1d_look_up_table1__fraction + _grid_inputs_f_trip4_1d_look_up_table1__lut_table[_grid_inputs_f_trip4_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.F_Trip5.1D look-up table1
-    if(_grid_inputs_f_trip5_clock1__out <= _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_trip5_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_trip4_1d_look_up_table1__value = (_grid_inputs1_f_trip4_1d_look_up_table1__lut_table[_grid_inputs1_f_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip4_1d_look_up_table1__lut_table[_grid_inputs1_f_trip4_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_trip4_1d_look_up_table1__fraction + _grid_inputs1_f_trip4_1d_look_up_table1__lut_table[_grid_inputs1_f_trip4_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.F_Trip5.1D look-up table1
+    if(_grid_inputs1_f_trip5_clock1__out <= _grid_inputs1_f_trip5_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_trip5_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_trip5_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_trip5_clock1__out < _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_f_trip5_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_trip5_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_f_trip5_1d_look_up_table1__rightIndex - _grid_inputs_f_trip5_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_trip5_clock1__out < _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_trip5_1d_look_up_table1__rightIndex = _grid_inputs_f_trip5_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_trip5_clock1__out < _grid_inputs1_f_trip5_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_f_trip5_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_f_trip5_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_trip5_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_f_trip5_1d_look_up_table1__rightIndex - _grid_inputs1_f_trip5_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_trip5_clock1__out < _grid_inputs1_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip5_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_trip5_1d_look_up_table1__rightIndex = _grid_inputs1_f_trip5_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = _grid_inputs_f_trip5_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_trip5_1d_look_up_table1__leftIndex = _grid_inputs1_f_trip5_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_trip5_1d_look_up_table1__curAddr = (_grid_inputs_f_trip5_1d_look_up_table1__leftIndex + _grid_inputs_f_trip5_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_trip5_1d_look_up_table1__curAddr = (_grid_inputs1_f_trip5_1d_look_up_table1__leftIndex + _grid_inputs1_f_trip5_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_trip5_1d_look_up_table1__fraction = (_grid_inputs_f_trip5_clock1__out - _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_trip5_1d_look_up_table1__fraction = (_grid_inputs1_f_trip5_clock1__out - _grid_inputs1_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip5_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip5_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_trip5_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_trip5_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_f_trip5_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_trip5_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_f_trip5_1d_look_up_table1__value = (_grid_inputs_f_trip5_1d_look_up_table1__lut_table[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip5_1d_look_up_table1__lut_table[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_trip5_1d_look_up_table1__fraction + _grid_inputs_f_trip5_1d_look_up_table1__lut_table[_grid_inputs_f_trip5_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.F_Trip6.1D look-up table1
-    if(_grid_inputs_f_trip6_clock1__out <= _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_trip6_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_trip5_1d_look_up_table1__value = (_grid_inputs1_f_trip5_1d_look_up_table1__lut_table[_grid_inputs1_f_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip5_1d_look_up_table1__lut_table[_grid_inputs1_f_trip5_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_trip5_1d_look_up_table1__fraction + _grid_inputs1_f_trip5_1d_look_up_table1__lut_table[_grid_inputs1_f_trip5_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.F_Trip6.1D look-up table1
+    if(_grid_inputs1_f_trip6_clock1__out <= _grid_inputs1_f_trip6_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_trip6_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_trip6_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_trip6_clock1__out < _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_f_trip6_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_trip6_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_f_trip6_1d_look_up_table1__rightIndex - _grid_inputs_f_trip6_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_trip6_clock1__out < _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_trip6_1d_look_up_table1__rightIndex = _grid_inputs_f_trip6_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_trip6_clock1__out < _grid_inputs1_f_trip6_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_f_trip6_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_f_trip6_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_trip6_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_f_trip6_1d_look_up_table1__rightIndex - _grid_inputs1_f_trip6_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_trip6_clock1__out < _grid_inputs1_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip6_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_trip6_1d_look_up_table1__rightIndex = _grid_inputs1_f_trip6_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = _grid_inputs_f_trip6_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_trip6_1d_look_up_table1__leftIndex = _grid_inputs1_f_trip6_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_trip6_1d_look_up_table1__curAddr = (_grid_inputs_f_trip6_1d_look_up_table1__leftIndex + _grid_inputs_f_trip6_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_trip6_1d_look_up_table1__curAddr = (_grid_inputs1_f_trip6_1d_look_up_table1__leftIndex + _grid_inputs1_f_trip6_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_trip6_1d_look_up_table1__fraction = (_grid_inputs_f_trip6_clock1__out - _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_trip6_1d_look_up_table1__fraction = (_grid_inputs1_f_trip6_clock1__out - _grid_inputs1_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip6_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip6_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip6_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip6_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_trip6_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_trip6_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_f_trip6_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_trip6_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_f_trip6_1d_look_up_table1__value = (_grid_inputs_f_trip6_1d_look_up_table1__lut_table[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip6_1d_look_up_table1__lut_table[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_trip6_1d_look_up_table1__fraction + _grid_inputs_f_trip6_1d_look_up_table1__lut_table[_grid_inputs_f_trip6_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.F_Trip7.1D look-up table1
-    if(_grid_inputs_f_trip7_clock1__out <= _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_f_trip7_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_trip6_1d_look_up_table1__value = (_grid_inputs1_f_trip6_1d_look_up_table1__lut_table[_grid_inputs1_f_trip6_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip6_1d_look_up_table1__lut_table[_grid_inputs1_f_trip6_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_trip6_1d_look_up_table1__fraction + _grid_inputs1_f_trip6_1d_look_up_table1__lut_table[_grid_inputs1_f_trip6_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.F_Trip7.1D look-up table1
+    if(_grid_inputs1_f_trip7_clock1__out <= _grid_inputs1_f_trip7_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_f_trip7_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_f_trip7_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_f_trip7_clock1__out < _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_f_trip7_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_f_trip7_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_f_trip7_1d_look_up_table1__rightIndex - _grid_inputs_f_trip7_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_f_trip7_clock1__out < _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__curAddr]) {
-                _grid_inputs_f_trip7_1d_look_up_table1__rightIndex = _grid_inputs_f_trip7_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_f_trip7_clock1__out < _grid_inputs1_f_trip7_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_f_trip7_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_f_trip7_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_f_trip7_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_f_trip7_1d_look_up_table1__rightIndex - _grid_inputs1_f_trip7_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_f_trip7_clock1__out < _grid_inputs1_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip7_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_f_trip7_1d_look_up_table1__rightIndex = _grid_inputs1_f_trip7_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = _grid_inputs_f_trip7_1d_look_up_table1__curAddr;
+                _grid_inputs1_f_trip7_1d_look_up_table1__leftIndex = _grid_inputs1_f_trip7_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_f_trip7_1d_look_up_table1__curAddr = (_grid_inputs_f_trip7_1d_look_up_table1__leftIndex + _grid_inputs_f_trip7_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_f_trip7_1d_look_up_table1__curAddr = (_grid_inputs1_f_trip7_1d_look_up_table1__leftIndex + _grid_inputs1_f_trip7_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_f_trip7_1d_look_up_table1__fraction = (_grid_inputs_f_trip7_clock1__out - _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_f_trip7_1d_look_up_table1__fraction = (_grid_inputs1_f_trip7_clock1__out - _grid_inputs1_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip7_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip7_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip7_1d_look_up_table1__lut_addrs[_grid_inputs1_f_trip7_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_f_trip7_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_f_trip7_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_f_trip7_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_f_trip7_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_f_trip7_1d_look_up_table1__value = (_grid_inputs_f_trip7_1d_look_up_table1__lut_table[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex + 1] - _grid_inputs_f_trip7_1d_look_up_table1__lut_table[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex])
-            * _grid_inputs_f_trip7_1d_look_up_table1__fraction + _grid_inputs_f_trip7_1d_look_up_table1__lut_table[_grid_inputs_f_trip7_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.V_FRT_pu.1D look-up table1
-    if(_grid_inputs_v_frt_pu_clock1__out <= _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_v_frt_pu_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_f_trip7_1d_look_up_table1__value = (_grid_inputs1_f_trip7_1d_look_up_table1__lut_table[_grid_inputs1_f_trip7_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_f_trip7_1d_look_up_table1__lut_table[_grid_inputs1_f_trip7_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_f_trip7_1d_look_up_table1__fraction + _grid_inputs1_f_trip7_1d_look_up_table1__lut_table[_grid_inputs1_f_trip7_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.V_FRT_pu.1D look-up table1
+    if(_grid_inputs1_v_frt_pu_clock1__out <= _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_v_frt_pu_clock1__out < _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[16]) {
-        _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr = 16 >> 1;
-        _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex = 16;
-        while (1 < _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex - _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_v_frt_pu_clock1__out < _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__curAddr]) {
-                _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex = _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_v_frt_pu_clock1__out < _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_addrs[16]) {
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__curAddr = 16 >> 1;
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__rightIndex = 16;
+        while (1 < _grid_inputs1_v_frt_pu_1d_look_up_table1__rightIndex - _grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_v_frt_pu_clock1__out < _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_v_frt_pu_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_v_frt_pu_1d_look_up_table1__rightIndex = _grid_inputs1_v_frt_pu_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr;
+                _grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex = _grid_inputs1_v_frt_pu_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_v_frt_pu_1d_look_up_table1__curAddr = (_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex + _grid_inputs_v_frt_pu_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_v_frt_pu_1d_look_up_table1__curAddr = (_grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex + _grid_inputs1_v_frt_pu_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_v_frt_pu_1d_look_up_table1__fraction = (_grid_inputs_v_frt_pu_clock1__out - _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__fraction = (_grid_inputs1_v_frt_pu_clock1__out - _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_addrs[_grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_v_frt_pu_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex = 15;
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex = 15;
     }
-    _grid_inputs_v_frt_pu_1d_look_up_table1__value = (_grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex])
-            * _grid_inputs_v_frt_pu_1d_look_up_table1__fraction + _grid_inputs_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs_v_frt_pu_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.V_Trip1.1D look-up table1
-    if(_grid_inputs_v_trip1_clock1__out <= _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_v_trip1_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_v_frt_pu_1d_look_up_table1__value = (_grid_inputs1_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_v_frt_pu_1d_look_up_table1__fraction + _grid_inputs1_v_frt_pu_1d_look_up_table1__lut_table[_grid_inputs1_v_frt_pu_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.V_Trip1.1D look-up table1
+    if(_grid_inputs1_v_trip1_clock1__out <= _grid_inputs1_v_trip1_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_v_trip1_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_v_trip1_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_v_trip1_clock1__out < _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_v_trip1_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_v_trip1_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_v_trip1_1d_look_up_table1__rightIndex - _grid_inputs_v_trip1_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_v_trip1_clock1__out < _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__curAddr]) {
-                _grid_inputs_v_trip1_1d_look_up_table1__rightIndex = _grid_inputs_v_trip1_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_v_trip1_clock1__out < _grid_inputs1_v_trip1_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_v_trip1_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_v_trip1_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_v_trip1_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_v_trip1_1d_look_up_table1__rightIndex - _grid_inputs1_v_trip1_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_v_trip1_clock1__out < _grid_inputs1_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip1_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_v_trip1_1d_look_up_table1__rightIndex = _grid_inputs1_v_trip1_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = _grid_inputs_v_trip1_1d_look_up_table1__curAddr;
+                _grid_inputs1_v_trip1_1d_look_up_table1__leftIndex = _grid_inputs1_v_trip1_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_v_trip1_1d_look_up_table1__curAddr = (_grid_inputs_v_trip1_1d_look_up_table1__leftIndex + _grid_inputs_v_trip1_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_v_trip1_1d_look_up_table1__curAddr = (_grid_inputs1_v_trip1_1d_look_up_table1__leftIndex + _grid_inputs1_v_trip1_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_v_trip1_1d_look_up_table1__fraction = (_grid_inputs_v_trip1_clock1__out - _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_v_trip1_1d_look_up_table1__fraction = (_grid_inputs1_v_trip1_clock1__out - _grid_inputs1_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip1_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip1_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip1_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_v_trip1_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_v_trip1_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_v_trip1_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_v_trip1_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_v_trip1_1d_look_up_table1__value = (_grid_inputs_v_trip1_1d_look_up_table1__lut_table[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip1_1d_look_up_table1__lut_table[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex])
-            * _grid_inputs_v_trip1_1d_look_up_table1__fraction + _grid_inputs_v_trip1_1d_look_up_table1__lut_table[_grid_inputs_v_trip1_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.V_Trip2.1D look-up table1
-    if(_grid_inputs_v_trip2_clock1__out <= _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_v_trip2_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_v_trip1_1d_look_up_table1__value = (_grid_inputs1_v_trip1_1d_look_up_table1__lut_table[_grid_inputs1_v_trip1_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip1_1d_look_up_table1__lut_table[_grid_inputs1_v_trip1_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_v_trip1_1d_look_up_table1__fraction + _grid_inputs1_v_trip1_1d_look_up_table1__lut_table[_grid_inputs1_v_trip1_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.V_Trip2.1D look-up table1
+    if(_grid_inputs1_v_trip2_clock1__out <= _grid_inputs1_v_trip2_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_v_trip2_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_v_trip2_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_v_trip2_clock1__out < _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_v_trip2_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_v_trip2_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_v_trip2_1d_look_up_table1__rightIndex - _grid_inputs_v_trip2_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_v_trip2_clock1__out < _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__curAddr]) {
-                _grid_inputs_v_trip2_1d_look_up_table1__rightIndex = _grid_inputs_v_trip2_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_v_trip2_clock1__out < _grid_inputs1_v_trip2_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_v_trip2_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_v_trip2_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_v_trip2_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_v_trip2_1d_look_up_table1__rightIndex - _grid_inputs1_v_trip2_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_v_trip2_clock1__out < _grid_inputs1_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip2_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_v_trip2_1d_look_up_table1__rightIndex = _grid_inputs1_v_trip2_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = _grid_inputs_v_trip2_1d_look_up_table1__curAddr;
+                _grid_inputs1_v_trip2_1d_look_up_table1__leftIndex = _grid_inputs1_v_trip2_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_v_trip2_1d_look_up_table1__curAddr = (_grid_inputs_v_trip2_1d_look_up_table1__leftIndex + _grid_inputs_v_trip2_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_v_trip2_1d_look_up_table1__curAddr = (_grid_inputs1_v_trip2_1d_look_up_table1__leftIndex + _grid_inputs1_v_trip2_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_v_trip2_1d_look_up_table1__fraction = (_grid_inputs_v_trip2_clock1__out - _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_v_trip2_1d_look_up_table1__fraction = (_grid_inputs1_v_trip2_clock1__out - _grid_inputs1_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip2_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip2_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip2_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_v_trip2_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_v_trip2_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_v_trip2_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_v_trip2_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_v_trip2_1d_look_up_table1__value = (_grid_inputs_v_trip2_1d_look_up_table1__lut_table[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip2_1d_look_up_table1__lut_table[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex])
-            * _grid_inputs_v_trip2_1d_look_up_table1__fraction + _grid_inputs_v_trip2_1d_look_up_table1__lut_table[_grid_inputs_v_trip2_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.V_Trip3.1D look-up table1
-    if(_grid_inputs_v_trip3_clock1__out <= _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_v_trip3_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_v_trip2_1d_look_up_table1__value = (_grid_inputs1_v_trip2_1d_look_up_table1__lut_table[_grid_inputs1_v_trip2_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip2_1d_look_up_table1__lut_table[_grid_inputs1_v_trip2_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_v_trip2_1d_look_up_table1__fraction + _grid_inputs1_v_trip2_1d_look_up_table1__lut_table[_grid_inputs1_v_trip2_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.V_Trip3.1D look-up table1
+    if(_grid_inputs1_v_trip3_clock1__out <= _grid_inputs1_v_trip3_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_v_trip3_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_v_trip3_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_v_trip3_clock1__out < _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_v_trip3_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_v_trip3_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_v_trip3_1d_look_up_table1__rightIndex - _grid_inputs_v_trip3_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_v_trip3_clock1__out < _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__curAddr]) {
-                _grid_inputs_v_trip3_1d_look_up_table1__rightIndex = _grid_inputs_v_trip3_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_v_trip3_clock1__out < _grid_inputs1_v_trip3_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_v_trip3_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_v_trip3_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_v_trip3_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_v_trip3_1d_look_up_table1__rightIndex - _grid_inputs1_v_trip3_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_v_trip3_clock1__out < _grid_inputs1_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip3_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_v_trip3_1d_look_up_table1__rightIndex = _grid_inputs1_v_trip3_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = _grid_inputs_v_trip3_1d_look_up_table1__curAddr;
+                _grid_inputs1_v_trip3_1d_look_up_table1__leftIndex = _grid_inputs1_v_trip3_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_v_trip3_1d_look_up_table1__curAddr = (_grid_inputs_v_trip3_1d_look_up_table1__leftIndex + _grid_inputs_v_trip3_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_v_trip3_1d_look_up_table1__curAddr = (_grid_inputs1_v_trip3_1d_look_up_table1__leftIndex + _grid_inputs1_v_trip3_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_v_trip3_1d_look_up_table1__fraction = (_grid_inputs_v_trip3_clock1__out - _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_v_trip3_1d_look_up_table1__fraction = (_grid_inputs1_v_trip3_clock1__out - _grid_inputs1_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip3_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip3_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip3_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_v_trip3_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_v_trip3_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_v_trip3_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_v_trip3_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_v_trip3_1d_look_up_table1__value = (_grid_inputs_v_trip3_1d_look_up_table1__lut_table[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip3_1d_look_up_table1__lut_table[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex])
-            * _grid_inputs_v_trip3_1d_look_up_table1__fraction + _grid_inputs_v_trip3_1d_look_up_table1__lut_table[_grid_inputs_v_trip3_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.V_Trip4.1D look-up table1
-    if(_grid_inputs_v_trip4_clock1__out <= _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_v_trip4_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_v_trip3_1d_look_up_table1__value = (_grid_inputs1_v_trip3_1d_look_up_table1__lut_table[_grid_inputs1_v_trip3_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip3_1d_look_up_table1__lut_table[_grid_inputs1_v_trip3_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_v_trip3_1d_look_up_table1__fraction + _grid_inputs1_v_trip3_1d_look_up_table1__lut_table[_grid_inputs1_v_trip3_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.V_Trip4.1D look-up table1
+    if(_grid_inputs1_v_trip4_clock1__out <= _grid_inputs1_v_trip4_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_v_trip4_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_v_trip4_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_v_trip4_clock1__out < _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_v_trip4_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_v_trip4_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_v_trip4_1d_look_up_table1__rightIndex - _grid_inputs_v_trip4_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_v_trip4_clock1__out < _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__curAddr]) {
-                _grid_inputs_v_trip4_1d_look_up_table1__rightIndex = _grid_inputs_v_trip4_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_v_trip4_clock1__out < _grid_inputs1_v_trip4_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_v_trip4_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_v_trip4_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_v_trip4_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_v_trip4_1d_look_up_table1__rightIndex - _grid_inputs1_v_trip4_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_v_trip4_clock1__out < _grid_inputs1_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip4_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_v_trip4_1d_look_up_table1__rightIndex = _grid_inputs1_v_trip4_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = _grid_inputs_v_trip4_1d_look_up_table1__curAddr;
+                _grid_inputs1_v_trip4_1d_look_up_table1__leftIndex = _grid_inputs1_v_trip4_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_v_trip4_1d_look_up_table1__curAddr = (_grid_inputs_v_trip4_1d_look_up_table1__leftIndex + _grid_inputs_v_trip4_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_v_trip4_1d_look_up_table1__curAddr = (_grid_inputs1_v_trip4_1d_look_up_table1__leftIndex + _grid_inputs1_v_trip4_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_v_trip4_1d_look_up_table1__fraction = (_grid_inputs_v_trip4_clock1__out - _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_v_trip4_1d_look_up_table1__fraction = (_grid_inputs1_v_trip4_clock1__out - _grid_inputs1_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip4_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip4_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip4_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_v_trip4_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_v_trip4_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_v_trip4_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_v_trip4_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_v_trip4_1d_look_up_table1__value = (_grid_inputs_v_trip4_1d_look_up_table1__lut_table[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip4_1d_look_up_table1__lut_table[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex])
-            * _grid_inputs_v_trip4_1d_look_up_table1__fraction + _grid_inputs_v_trip4_1d_look_up_table1__lut_table[_grid_inputs_v_trip4_1d_look_up_table1__leftIndex];
-    // Generated from the component: Grid_Inputs.V_Trip5.1D look-up table1
-    if(_grid_inputs_v_trip5_clock1__out <= _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[0]) {
-        _grid_inputs_v_trip5_1d_look_up_table1__fraction = 0.0;
-        _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = 0;
+    _grid_inputs1_v_trip4_1d_look_up_table1__value = (_grid_inputs1_v_trip4_1d_look_up_table1__lut_table[_grid_inputs1_v_trip4_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip4_1d_look_up_table1__lut_table[_grid_inputs1_v_trip4_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_v_trip4_1d_look_up_table1__fraction + _grid_inputs1_v_trip4_1d_look_up_table1__lut_table[_grid_inputs1_v_trip4_1d_look_up_table1__leftIndex];
+    // Generated from the component: Grid_Inputs1.V_Trip5.1D look-up table1
+    if(_grid_inputs1_v_trip5_clock1__out <= _grid_inputs1_v_trip5_1d_look_up_table1__lut_addrs[0]) {
+        _grid_inputs1_v_trip5_1d_look_up_table1__fraction = 0.0;
+        _grid_inputs1_v_trip5_1d_look_up_table1__leftIndex = 0;
     }
-    else if(_grid_inputs_v_trip5_clock1__out < _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[5]) {
-        _grid_inputs_v_trip5_1d_look_up_table1__curAddr = 5 >> 1;
-        _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = 0;
-        _grid_inputs_v_trip5_1d_look_up_table1__rightIndex = 5;
-        while (1 < _grid_inputs_v_trip5_1d_look_up_table1__rightIndex - _grid_inputs_v_trip5_1d_look_up_table1__leftIndex) {
-            if (_grid_inputs_v_trip5_clock1__out < _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__curAddr]) {
-                _grid_inputs_v_trip5_1d_look_up_table1__rightIndex = _grid_inputs_v_trip5_1d_look_up_table1__curAddr;
+    else if(_grid_inputs1_v_trip5_clock1__out < _grid_inputs1_v_trip5_1d_look_up_table1__lut_addrs[5]) {
+        _grid_inputs1_v_trip5_1d_look_up_table1__curAddr = 5 >> 1;
+        _grid_inputs1_v_trip5_1d_look_up_table1__leftIndex = 0;
+        _grid_inputs1_v_trip5_1d_look_up_table1__rightIndex = 5;
+        while (1 < _grid_inputs1_v_trip5_1d_look_up_table1__rightIndex - _grid_inputs1_v_trip5_1d_look_up_table1__leftIndex) {
+            if (_grid_inputs1_v_trip5_clock1__out < _grid_inputs1_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip5_1d_look_up_table1__curAddr]) {
+                _grid_inputs1_v_trip5_1d_look_up_table1__rightIndex = _grid_inputs1_v_trip5_1d_look_up_table1__curAddr;
             }
             else {
-                _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = _grid_inputs_v_trip5_1d_look_up_table1__curAddr;
+                _grid_inputs1_v_trip5_1d_look_up_table1__leftIndex = _grid_inputs1_v_trip5_1d_look_up_table1__curAddr;
             }
-            _grid_inputs_v_trip5_1d_look_up_table1__curAddr = (_grid_inputs_v_trip5_1d_look_up_table1__leftIndex + _grid_inputs_v_trip5_1d_look_up_table1__rightIndex) >> 1;
+            _grid_inputs1_v_trip5_1d_look_up_table1__curAddr = (_grid_inputs1_v_trip5_1d_look_up_table1__leftIndex + _grid_inputs1_v_trip5_1d_look_up_table1__rightIndex) >> 1;
         }
-        _grid_inputs_v_trip5_1d_look_up_table1__fraction = (_grid_inputs_v_trip5_clock1__out - _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex])
-                / (_grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex]);
+        _grid_inputs1_v_trip5_1d_look_up_table1__fraction = (_grid_inputs1_v_trip5_clock1__out - _grid_inputs1_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip5_1d_look_up_table1__leftIndex])
+                / (_grid_inputs1_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip5_1d_look_up_table1__lut_addrs[_grid_inputs1_v_trip5_1d_look_up_table1__leftIndex]);
     }
     else {
-        _grid_inputs_v_trip5_1d_look_up_table1__fraction = 1.0;
-        _grid_inputs_v_trip5_1d_look_up_table1__leftIndex = 4;
+        _grid_inputs1_v_trip5_1d_look_up_table1__fraction = 1.0;
+        _grid_inputs1_v_trip5_1d_look_up_table1__leftIndex = 4;
     }
-    _grid_inputs_v_trip5_1d_look_up_table1__value = (_grid_inputs_v_trip5_1d_look_up_table1__lut_table[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs_v_trip5_1d_look_up_table1__lut_table[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex])
-            * _grid_inputs_v_trip5_1d_look_up_table1__fraction + _grid_inputs_v_trip5_1d_look_up_table1__lut_table[_grid_inputs_v_trip5_1d_look_up_table1__leftIndex];
+    _grid_inputs1_v_trip5_1d_look_up_table1__value = (_grid_inputs1_v_trip5_1d_look_up_table1__lut_table[_grid_inputs1_v_trip5_1d_look_up_table1__leftIndex + 1] - _grid_inputs1_v_trip5_1d_look_up_table1__lut_table[_grid_inputs1_v_trip5_1d_look_up_table1__leftIndex])
+            * _grid_inputs1_v_trip5_1d_look_up_table1__fraction + _grid_inputs1_v_trip5_1d_look_up_table1__lut_table[_grid_inputs1_v_trip5_1d_look_up_table1__leftIndex];
     // Generated from the component: EUT_Interface.Idc_o
     HIL_OutAO(0x404c, (float)_idc_meas_ia1__out);
     // Generated from the component: EUT_Interface.Ieut_o
@@ -5757,7 +5761,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     }
     _rlc_parallel_variable_ica_meanvalue__out = _rlc_parallel_variable_ica_meanvalue__sum / _rlc_parallel_variable_ica_meanvalue__cnt_i;
     // Generated from the component: RLC_parallel_variable.ICa_out
-    HIL_OutAO(0x40f1, (float)_rlc_parallel_variable_ica_ia1__out);
+    HIL_OutAO(0x40f3, (float)_rlc_parallel_variable_ica_ia1__out);
     // Generated from the component: RLC_parallel_variable.ILa_MeanValue
     if (_rlc_parallel_variable_ila_meanvalue__cnt_i < 20000 ) {
         _rlc_parallel_variable_ila_meanvalue__vector[_rlc_parallel_variable_ila_meanvalue__cnt_i] = _rlc_parallel_variable_ila_ia1__out;
@@ -5777,7 +5781,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     }
     _rlc_parallel_variable_ila_meanvalue__out = _rlc_parallel_variable_ila_meanvalue__sum / _rlc_parallel_variable_ila_meanvalue__cnt_i;
     // Generated from the component: RLC_parallel_variable.ILa_out
-    HIL_OutAO(0x40f5, (float)_rlc_parallel_variable_ila_ia1__out);
+    HIL_OutAO(0x40f7, (float)_rlc_parallel_variable_ila_ia1__out);
     // Generated from the component: RLC_parallel_variable.IRa_MeanValue
     if (_rlc_parallel_variable_ira_meanvalue__cnt_i < 20000 ) {
         _rlc_parallel_variable_ira_meanvalue__vector[_rlc_parallel_variable_ira_meanvalue__cnt_i] = _rlc_parallel_variable_ira_ia1__out;
@@ -5797,20 +5801,20 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     }
     _rlc_parallel_variable_ira_meanvalue__out = _rlc_parallel_variable_ira_meanvalue__sum / _rlc_parallel_variable_ira_meanvalue__cnt_i;
     // Generated from the component: RLC_parallel_variable.IRa_out
-    HIL_OutAO(0x40f9, (float)_rlc_parallel_variable_ira_ia1__out);
+    HIL_OutAO(0x40fb, (float)_rlc_parallel_variable_ira_ia1__out);
     // Generated from the component: V_Zg-a
-    HIL_OutAO(0x40fc, (float)_va1_va1__out);
+    HIL_OutAO(0x40fe, (float)_va1_va1__out);
     // Generated from the component: EUT_Interface.Vdc_o
     HIL_OutAO(0x4051, (float)_vdc_meas_va1__out);
     // Generated from the component: VI_dc
     _vi_dc__out = (_idc_meas_ia1__out * _vdc_meas_va1__out);
-    // Generated from the component: Grid_Inputs.Mux_Ph_g
+    // Generated from the component: Grid_Inputs1.Mux_Ph_g
     switch((X_UnInt32) _in_phg_choice__out) {
     case 1:
-        _grid_inputs_mux_ph_g__out = _vg_ph__out;
+        _grid_inputs1_mux_ph_g__out = _vg_ph__out;
         break;
     default:
-        _grid_inputs_mux_ph_g__out = 0x0;
+        _grid_inputs1_mux_ph_g__out = 0x0;
     }
     // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.Gain6
     _battery_inverter__average_1_control_pll_pu_gain6__out = 0.02 * _battery_inverter__average_1_control_pll_pu_pll_to_hz__out;
@@ -5913,51 +5917,51 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__q = _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k1 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__alpha + _battery_inverter__average_1_control_abctodq1_abc_to_dq1_alpha_beta_to_dq__k2 * _battery_inverter__average_1_control_abctodq1_abc_to_dq1_abc_to_alpha_beta__beta;
     // Generated from the component: Battery inverter (Average)1.Control.Gain1
     _battery_inverter__average_1_control_gain1__out = 0.001176470588235294 * _battery_inverter__average_1_limit1__out;
-    // Generated from the component: Grid_Inputs.Mux_F_g_Trip
+    // Generated from the component: Grid_Inputs1.Mux_F_g_Trip
     switch((X_UnInt32) _in_ftrip_choice__out) {
     case 1:
-        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip1_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g_trip__out = _grid_inputs1_f_trip1_1d_look_up_table1__value;
         break;
     case 2:
-        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip2_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g_trip__out = _grid_inputs1_f_trip2_1d_look_up_table1__value;
         break;
     case 3:
-        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip7_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g_trip__out = _grid_inputs1_f_trip7_1d_look_up_table1__value;
         break;
     case 4:
-        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip3_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g_trip__out = _grid_inputs1_f_trip3_1d_look_up_table1__value;
         break;
     case 5:
-        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip4_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g_trip__out = _grid_inputs1_f_trip4_1d_look_up_table1__value;
         break;
     case 6:
-        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip5_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g_trip__out = _grid_inputs1_f_trip5_1d_look_up_table1__value;
         break;
     case 7:
-        _grid_inputs_mux_f_g_trip__out = _grid_inputs_f_trip6_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g_trip__out = _grid_inputs1_f_trip6_1d_look_up_table1__value;
         break;
     default:
-        _grid_inputs_mux_f_g_trip__out = 0x0;
+        _grid_inputs1_mux_f_g_trip__out = 0x0;
     }
-    // Generated from the component: Grid_Inputs.Mux_V_g_Trip
+    // Generated from the component: Grid_Inputs1.Mux_V_g_Trip
     switch((X_UnInt32) _in_vtrip_choice__out) {
     case 1:
-        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip1_1d_look_up_table1__value;
+        _grid_inputs1_mux_v_g_trip__out = _grid_inputs1_v_trip1_1d_look_up_table1__value;
         break;
     case 2:
-        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip2_1d_look_up_table1__value;
+        _grid_inputs1_mux_v_g_trip__out = _grid_inputs1_v_trip2_1d_look_up_table1__value;
         break;
     case 3:
-        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip3_1d_look_up_table1__value;
+        _grid_inputs1_mux_v_g_trip__out = _grid_inputs1_v_trip3_1d_look_up_table1__value;
         break;
     case 4:
-        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip4_1d_look_up_table1__value;
+        _grid_inputs1_mux_v_g_trip__out = _grid_inputs1_v_trip4_1d_look_up_table1__value;
         break;
     case 5:
-        _grid_inputs_mux_v_g_trip__out = _grid_inputs_v_trip5_1d_look_up_table1__value;
+        _grid_inputs1_mux_v_g_trip__out = _grid_inputs1_v_trip5_1d_look_up_table1__value;
         break;
     default:
-        _grid_inputs_mux_v_g_trip__out = 0x0;
+        _grid_inputs1_mux_v_g_trip__out = 0x0;
     }
     // Generated from the component: MS_S1.S1_fb
     HIL_OutAO(0x4060, (float)_ms_s1_s1_triple_s1_ideal_ctc_wrapper__feedback_out);
@@ -6266,19 +6270,19 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__q = _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k1 * _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__alpha + _ms_s3_tpm_ug_pll_abc_to_dq_alpha_beta_to_dq__k2 * _ms_s3_tpm_ug_pll_abc_to_dq_abc_to_alpha_beta__beta;
     // Generated from the component: MS_S3.TPM_uG.TRMz
     // Generated from the component: RLC_parallel_variable.ICa_mean
-    HIL_OutAO(0x40f0, (float)_rlc_parallel_variable_ica_meanvalue__out);
+    HIL_OutAO(0x40f2, (float)_rlc_parallel_variable_ica_meanvalue__out);
     // Generated from the component: RLC_parallel_variable.ILa_mean
-    HIL_OutAO(0x40f4, (float)_rlc_parallel_variable_ila_meanvalue__out);
+    HIL_OutAO(0x40f6, (float)_rlc_parallel_variable_ila_meanvalue__out);
     // Generated from the component: RLC_parallel_variable.IRa_mean
-    HIL_OutAO(0x40f8, (float)_rlc_parallel_variable_ira_meanvalue__out);
+    HIL_OutAO(0x40fa, (float)_rlc_parallel_variable_ira_meanvalue__out);
     // Generated from the component: EUT_Interface.Pdc_o
     HIL_OutAO(0x404e, (float)_vi_dc__out);
     // Generated from the component: Phg_Input
-    HIL_OutAO(0x40ef, (float)_grid_inputs_mux_ph_g__out);
+    HIL_OutAO(0x40f1, (float)_grid_inputs1_mux_ph_g__out);
     // Generated from the component: Vg_pu-actual.S-Ph_b
-    _vg_pu_actual_s_ph_b__out = _grid_inputs_mux_ph_g__out - _vg_pu_actual_constant1__out;
+    _vg_pu_actual_s_ph_b__out = _grid_inputs1_mux_ph_g__out - _vg_pu_actual_constant1__out;
     // Generated from the component: Vg_pu-actual.S-Ph_c
-    _vg_pu_actual_s_ph_c__out = _grid_inputs_mux_ph_g__out + _vg_pu_actual_constant1__out;
+    _vg_pu_actual_s_ph_c__out = _grid_inputs1_mux_ph_g__out + _vg_pu_actual_constant1__out;
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Sum11
     _battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out = _battery_inverter__average_1_control_pll_pu_gain6__out - _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant6__out;
     // Generated from the component: Battery inverter (Average)1.Control.PLL_pu.InvPLL_f-pu
@@ -6345,19 +6349,19 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_limit3__out = MAX(_battery_inverter__average_1_control_gain1__out, 0.01);
     // Generated from the component: Battery inverter (Average)1.Control.duty_cycle.Gain1
     _battery_inverter__average_1_control_duty_cycle_gain1__out = 425.0 * _battery_inverter__average_1_control_gain1__out;
-    // Generated from the component: Grid_Inputs.Input-Synch-Switching_F
-    _grid_inputs_input_synch_switching_f__in_FRT = _grid_inputs_f_frt_pu_1d_look_up_table1__value;
-    _grid_inputs_input_synch_switching_f__in_Trip = _grid_inputs_mux_f_g_trip__out;
-    _grid_inputs_input_synch_switching_f__in_sw = _in_fg_choice__out;
+    // Generated from the component: Grid_Inputs1.Input-Synch-Switching_F
+    _grid_inputs1_input_synch_switching_f__in_FRT = _grid_inputs1_f_frt_pu_1d_look_up_table1__value;
+    _grid_inputs1_input_synch_switching_f__in_Trip = _grid_inputs1_mux_f_g_trip__out;
+    _grid_inputs1_input_synch_switching_f__in_sw = _in_fg_choice__out;
     {
-        _grid_inputs_input_synch_switching_f__out_sw = _grid_inputs_input_synch_switching_f__sw_out ;
+        _grid_inputs1_input_synch_switching_f__out_sw = _grid_inputs1_input_synch_switching_f__sw_out ;
     }
-    // Generated from the component: Grid_Inputs.Input-Synch-Switching_V
-    _grid_inputs_input_synch_switching_v__in_FRT = _grid_inputs_v_frt_pu_1d_look_up_table1__value;
-    _grid_inputs_input_synch_switching_v__in_Trip = _grid_inputs_mux_v_g_trip__out;
-    _grid_inputs_input_synch_switching_v__in_sw = _in_vg_choice__out;
+    // Generated from the component: Grid_Inputs1.Input-Synch-Switching_V
+    _grid_inputs1_input_synch_switching_v__in_FRT = _grid_inputs1_v_frt_pu_1d_look_up_table1__value;
+    _grid_inputs1_input_synch_switching_v__in_Trip = _grid_inputs1_mux_v_g_trip__out;
+    _grid_inputs1_input_synch_switching_v__in_sw = _in_vg_choice__out;
     {
-        _grid_inputs_input_synch_switching_v__out_sw = _grid_inputs_input_synch_switching_v__sw_out ;
+        _grid_inputs1_input_synch_switching_v__out_sw = _grid_inputs1_input_synch_switching_v__sw_out ;
     }
     // Generated from the component: MS_S1.TPM_Grid.I_RMS_calc.RMS
     _ms_s1_tpm_grid_i_rms_calc_rms__IN1 = _ms_s1_tpm_grid_ia_ia1__out;
@@ -6674,7 +6678,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.TPM_uG.PLL.PID.Sum8
     _ms_s3_tpm_ug_pll_pid_sum8__out = _ms_s3_tpm_ug_pll_pid_kd__out - _ms_s3_tpm_ug_pll_pid_integrator2__out;
     // Generated from the component: Vg_pu-actual.Bus Join_Vg-ph
-    _vg_pu_actual_bus_join_vg_ph__out[0] = _grid_inputs_mux_ph_g__out;
+    _vg_pu_actual_bus_join_vg_ph__out[0] = _grid_inputs1_mux_ph_g__out;
     _vg_pu_actual_bus_join_vg_ph__out[1] = _vg_pu_actual_s_ph_b__out;
     _vg_pu_actual_bus_join_vg_ph__out[2] = _vg_pu_actual_s_ph_c__out;
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Product1
@@ -6731,33 +6735,33 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_imode_control_dq_current_controller_gain5__out = 0.5 * _battery_inverter__average_1_control_imode_control_dq_current_controller_limit3__out;
     // Generated from the component: Battery inverter (Average)1.Control.Vmode_control.Inner dq current controller.Gain5
     _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_gain5__out = 1.2 * _battery_inverter__average_1_control_vmode_control_inner_dq_current_controller_limit3__out;
-    // Generated from the component: Grid_Inputs.Mux_f_g
-    switch((X_UnInt32) _grid_inputs_input_synch_switching_f__out_sw) {
+    // Generated from the component: Grid_Inputs1.Mux_f_g
+    switch((X_UnInt32) _grid_inputs1_input_synch_switching_f__out_sw) {
     case 1:
-        _grid_inputs_mux_f_g__out = _vg_f__out;
+        _grid_inputs1_mux_f_g__out = _vg_f__out;
         break;
     case 2:
-        _grid_inputs_mux_f_g__out = _grid_inputs_f_frt_pu_1d_look_up_table1__value;
+        _grid_inputs1_mux_f_g__out = _grid_inputs1_f_frt_pu_1d_look_up_table1__value;
         break;
     case 3:
-        _grid_inputs_mux_f_g__out = _grid_inputs_mux_f_g_trip__out;
+        _grid_inputs1_mux_f_g__out = _grid_inputs1_mux_f_g_trip__out;
         break;
     default:
-        _grid_inputs_mux_f_g__out = 0x0;
+        _grid_inputs1_mux_f_g__out = 0x0;
     }
-    // Generated from the component: Grid_Inputs.Mux_V_g
-    switch((X_UnInt32) _grid_inputs_input_synch_switching_v__out_sw) {
+    // Generated from the component: Grid_Inputs1.Mux_V_g
+    switch((X_UnInt32) _grid_inputs1_input_synch_switching_v__out_sw) {
     case 1:
-        _grid_inputs_mux_v_g__out = _vg_rms__out;
+        _grid_inputs1_mux_v_g__out = _vg_rms__out;
         break;
     case 2:
-        _grid_inputs_mux_v_g__out = _grid_inputs_v_frt_pu_1d_look_up_table1__value;
+        _grid_inputs1_mux_v_g__out = _grid_inputs1_v_frt_pu_1d_look_up_table1__value;
         break;
     case 3:
-        _grid_inputs_mux_v_g__out = _grid_inputs_mux_v_g_trip__out;
+        _grid_inputs1_mux_v_g__out = _grid_inputs1_mux_v_g_trip__out;
         break;
     default:
-        _grid_inputs_mux_v_g__out = 0x0;
+        _grid_inputs1_mux_v_g__out = 0x0;
     }
     // Generated from the component: MS_S1.TPM_Grid.IA_RMS
     HIL_OutAO(0x4063, (float)_ms_s1_tpm_grid_i_rms_calc_rms__RMS1);
@@ -7752,13 +7756,13 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: Battery inverter (Average)1.Control.Power_Meas.Power_Meas_DQ.Sum2
     _battery_inverter__average_1_control_power_meas_power_meas_dq_sum2__out = _battery_inverter__average_1_control_power_meas_power_meas_dq_product4__out - _battery_inverter__average_1_control_power_meas_power_meas_dq_product3__out;
     // Generated from the component: Fg_Input
-    HIL_OutAO(0x405a, (float)_grid_inputs_mux_f_g__out);
+    HIL_OutAO(0x405a, (float)_grid_inputs1_mux_f_g__out);
     // Generated from the component: Vg_pu-actual.G_fbase
-    _vg_pu_actual_g_fbase__out = 50.0 * _grid_inputs_mux_f_g__out;
+    _vg_pu_actual_g_fbase__out = 50.0 * _grid_inputs1_mux_f_g__out;
     // Generated from the component: Vg_Input
-    HIL_OutAO(0x40fd, (float)_grid_inputs_mux_v_g__out);
+    HIL_OutAO(0x40ff, (float)_grid_inputs1_mux_v_g__out);
     // Generated from the component: Vg_pu-actual.G_Vbase
-    _vg_pu_actual_g_vbase__out = 230.94010767585033 * _grid_inputs_mux_v_g__out;
+    _vg_pu_actual_g_vbase__out = 230.94010767585033 * _grid_inputs1_mux_v_g__out;
     // Generated from the component: MS_S1.TPM_Grid.POWER_P
     HIL_OutAO(0x4066, (float)_ms_s1_tpm_grid_power_meter_power__P);
     // Generated from the component: MS_S1.TPM_Grid.POWER_PA
@@ -8864,28 +8868,28 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     HIL_OutAO(0x40d7, (float)_ms_s3_meter_grid_input_bus__out10);
     // Generated from the component: MS_S3.Van_Grid
     HIL_OutAO(0x40d8, (float)_ms_s3_meter_grid_input_bus__out);
-    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
-    _pcc_control_frt_f_besf_sagc__Input = _ms_s3_meter_grid_input_bus__out9;
+    // Generated from the component: PCC_Control1.FRT_F_BESF-SAGC
+    _pcc_control1_frt_f_besf_sagc__Input = _ms_s3_meter_grid_input_bus__out9;
     {
-        _pcc_control_frt_f_besf_sagc__Fault = _pcc_control_frt_f_besf_sagc__Trip_Zone ;
-        if ( _pcc_control_frt_f_besf_sagc__Trip_Zone > - 1 )     {
-            _pcc_control_frt_f_besf_sagc__Trip = 1 ;
+        _pcc_control1_frt_f_besf_sagc__Fault = _pcc_control1_frt_f_besf_sagc__Trip_Zone ;
+        if ( _pcc_control1_frt_f_besf_sagc__Trip_Zone > - 1 )     {
+            _pcc_control1_frt_f_besf_sagc__Trip = 1 ;
         }
         else     {
-            _pcc_control_frt_f_besf_sagc__Trip = 0 ;
+            _pcc_control1_frt_f_besf_sagc__Trip = 0 ;
         }
-        _pcc_control_frt_f_besf_sagc__d0 = _pcc_control_frt_f_besf_sagc__ov_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d1 = _pcc_control_frt_f_besf_sagc__ov_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d2 = _pcc_control_frt_f_besf_sagc__ov_zones [ 2 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d3 = _pcc_control_frt_f_besf_sagc__uv_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d4 = _pcc_control_frt_f_besf_sagc__uv_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d5 = _pcc_control_frt_f_besf_sagc__uv_zones [ 2 ] . timer * 1e-06 ;
-        _pcc_control_frt_f_besf_sagc__d6 = _pcc_control_frt_f_besf_sagc__uv_zones [ 3 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d0 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d1 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d2 = _pcc_control1_frt_f_besf_sagc__ov_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d3 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d4 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d5 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_frt_f_besf_sagc__d6 = _pcc_control1_frt_f_besf_sagc__uv_zones [ 3 ] . timer * 1e-06 ;
     }
-    // Generated from the component: PCC_Control.f_pu
-    _pcc_control_f_pu__out = 0.02 * _ms_s3_meter_grid_input_bus__out9;
-    // Generated from the component: PCC_Control.v_pu
-    _pcc_control_v_pu__out = 0.004330127018922193 * _ms_s3_meter_grid_input_bus__out10;
+    // Generated from the component: PCC_Control1.f_pu
+    _pcc_control1_f_pu__out = 0.02 * _ms_s3_meter_grid_input_bus__out9;
+    // Generated from the component: PCC_Control1.v_pu
+    _pcc_control1_v_pu__out = 0.004330127018922193 * _ms_s3_meter_grid_input_bus__out10;
     // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Kb
     _ms_s3_tpm_grid_pll_pid_kb__out = 1.0 * _ms_s3_tpm_grid_pll_pid_sum6__out;
     // Generated from the component: MS_S3.Meter_uG.IA
@@ -9005,40 +9009,42 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _ms_s3_meter_grid_extra_input_bus__out9 = _ms_s3_meter_grid_gain__out[9];
     _ms_s3_meter_grid_extra_input_bus__out10 = _ms_s3_meter_grid_gain__out[10];
     _ms_s3_meter_grid_extra_input_bus__out11 = _ms_s3_meter_grid_gain__out[11];
-    // Generated from the component: PCC_Control.d_0_f
-    HIL_OutAO(0x40e2, (float)_pcc_control_frt_f_besf_sagc__d0);
-    // Generated from the component: PCC_Control.d_1_f
-    HIL_OutAO(0x40e4, (float)_pcc_control_frt_f_besf_sagc__d1);
-    // Generated from the component: PCC_Control.d_2_f
-    HIL_OutAO(0x40e6, (float)_pcc_control_frt_f_besf_sagc__d2);
-    // Generated from the component: PCC_Control.d_3_f
-    HIL_OutAO(0x40e8, (float)_pcc_control_frt_f_besf_sagc__d3);
-    // Generated from the component: PCC_Control.d_4_f
-    HIL_OutAO(0x40ea, (float)_pcc_control_frt_f_besf_sagc__d4);
-    // Generated from the component: PCC_Control.d_5_f
-    HIL_OutAO(0x40eb, (float)_pcc_control_frt_f_besf_sagc__d5);
-    // Generated from the component: PCC_Control.d_6_f
-    HIL_OutAO(0x40ec, (float)_pcc_control_frt_f_besf_sagc__d6);
-    // Generated from the component: PCC_Control.fault_fpu
-    HIL_OutAO(0x40ed, (float)_pcc_control_f_pu__out);
-    // Generated from the component: PCC_Control.V_Check_BESF
-    _pcc_control_v_check_besf__Input = _pcc_control_v_pu__out;
+    // Generated from the component: PCC_Control1.F_Zone
+    HIL_OutAO(0x40df, (float)_pcc_control1_frt_f_besf_sagc__Fault);
+    // Generated from the component: PCC_Control1.d_0_f
+    HIL_OutAO(0x40e4, (float)_pcc_control1_frt_f_besf_sagc__d0);
+    // Generated from the component: PCC_Control1.d_1_f
+    HIL_OutAO(0x40e6, (float)_pcc_control1_frt_f_besf_sagc__d1);
+    // Generated from the component: PCC_Control1.d_2_f
+    HIL_OutAO(0x40e8, (float)_pcc_control1_frt_f_besf_sagc__d2);
+    // Generated from the component: PCC_Control1.d_3_f
+    HIL_OutAO(0x40ea, (float)_pcc_control1_frt_f_besf_sagc__d3);
+    // Generated from the component: PCC_Control1.d_4_f
+    HIL_OutAO(0x40ec, (float)_pcc_control1_frt_f_besf_sagc__d4);
+    // Generated from the component: PCC_Control1.d_5_f
+    HIL_OutAO(0x40ed, (float)_pcc_control1_frt_f_besf_sagc__d5);
+    // Generated from the component: PCC_Control1.d_6_f
+    HIL_OutAO(0x40ee, (float)_pcc_control1_frt_f_besf_sagc__d6);
+    // Generated from the component: PCC_Control1.fault_fpu
+    HIL_OutAO(0x40ef, (float)_pcc_control1_f_pu__out);
+    // Generated from the component: PCC_Control1.V_Check_BESF
+    _pcc_control1_v_check_besf__Input = _pcc_control1_v_pu__out;
     {
-        _pcc_control_v_check_besf__Fault = _pcc_control_v_check_besf__Trip_Zone ;
-        if ( _pcc_control_v_check_besf__Trip_Zone > - 1 )     {
-            _pcc_control_v_check_besf__Trip = 1 ;
+        _pcc_control1_v_check_besf__Fault = _pcc_control1_v_check_besf__Trip_Zone ;
+        if ( _pcc_control1_v_check_besf__Trip_Zone > - 1 )     {
+            _pcc_control1_v_check_besf__Trip = 1 ;
         }
         else     {
-            _pcc_control_v_check_besf__Trip = 0 ;
+            _pcc_control1_v_check_besf__Trip = 0 ;
         }
-        _pcc_control_v_check_besf__d0 = _pcc_control_v_check_besf__ov_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d1 = _pcc_control_v_check_besf__ov_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d2 = _pcc_control_v_check_besf__uv_zones [ 0 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d3 = _pcc_control_v_check_besf__uv_zones [ 1 ] . timer * 1e-06 ;
-        _pcc_control_v_check_besf__d4 = _pcc_control_v_check_besf__uv_zones [ 2 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d0 = _pcc_control1_v_check_besf__ov_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d1 = _pcc_control1_v_check_besf__ov_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d2 = _pcc_control1_v_check_besf__uv_zones [ 0 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d3 = _pcc_control1_v_check_besf__uv_zones [ 1 ] . timer * 1e-06 ;
+        _pcc_control1_v_check_besf__d4 = _pcc_control1_v_check_besf__uv_zones [ 2 ] . timer * 1e-06 ;
     }
-    // Generated from the component: PCC_Control.fault_vpu
-    HIL_OutAO(0x40ee, (float)_pcc_control_v_pu__out);
+    // Generated from the component: PCC_Control1.fault_vpu
+    HIL_OutAO(0x40f0, (float)_pcc_control1_v_pu__out);
     // Generated from the component: MS_S3.TPM_Grid.PLL.PID.Sum7
     _ms_s3_tpm_grid_pll_pid_sum7__out = _ms_s3_tpm_grid_pll_pid_ki__out + _ms_s3_tpm_grid_pll_pid_kb__out;
     // Generated from the component: MS_S3.Meter_uG.extra_input_bus
@@ -9118,27 +9124,29 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.Meter_Grid.POWER_SA
     // Generated from the component: MS_S3.Meter_Grid.POWER_SB
     // Generated from the component: MS_S3.Meter_Grid.POWER_SC
-    // Generated from the component: PCC_Control.Output_Check
-    _pcc_control_output_check__F_Trip = _pcc_control_frt_f_besf_sagc__Trip;
-    _pcc_control_output_check__F_Zone = _pcc_control_frt_f_besf_sagc__Fault;
-    _pcc_control_output_check__Reset = _reset_cb__out;
-    _pcc_control_output_check__V_Trip = _pcc_control_v_check_besf__Trip;
-    _pcc_control_output_check__V_Zone = _pcc_control_v_check_besf__Fault;
+    // Generated from the component: PCC_Control1.Output_Check
+    _pcc_control1_output_check__F_Trip = _pcc_control1_frt_f_besf_sagc__Trip;
+    _pcc_control1_output_check__F_Zone = _pcc_control1_frt_f_besf_sagc__Fault;
+    _pcc_control1_output_check__Reset = _reset_cb__out;
+    _pcc_control1_output_check__V_Trip = _pcc_control1_v_check_besf__Trip;
+    _pcc_control1_output_check__V_Zone = _pcc_control1_v_check_besf__Fault;
     {
-        _pcc_control_output_check__CB = _pcc_control_output_check__var_CB ;
-        _pcc_control_output_check__GFL = _pcc_control_output_check__var_GFL ;
-        _pcc_control_output_check__Fault_Zone = _pcc_control_output_check__var_Fault_Zone ;
+        _pcc_control1_output_check__CB = _pcc_control1_output_check__var_CB ;
+        _pcc_control1_output_check__GFL = _pcc_control1_output_check__var_GFL ;
+        _pcc_control1_output_check__Fault_Zone = _pcc_control1_output_check__var_Fault_Zone ;
     }
-    // Generated from the component: PCC_Control.d_0_V
-    HIL_OutAO(0x40e1, (float)_pcc_control_v_check_besf__d0);
-    // Generated from the component: PCC_Control.d_1_V
-    HIL_OutAO(0x40e3, (float)_pcc_control_v_check_besf__d1);
-    // Generated from the component: PCC_Control.d_2_V
-    HIL_OutAO(0x40e5, (float)_pcc_control_v_check_besf__d2);
-    // Generated from the component: PCC_Control.d_3_V
-    HIL_OutAO(0x40e7, (float)_pcc_control_v_check_besf__d3);
-    // Generated from the component: PCC_Control.d_4_V
-    HIL_OutAO(0x40e9, (float)_pcc_control_v_check_besf__d4);
+    // Generated from the component: PCC_Control1.V_Zone
+    HIL_OutAO(0x40e2, (float)_pcc_control1_v_check_besf__Fault);
+    // Generated from the component: PCC_Control1.d_0_V
+    HIL_OutAO(0x40e3, (float)_pcc_control1_v_check_besf__d0);
+    // Generated from the component: PCC_Control1.d_1_V
+    HIL_OutAO(0x40e5, (float)_pcc_control1_v_check_besf__d1);
+    // Generated from the component: PCC_Control1.d_2_V
+    HIL_OutAO(0x40e7, (float)_pcc_control1_v_check_besf__d2);
+    // Generated from the component: PCC_Control1.d_3_V
+    HIL_OutAO(0x40e9, (float)_pcc_control1_v_check_besf__d3);
+    // Generated from the component: PCC_Control1.d_4_V
+    HIL_OutAO(0x40eb, (float)_pcc_control1_v_check_besf__d4);
     // Generated from the component: MS_S3.Meter_uG.POWER_PA
     // Generated from the component: MS_S3.Meter_uG.POWER_PB
     // Generated from the component: MS_S3.Meter_uG.POWER_PC
@@ -9169,7 +9177,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         _multiport_signal_switch1__out = _c_gfm__out;
         break;
     case 3:
-        _multiport_signal_switch1__out = _pcc_control_output_check__GFL;
+        _multiport_signal_switch1__out = _pcc_control1_output_check__GFL;
         break;
     default:
         _multiport_signal_switch1__out = 0x0;
@@ -9183,17 +9191,17 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         _multiport_signal_switch2__out = _c_cb1__out;
         break;
     case 3:
-        _multiport_signal_switch2__out = _pcc_control_output_check__CB;
+        _multiport_signal_switch2__out = _pcc_control1_output_check__CB;
         break;
     default:
         _multiport_signal_switch2__out = 0x0;
     }
-    // Generated from the component: PCC_Control.CB_faults
-    HIL_OutAO(0x40de, (float)_pcc_control_output_check__CB);
-    // Generated from the component: PCC_Control.Fault
-    HIL_OutAO(0x40df, (float)_pcc_control_output_check__Fault_Zone);
-    // Generated from the component: PCC_Control.GFL
-    HIL_OutAO(0x40e0, (float)_pcc_control_output_check__GFL);
+    // Generated from the component: PCC_Control1.CB_faults
+    HIL_OutAO(0x40de, (float)_pcc_control1_output_check__CB);
+    // Generated from the component: PCC_Control1.Fault
+    HIL_OutAO(0x40e0, (float)_pcc_control1_output_check__Fault_Zone);
+    // Generated from the component: PCC_Control1.GFL
+    HIL_OutAO(0x40e1, (float)_pcc_control1_output_check__GFL);
     // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.Gain1
     _battery_inverter__average_1_control_df_switch_phase_synch_gain1__out = 0.02 * _battery_inverter__average_1_control_df_switch_phase_synch_pi_ph__out;
     // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.uPh
@@ -9967,62 +9975,62 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__state = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_sum1__out;
     // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.low pass.Unit Delay4
     _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay4__state = _battery_inverter__average_1_control_df_switch_phase_synch_low_pass_unit_delay3__out;
-    // Generated from the component: Grid_Inputs.F_FRT_pu.Clock1
-    _grid_inputs_f_frt_pu_clock1__state += 1e-06;
-    if (_grid_inputs_f_frt_pu_clock1__state >= 124.92)
-        _grid_inputs_f_frt_pu_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.F_Trip1.Clock1
-    _grid_inputs_f_trip1_clock1__state += 1e-06;
-    if (_grid_inputs_f_trip1_clock1__state >= 62.0)
-        _grid_inputs_f_trip1_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.F_Trip2.Clock1
-    _grid_inputs_f_trip2_clock1__state += 1e-06;
-    if (_grid_inputs_f_trip2_clock1__state >= 6.5)
-        _grid_inputs_f_trip2_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.F_Trip3.Clock1
-    _grid_inputs_f_trip3_clock1__state += 1e-06;
-    if (_grid_inputs_f_trip3_clock1__state >= 62.0)
-        _grid_inputs_f_trip3_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.F_Trip4.Clock1
-    _grid_inputs_f_trip4_clock1__state += 1e-06;
-    if (_grid_inputs_f_trip4_clock1__state >= 13.0)
-        _grid_inputs_f_trip4_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.F_Trip5.Clock1
-    _grid_inputs_f_trip5_clock1__state += 1e-06;
-    if (_grid_inputs_f_trip5_clock1__state >= 9.5)
-        _grid_inputs_f_trip5_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.F_Trip6.Clock1
-    _grid_inputs_f_trip6_clock1__state += 1e-06;
-    if (_grid_inputs_f_trip6_clock1__state >= 4.0)
-        _grid_inputs_f_trip6_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.F_Trip7.Clock1
-    _grid_inputs_f_trip7_clock1__state += 1e-06;
-    if (_grid_inputs_f_trip7_clock1__state >= 3.0)
-        _grid_inputs_f_trip7_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.V_FRT_pu.Clock1
-    _grid_inputs_v_frt_pu_clock1__state += 1e-06;
-    if (_grid_inputs_v_frt_pu_clock1__state >= 6.0)
-        _grid_inputs_v_frt_pu_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.V_Trip1.Clock1
-    _grid_inputs_v_trip1_clock1__state += 1e-06;
-    if (_grid_inputs_v_trip1_clock1__state >= 4.0)
-        _grid_inputs_v_trip1_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.V_Trip2.Clock1
-    _grid_inputs_v_trip2_clock1__state += 1e-06;
-    if (_grid_inputs_v_trip2_clock1__state >= 2.0)
-        _grid_inputs_v_trip2_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.V_Trip3.Clock1
-    _grid_inputs_v_trip3_clock1__state += 1e-06;
-    if (_grid_inputs_v_trip3_clock1__state >= 2.0)
-        _grid_inputs_v_trip3_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.V_Trip4.Clock1
-    _grid_inputs_v_trip4_clock1__state += 1e-06;
-    if (_grid_inputs_v_trip4_clock1__state >= 2.0)
-        _grid_inputs_v_trip4_clock1__state = 0.0f;
-    // Generated from the component: Grid_Inputs.V_Trip5.Clock1
-    _grid_inputs_v_trip5_clock1__state += 1e-06;
-    if (_grid_inputs_v_trip5_clock1__state >= 2.0)
-        _grid_inputs_v_trip5_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_FRT_pu.Clock1
+    _grid_inputs1_f_frt_pu_clock1__state += 1e-06;
+    if (_grid_inputs1_f_frt_pu_clock1__state >= 127.92)
+        _grid_inputs1_f_frt_pu_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_Trip1.Clock1
+    _grid_inputs1_f_trip1_clock1__state += 1e-06;
+    if (_grid_inputs1_f_trip1_clock1__state >= 62.0)
+        _grid_inputs1_f_trip1_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_Trip2.Clock1
+    _grid_inputs1_f_trip2_clock1__state += 1e-06;
+    if (_grid_inputs1_f_trip2_clock1__state >= 6.5)
+        _grid_inputs1_f_trip2_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_Trip3.Clock1
+    _grid_inputs1_f_trip3_clock1__state += 1e-06;
+    if (_grid_inputs1_f_trip3_clock1__state >= 62.0)
+        _grid_inputs1_f_trip3_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_Trip4.Clock1
+    _grid_inputs1_f_trip4_clock1__state += 1e-06;
+    if (_grid_inputs1_f_trip4_clock1__state >= 13.0)
+        _grid_inputs1_f_trip4_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_Trip5.Clock1
+    _grid_inputs1_f_trip5_clock1__state += 1e-06;
+    if (_grid_inputs1_f_trip5_clock1__state >= 9.5)
+        _grid_inputs1_f_trip5_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_Trip6.Clock1
+    _grid_inputs1_f_trip6_clock1__state += 1e-06;
+    if (_grid_inputs1_f_trip6_clock1__state >= 4.0)
+        _grid_inputs1_f_trip6_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.F_Trip7.Clock1
+    _grid_inputs1_f_trip7_clock1__state += 1e-06;
+    if (_grid_inputs1_f_trip7_clock1__state >= 3.0)
+        _grid_inputs1_f_trip7_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.V_FRT_pu.Clock1
+    _grid_inputs1_v_frt_pu_clock1__state += 1e-06;
+    if (_grid_inputs1_v_frt_pu_clock1__state >= 6.0)
+        _grid_inputs1_v_frt_pu_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.V_Trip1.Clock1
+    _grid_inputs1_v_trip1_clock1__state += 1e-06;
+    if (_grid_inputs1_v_trip1_clock1__state >= 4.0)
+        _grid_inputs1_v_trip1_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.V_Trip2.Clock1
+    _grid_inputs1_v_trip2_clock1__state += 1e-06;
+    if (_grid_inputs1_v_trip2_clock1__state >= 2.0)
+        _grid_inputs1_v_trip2_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.V_Trip3.Clock1
+    _grid_inputs1_v_trip3_clock1__state += 1e-06;
+    if (_grid_inputs1_v_trip3_clock1__state >= 2.0)
+        _grid_inputs1_v_trip3_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.V_Trip4.Clock1
+    _grid_inputs1_v_trip4_clock1__state += 1e-06;
+    if (_grid_inputs1_v_trip4_clock1__state >= 2.0)
+        _grid_inputs1_v_trip4_clock1__state = 0.0f;
+    // Generated from the component: Grid_Inputs1.V_Trip5.Clock1
+    _grid_inputs1_v_trip5_clock1__state += 1e-06;
+    if (_grid_inputs1_v_trip5_clock1__state >= 2.0)
+        _grid_inputs1_v_trip5_clock1__state = 0.0f;
     // Generated from the component: MS_S1.TPM_Grid.PLL.LPF.LPF
     for (_ms_s1_tpm_grid_pll_lpf_lpf__i = 1; _ms_s1_tpm_grid_pll_lpf_lpf__i > 0; _ms_s1_tpm_grid_pll_lpf_lpf__i--) {
         _ms_s1_tpm_grid_pll_lpf_lpf__a_sum += _ms_s1_tpm_grid_pll_lpf_lpf__a_coeff[_ms_s1_tpm_grid_pll_lpf_lpf__i + 1] * _ms_s1_tpm_grid_pll_lpf_lpf__states[_ms_s1_tpm_grid_pll_lpf_lpf__i];
@@ -10188,45 +10196,45 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.TPM_uG.measSM.mode_and_dFract
     {
     }
-    // Generated from the component: Grid_Inputs.Input-Synch-Switching_F
+    // Generated from the component: Grid_Inputs1.Input-Synch-Switching_F
     {
-        _grid_inputs_input_synch_switching_f__sw_in = _grid_inputs_input_synch_switching_f__in_sw ;
-        if ( _grid_inputs_input_synch_switching_f__sw_in != _grid_inputs_input_synch_switching_f__sw_last )     {
-            switch ( _grid_inputs_input_synch_switching_f__sw_in )         {
+        _grid_inputs1_input_synch_switching_f__sw_in = _grid_inputs1_input_synch_switching_f__in_sw ;
+        if ( _grid_inputs1_input_synch_switching_f__sw_in != _grid_inputs1_input_synch_switching_f__sw_last )     {
+            switch ( _grid_inputs1_input_synch_switching_f__sw_in )         {
             case 1 :
-                _grid_inputs_input_synch_switching_f__V_in = 1 ;
+                _grid_inputs1_input_synch_switching_f__V_in = 1 ;
                 break;
             case 2 :
-                _grid_inputs_input_synch_switching_f__V_in = _grid_inputs_input_synch_switching_f__in_FRT ;
+                _grid_inputs1_input_synch_switching_f__V_in = _grid_inputs1_input_synch_switching_f__in_FRT ;
                 break;
             case 3 :
-                _grid_inputs_input_synch_switching_f__V_in = _grid_inputs_input_synch_switching_f__in_Trip ;
+                _grid_inputs1_input_synch_switching_f__V_in = _grid_inputs1_input_synch_switching_f__in_Trip ;
                 break;
             }
-            if ( ( _grid_inputs_input_synch_switching_f__V_in < ( _grid_inputs_input_synch_switching_f__V_targ + 0.001 ) ) && ( _grid_inputs_input_synch_switching_f__V_in > ( _grid_inputs_input_synch_switching_f__V_targ - 0.001 ) ) )         {
-                _grid_inputs_input_synch_switching_f__sw_out = _grid_inputs_input_synch_switching_f__sw_in ;
-                _grid_inputs_input_synch_switching_f__sw_last = _grid_inputs_input_synch_switching_f__sw_in ;
+            if ( ( _grid_inputs1_input_synch_switching_f__V_in < ( _grid_inputs1_input_synch_switching_f__V_targ + 0.001 ) ) && ( _grid_inputs1_input_synch_switching_f__V_in > ( _grid_inputs1_input_synch_switching_f__V_targ - 0.001 ) ) )         {
+                _grid_inputs1_input_synch_switching_f__sw_out = _grid_inputs1_input_synch_switching_f__sw_in ;
+                _grid_inputs1_input_synch_switching_f__sw_last = _grid_inputs1_input_synch_switching_f__sw_in ;
             }
         }
     }
-    // Generated from the component: Grid_Inputs.Input-Synch-Switching_V
+    // Generated from the component: Grid_Inputs1.Input-Synch-Switching_V
     {
-        _grid_inputs_input_synch_switching_v__sw_in = _grid_inputs_input_synch_switching_v__in_sw ;
-        if ( _grid_inputs_input_synch_switching_v__sw_in != _grid_inputs_input_synch_switching_v__sw_last )     {
-            switch ( _grid_inputs_input_synch_switching_v__sw_in )         {
+        _grid_inputs1_input_synch_switching_v__sw_in = _grid_inputs1_input_synch_switching_v__in_sw ;
+        if ( _grid_inputs1_input_synch_switching_v__sw_in != _grid_inputs1_input_synch_switching_v__sw_last )     {
+            switch ( _grid_inputs1_input_synch_switching_v__sw_in )         {
             case 1 :
-                _grid_inputs_input_synch_switching_v__V_in = 1 ;
+                _grid_inputs1_input_synch_switching_v__V_in = 1 ;
                 break;
             case 2 :
-                _grid_inputs_input_synch_switching_v__V_in = _grid_inputs_input_synch_switching_v__in_FRT ;
+                _grid_inputs1_input_synch_switching_v__V_in = _grid_inputs1_input_synch_switching_v__in_FRT ;
                 break;
             case 3 :
-                _grid_inputs_input_synch_switching_v__V_in = _grid_inputs_input_synch_switching_v__in_Trip ;
+                _grid_inputs1_input_synch_switching_v__V_in = _grid_inputs1_input_synch_switching_v__in_Trip ;
                 break;
             }
-            if ( ( _grid_inputs_input_synch_switching_v__V_in < ( _grid_inputs_input_synch_switching_v__V_targ + 0.001 ) ) && ( _grid_inputs_input_synch_switching_v__V_in > ( _grid_inputs_input_synch_switching_v__V_targ - 0.001 ) ) )         {
-                _grid_inputs_input_synch_switching_v__sw_out = _grid_inputs_input_synch_switching_v__sw_in ;
-                _grid_inputs_input_synch_switching_v__sw_last = _grid_inputs_input_synch_switching_v__sw_in ;
+            if ( ( _grid_inputs1_input_synch_switching_v__V_in < ( _grid_inputs1_input_synch_switching_v__V_targ + 0.001 ) ) && ( _grid_inputs1_input_synch_switching_v__V_in > ( _grid_inputs1_input_synch_switching_v__V_targ - 0.001 ) ) )         {
+                _grid_inputs1_input_synch_switching_v__sw_out = _grid_inputs1_input_synch_switching_v__sw_in ;
+                _grid_inputs1_input_synch_switching_v__sw_last = _grid_inputs1_input_synch_switching_v__sw_in ;
             }
         }
     }
@@ -10409,95 +10417,95 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: Battery inverter (Average)1.Control.df_Switch.Phase_Synch.confine_phase
     {
     }
-    // Generated from the component: PCC_Control.FRT_F_BESF-SAGC
+    // Generated from the component: PCC_Control1.FRT_F_BESF-SAGC
     {
-        _pcc_control_frt_f_besf_sagc__Trip_Zone = - 1 ;
+        _pcc_control1_frt_f_besf_sagc__Trip_Zone = - 1 ;
         for ( int  i = 0  ; i < 3 ; i ++ )     {
-            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-            if ( _pcc_control_frt_f_besf_sagc__Input > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . V_limit )         {
-                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Input > _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . V_limit )         {
+                _pcc_control1_frt_f_besf_sagc__Violation = 1 ;
             }
-            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
-                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . t_limit )             {
-                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i ;
+            if ( _pcc_control1_frt_f_besf_sagc__Violation )         {
+                _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . t_limit )             {
+                    _pcc_control1_frt_f_besf_sagc__Trip_Zone = i ;
                 }
             }
             else         {
-                _pcc_control_frt_f_besf_sagc__ov_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_frt_f_besf_sagc__ov_zones [ i ] . timer = 0.0f ;
             }
         }
         for ( int  i = 0  ; i < 4 ; i ++ )     {
-            _pcc_control_frt_f_besf_sagc__Violation = 0 ;
-            if ( _pcc_control_frt_f_besf_sagc__Input < _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . V_limit )         {
-                _pcc_control_frt_f_besf_sagc__Violation = 1 ;
+            _pcc_control1_frt_f_besf_sagc__Violation = 0 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Input < _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . V_limit )         {
+                _pcc_control1_frt_f_besf_sagc__Violation = 1 ;
             }
-            if ( _pcc_control_frt_f_besf_sagc__Violation )         {
-                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . t_limit )             {
-                    _pcc_control_frt_f_besf_sagc__Trip_Zone = i + 3 ;
+            if ( _pcc_control1_frt_f_besf_sagc__Violation )         {
+                _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . t_limit )             {
+                    _pcc_control1_frt_f_besf_sagc__Trip_Zone = i + 3 ;
                 }
             }
             else         {
-                _pcc_control_frt_f_besf_sagc__uv_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_frt_f_besf_sagc__uv_zones [ i ] . timer = 0.0f ;
             }
         }
     }
-    // Generated from the component: PCC_Control.V_Check_BESF
+    // Generated from the component: PCC_Control1.V_Check_BESF
     {
-        _pcc_control_v_check_besf__Trip_Zone = - 1 ;
+        _pcc_control1_v_check_besf__Trip_Zone = - 1 ;
         for ( int  i = 0  ; i < 2 ; i ++ )     {
-            _pcc_control_v_check_besf__Violation = 0 ;
-            if ( _pcc_control_v_check_besf__Input > _pcc_control_v_check_besf__ov_zones [ i ] . V_limit )         {
-                _pcc_control_v_check_besf__Violation = 1 ;
+            _pcc_control1_v_check_besf__Violation = 0 ;
+            if ( _pcc_control1_v_check_besf__Input > _pcc_control1_v_check_besf__ov_zones [ i ] . V_limit )         {
+                _pcc_control1_v_check_besf__Violation = 1 ;
             }
-            if ( _pcc_control_v_check_besf__Violation )         {
-                _pcc_control_v_check_besf__ov_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_v_check_besf__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__ov_zones [ i ] . t_limit )             {
-                    _pcc_control_v_check_besf__Trip_Zone = i ;
+            if ( _pcc_control1_v_check_besf__Violation )         {
+                _pcc_control1_v_check_besf__ov_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_v_check_besf__ov_zones [ i ] . timer * 1e-06 ) > _pcc_control1_v_check_besf__ov_zones [ i ] . t_limit )             {
+                    _pcc_control1_v_check_besf__Trip_Zone = i ;
                 }
             }
             else         {
-                _pcc_control_v_check_besf__ov_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_v_check_besf__ov_zones [ i ] . timer = 0.0f ;
             }
         }
         for ( int  i = 0  ; i < 3 ; i ++ )     {
-            _pcc_control_v_check_besf__Violation = 0 ;
-            if ( _pcc_control_v_check_besf__Input < _pcc_control_v_check_besf__uv_zones [ i ] . V_limit )         {
-                _pcc_control_v_check_besf__Violation = 1 ;
+            _pcc_control1_v_check_besf__Violation = 0 ;
+            if ( _pcc_control1_v_check_besf__Input < _pcc_control1_v_check_besf__uv_zones [ i ] . V_limit )         {
+                _pcc_control1_v_check_besf__Violation = 1 ;
             }
-            if ( _pcc_control_v_check_besf__Violation )         {
-                _pcc_control_v_check_besf__uv_zones [ i ] . timer ++ ;
-                if ( ( _pcc_control_v_check_besf__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control_v_check_besf__uv_zones [ i ] . t_limit )             {
-                    _pcc_control_v_check_besf__Trip_Zone = i + 2 ;
+            if ( _pcc_control1_v_check_besf__Violation )         {
+                _pcc_control1_v_check_besf__uv_zones [ i ] . timer ++ ;
+                if ( ( _pcc_control1_v_check_besf__uv_zones [ i ] . timer * 1e-06 ) > _pcc_control1_v_check_besf__uv_zones [ i ] . t_limit )             {
+                    _pcc_control1_v_check_besf__Trip_Zone = i + 2 ;
                 }
             }
             else         {
-                _pcc_control_v_check_besf__uv_zones [ i ] . timer = 0.0f ;
+                _pcc_control1_v_check_besf__uv_zones [ i ] . timer = 0.0f ;
             }
         }
     }
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.wait_to_change
     {
     }
-    // Generated from the component: PCC_Control.Output_Check
+    // Generated from the component: PCC_Control1.Output_Check
     {
-        if ( _pcc_control_output_check__Reset )     {
-            _pcc_control_output_check__var_CB = 1 ;
-            _pcc_control_output_check__var_GFL = 1 ;
-            _pcc_control_output_check__var_Fault_Zone = - 1 ;
+        if ( _pcc_control1_output_check__Reset )     {
+            _pcc_control1_output_check__var_CB = 1 ;
+            _pcc_control1_output_check__var_GFL = 1 ;
+            _pcc_control1_output_check__var_Fault_Zone = - 1 ;
         }
         else     {
-            if ( _pcc_control_output_check__var_Fault_Zone == - 1 )         {
-                if ( _pcc_control_output_check__V_Trip )             {
-                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__V_Zone ;
+            if ( _pcc_control1_output_check__var_Fault_Zone == - 1 )         {
+                if ( _pcc_control1_output_check__V_Trip )             {
+                    _pcc_control1_output_check__var_Fault_Zone = _pcc_control1_output_check__V_Zone ;
                 }
-                else if ( _pcc_control_output_check__F_Trip )             {
-                    _pcc_control_output_check__var_Fault_Zone = _pcc_control_output_check__F_Zone + ( 5 ) ;
+                else if ( _pcc_control1_output_check__F_Trip )             {
+                    _pcc_control1_output_check__var_Fault_Zone = _pcc_control1_output_check__F_Zone + ( 5 ) ;
                 }
-                if ( _pcc_control_output_check__var_Fault_Zone != - 1 )             {
-                    _pcc_control_output_check__var_CB = 0 ;
-                    _pcc_control_output_check__var_GFL = 0 ;
+                if ( _pcc_control1_output_check__var_Fault_Zone != - 1 )             {
+                    _pcc_control1_output_check__var_CB = 0 ;
+                    _pcc_control1_output_check__var_GFL = 0 ;
                 }
             }
         }
@@ -10706,17 +10714,17 @@ void TimerCounterHandler_1_user_sp_cpu0_dev0() {
     // Generated from the component: G_Lc-base
     _g_lc_base__out = 0.005093 * _lc_in__out;
     // Generated from the component: RLC_parallel_variable.ICb_out
-    HIL_OutAO(0x40f2, (float)_rlc_parallel_variable_icb_ia1__out);
+    HIL_OutAO(0x40f4, (float)_rlc_parallel_variable_icb_ia1__out);
     // Generated from the component: RLC_parallel_variable.ICc_out
-    HIL_OutAO(0x40f3, (float)_rlc_parallel_variable_icc_ia1__out);
+    HIL_OutAO(0x40f5, (float)_rlc_parallel_variable_icc_ia1__out);
     // Generated from the component: RLC_parallel_variable.ILb_out
-    HIL_OutAO(0x40f6, (float)_rlc_parallel_variable_ilb_ia1__out);
+    HIL_OutAO(0x40f8, (float)_rlc_parallel_variable_ilb_ia1__out);
     // Generated from the component: RLC_parallel_variable.ILc_out
-    HIL_OutAO(0x40f7, (float)_rlc_parallel_variable_ilc_ia1__out);
+    HIL_OutAO(0x40f9, (float)_rlc_parallel_variable_ilc_ia1__out);
     // Generated from the component: RLC_parallel_variable.IRb_out
-    HIL_OutAO(0x40fa, (float)_rlc_parallel_variable_irb_ia1__out);
+    HIL_OutAO(0x40fc, (float)_rlc_parallel_variable_irb_ia1__out);
     // Generated from the component: RLC_parallel_variable.IRc_out
-    HIL_OutAO(0x40fb, (float)_rlc_parallel_variable_irc_ia1__out);
+    HIL_OutAO(0x40fd, (float)_rlc_parallel_variable_irc_ia1__out);
     // Generated from the component: G_Ra-base
     _g_ra_base__out = 1.6 * _ra_in__out;
     // Generated from the component: G_Rb-base

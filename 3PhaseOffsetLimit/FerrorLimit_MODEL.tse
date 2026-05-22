@@ -18705,12 +18705,12 @@ else{
                 connect "Power Meter.PFb" GoToPFb as ConnPMPFb
                 connect "Power Meter.PFc" GoToPFc as ConnPMPFc
                 connect "Power Meter.PF" GoToPF as ConnPMPF
-                connect Junction221 Ra.p_node as Connection3609
-                connect Ra.n_node Junction230 as Connection3610
-                connect Junction220 Rb.p_node as Connection3611
-                connect Rb.n_node Junction225 as Connection3612
-                connect Junction219 Rc.p_node as Connection3613
-                connect Rc.n_node Junction225 as Connection3614
+                connect Junction221 Ra.p_node as Connection3615
+                connect Ra.n_node Junction230 as Connection3616
+                connect Junction220 Rb.p_node as Connection3617
+                connect Rb.n_node Junction225 as Connection3618
+                connect Junction219 Rc.p_node as Connection3619
+                connect Rc.n_node Junction225 as Connection3620
                 connect JunAn+ VAn.p_node as ConnAn+
                 connect JunAn- VAn.n_node as ConnAn-
                 connect VAn.out GoToVAn as ConnAnSP

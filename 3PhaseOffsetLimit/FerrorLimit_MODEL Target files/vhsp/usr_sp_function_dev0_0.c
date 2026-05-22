@@ -8951,7 +8951,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
         }
         else     {
             if ( _battery_inverter__average_1_control_imode_control_confine_phase__dtheta < 0 )         {
-                _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta + 6.28318530718 ;
+                _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta + 3.926990817 ;
             }
             else         {
                 _battery_inverter__average_1_control_imode_control_confine_phase__dtheta_confined = _battery_inverter__average_1_control_imode_control_confine_phase__dtheta ;
