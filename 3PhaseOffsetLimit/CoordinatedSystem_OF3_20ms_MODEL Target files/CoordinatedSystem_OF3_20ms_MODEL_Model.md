@@ -1,4 +1,4 @@
-Model PhaseOffsetLimit_MODEL
+Model CoordinatedSystem_OF3_20ms_MODEL
 
 
 REM LUT solver inputs...

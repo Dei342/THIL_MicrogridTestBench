@@ -8618,7 +8618,7 @@ else{
                             gain = "fn*np.pi/2"
                         }
                         [
-                            position = 8504, 8184
+                            position = 8504, 8168
                             hide_name = True
                         ]
 
@@ -8635,7 +8635,7 @@ else{
                             signs = "**"
                         }
                         [
-                            position = 8428, 8184
+                            position = 8428, 8168
                             hide_name = True
                         ]
 
@@ -8644,7 +8644,7 @@ else{
                             value = "k"
                         }
                         [
-                            position = 8344, 8296
+                            position = 8344, 8216
                             hide_name = True
                         ]
 
@@ -8668,55 +8668,12 @@ else{
                             position = 8136, 8016
                         ]
 
-                        component "core/C function" NDZ_Activation {
-                            arb_defs = "/*Begin code section*/
-
-/*End code section*/"
-                            global_variables = "real fOut;"
-                            init_fnc = "/*Begin code section*/
-fOut = 0;
-/*End code section*/"
-                            input_terminals = "real in_ferror;inherit fUp;inherit fLo;"
-                            input_terminals_dimensions = "inherit;inherit;inherit"
-                            input_terminals_feedthrough = "True;True;True"
-                            input_terminals_show_labels = "True;True;True"
-                            output_fnc = "/*Begin code section*/
-out_ferror = fOut;
-/*End code section*/"
-                            output_terminals = "real out_ferror;"
-                            output_terminals_dimensions = "inherit"
-                            output_terminals_feedthrough = "True"
-                            output_terminals_show_labels = "False"
-                            update_fnc = "/*Begin code section*/
-fOut = in_ferror;
-
-if(fOut > fUp){
-    fOut = 0;
-}
-else if(fOut < fLo){
-    fOut = 0;
-}
-/*End code section*/"
+                        component "core/Limit" FeLimit {
+                            lower_limit = "feLimit_U"
+                            upper_limit = "feLimit_O"
                         }
                         [
-                            position = 8272, 8176
-                            size = 72, 64
-                        ]
-
-                        component "core/Constant" feUp {
-                            execution_rate = "Ts_i"
-                            value = "feLimit_O"
-                        }
-                        [
-                            position = 8168, 8204
-                        ]
-
-                        component "core/Constant" feLo {
-                            execution_rate = "Ts_i"
-                            value = "feLimit_U"
-                        }
-                        [
-                            position = 8168, 8256
+                            position = 8208, 8160
                         ]
 
                         port "inv freq" {
@@ -8742,7 +8699,7 @@ else if(fOut < fLo){
                             }
                         }
                         [
-                            position = 8568, 8184
+                            position = 8568, 8168
                         ]
 
                         junction Junction1 sp
@@ -8752,7 +8709,7 @@ else if(fOut < fLo){
 
                         junction Junction2 sp
                         [
-                            position = 8388, 8176
+                            position = 8360, 8160
                         ]
 
                         connect Sum11.in "inv freq" as Connection2230
@@ -8760,20 +8717,15 @@ else if(fOut < fLo){
                         connect Constant7.out Product1.in1 as Connection2226
                         connect Gain6.in Product1.out as Connection2227
                         connect Gain6.out "phase shift" as Connection2229
-                        connect feUp.out NDZ_Activation.fUp as Connection2242
-                        [
-                            breakpoints = 8212, 8200; 8212, 8176
-                        ]
-                        connect feLo.out NDZ_Activation.fLo as Connection2243
-                        connect f_error.in Junction1 as Connection2246
-                        connect Junction1 Sum11.out as Connection2247
+                        connect Sum11.out Junction1 as Connection2255
+                        connect Junction1 f_error.in as Connection2256
                         [
                             breakpoints = 8088, 8160
                         ]
-                        connect NDZ_Activation.in_ferror Junction1 as Connection2248
-                        connect NDZ_Activation.out_ferror Junction2 as Connection2250
-                        connect Junction2 Product1.in as Connection2251
-                        connect f_error_Limited.in Junction2 as Connection2252
+                        connect FeLimit.in Junction1 as Connection2257
+                        connect FeLimit.out Junction2 as Connection2259
+                        connect Junction2 Product1.in as Connection2260
+                        connect f_error_Limited.in Junction2 as Connection2261
                     }
                     [
                         position = 7644, 8688
@@ -18753,12 +18705,12 @@ else{
                 connect "Power Meter.PFb" GoToPFb as ConnPMPFb
                 connect "Power Meter.PFc" GoToPFc as ConnPMPFc
                 connect "Power Meter.PF" GoToPF as ConnPMPF
-                connect Junction221 Ra.p_node as Connection3621
-                connect Ra.n_node Junction230 as Connection3622
-                connect Junction220 Rb.p_node as Connection3623
-                connect Rb.n_node Junction225 as Connection3624
-                connect Junction219 Rc.p_node as Connection3625
-                connect Rc.n_node Junction225 as Connection3626
+                connect Junction221 Ra.p_node as Connection3633
+                connect Ra.n_node Junction230 as Connection3634
+                connect Junction220 Rb.p_node as Connection3635
+                connect Rb.n_node Junction225 as Connection3636
+                connect Junction219 Rc.p_node as Connection3637
+                connect Rc.n_node Junction225 as Connection3638
                 connect JunAn+ VAn.p_node as ConnAn+
                 connect JunAn- VAn.n_node as ConnAn-
                 connect VAn.out GoToVAn as ConnAnSP
@@ -22702,7 +22654,7 @@ else{
         k_SFS = 0.32 #0.1 - 85ms
         feLimit_O = 0.05
         feLimit_U = -0.07
-        dwtLimit = 1.5
+        dwtLimit = 1.05
         
         
         #Voltage control

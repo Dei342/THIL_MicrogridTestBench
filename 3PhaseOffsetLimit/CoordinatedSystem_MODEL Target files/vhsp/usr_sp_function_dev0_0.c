@@ -47,7 +47,6 @@ extern "C" {
 
 
 
-
 // ----------------------------------------------------------------------------------------                // generated using template:generic_macros.template-----------------------------------------
 /*********************** Macros (Inline Functions) Definitions ***************************/
 
@@ -83,8 +82,6 @@ typedef double real;
 
 //@cmp.def.start
 //component defines
-
-
 
 
 
@@ -938,7 +935,6 @@ float  _grid_inputs1_input_synch_switching_v__V_in , _grid_inputs1_input_synch_s
 
 
 
-
 #define _vg_tdf_sg_ctrl_sine1__no_of_points 1000
 #define _vg_tdf_sg_ctrl_sine1__max_int40 (1099511627775)
 #define _vg_tdf_sg_ctrl_sine1__max_int32 (4294967295)
@@ -1430,8 +1426,6 @@ double _bi_fref_pu__out;
 double _battery_inverter__average_1_control_imode_control_constant1__out = 1.0;
 double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant6__out = 1.0;
 double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out = 0.32;
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_felo__out = -0.07;
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_feup__out = 0.05;
 double _battery_inverter__average_1_control_imode_control_edge_detection1_unit_delay1__out;
 double _battery_inverter__average_1_control_imode_control_edge_detection2_unit_delay1__out;
 double _battery_inverter__average_1_control_imode_control_limit_pqref_unit_delay1__out;
@@ -2152,12 +2146,7 @@ double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3;
 
 double _ms_s3_tpm_ug_pll_pid_sum8__out;
 double _vg_pu_actual_bus_join_vg_ph__out[3];
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fLo;
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fUp;
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__in_ferror;
-
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__out_ferror;
-
+double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_felimit__out;
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_sum4__out;
 double _battery_inverter__average_1_control_imode_control_current_ref_limit3__out;
 double _battery_inverter__average_1_control_synch_check_nominal_conditions_abs2__out;
@@ -3331,11 +3320,6 @@ double _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state;
 
 
 
-double _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut;
-
-
-
-
 double _ms_s1_tpm_grid_power_meter_power__PsumA;
 
 double _ms_s1_tpm_grid_power_meter_power__PsumB;
@@ -4113,9 +4097,6 @@ void ReInit_user_sp_cpu0_dev0() {
         _ms_s3_tpm_ug_vln_rms_calc_rms__RMS2_state = 0 ;
         _ms_s3_tpm_ug_vln_rms_calc_rms__RMS3_state = 0 ;
     }
-    {
-        _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut = 0 ;
-    }
     HIL_OutAO(0x4004, 0.0f);
     HIL_OutAO(0x4002, 0.0f);
     HIL_OutAO(0x4010, 0.0f);
@@ -4625,8 +4606,6 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Constant1
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Constant6
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Constant7
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.feLo
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.feUp
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.+-1,5 hz
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.+-10%
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_grid.nominal frequency
@@ -6722,13 +6701,8 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     _vg_pu_actual_bus_join_vg_ph__out[0] = _grid_inputs1_mux_ph_g__out;
     _vg_pu_actual_bus_join_vg_ph__out[1] = _vg_pu_actual_s_ph_b__out;
     _vg_pu_actual_bus_join_vg_ph__out[2] = _vg_pu_actual_s_ph_c__out;
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.NDZ_Activation
-    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fLo = _battery_inverter__average_1_control_imode_control_default_a_idm_aps_felo__out;
-    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fUp = _battery_inverter__average_1_control_imode_control_default_a_idm_aps_feup__out;
-    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__in_ferror = _battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out;
-    {
-        _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__out_ferror = _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut ;
-    }
+    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.FeLimit
+    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_felimit__out = MIN(MAX(_battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out, -0.07), 0.05);
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.f_error
     HIL_OutAO(0x4004, (float)_battery_inverter__average_1_control_imode_control_default_a_idm_aps_sum11__out);
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Sum4
@@ -7746,9 +7720,9 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.TPM_uG.PLL.PID.Gain1
     _ms_s3_tpm_ug_pll_pid_gain1__out = 714.2857 * _ms_s3_tpm_ug_pll_pid_sum8__out;
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.Product1
-    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_product1__out = (_battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__out_ferror * _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out);
+    _battery_inverter__average_1_control_imode_control_default_a_idm_aps_product1__out = (_battery_inverter__average_1_control_imode_control_default_a_idm_aps_felimit__out * _battery_inverter__average_1_control_imode_control_default_a_idm_aps_constant7__out);
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.f_error_Limited
-    HIL_OutAO(0x4005, (float)_battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__out_ferror);
+    HIL_OutAO(0x4005, (float)_battery_inverter__average_1_control_imode_control_default_a_idm_aps_felimit__out);
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Abs1
     _battery_inverter__average_1_control_synch_check_nominal_conditions_abs1__out = fabs(_battery_inverter__average_1_control_synch_check_nominal_conditions_sum4__out);
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Current_ref.Product1
@@ -8248,7 +8222,7 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     // Generated from the component: MS_S3.TPM_uG.PLL.PID.Limit1
     _ms_s3_tpm_ug_pll_pid_limit1__out = MIN(MAX(_ms_s3_tpm_ug_pll_pid_sum5__out, -10000.0), 10000.0);
     // Generated from the component: Battery inverter (Average)1.Control.Imode_control.dwt_Limit
-    _battery_inverter__average_1_control_imode_control_dwt_limit__out = MIN(MAX(_battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out, -1.5), 1.5);
+    _battery_inverter__average_1_control_imode_control_dwt_limit__out = MIN(MAX(_battery_inverter__average_1_control_imode_control_default_a_idm_aps_gain6__out, -1.07), 1.07);
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.Logical operator1
     _battery_inverter__average_1_control_synch_check_nominal_conditions_logical_operator1__out = _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator1__out || _battery_inverter__average_1_control_synch_check_nominal_conditions_comparator2__out ;
     // Generated from the component: Battery inverter (Average)1.Control.Synch.Check_nominal_conditions.f_out_nom
@@ -10330,16 +10304,6 @@ void TimerCounterHandler_0_user_sp_cpu0_dev0() {
     }
     // Generated from the component: MS_S3.TPM_uG.VLn_RMS_calc.RMS
     {
-    }
-    // Generated from the component: Battery inverter (Average)1.Control.Imode_control.Default_A-IDM_APS.NDZ_Activation
-    {
-        _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut = _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__in_ferror ;
-        if ( _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut > _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fUp )     {
-            _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut = 0 ;
-        }
-        else if ( _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut < _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fLo )     {
-            _battery_inverter__average_1_control_imode_control_default_a_idm_aps_ndz_activation__fOut = 0 ;
-        }
     }
     // Generated from the component: MS_S1.TPM_Grid.Power Meter.POWER
     {
